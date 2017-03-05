@@ -21,4 +21,6 @@ npm run build
 npm run build --report
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+Vue.js is like React, has a much lower learning curve, and is fun. I learned it by following:
+- [official guide](https://vuejs.org/v2/guide/) and 
+- [this tutorial](https://coligo.io/learn-vuex-by-building-notes-app/).
