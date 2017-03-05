@@ -1,0 +1,47 @@
+<template>
+<div class="phone-viewport custom-bar">
+   <md-toolbar class="md-warn">
+      <md-button class="md-icon-button" v-if="showMenuIcon" @click.native="$refs.sidenav.toggle()">
+        <md-icon>menu</md-icon>
+      </md-button>
+
+      <span style="flex: 1"></span>
+
+      <md-button class="md-icon-button" v-if="showLoginIcon" @click="login">
+        <md-icon>lock</md-icon>
+      </md-button>
+
+   </md-toolbar>
+  
+  
+</div>
+
+</template>
+
+<script>
+
+export default {
+    props: {
+      showLoginIcon: {
+        default: true
+      },
+      showMenuIcon: {
+        default: true
+      },
+    },
+
+    methods:{
+      login: function () {
+        console.log('login')
+      },
+    }
+  }
+  
+</script>
+
+<style>
+  .complete-example{
+    background-color: #f57f17;
+  }
+
+</style>
