@@ -3,7 +3,7 @@
 > A Vue.js project
 
 I am developing this Desktop and Web Simulator app to test the backend (especially, the pingal_brain). 
-This is a port of essential components in pingal_chat (react-native) a desktop/web app using vue. 
+This is a port of essential components in pingal_chat (react-native). 
 If everything works, we can also use this as a fully functional desktop/web app.
  
 ## Build Setup
