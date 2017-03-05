@@ -2,7 +2,7 @@
 
 > A Vue.js project
 
-I am developing this Desktop and Web Simulator app to test the backend. 
+I am developing this Desktop and Web Simulator app to test the backend (especially, the pingal_brain). 
 If everything works, we can also use this as a fully functional desktop/web app.
  
 ## Build Setup
