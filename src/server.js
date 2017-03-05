@@ -16,7 +16,7 @@ export default function start() {
   /* Connect the socket to establish the WS connection with the server */
   socket.connect()
 
-  /* Join the :posts channel to receive RT messages related to the posts */
+  /* Join the world channel anonymously */
   joinWorldChannel()
 
   /* Fetch and Set the current user in case there's one */
