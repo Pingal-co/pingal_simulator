@@ -2,9 +2,8 @@
 
 > A Vue.js project
 
-I am developing this Desktop and Web Simulator app to test the backend (especially, the pingal_brain). 
-This is a port of essential components in pingal_chat (react-native). 
-If everything works, we can also use this as a fully functional desktop/web app.
+Desktop and Web app to test the backend (especially, the pingal_brain). 
+This is a port of core components in pingal_chat (react-native).  
  
 ## Build Setup
 
@@ -22,6 +21,6 @@ npm run build
 npm run build --report
 ```
 
-Vue.js is like React, has a much lower learning curve, and is fun. I learned it by following:
-- [official guide](https://vuejs.org/v2/guide/) and 
+Vue.js is like React, has a much lower learning curve, and is fun. Helpful references:
+- [official guide](https://vuejs.org/v2/guide/) 
 - [this tutorial](https://coligo.io/learn-vuex-by-building-notes-app/).
