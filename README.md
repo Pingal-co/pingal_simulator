@@ -46,8 +46,9 @@ Least amount of information needed to be productive:
 
 ### Navigation
 - [Router](https://laracasts.com/series/learn-vue-2-step-by-step/episodes/26): [Core concepts](http://router.vuejs.org/en/essentials/getting-started.html), [Route Matching](http://router.vuejs.org/en/essentials/dynamic-matching.html) and [Nested Routes](http://router.vuejs.org/en/essentials/nested-routes.html)
-- Parent-child content : [slots](https://vuejs.org/v2/guide/components.html#Content-Distribution-with-Slots)
+- Parent-child content: [slots](https://vuejs.org/v2/guide/components.html#Content-Distribution-with-Slots)
 
 ### Dev Tools
 - [Vue Devtools](https://laracasts.com/series/learn-vue-2-step-by-step/episodes/2)
 - [Webpack](https://laracasts.com/series/learn-vue-2-step-by-step/episodes/22) and [vue-cli] (https://vuejs.org/v2/guide/installation.html#CLI)
+- [Starter pack with Electron](https://github.com/egoist/vuepack); [Desktop app tutorial using Electron](https://coligo.io/bookmarking-app-electron-vuejs-firebase/)
