@@ -28,26 +28,26 @@ Vue.js is like React, has a much lower learning curve, and is fun. Helpful refer
 
 ## Vue: From React (or any component framework) to Vue in 1 hour 
 Least amount of information needed to be productive:
-### template
+### Template and Styling
 - [templates (component render)](https://vuejs.org/v2/guide/syntax.html) : Standard Html tags (No JSX). [v-if directive (Conditional toggling of template)](https://vuejs.org/v2/guide/conditional.html). [Lists use v-for](https://vuejs.org/v2/guide/list.html)
 - Themes and Styling: [Vue-Material](https://vuematerial.github.io/#/) components are used for Material theme  
 
-### data
+### Data passing
 - Passing data from parent to child components (props): [props](https://vuejs.org/v2/guide/components.html#Passing-Data-with-Props)
 - Maintaining data inside component (data): [data must be a function](https://vuejs.org/v2/guide/components.html#What-are-Components) ; 
 - Binding data inside component:  [v-model and v-bind for input binding] (https://vuejs.org/v2/guide/forms.html)
 - Sharing data to external components (store): [veux](https://vuex.vuejs.org/en/getting-started.html). Just read on core concepts of state, getters, mutations and actions
 - Passing data from children to parent: [$emit](https://vuejs.org/v2/guide/components.html#Using-v-on-with-Custom-Events) 
 
-### functions
+### Functions 
 - Handling Button Events ( [@click and v-on](https://laracasts.com/series/learn-vue-2-step-by-step/episodes/4) ) : Functions in "methods" . There are also (Event modifiers)[https://vuejs.org/v2/guide/events.html#Event-Modifiers]
 - [Computed Properties](https://laracasts.com/series/learn-vue-2-step-by-step/episodes/6) : Reactive functions to transform the internal data of component 
 - [Lifecycle methods](https://vuejs.org/v2/guide/instance.html) : created, mounted, updated, destroyed
 
-### router
+### Navigation
 - [Router](https://laracasts.com/series/learn-vue-2-step-by-step/episodes/26): [Core concepts](http://router.vuejs.org/en/essentials/getting-started.html), [Route Matching](http://router.vuejs.org/en/essentials/dynamic-matching.html) and [Nested Routes](http://router.vuejs.org/en/essentials/nested-routes.html)
 - Parent-child content : [slots](https://vuejs.org/v2/guide/components.html#Content-Distribution-with-Slots)
 
-### tools
+### Dev Tools
 - [Vue Devtools](https://laracasts.com/series/learn-vue-2-step-by-step/episodes/2)
 - [Webpack](https://laracasts.com/series/learn-vue-2-step-by-step/episodes/22) and [vue-cli] (https://vuejs.org/v2/guide/installation.html#CLI)
