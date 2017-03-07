@@ -24,3 +24,5 @@ npm run build --report
 Vue.js is like React, has a much lower learning curve, and is fun. Helpful references:
 - [official guide](https://vuejs.org/v2/guide/) 
 - [this tutorial](https://coligo.io/learn-vuex-by-building-notes-app/).
+
+[Vue-Material](https://vuematerial.github.io/#/) components are used for Material theme  
