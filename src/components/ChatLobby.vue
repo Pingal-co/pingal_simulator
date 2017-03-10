@@ -1,26 +1,35 @@
 <template>
   <div class="lobby">
     <top-bar
-      :show-login-icon="true"
-      :show-menu-icon="true"
+      :show-login-icon="false"
+      :show-menu-icon="false"
     >
     </top-bar>
-       
-    <slide-list
-      :slides="slides">
-    </slide-list>
 
-    <input-tool-bar
-      :mute-speaker="true">
-      :topic="topic"
-      :user="user"
-    </input-tool-bar>
+    <div class="main">
+      <room-nav>
+        
+      </room-nav>
+         
+      <div class="slides-section">
+        <slide-list
+          :slides="slides">
+        </slide-list>
+
+        <input-tool-bar
+          :mute-speaker="true">
+          :topic="topic"
+          :user="user"
+        </input-tool-bar>
+      </div>
+    </div>
     
   </div>
 </template>
 
 <script>
   import TopBar from '@/components/TopBar'
+  import RoomNav from '@/components/RoomNav'
   import SlideList from '@/components/SlideList'
   import InputToolBar from '@/components/InputToolBar'
 
@@ -28,6 +37,7 @@
     name: 'hello',
     components: {
       TopBar,
+      RoomNav,
       SlideList,
       InputToolBar
     },
@@ -63,6 +73,14 @@ h1, h2 {
 
 .lobby {
   margin-top: 1px;
+}
+
+.main {
+  display: flex;
+}
+
+.slides-section {
+  
 }
 </style>
 
