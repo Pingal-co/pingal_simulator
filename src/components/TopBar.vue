@@ -1,6 +1,6 @@
 <template>
-  <div class="phone-viewport custom-bar top-bar">
-     <md-toolbar class="md-warn">
+  <div class="top-bar"> <!-- phone-viewport custom-bar  -->
+<!--      <md-toolbar class="md-warn">
         <md-button class="md-icon-button" v-if="showMenuIcon" @click.native="$refs.sidenav.toggle()">
           <md-icon>menu</md-icon>
         </md-button>
@@ -11,7 +11,7 @@
           <md-icon>lock</md-icon>
         </md-button>
 
-     </md-toolbar>
+     </md-toolbar> -->
   </div>
 </template>
 
@@ -39,6 +39,8 @@ export default {
 <style>
   .top-bar {
     height: 54px;
+    width: 100%;
+    background-color: rgb(244, 128, 45);
   }
 
 </style>

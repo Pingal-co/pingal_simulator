@@ -1,5 +1,5 @@
 <template>
-	<md-list-item>
+	<md-list-item class="room-nav-slide">
 	  <md-avatar>
 	    <img :src="room.image" alt="room.name" />
 	  </md-avatar>
@@ -9,9 +9,9 @@
 	    <p>{{room.subtitle}}</p>
 	  </div>
 
-	  <p>{{formattedTime}}</p>
+	  <div class="formatted-time">{{formattedTime}}</div>
 
-	  <md-divider class="md-inset"></md-divider>
+	  <!-- <md-divider class="md-inset"></md-divider> -->
 	</md-list-item>
 </template>
 
@@ -32,7 +32,22 @@
 	  hours = hours % 12;
 	  hours = hours ? hours : 12; // the hour '0' should be '12'
 	  minutes = minutes < 10 ? '0'+minutes : minutes;
-	  var strTime = hours + ':' + minutes + ' ' + ampm;
+	  var strTime = hours + ':' + minutes + ampm;
 	  return strTime;
 	}
 </script>
+
+<style lang="scss" scoped>
+	$border-color: rgb(225, 225, 225);
+
+	.room-nav-slide:hover {
+		background-color: $border-color;
+	}
+
+	.formatted-time {
+		font-size: 12px;
+		min-width: 56px;
+		padding-left: 12px;
+		color: rgb(151, 151, 151);
+	}
+</style>

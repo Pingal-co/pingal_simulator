@@ -17,7 +17,9 @@
                 </md-card-content> 
               </md-card-area>
 
-              <div> <!-- Adds line --></div> 
+              <!-- Adds line -->
+              <div></div> 
+
             </md-card>
 
             <!-- User Slide -->
@@ -131,7 +133,7 @@
     .md-card-actions {
         padding: 8px;
         display: flex;
-        justify-content: flex-end;
+        justify-content: center;
         align-items: center;
 
         .md-button {

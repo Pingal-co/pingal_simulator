@@ -74,7 +74,6 @@ h1, h2 {
 }
 
 .lobby {
-  margin-top: 1px;
 }
 
 .main {

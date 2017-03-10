@@ -2,7 +2,7 @@
     <div>
         <form novalidate>
           <div class="input-toolbar">
-            <md-input-container>            
+<!--             <md-input-container>            
                 <label>Talk to PingAl</label>
                 <md-textarea
                   v-model="text"
@@ -14,8 +14,9 @@
                   >Send
                 </md-button>
                
-            </md-input-container>
-            </div> 
+            </md-input-container> -->
+            <input type="text" v-model="text" class="input-box" placeholder="Type a message..." />
+          </div> 
         </form>
     </div>    
 </template>
@@ -49,9 +50,23 @@ export default {
   
 </script>
 
-<style>
+<style lang="scss" scope>
+  $border-color: rgb(225, 225, 225);
+
   .input-toolbar{
-    padding: 10px;
-    margin-left:10px;
+    width: calc(100vw - 360px);
+    position: fixed;
+    bottom: 0px;
+    height: 54px;
+    border-top: 1px solid $border-color;
+    display: flex;
+  }
+
+  .input-box {
+    width: 100%;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    padding: 0px 12px 0px 12px;
   }
 </style>

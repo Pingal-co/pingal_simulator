@@ -2,7 +2,7 @@
 	<div class="room-nav">
 		<md-list class="custom-list md-double-line">
 			<!-- Pingal -->
-			<md-list-item>
+			<md-list-item class="room-nav-slide">
 			  <md-avatar>
 			    <img src="../assets/pingal_play_icon.png" alt="Pingal" />
 			  </md-avatar>
@@ -36,9 +36,17 @@
 </script>
 
 <style lang="scss" scoped>
+	$border-color: rgb(225, 225, 225);
+
 	.room-nav {
 		height: calc(100vh - 54px);
-		border-right: 1px solid rgba(0, 0, 0, 0.12);
+		border-right: 1px solid $border-color;
+		min-width: 360px;
+		overflow: scroll;
+	}
+
+	.room-nav-slide:hover {
+		background-color: $border-color;
 	}
 </style>
 
