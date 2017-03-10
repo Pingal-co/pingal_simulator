@@ -1,37 +1,54 @@
 <template>
     <div class="card-custom">
         <md-list-item >
-            <md-card >
+            <!-- Pingal Slide -->
+            <md-card v-if="slide.user._id === 1">
+              <md-card-area md-inset>
                 <md-card-content>
-                   <div class="md-subhead"> {{ slide.user.name }}, {{ datetime }}</div>                      
-                </md-card-content>                
-            <md-card-expand v-if="slide.buttons">
-                    <md-button class="md-icon-button" md-expand-trigger>
-                        <md-icon>keyboard_arrow_down</md-icon>
-                    </md-button>
-                    <md-card-content>
-                        <md-card-actions>
-                            <md-button v-for="button in slide.buttons" v-bind:key="button._id" :action="button">{{button.text}}</md-button>
-                        </md-card-actions>
-                    </md-card-content>
-                </md-card-expand>
-
-            <md-card-area md-inset>
-              <md-card-content>
-                <md-avatar class="md-avatar-icon md-warn">
-                    <md-icon>{{ slide.user.avatar }}</md-icon>
-                </md-avatar>
-                    <div class="expand-custom">
-                        <div class="md-title">  {{ slide.body }}</div>                  
-                        <md-card-actions>
-                            <md-button v-for="channel in slide.channels" v-bind:key="channel._id" :channel="channel">{{channel.topic}}</md-button>
-                        </md-card-actions>
-                    </div>                   
+                  <md-avatar>
+                    <img src="../assets/pingal_play_icon.png" alt="Pingal">
+                  </md-avatar>
+                  <div class="expand-custom">
+                      <div class="md-title">  {{ slide.body }}</div>                  
+                      <md-card-actions>
+                          <md-button v-for="channel in slide.channels" v-bind:key="channel._id" :channel="channel">{{channel.topic}}</md-button>
+                      </md-card-actions>
+                  </div>                   
                 </md-card-content> 
-             </md-card-area>
+              </md-card-area>
 
-             <div>
-              </div>   
+              <div> <!-- Adds line --></div> 
+            </md-card>
+
+            <!-- User Slide -->
+            <md-card v-else>
+<!--               <md-card-content>
+                 <div class="md-subhead"> {{ slide.user.name }}, {{ datetime }}</div>
+              </md-card-content> -->
+<!-- 
+              <md-card-expand v-if="slide.buttons">
+                  <md-button class="md-icon-button" md-expand-trigger>
+                      <md-icon>keyboard_arrow_down</md-icon>
+                  </md-button>
+                  <md-card-content>
+                      <md-card-actions>
+                          <md-button v-for="button in slide.buttons" v-bind:key="button._id" :action="button">{{button.text}}</md-button>
+                      </md-card-actions>
+                  </md-card-content>
+              </md-card-expand> -->
+
+              <md-card-area md-inset>
+                <md-card-content>
+                  <md-avatar class="md-avatar-icon md-warn">
+                      <md-icon>{{ slide.user.avatar }}</md-icon>
+                  </md-avatar>
+                      <div class="expand-custom">
+                          <div class="md-title">  {{ slide.body }}</div>                  
+                      </div>                   
+                  </md-card-content> 
+               </md-card-area>
+
+               <div> <!-- Adds line --></div>    
                       
             </md-card>
         </md-list-item>

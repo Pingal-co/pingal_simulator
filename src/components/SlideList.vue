@@ -9,10 +9,10 @@
 </template>
 
 <script>
-import Slide from '@/components/Slide'
-export default {
-  name: 'SlideList',
-  props: ['slides'],
-  components: { Slide }
-}
+  import Slide from '@/components/Slide'
+  export default {
+    name: 'SlideList',
+    props: ['slides'],
+    components: { Slide }
+  }
 </script>

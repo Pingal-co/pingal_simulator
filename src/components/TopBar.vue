@@ -1,5 +1,5 @@
 <template>
-<div class="phone-viewport custom-bar">
+<div class="phone-viewport custom-bar top-bar">
    <md-toolbar class="md-warn">
       <md-button class="md-icon-button" v-if="showMenuIcon" @click.native="$refs.sidenav.toggle()">
         <md-icon>menu</md-icon>
@@ -12,8 +12,6 @@
       </md-button>
 
    </md-toolbar>
-  
-  
 </div>
 
 </template>
@@ -40,8 +38,8 @@ export default {
 </script>
 
 <style>
-  .complete-example{
-    background-color: #f57f17;
+  .top-bar {
+    height: 54px;
   }
 
 </style>

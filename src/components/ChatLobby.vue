@@ -7,8 +7,9 @@
     </top-bar>
 
     <div class="main">
-      <room-nav>
-        
+      <room-nav
+        :rooms="roomNav"
+      >
       </room-nav>
          
       <div class="slides-section">
@@ -44,6 +45,7 @@
     data () {
       return {
         slides: require('@/store/data'),
+        roomNav: require('@/store/room_nav_data'),
         topic: 'room:1:15',
         user: { _id: 1, name: 'Pingal', hash: 'Pingal', avatar: 'mood'}
       }
@@ -80,7 +82,7 @@ h1, h2 {
 }
 
 .slides-section {
-  
+
 }
 </style>
 
