@@ -1,19 +1,18 @@
 <template>
-<div class="phone-viewport custom-bar top-bar">
-   <md-toolbar class="md-warn">
-      <md-button class="md-icon-button" v-if="showMenuIcon" @click.native="$refs.sidenav.toggle()">
-        <md-icon>menu</md-icon>
-      </md-button>
+  <div class="phone-viewport custom-bar top-bar">
+     <md-toolbar class="md-warn">
+        <md-button class="md-icon-button" v-if="showMenuIcon" @click.native="$refs.sidenav.toggle()">
+          <md-icon>menu</md-icon>
+        </md-button>
 
-      <span style="flex: 1"></span>
+        <span style="flex: 1"></span>
 
-      <md-button class="md-icon-button" v-if="showLoginIcon" @click="login">
-        <md-icon>lock</md-icon>
-      </md-button>
+        <md-button class="md-icon-button" v-if="showLoginIcon" @click="login">
+          <md-icon>lock</md-icon>
+        </md-button>
 
-   </md-toolbar>
-</div>
-
+     </md-toolbar>
+  </div>
 </template>
 
 <script>

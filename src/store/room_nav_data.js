@@ -5,6 +5,7 @@ module.exports = [
   //   name: "Pingal",
   //   subtitle: "What would you like to talk about?",
   //   updated_at: new Date(Date.now()),
+  //   image: '../assets/pingal_play_icon.png'
   // },
   {
     _id: Math.round(Math.random() * 1000000),

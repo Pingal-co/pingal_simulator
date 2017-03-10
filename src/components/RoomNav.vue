@@ -1,42 +1,37 @@
 <template>
 	<div class="room-nav">
 		<md-list class="custom-list md-double-line">
+			<!-- Pingal -->
 			<md-list-item>
-	      <md-avatar>
-	        <img src="../assets/pingal_play_icon.png" alt="Pingal">
-	      </md-avatar>
+			  <md-avatar>
+			    <img src="../assets/pingal_play_icon.png" alt="Pingal" />
+			  </md-avatar>
 
-	      <div class="md-list-text-container">
-	        <span>Pingal</span>
-	        <p>What would you like to talk about?</p>
-	      </div>
+			  <div class="md-list-text-container">
+			    <span>Pingal</span>
+			    <p>What would you like to talk about?</p>
+			  </div>
 
-	      <p>12:01pm</p>
-
-	      <md-divider class="md-inset"></md-divider>
-	    </md-list-item>
-
-			<md-list-item v-for="room in rooms">
-	      <md-avatar>
-	        <img :src="room.image">
-	      </md-avatar>
-
-	      <div class="md-list-text-container">
-	        <span>{{room.name}}</span>
-	        <p>What would you like to talk about?</p>
-	      </div>
-
-	      <p>{{room.updated_at.getHours() + ":" + room.updated_at.getMinutes()}}</p>
-
-	      <md-divider class="md-inset"></md-divider>
-	    </md-list-item>
+			  <md-divider class="md-inset"></md-divider>
+			</md-list-item>
+			<!-- Users -->
+			<room-nav-slide 
+				v-for="(room, index) in rooms"
+				:key="index"
+				:room="room"	
+			/>
 	  </md-list>
  	</div>
 </template>
 
 <script>
+	import RoomNavSlide from '@/components/RoomNavSlide'
+
 	export default {
 		props: ['rooms'],
+		components: {
+			RoomNavSlide
+		}
 	}
 </script>
 
