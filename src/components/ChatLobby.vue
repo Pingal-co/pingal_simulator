@@ -45,11 +45,18 @@
     },
     data () {
       return {
-        slides: require('@/store/data'),
         roomNav: require('@/store/room_nav_data'),
         room: joinWorldChannel(),
         topic: '1',
         user: { _id: 1, name: 'Pingal', hash: 'Pingal', avatar: 'mood'},
+      }
+    },
+
+    computed: {
+      slides() {
+        console.log("store test")
+        console.log(this.$store.state.slides)
+        return this.$store.state.slides
       }
     }
   }
@@ -83,7 +90,9 @@
   }
 
   .slides-section {
-
+    overflow-y: scroll;
+    height: calc(100vh - 54px);
+    width: 100%;
   }
 </style>
 

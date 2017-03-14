@@ -69,10 +69,12 @@ export let joinWorldChannel = () => {
   let roomChannel = joinRoom(DEFAULT_LOBBY)
 
   roomChannel.on('get:slides_in_room', (slides) => {
+    console.log("got slides in room")
     store.commit('APPEND_SLIDES', slides)
   })
 
   roomChannel.on('add:slide', (slide) => {
+    console.log("Add slide to WorldChannel")
     store.commit('APPEND_SLIDE', slide)
   })
 

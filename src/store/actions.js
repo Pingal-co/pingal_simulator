@@ -33,12 +33,12 @@ const actions = {
     // channel endpoint : only push data; room.on() will receive the data
     console.log(slide)
     return sendToChannel(room, slide, event)
-       .catch((error) => {
-         error.response.json()
-         .then((errorJSON) => {
-            console.log('send error')
-         })
-       })
+       // .catch((error) => {
+       //   error.response.json()
+       //   .then((errorJSON) => {
+       //      console.log('send error')
+       //   })
+       // })
   },
   
   /* START <USER DISPATCH ACTION HANDLERS> */

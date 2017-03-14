@@ -1,6 +1,5 @@
 <template>
     <div>
-    {{text}}{{slide}}
         <form novalidate>
           <div class="input-toolbar">
 <!--             <md-input-container>            
@@ -75,6 +74,7 @@ export default {
     height: 54px;
     border-top: 1px solid $border-color;
     display: flex;
+    z-index: 2;
   }
 
   .input-form {

@@ -14,10 +14,15 @@ const mutations = {
     },
 
     APPEND_SLIDES (state, slides) {
-        if (!Array.isArray(slides)) {
-            slides = [slides]
-        }
-        state.slides = slides.concat(state.slides)
+        slides = slides.slides
+        // if (!Array.isArray(slides)) {
+        //     slides = [slides]
+        // }
+        state.slides = state.slides.concat(slides)
+    },
+
+    APPEND_SLIDE (state, slide) {
+        state.slides = state.slides.concat(slide);
     },
 
     /* START <CURRENT SLIDE MUTATION HANDLERS> */
