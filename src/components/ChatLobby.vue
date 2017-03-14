@@ -91,7 +91,7 @@
 
   .slides-section {
     overflow-y: scroll;
-    height: calc(100vh - 54px);
+    height: calc(100vh - 108px);
     width: 100%;
   }
 </style>

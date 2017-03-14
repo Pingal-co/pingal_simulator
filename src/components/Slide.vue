@@ -67,7 +67,7 @@
           // return this.slide.inserted_at
       }
     },
-    methods:{
+    methods: {
       login() {
         console.log('login')
       },

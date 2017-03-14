@@ -5,6 +5,7 @@
         v-bind:key="aslide.id" 
         :slide="aslide">
     </slide>
+    <li id="scrollAnchor"></li>
   </md-list>
 </template>
 
@@ -13,6 +14,11 @@
   export default {
     name: 'SlideList',
     props: ['slides'],
-    components: { Slide }
+    components: { Slide },
+    updated() {
+      // Scroll most recent into view
+      var scrollAnchor = this.$el.querySelector('#scrollAnchor')
+      scrollAnchor.scrollIntoView()
+    }
   }
 </script>
