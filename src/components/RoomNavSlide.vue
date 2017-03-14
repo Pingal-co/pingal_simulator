@@ -19,7 +19,7 @@
 	export default {
 		props: ['room'],
 		computed: {
-			formattedTime: function() {
+			formattedTime() {
 				return formatAMPM(this.room.updated_at)
 			}
 		}

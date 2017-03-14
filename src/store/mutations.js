@@ -15,7 +15,7 @@ const mutations = {
 
     APPEND_SLIDES (state, slides) {
         if (!Array.isArray(slides)) {
-        slides = [slides]
+            slides = [slides]
         }
         state.slides = slides.concat(state.slides)
     },
@@ -36,18 +36,18 @@ const mutations = {
 
     /* START <ROOM MUTATION HANDLERS> */
     SET_CURRENT_ROOM (state, room) {
-    state.currentRoom = { ...state.currentRoom, ...room }
+        state.currentRoom = { ...state.currentRoom, ...room }
     },
 
     SET_ROOMS (state, rooms) {
-    state.rooms = rooms
+        state.rooms = rooms
     },
 
     APPEND_ROOMS (state, rooms) {
-    if (!Array.isArray(rooms)) {
-        rooms = [rooms]
-    }
-    state.rooms = rooms.concat(state.slides)
+        if (!Array.isArray(rooms)) {
+            rooms = [rooms]
+        }
+        state.rooms = rooms.concat(state.slides)
     }
 
 }

@@ -7,9 +7,8 @@
     </top-bar>
 
     <div class="main">
-      <room-nav
-        :rooms="roomNav"
-      >
+      <room-nav 
+        :rooms="roomNav">
       </room-nav>
          
       <div class="slides-section">
@@ -18,9 +17,9 @@
         </slide-list>
 
         <input-tool-bar
-          :mute-speaker="true">
+          :mute-speaker="true"
           :topic="topic"
-          :user="user"
+          :user="user">
         </input-tool-bar>
       </div>
     </div>
@@ -33,6 +32,7 @@
   import RoomNav from '@/components/RoomNav'
   import SlideList from '@/components/SlideList'
   import InputToolBar from '@/components/InputToolBar'
+  import {joinWorldChannel} from '@/chatserver'
 
   export default {
     name: 'hello',
@@ -46,7 +46,8 @@
       return {
         slides: require('@/store/data'),
         roomNav: require('@/store/room_nav_data'),
-        topic: 'room:1:15',
+        topic: '1',
+        room: joinWorldChannel(),
         user: { _id: 1, name: 'Pingal', hash: 'Pingal', avatar: 'mood'}
       }
     }
@@ -69,19 +70,19 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
+  h1, h2 {
+    font-weight: normal;
+  }
 
-.lobby {
-}
+  .lobby {
+  }
 
-.main {
-  display: flex;
-}
+  .main {
+    display: flex;
+  }
 
-.slides-section {
+  .slides-section {
 
-}
+  }
 </style>
 

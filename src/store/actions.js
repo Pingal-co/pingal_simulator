@@ -29,7 +29,7 @@ Store in Veux is immutable.
 const actions = {
 
   /* START <SLIDES DISPATCH ACTION HANDLERS> */
-  pushSlides ({ commit }, room, slides, event) {
+  pushSlides ({ commit }, {room, slides, event}) {
     // channel endpoint : only push data; room.on() will receive the data
     return sendToChannel(room, slides, event)
        .catch((error) => {
@@ -39,21 +39,22 @@ const actions = {
          })
        })
   },
-    /* START <USER DISPATCH ACTION HANDLERS> */
-    signIn ({ commit, dispatch }, session) {
-        return httpPost(`${apiURL}/sessions`, { session })
-        .then(({ jwt, user }) => {
-            localStorage.setItem('id_token', jwt)
-            userChannel = joinUserChannel({ id: user.id, jwt })
-            commit('SET_CURRENT_USER', { ...user, jwt })
-        })
-        .catch((error) => {
-            error.response.json()
-            .then((errorJSON) => {
-                console.log('signin error')
-            })
-        })
-    },
+  
+  /* START <USER DISPATCH ACTION HANDLERS> */
+  signIn ({ commit, dispatch }, session) {
+      return httpPost(`${apiURL}/sessions`, { session })
+      .then(({ jwt, user }) => {
+          localStorage.setItem('id_token', jwt)
+          userChannel = joinUserChannel({ id: user.id, jwt })
+          commit('SET_CURRENT_USER', { ...user, jwt })
+      })
+      .catch((error) => {
+          error.response.json()
+          .then((errorJSON) => {
+              console.log('signin error')
+          })
+      })
+  },
 
   currentUser ({ commit }) {
     return httpGet(`${apiURL}/current_user`)
@@ -64,10 +65,10 @@ const actions = {
       })
   },
 
-    /* START <ROOM DISPATCH ACTION HANDLERS> */
-    updateCurrentRoom ({commit}, room) {
-        commit('SET_CURRENT_ROOM', room.id)
-    }
+  /* START <ROOM DISPATCH ACTION HANDLERS> */
+  updateCurrentRoom ({commit}, room) {
+      commit('SET_CURRENT_ROOM', room.id)
+  }
 
 }
 

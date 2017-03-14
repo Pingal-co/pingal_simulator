@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Vuex from 'vuex'
+import store from './store'
 import { sync } from 'vuex-router-sync'
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.css'
@@ -30,6 +31,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App />',
   components: { App }
 })

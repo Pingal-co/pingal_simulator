@@ -15,7 +15,9 @@
                 </md-button>
                
             </md-input-container> -->
-            <input type="text" v-model="text" class="input-box" placeholder="Type a message..." />
+            <form @submit.prevent="onSend" class="input-form">
+              <input type="text" v-model="text" class="input-box" placeholder="Type a message..." />
+            </form>
           </div> 
         </form>
     </div>    
@@ -25,7 +27,7 @@
 import { mapGetters, mapActions } from 'vuex'
 export default {
     props: ['muteSpeaker', 'topic', 'user'],
-    data: function(){
+    data: function() {
       return {
         text: '',
         slide: {
@@ -38,12 +40,15 @@ export default {
       }
     },
 
-    methods:{
+    methods: {
       onSend() {
-        this.$store.dispatch('pushSlides', this.topic, this.slide, 'add:slide')
-          .then(() => {
-            this.text = ''
-          })
+        this.$store.dispatch('pushSlides', {
+          room: this.topic, 
+          slides: [this.slide], 
+          event: 'add:slide'})
+            .then(() => {
+              this.text = ''
+            })
       },
     }
   }
@@ -60,6 +65,12 @@ export default {
     height: 54px;
     border-top: 1px solid $border-color;
     display: flex;
+  }
+
+  .input-form {
+    display: flex;
+    width: 100%;
+    height: 100%;
   }
 
   .input-box {

@@ -62,13 +62,13 @@
  export default {
     props: ['slide'] ,
     computed: {
-        datetime: function() {
+        datetime() {
            return moment(this.slide.inserted_at).format('YYYY-MM-DD [at] hh:mm')
           // return this.slide.inserted_at
       }
     },
     methods:{
-      login: function () {
+      login() {
         console.log('login')
       },
 
