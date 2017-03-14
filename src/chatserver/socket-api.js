@@ -8,10 +8,11 @@ import {socket} from './socket-config'
   I am also adding a fourth "World" channel to see what everyone is talking to Pingal
   Idea: Users talk to pingal publicly till they are logged in.
 */
-let DEFAULT_LOBBY = 'pingal:lobby'
+// switch this back to pingal:lobby
+let DEFAULT_LOBBY = 'room:1'
 
 /*
-  internal functions
+  Internal Functions
 */
 
 let isSlideInStore = (slideId) => {
@@ -28,7 +29,7 @@ let joinRoom = (roomName = DEFAULT_LOBBY, params = {}) => {
 
   room.join()
     .receive('ok', _ => {
-      console.log('joined succesfully to pingal:lobby')
+      console.log('joined successfully to pingal:lobby')
     })
     .receive('error', resp => {
       console.log(`Unable to join ${resp} `)
@@ -44,9 +45,14 @@ let joinRoom = (roomName = DEFAULT_LOBBY, params = {}) => {
   return room
 }
 
-export let sendToChannel = (room, slides, event = 'add:slide') => {
-  console.log('sending to room...')
-  room.push(event, slides)
+
+/* 
+  External Functions
+*/
+export let sendToChannel = (room, slide, event = 'add:slide') => {
+  console.log('sending to room...');
+  console.log(slide)
+  room.push(event, slide)
         .receive('ok', (msg) => console.log('sent'))
         .receive('error', (reasons) => console.log('failed', reasons))
 }

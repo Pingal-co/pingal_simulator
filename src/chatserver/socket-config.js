@@ -14,4 +14,8 @@ export const socketURL = `${socketScheme}://${hostname}/socket`
 export const closeSocket = () => socket.disconnect()
 
 // define the socket per user: anonymous, user_id
-export let socket = new Socket(socketURL);
+export let socket = new Socket(socketURL, {params: {
+        	user: 1
+        }
+    });
+socket.connect();

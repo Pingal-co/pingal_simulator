@@ -28,10 +28,11 @@ Store in Veux is immutable.
 
 const actions = {
 
-  /* START <SLIDES DISPATCH ACTION HANDLERS> */
-  pushSlides ({ commit }, {room, slides, event}) {
+  /* START <SLIDE DISPATCH ACTION HANDLERS> */
+  pushSlide ({ commit }, {room, slide, event}) {
     // channel endpoint : only push data; room.on() will receive the data
-    return sendToChannel(room, slides, event)
+    console.log(slide)
+    return sendToChannel(room, slide, event)
        .catch((error) => {
          error.response.json()
          .then((errorJSON) => {

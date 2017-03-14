@@ -18,6 +18,7 @@
 
         <input-tool-bar
           :mute-speaker="true"
+          :room="room"
           :topic="topic"
           :user="user">
         </input-tool-bar>
@@ -46,8 +47,8 @@
       return {
         slides: require('@/store/data'),
         roomNav: require('@/store/room_nav_data'),
-        topic: '1',
         room: joinWorldChannel(),
+        topic: '1',
         user: { _id: 1, name: 'Pingal', hash: 'Pingal', avatar: 'mood'},
       }
     }

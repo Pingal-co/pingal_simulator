@@ -1,5 +1,6 @@
 <template>
     <div>
+    {{text}}{{slide}}
         <form novalidate>
           <div class="input-toolbar">
 <!--             <md-input-container>            
@@ -26,15 +27,23 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 export default {
-    props: ['muteSpeaker', 'topic', 'user'],
+    props: ['muteSpeaker', 'room', 'topic', 'user'],
     data: function() {
       return {
         text: '',
-        slide: {
+      }
+    },
+
+    computed: {
+      slide() {
+        return {
           _id: Math.round(Math.random() * 1000000),
           body: this.text,
           room: this.topic, 
           user: this.user,
+          edit: false,
+          public: false,
+          sponsored: false,
           inserted_at: new Date(),
         }
       }
@@ -42,9 +51,10 @@ export default {
 
     methods: {
       onSend() {
-        this.$store.dispatch('pushSlides', {
-          room: this.topic, 
-          slides: [this.slide], 
+        console.log(this.slide);
+        this.$store.dispatch('pushSlide', {
+          room: this.room, 
+          slide: this.slide, 
           event: 'add:slide'})
             .then(() => {
               this.text = ''
