@@ -1,11 +1,7 @@
-import { Socket } from 'phoenix-elixir'
 import router from '../router'
 import store from '../store'
-import { socketURL } from '../chatserver'
 import uniqueId from 'uniqid'
-
-// define the socket per user: anonymous, user_id
-export let socket = new Socket(socketURL)
+import {socket} from './socket-config'
 
 /*
   To make it clean, I have three separate channels [User, Pingal, Room] to talk to Phoenix
@@ -41,7 +37,7 @@ let joinRoom = (roomName = DEFAULT_LOBBY, params = {}) => {
       console.log('Check all connections: network, database, ...')
     })
 
-    // add some room-level event handlers
+  // add some room-level event handlers
   room.onError(event => console.log('Room error.', event))
   room.onClose(event => console.log('Room closed.'))
 

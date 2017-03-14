@@ -48,7 +48,7 @@
         roomNav: require('@/store/room_nav_data'),
         topic: '1',
         room: joinWorldChannel(),
-        user: { _id: 1, name: 'Pingal', hash: 'Pingal', avatar: 'mood'}
+        user: { _id: 1, name: 'Pingal', hash: 'Pingal', avatar: 'mood'},
       }
     }
   }
