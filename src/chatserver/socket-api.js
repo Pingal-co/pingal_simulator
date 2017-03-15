@@ -73,14 +73,11 @@ export let joinWorldChannel = (session) => {
     store.commit('APPEND_SLIDES', slides)
   })
 
-  roomChannel.on('get:pingalHello', (slide) => {
-    console.log("Pingal says hello")
-    store.commit('APPEND_SLIDE', slide)
-  })
-
-  roomChannel.on('request', (slide) => {
-    console.log("Request through")
-    store.commit('APPEND_SLIDE', slide)
+  roomChannel.on('response', (slide) => {
+    console.log("Request response from pingal")
+    setTimeout(function() {
+      store.commit('APPEND_SLIDE', slide)
+    }, 300)  
   })
 
   roomChannel.on('add:slide', (slide) => {
