@@ -16,7 +16,7 @@
                
             </md-input-container> -->
             <form @submit.prevent="onSend" class="input-form">
-              <input type="text" v-model="text" class="input-box" placeholder="Type a message..." />
+              <input type="text" v-model="text" class="input-box" placeholder="Type a message..." autofocus />
             </form>
           </div> 
         </form>

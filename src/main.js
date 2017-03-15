@@ -13,8 +13,17 @@ import 'vue-material/dist/vue-material.css'
 import FastClick from 'fastclick'
 //FastClick.attach(document.body) // initialize fastclick
 
+// npm modules
+import randtoken from 'rand-token'
+import Cookies from 'js-cookie'
+
 // theme and css
 Vue.use(VueMaterial)
+
+// Make non-logged in user session
+if (!Cookies.get('session')) {
+  Cookies.set('session', randtoken.generate(16), { expires: 365 })
+} 
 
 // talking to phoenix
 // import server from './server'

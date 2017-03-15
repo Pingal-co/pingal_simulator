@@ -35,6 +35,9 @@
   import InputToolBar from '@/components/InputToolBar'
   import {joinWorldChannel} from '@/chatserver'
 
+  // npm modules
+  import Cookies from 'js-cookie'
+
   export default {
     name: 'hello',
     components: {
@@ -45,8 +48,8 @@
     },
     data () {
       return {
-        roomNav: require('@/store/room_nav_data'),
-        room: joinWorldChannel(),
+        roomNav: [], // require('@/store/room_nav_data'),
+        room: joinWorldChannel(Cookies.get('session')),
         topic: '1',
         user: { _id: 1, name: 'Pingal', hash: 'Pingal', avatar: 'mood'},
       }
@@ -54,8 +57,6 @@
 
     computed: {
       slides() {
-        console.log("store test")
-        console.log(this.$store.state.slides)
         return this.$store.state.slides
       }
     }

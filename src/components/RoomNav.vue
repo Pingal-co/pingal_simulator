@@ -1,8 +1,8 @@
 <template>
 	<div class="room-nav">
-		<md-list class="custom-list md-double-line">
+		<md-list class="custom-list md-double-line room-nav-list">
 			<!-- Pingal -->
-			<md-list-item class="room-nav-slide">
+			<md-list-item class="room-nav-slide pingal-nav">
 			  <md-avatar>
 			    <img src="../assets/pingal_play_icon.png" alt="Pingal" />
 			  </md-avatar>
@@ -11,8 +11,6 @@
 			    <span>Pingal</span>
 			    <p>What would you like to talk about?</p>
 			  </div>
-
-			  <md-divider class="md-inset"></md-divider>
 			</md-list-item>
 			<!-- Users -->
 			<room-nav-slide 
@@ -43,6 +41,14 @@
 		border-right: 1px solid $border-color;
 		min-width: 360px;
 		overflow: scroll;
+	}
+
+	.room-nav-list {
+		padding-top: 0px;
+	}
+
+	.pingal-nav {
+		background-color: $border-color;
 	}
 
 	.room-nav-slide:hover {

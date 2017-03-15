@@ -3,7 +3,7 @@ import { Socket } from 'phoenix-elixir'
 const { socketScheme, scheme, hostname } =
   process.env.NODE_ENV === 'production'
   ? { socketScheme: 'wss', scheme: 'https', hostname: window.location.hostname }
-  : { socketScheme: 'ws', scheme: 'http', hostname: 'localhost:4010' }
+  : { socketScheme: 'ws', scheme: 'http', hostname: 'localhost:4000' }
 
 export const apiURL = `${scheme}://${hostname}/api`
 export const socketURL = `${socketScheme}://${hostname}/socket`

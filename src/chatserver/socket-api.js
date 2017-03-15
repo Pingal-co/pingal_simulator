@@ -8,8 +8,8 @@ import {socket} from './socket-config'
   I am also adding a fourth "World" channel to see what everyone is talking to Pingal
   Idea: Users talk to pingal publicly till they are logged in.
 */
-// switch this back to pingal:lobby
-let DEFAULT_LOBBY = 'room:1'
+
+let DEFAULT_LOBBY = 'pings:lobby'
 
 /*
   Internal Functions
@@ -65,12 +65,18 @@ export let joinUserChannel = ({ id, jwt }) => {
   return userChannel
 }
 
-export let joinWorldChannel = () => {
-  let roomChannel = joinRoom(DEFAULT_LOBBY)
+export let joinWorldChannel = (session) => {
+  let path = DEFAULT_LOBBY + ":" + session
+  let roomChannel = joinRoom(path)
 
   roomChannel.on('get:slides_in_room', (slides) => {
     console.log("got slides in room")
     store.commit('APPEND_SLIDES', slides)
+  })
+
+  roomChannel.on('get:pingalHello', (message) => {
+    console.log("Pingal says hello")
+    store.commit('APPEND_SLIDE', message)
   })
 
   roomChannel.on('add:slide', (slide) => {
