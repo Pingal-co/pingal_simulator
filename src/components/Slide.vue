@@ -9,7 +9,7 @@
                     <img src="../assets/pingal_play_icon.png" alt="Pingal">
                   </md-avatar>
                   <div class="expand-custom">
-                      <div class="md-title">  {{ slide.body }}</div>                  
+                      <div class="md-title">  {{ slide.text }}</div>                  
                       <md-card-actions>
                           <md-button v-for="channel in slide.channels" v-bind:key="channel._id" :channel="channel">{{channel.topic}}</md-button>
                       </md-card-actions>
@@ -45,7 +45,7 @@
                       <md-icon>{{ slide.user.avatar }}</md-icon>
                   </md-avatar>
                       <div class="expand-custom">
-                          <div class="md-title">  {{ slide.body }}</div>                  
+                          <div class="md-title">  {{ slide.text }}</div>                  
                       </div>                   
                   </md-card-content> 
                </md-card-area>

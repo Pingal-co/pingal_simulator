@@ -37,7 +37,7 @@ export default {
       slide() {
         return {
           _id: Math.round(Math.random() * 1000000),
-          body: this.text,
+          text: this.text,
           room: this.topic, 
           user: this.user,
           edit: false,
