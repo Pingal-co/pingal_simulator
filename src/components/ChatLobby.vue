@@ -51,7 +51,7 @@
         roomNav: [], // require('@/store/room_nav_data'),
         room: joinWorldChannel(Cookies.get('session')),
         topic: '1',
-        user: { _id: 1, name: 'Pingal', hash: 'Pingal', avatar: 'mood'},
+        user: { _id: 2, name: 'Sam', hash: 'Sam', avatar: 'mood'},
       }
     },
 

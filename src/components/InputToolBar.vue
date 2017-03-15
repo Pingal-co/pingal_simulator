@@ -54,7 +54,7 @@ export default {
         this.$store.dispatch('pushSlide', {
           room: this.room, 
           slide: this.slide, 
-          event: 'add:slide'})
+          event: 'request'})
             .then(() => {
               this.text = ''
             })

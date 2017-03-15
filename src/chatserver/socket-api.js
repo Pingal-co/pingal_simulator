@@ -51,7 +51,6 @@ let joinRoom = (roomName = DEFAULT_LOBBY, params = {}) => {
 */
 export let sendToChannel = (room, slide, event = 'add:slide') => {
   console.log('sending to room...');
-  console.log(slide)
   room.push(event, slide)
         .receive('ok', (msg) => console.log('sent'))
         .receive('error', (reasons) => console.log('failed', reasons))
@@ -74,9 +73,14 @@ export let joinWorldChannel = (session) => {
     store.commit('APPEND_SLIDES', slides)
   })
 
-  roomChannel.on('get:pingalHello', (message) => {
+  roomChannel.on('get:pingalHello', (slide) => {
     console.log("Pingal says hello")
-    store.commit('APPEND_SLIDE', message)
+    store.commit('APPEND_SLIDE', slide)
+  })
+
+  roomChannel.on('request', (slide) => {
+    console.log("Request through")
+    store.commit('APPEND_SLIDE', slide)
   })
 
   roomChannel.on('add:slide', (slide) => {
