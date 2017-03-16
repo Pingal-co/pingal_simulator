@@ -47,6 +47,7 @@
 						this.success = "Success!"
 					})
 				} else {
+					this.success = ''
 					this.error = errorMessage
 				}
 			},
