@@ -1,8 +1,7 @@
 <template>
 	<form novalidate @submit.stop.prevent="signup" class="signup-form">
-		<span class="error-message" style="padding-top:20px">
-			{{error}}
-		</span>
+		<span class="error-message">{{error}}</span>
+		<span class="success-message""">{{success}}</span>
 	  <md-input-container>
 	    <label>Email</label>
 	    <md-input type="email" v-model="email"></md-input>
@@ -26,7 +25,8 @@
 				email: '',
 				password: '',
 				passwordConfirmation: '',
-				error: ''
+				error: '',
+				success: ''
 			}
 		},
 		methods: {
@@ -40,6 +40,12 @@
 						email: this.email,
 						password: this.password,
 					})
+					.then(() => {
+						this.email = ''
+						this.password = ''
+						this.passwordConfirmation = ''
+						this.success = "Success!"
+					})
 				} else {
 					this.error = errorMessage
 				}
@@ -47,7 +53,7 @@
 
 			validate() {
 				if (this.password != this.passwordConfirmation) {
-					return [false, 'Passwords do not match.']
+					return [false, 'Passwords must match.']
 				} 
 				else if (this.email.length === 0) {
 					return [false, 'Email address required.']
@@ -73,5 +79,12 @@
 <style lang="scss" scope>
 	.error-message {
 		color: red;
+		padding-top:20px
 	}
+
+	.success-message {
+		color: green;
+		padding-top:20px
+	}
+
 </style>

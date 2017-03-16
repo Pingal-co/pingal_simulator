@@ -42,7 +42,12 @@ const actions = {
   },
 
   signUp({ commit }, {email, password}) {
-    console.log("signed up")
+    console.log("signing up")
+    return httpPost(`${apiURL}/users`, {user: {email: email, password: password}})
+      .then((data) => {
+        console.log("user created")
+        console.log(data)
+      })
   },
   
   /* START <USER DISPATCH ACTION HANDLERS> */
