@@ -1,26 +1,18 @@
 <template>
-    <div>
-        <form novalidate>
-          <div class="input-toolbar">
-<!--             <md-input-container>            
-                <label>Talk to PingAl</label>
-                <md-textarea
-                  v-model="text"
-                ></md-textarea>
-                <md-button
-                  type="submit" 
-                  class="md-primary"
-                  @click.prevent = "onSend()"
-                  >Send
-                </md-button>
-               
-            </md-input-container> -->
-            <form @submit.prevent="onSend" class="input-form">
-              <input type="text" v-model="text" class="input-box" placeholder="Type a message..." autofocus />
-            </form>
-          </div> 
+  <div class="input-toolbar">
+    <div class="input-suggestions">
+      <div v-for="suggestion in inputSuggestions" class="suggestion" @click="suggestionClick(suggestion)">
+          {{suggestion.text}}
+      </div>
+    </div>
+    <form novalidate>
+      <div class="input-box">
+        <form @submit.prevent="onSend" class="input-form">
+          <input type="text" v-model="text" class="input-text" placeholder="Type a message..." ref="inputText" autofocus />
         </form>
-    </div>    
+      </div> 
+    </form>
+  </div>    
 </template>
 
 <script>
@@ -30,6 +22,7 @@ export default {
     data: function() {
       return {
         text: '',
+        inputSuggestions: [{text: "Sign up", action: "send"}, {text: "My name is ...", action: "fill"}, {text: "I like ...", action: "fill"}]
       }
     },
 
@@ -59,6 +52,14 @@ export default {
               this.text = ''
             })
       },
+      suggestionClick(suggestion) {
+        this.text = suggestion.text
+        if (suggestion.action === "fill") {
+          this.$refs.inputText.focus()
+        } else if (suggestion.action === "send") {
+          this.onSend()
+        }   
+      }
     }
   }
   
@@ -66,15 +67,19 @@ export default {
 
 <style lang="scss" scope>
   $border-color: rgb(225, 225, 225);
+  $primary-darker-color: rgb(217, 98, 12);
 
-  .input-toolbar{
-    width: calc(100vw - 360px);
+  .input-toolbar {
     position: fixed;
     bottom: 0px;
+    z-index: 3;
+  }
+
+  .input-box {
+    width: calc(100vw - 360px);
     height: 54px;
     border-top: 1px solid $border-color;
     display: flex;
-    z-index: 2;
   }
 
   .input-form {
@@ -83,11 +88,28 @@ export default {
     height: 100%;
   }
 
-  .input-box {
+  .input-text {
     width: 100%;
     font-size: 16px;
     border: none;
     outline: none;
     padding: 0px 12px 0px 12px;
   }
+
+  .input-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .suggestion {
+    border: 1px solid $primary-darker-color;
+    padding: 14px;
+    border-radius: 20px;
+    margin: 12px;
+    color: $primary-darker-color;
+    background-color: white;
+    font-size: 16px;
+  }
+
 </style>

@@ -46,6 +46,25 @@ let joinRoom = (roomName = DEFAULT_LOBBY, params = {}) => {
 }
 
 
+/* Channel.on functions */
+
+let response = (slide) => {
+    console.log("Request response from pingal")
+    setTimeout(function() {
+      store.commit('APPEND_SLIDE', slide)
+    }, 300)
+  }
+
+let addSlide = (slide) => {
+    console.log("Add slide to WorldChannel")
+    store.commit('APPEND_SLIDE', slide)
+  } 
+
+let getSlidesInRoom = (slides) => {
+    console.log("got slides in room")
+    store.commit('APPEND_SLIDES', slides)
+  }
+
 /* 
   External Functions
 */
@@ -68,22 +87,11 @@ export let joinWorldChannel = (session) => {
   let path = DEFAULT_LOBBY + ":" + session
   let roomChannel = joinRoom(path)
 
-  roomChannel.on('get:slides_in_room', (slides) => {
-    console.log("got slides in room")
-    store.commit('APPEND_SLIDES', slides)
-  })
+  roomChannel.on('get:slides_in_room', getSlidesInRoom)
 
-  roomChannel.on('response', (slide) => {
-    console.log("Request response from pingal")
-    setTimeout(function() {
-      store.commit('APPEND_SLIDE', slide)
-    }, 300)  
-  })
+  roomChannel.on('response:', response)
 
-  roomChannel.on('add:slide', (slide) => {
-    console.log("Add slide to WorldChannel")
-    store.commit('APPEND_SLIDE', slide)
-  })
+  roomChannel.on('add:slide', addSlide)
 
   return roomChannel
 }
@@ -91,13 +99,9 @@ export let joinWorldChannel = (session) => {
 export let joinPingalChannel = ({ userId, jwt }) => {
   let roomChannel = joinRoom(`pingal:${userId}`, { token: jwt })
 
-  roomChannel.on('get:slides_in_room', (slides) => {
-    store.commit('APPEND_SLIDES', slides)
-  })
+  roomChannel.on('get:slides_in_room', getSlidesInRoom)
 
-  roomChannel.on('add:slide', (slide) => {
-    store.commit('APPEND_SLIDE', slide)
-  })
+  roomChannel.on('add:slide', addSlide)
 
   return roomChannel
 }
@@ -105,13 +109,9 @@ export let joinPingalChannel = ({ userId, jwt }) => {
 export let joinRoomChannel = ({roomId}) => {
   let roomChannel = joinRoom(`rooms:${roomId}`, {})
 
-  roomChannel.on('get:slides_in_room', (slides) => {
-    store.commit('APPEND_SLIDES', slides)
-  })
+  roomChannel.on('get:slides_in_room', getSlidesInRoom)
 
-  roomChannel.on('add:slide', slide => {
-    store.commit('APPEND_SLIDE', slide)
-  })
+  roomChannel.on('add:slide', addSlide)
 
   return roomChannel
 }
