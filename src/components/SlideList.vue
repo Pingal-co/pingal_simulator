@@ -1,5 +1,5 @@
 <template>
-  <md-list class="custom-list md-triple-line">  
+  <md-list class="custom-list md-triple-line slide-list">  
     <slide 
         v-for="aslide in slides" 
         v-bind:key="aslide.id" 
@@ -22,3 +22,11 @@
     }
   }
 </script>
+
+<style lang="scss" scope>
+
+  .slide-list {
+    padding-bottom: 54px !important;
+  }
+
+</style>

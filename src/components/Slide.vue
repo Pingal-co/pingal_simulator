@@ -2,24 +2,23 @@
     <div class="card-custom">
         <md-list-item >
             <!-- Pingal Slide -->
-            <md-card v-if="slide.user._id === 1">
+            <md-card v-if="slide.isPingal === true">
               <md-card-area md-inset>
                 <md-card-content>
                   <md-avatar>
                     <img src="../assets/pingal_play_icon.png" alt="Pingal">
                   </md-avatar>
                   <div class="expand-custom">
-                      <div class="md-title">  {{ slide.text }}</div>                  
-                      <md-card-actions>
+                      <div class="md-title">  {{ slide.text }}</div>  
+                      <div v-if="slide.type === 'signup'">
+                        <signup></signup>
+                      </div>                
+                      <md-card-actions v-else-if="slide.type === 'topics'">
                           <md-button v-for="channel in slide.channels" v-bind:key="channel._id" :channel="channel">{{channel.topic}}</md-button>
                       </md-card-actions>
                   </div>                   
                 </md-card-content> 
               </md-card-area>
-
-              <!-- Adds line -->
-              <div></div> 
-
             </md-card>
 
             <!-- User Slide -->
@@ -48,18 +47,17 @@
                           <div class="md-title">  {{ slide.text }}</div>                  
                       </div>                   
                   </md-card-content> 
-               </md-card-area>
-
-               <div> <!-- Adds line --></div>    
-                      
+               </md-card-area>                      
             </md-card>
         </md-list-item>
     </div>
 </template>
 
 <script>
- import moment from 'moment';
- export default {
+  import Signup from "@/components/Signup"
+
+  import moment from 'moment';
+  export default {
     props: ['slide'] ,
     computed: {
         datetime() {
@@ -70,8 +68,10 @@
     methods: {
       login() {
         console.log('login')
-      },
-
+      }
+    },
+    components: {
+      Signup
     }
   }
   
@@ -153,6 +153,11 @@
         }
     }
 
+  .signup-form {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+  }
    
  }
  

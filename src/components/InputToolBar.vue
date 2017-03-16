@@ -19,10 +19,10 @@
 import { mapGetters, mapActions } from 'vuex'
 export default {
     props: ['muteSpeaker', 'room', 'topic', 'user'],
-    data: function() {
+    data() {
       return {
         text: '',
-        inputSuggestions: [{text: "Sign up", action: "send"}, {text: "My name is ...", action: "fill"}, {text: "I like ...", action: "fill"}]
+        inputSuggestions: [{text: 'Sign up', action: 'send'}, {text: 'My name is ...', action: 'fill'}, {text: 'I like ...', action: 'fill'}]
       }
     },
 
@@ -54,11 +54,12 @@ export default {
       },
       suggestionClick(suggestion) {
         this.text = suggestion.text
-        if (suggestion.action === "fill") {
-          this.$refs.inputText.focus()
-        } else if (suggestion.action === "send") {
+        if (suggestion.action === 'fill') {
+          // something
+        } else if (suggestion.action === 'send') {
           this.onSend()
-        }   
+        }  
+        this.$refs.inputText.focus() 
       }
     }
   }
@@ -110,6 +111,7 @@ export default {
     color: $primary-darker-color;
     background-color: white;
     font-size: 16px;
+    cursor: pointer;
   }
 
 </style>

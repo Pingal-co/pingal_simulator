@@ -40,6 +40,10 @@ const actions = {
        //   })
        // })
   },
+
+  signUp({ commit }, {email, password}) {
+    console.log("signed up")
+  },
   
   /* START <USER DISPATCH ACTION HANDLERS> */
   signIn ({ commit, dispatch }, session) {

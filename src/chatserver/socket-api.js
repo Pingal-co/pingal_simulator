@@ -48,13 +48,6 @@ let joinRoom = (roomName = DEFAULT_LOBBY, params = {}) => {
 
 /* Channel.on functions */
 
-let response = (slide) => {
-    console.log("Request response from pingal")
-    setTimeout(function() {
-      store.commit('APPEND_SLIDE', slide)
-    }, 300)
-  }
-
 let addSlide = (slide) => {
     console.log("Add slide to WorldChannel")
     store.commit('APPEND_SLIDE', slide)
@@ -64,6 +57,23 @@ let getSlidesInRoom = (slides) => {
     console.log("got slides in room")
     store.commit('APPEND_SLIDES', slides)
   }
+
+const responseDelay = 300
+
+let response = (slide) => {
+    console.log("Request response from pingal")
+    setTimeout(function() {
+      store.commit('APPEND_SLIDE', slide)
+    }, responseDelay)
+  }
+
+let responseSignup = (slide) => {
+  console.log("signup slide")
+  slide.type = "signup"
+  setTimeout(function() {
+    store.commit('APPEND_SLIDE', slide)
+  }, responseDelay)
+}
 
 /* 
   External Functions
@@ -90,6 +100,8 @@ export let joinWorldChannel = (session) => {
   roomChannel.on('get:slides_in_room', getSlidesInRoom)
 
   roomChannel.on('response:', response)
+
+  roomChannel.on('response:signup', responseSignup)
 
   roomChannel.on('add:slide', addSlide)
 
