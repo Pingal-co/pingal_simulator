@@ -48,39 +48,35 @@ let joinRoom = (roomName = DEFAULT_LOBBY, params = {}) => {
 
 /* Channel.on functions */
 
-let addSlide = (slide) => {
-    console.log("Add slide to WorldChannel")
-    store.commit('APPEND_SLIDE', slide)
-  } 
-
-let getSlidesInRoom = (slides) => {
-    console.log("got slides in room")
-    store.commit('APPEND_SLIDES', slides)
-  }
-
-const responseDelay = 300
-
-let response = (slide) => {
-    console.log("Request response from pingal")
-    setTimeout(function() {
-      store.commit('APPEND_SLIDE', slide)
-    }, responseDelay)
-  }
-
-let responseSignup = (slide) => {
-  console.log("signup slide")
-  slide.type = "signup"
+let addSlide = (slide, delay = 0) => {
   setTimeout(function() {
     store.commit('APPEND_SLIDE', slide)
-  }, responseDelay)
+  }, delay)
+} 
+
+let getSlidesInRoom = (slides) => {
+  store.commit('APPEND_SLIDES', slides)
+}
+
+// Responses
+const responseDelay = 300
+let response = (slide) => {
+  addSlide(slide, responseDelay)
+}
+
+let responseSignup = (slide) => {
+  slide.type = 'signup'
+  addSlide(slide, responseDelay)
+}
+
+let responseLogin = (slide) => {
+  slide.type = 'login'
+  addSlide(slide, responseDelay)
 }
 
 let responseLogout = (slide) => {
-  console.log("log out");
   store.commit('LOG_OUT')
-  setTimeout(function() {
-    store.commit('APPEND_SLIDE', slide)
-  }, responseDelay)
+  addSlide(slide, responseDelay)
 }
 
 /* 
@@ -109,6 +105,7 @@ export let joinWorldChannel = (session) => {
 
   roomChannel.on('response:', response)
   roomChannel.on('response:signup', responseSignup)
+  roomChannel.on('response:login', responseLogin)
   roomChannel.on('response:logout', responseLogout)
 
 

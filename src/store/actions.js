@@ -54,12 +54,14 @@ const actions = {
   },
   
   /* START <USER DISPATCH ACTION HANDLERS> */
-  signIn ({ commit, dispatch }, session) {
-      return httpPost(`${apiURL}/sessions`, { session })
+  logIn ({ commit }, {email, password}) {
+    console.log("logging in")
+    return httpPost(`${apiURL}/sessions`, {session: {email: email, password: password}})
       .then(({ jwt, user }) => {
-          localStorage.setItem('id_token', jwt)
-          userChannel = joinUserChannel({ id: user.id, jwt })
-          commit('SET_CURRENT_USER', { ...user, jwt })
+          // userChannel = joinUserChannel({ id: user.id, jwt })
+          commit('APPEND_SLIDE', {isPingal: true, text: `Welcome back ${user.name}!`})
+          commit('SET_CURRENT_USER', user)
+          commit('SET_CURRENT_JWT', jwt)
       })
       .catch((error) => {
           error.response.json()

@@ -12,7 +12,10 @@
                       <div class="md-title">  {{ slide.text }}</div>  
                       <div v-if="slide.type === 'signup'">
                         <signup></signup>
-                      </div>                
+                      </div>
+                      <div v-else-if="slide.type === 'login'">
+                        <login></login>
+                      </div>              
                       <md-card-actions v-else-if="slide.type === 'topics'">
                           <md-button v-for="channel in slide.channels" v-bind:key="channel._id" :channel="channel">{{channel.topic}}</md-button>
                       </md-card-actions>
@@ -55,6 +58,7 @@
 
 <script>
   import Signup from "@/components/Signup"
+  import Login from "@/components/Login"
 
   import moment from 'moment';
   export default {
@@ -71,7 +75,8 @@
       }
     },
     components: {
-      Signup
+      Signup,
+      Login
     }
   }
   

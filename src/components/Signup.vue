@@ -30,7 +30,6 @@
 			}
 		},
 		methods: {
-
 			signup() {
 				let [validated, errorMessage] = this.validate(this.email, this.password, this.passwordConfirmation)
 
@@ -44,7 +43,8 @@
 						this.email = ''
 						this.password = ''
 						this.passwordConfirmation = ''
-						this.success = "Success!"
+						this.success = 'Success!'
+						this.error = ''
 					})
 				} else {
 					this.success = ''
@@ -80,12 +80,11 @@
 <style lang="scss" scope>
 	.error-message {
 		color: red;
-		padding-top:20px
+		padding-top: 20px
 	}
 
 	.success-message {
 		color: green;
-		padding-top:20px
+		padding-top: 20px
 	}
-
 </style>

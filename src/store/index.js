@@ -11,7 +11,7 @@ let user = Cookies.get('user');
 user = user ? JSON.parse(user) : {};
 
 let jwt = Cookies.get('jwt');
-jwt = jwt ? jwt : '';
+jwt = jwt ? jwt : null;
 
 // contains the state of entire app
 const state = {
