@@ -75,6 +75,14 @@ let responseSignup = (slide) => {
   }, responseDelay)
 }
 
+let responseLogout = (slide) => {
+  console.log("log out");
+  store.commit('LOG_OUT')
+  setTimeout(function() {
+    store.commit('APPEND_SLIDE', slide)
+  }, responseDelay)
+}
+
 /* 
   External Functions
 */
@@ -100,8 +108,9 @@ export let joinWorldChannel = (session) => {
   roomChannel.on('get:slides_in_room', getSlidesInRoom)
 
   roomChannel.on('response:', response)
-
   roomChannel.on('response:signup', responseSignup)
+  roomChannel.on('response:logout', responseLogout)
+
 
   roomChannel.on('add:slide', addSlide)
 

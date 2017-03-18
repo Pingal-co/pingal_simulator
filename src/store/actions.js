@@ -44,9 +44,12 @@ const actions = {
   signUp({ commit }, {email, password}) {
     console.log("signing up")
     return httpPost(`${apiURL}/users`, {user: {email: email, password: password}})
-      .then((data) => {
-        console.log("user created")
-        console.log(data)
+      .then(({user, jwt}) => {
+        // Pingal Response
+        commit('APPEND_SLIDE', {isPingal: true, text: `Welcome ${user.name}! Thanks for signing up :)`})
+        // Store jwt session and user
+        commit('SET_CURRENT_USER', user)
+        commit('SET_CURRENT_JWT', jwt)
       })
   },
   
