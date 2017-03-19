@@ -14,10 +14,10 @@
                         <suggestTopic></suggestTopic>
                       </div> 
                       <div v-else-if="slide.type === 'signUp'">
-                        <signup></signup>
+                        <signUp></signup>
                       </div>
                       <div v-else-if="slide.type === 'logIn'">
-                        <login></login>
+                        <logIn></login>
                       </div>              
                       <md-card-actions v-else-if="slide.type === 'topics'">
                           <md-button v-for="channel in slide.channels" v-bind:key="channel._id" :channel="channel">{{channel.topic}}</md-button>
@@ -60,8 +60,8 @@
 </template>
 
 <script>
-  import Signup from '@/components/Signup'
-  import Login from '@/components/Login'
+  import SignUp from '@/components/Signup'
+  import LogIn from '@/components/Login'
   import SuggestTopic from '@/components/SuggestTopic'
 
   import moment from 'moment';
@@ -79,8 +79,8 @@
       }
     },
     components: {
-      Signup,
-      Login,
+      SignUp,
+      LogIn,
       SuggestTopic
     }
   }

@@ -64,12 +64,12 @@ let response = (slide) => {
   addSlide(slide, responseDelay)
 }
 
-let responseSignup = (slide) => {
+let responseSignUp = (slide) => {
   slide.type = 'signUp'
   addSlide(slide, responseDelay)
 }
 
-let responseLogin = (slide) => {
+let responseLogIn = (slide) => {
   slide.type = 'logIn'
   addSlide(slide, responseDelay)
 }
@@ -79,7 +79,7 @@ let responseSuggestTopic = (slide) => {
   addSlide(slide, responseDelay)
 }
 
-let responseLogout = (slide) => {
+let responseLogOut = (slide) => {
   store.commit('LOG_OUT')
   addSlide(slide, responseDelay)
 }
@@ -109,10 +109,10 @@ export let joinWorldChannel = (session) => {
   roomChannel.on('get:slides_in_room', getSlidesInRoom)
 
   roomChannel.on('response:', response)
-  roomChannel.on('response:signup', responseSignup)
+  roomChannel.on('response:signUp', responseSignUp)
   roomChannel.on('response:suggestTopic', responseSuggestTopic)
-  roomChannel.on('response:login', responseLogin)
-  roomChannel.on('response:logout', responseLogout)
+  roomChannel.on('response:logIn', responseLogIn)
+  roomChannel.on('response:logOut', responseLogOut)
 
 
   roomChannel.on('add:slide', addSlide)
