@@ -4,6 +4,8 @@ Each mutation has a string type and a handler.
 You cannot directly call a mutation handler.
 To invoke a mutation handler, you need to call store.commit with its string type
 */
+import Cookies from 'js-cookie'
+
 const mutations = {
 
     /* START <SLIDES MUTATION HANDLERS> */
@@ -37,6 +39,18 @@ const mutations = {
     /* START <USER MUTATION HANDLERS> */
     SET_CURRENT_USER (state, user) {
         state.currentUser = { ...state.currentUser, ...user }
+        Cookies.set('user', user, {expires: 365})
+    },
+
+    SET_CURRENT_JWT (state, jwt) {
+        state.jwt = jwt;
+        Cookies.set('jwt', jwt, { expires: 365 });
+    },
+
+    LOG_OUT (state) {
+        state.currentUser = {};
+        Cookies.remove('user');
+        Cookies.remove('jwt');
     },
 
     /* START <ROOM MUTATION HANDLERS> */

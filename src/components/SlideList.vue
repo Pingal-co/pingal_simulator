@@ -1,9 +1,10 @@
 <template>
-  <md-list class="custom-list md-triple-line">  
+  <md-list class="custom-list md-triple-line slide-list">  
     <slide 
-        v-for="aslide in slides" 
-        v-bind:key="aslide.id" 
-        :slide="aslide">
+        v-for="slide in slides" 
+        v-bind:key="slide.id" 
+        :slide="slide"
+        :room="room">
     </slide>
     <li id="scrollAnchor"></li>
   </md-list>
@@ -13,7 +14,7 @@
   import Slide from '@/components/Slide'
   export default {
     name: 'SlideList',
-    props: ['slides'],
+    props: ['slides', 'room'],
     components: { Slide },
     updated() {
       // Scroll most recent into view
@@ -22,3 +23,11 @@
     }
   }
 </script>
+
+<style lang="scss" scope>
+
+  .slide-list {
+    padding-bottom: 54px !important;
+  }
+
+</style>

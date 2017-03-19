@@ -2,16 +2,25 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import actions from './actions'
 import mutations from './mutations'
+import Cookies from 'js-cookie'
 
 Vue.use(Vuex)
+
+// Load cookie data
+let user = Cookies.get('user');
+user = user ? JSON.parse(user) : {};
+
+let jwt = Cookies.get('jwt');
+jwt = jwt ? jwt : null;
 
 // contains the state of entire app
 const state = {
   slides: [],
   currentSlide: {},
-  currentUser: {},
+  currentUser: user,
   rooms: [],
   currentRoom: {},
+  jwt: jwt,
 }
 
 
