@@ -11,7 +11,7 @@
                   <div class="expand-custom">
                       <div class="md-title">  {{ slide.text }}</div> 
                       <div v-if="slide.type === 'suggestTopic'">
-                        <suggestTopic></suggestTopic>
+                        <suggestTopic :topics="slide.topics"></suggestTopic>
                       </div> 
                       <div v-else-if="slide.type === 'signUp'">
                         <signUp></signup>
@@ -47,7 +47,7 @@
               <md-card-area md-inset>
                 <md-card-content>
                   <md-avatar class="md-avatar-icon md-warn">
-                      <md-icon>{{ slide.user.avatar }}</md-icon>
+                      <md-icon><!-- {{ slide.user.avatar }} --></md-icon>
                   </md-avatar>
                       <div class="expand-custom">
                           <div class="md-title">  {{ slide.text }}</div>                  

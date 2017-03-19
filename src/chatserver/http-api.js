@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-fetch'
 // import { polyfill } from 'es6-promise'
+import Cookies from 'js-cookie'
 
 /*
 session-based api communication
@@ -14,10 +15,11 @@ const defaultHeaders = {
 }
 
 let buildHeaders = () => {
-  const authToken = localStorage.getItem('id_token')
+  // const authToken = localStorage.getItem('id_token')
+  const jwt = Cookies.get('jwt')
 
   return new Headers(Object.assign({}, defaultHeaders, {
-    Authorization: authToken
+    Authorization: 'Bearer ' + jwt
   }))
 }
 

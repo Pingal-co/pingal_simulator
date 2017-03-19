@@ -1,8 +1,8 @@
 <template>
   <md-list class="custom-list md-triple-line slide-list">  
     <slide 
-        v-for="aslide in slides" 
-        v-bind:key="aslide.id" 
+        v-for="aslide, key in slides" 
+        v-bind:key="key" 
         :slide="aslide">
     </slide>
     <li id="scrollAnchor"></li>

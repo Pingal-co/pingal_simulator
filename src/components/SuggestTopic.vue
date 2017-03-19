@@ -6,10 +6,6 @@
 
 <script>
 	export default {
-		data() {
-			return {
-				topics: ["MIT", "AI", "neuroscience", "salons", "meditation", "st_patricks_day_parties"]
-			}
-		}
+		props: ['topics']
 	}
 </script>

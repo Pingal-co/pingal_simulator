@@ -60,27 +60,32 @@ let getSlidesInRoom = (slides) => {
 
 // Responses
 const responseDelay = 300
-let response = (slide) => {
+let response = ({slide}) => {
+  slide.isPingal = true
   addSlide(slide, responseDelay)
 }
 
-let responseSignUp = (slide) => {
+let responseSignUp = ({slide}) => {
   slide.type = 'signUp'
+  slide.isPingal = true
   addSlide(slide, responseDelay)
 }
 
-let responseLogIn = (slide) => {
+let responseLogIn = ({slide}) => {
   slide.type = 'logIn'
+  slide.isPingal = true
   addSlide(slide, responseDelay)
 }
 
-let responseSuggestTopic = (slide) => {
+let responseSuggestTopic = ({slide}) => {
   slide.type = 'suggestTopic'
+  slide.isPingal = true
   addSlide(slide, responseDelay)
 }
 
-let responseLogOut = (slide) => {
+let responseLogOut = ({slide}) => {
   store.commit('LOG_OUT')
+  slide.isPingal = true
   addSlide(slide, responseDelay)
 }
 
