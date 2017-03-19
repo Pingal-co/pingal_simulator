@@ -65,12 +65,17 @@ let response = (slide) => {
 }
 
 let responseSignup = (slide) => {
-  slide.type = 'signup'
+  slide.type = 'signUp'
   addSlide(slide, responseDelay)
 }
 
 let responseLogin = (slide) => {
-  slide.type = 'login'
+  slide.type = 'logIn'
+  addSlide(slide, responseDelay)
+}
+
+let responseSuggestTopic = (slide) => {
+  slide.type = 'suggestTopic'
   addSlide(slide, responseDelay)
 }
 
@@ -105,6 +110,7 @@ export let joinWorldChannel = (session) => {
 
   roomChannel.on('response:', response)
   roomChannel.on('response:signup', responseSignup)
+  roomChannel.on('response:suggestTopic', responseSuggestTopic)
   roomChannel.on('response:login', responseLogin)
   roomChannel.on('response:logout', responseLogout)
 

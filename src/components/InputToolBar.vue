@@ -22,7 +22,12 @@ export default {
     data() {
       return {
         text: '',
-        inputSuggestions: [{text: 'Sign up', action: 'send'}, {text: 'Log in', action: 'send'}, {text: 'My name is ...', action: 'fill'}, {text: 'I like ...', action: 'fill'}, {text: 'Log out', action: 'send'}]
+        inputSuggestions: [{text: 'Sign up', action: 'send'},
+          {text: 'Join room', action: 'send'}, 
+          {text: 'Log in', action: 'send'}, 
+          {text: 'My name is ...', action: 'fill'}, 
+          {text: 'I like ...', action: 'fill'}, 
+          {text: 'Log out', action: 'send'}]
       }
     },
 
