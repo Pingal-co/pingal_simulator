@@ -83,6 +83,12 @@ let responseSuggestTopic = ({slide}) => {
   addSlide(slide, responseDelay)
 }
 
+let responseJoinTopic = ({slide}) => {
+  // Join topic logic here
+  slide.isPingal = true
+  addSlide(slide, responseDelay)
+}
+
 let responseLogOut = ({slide}) => {
   store.commit('LOG_OUT')
   slide.isPingal = true
@@ -116,6 +122,7 @@ export let joinWorldChannel = (session) => {
   roomChannel.on('response:', response)
   roomChannel.on('response:signUp', responseSignUp)
   roomChannel.on('response:suggestTopic', responseSuggestTopic)
+  roomChannel.on('response:joinTopic', responseJoinTopic)
   roomChannel.on('response:logIn', responseLogIn)
   roomChannel.on('response:logOut', responseLogOut)
 
