@@ -26,6 +26,8 @@
 	}
 
 	function formatAMPM(date) {
+	  console.log(date)
+	  date = new Date(date)
 	  var hours = date.getHours();
 	  var minutes = date.getMinutes();
 	  var ampm = hours >= 12 ? 'pm' : 'am';

@@ -7,8 +7,7 @@
     </top-bar>
 
     <div class="main">
-      <room-nav 
-        :rooms="roomNav">
+      <room-nav>
       </room-nav>
          
       <div class="slides-section">
@@ -47,7 +46,6 @@
     },
     data () {
       return {
-        roomNav: [], // require('@/store/room_nav_data'),
         room: this.$store.state.currentRoom,
         topic: '1',
         user: { _id: 2, name: 'Sam', hash: 'Sam', avatar: 'mood'},

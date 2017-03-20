@@ -54,6 +54,10 @@ let addSlide = (slide, delay = 0) => {
   }, delay)
 } 
 
+let addRoom = (room) => {
+  store.commit('APPEND_ROOMS', room)
+}
+
 let getSlidesInRoom = (slides) => {
   store.commit('APPEND_SLIDES', slides)
 }
@@ -83,10 +87,11 @@ let responseSuggestTopic = ({slide}) => {
   addSlide(slide, responseDelay)
 }
 
-let responseJoinTopic = ({slide}) => {
+let responseJoinTopic = ({slide, topicRoom}) => {
   // Join topic logic here
   slide.isPingal = true
   addSlide(slide, responseDelay)
+  addRoom(topicRoom)
 }
 
 let responseLogOut = ({slide}) => {

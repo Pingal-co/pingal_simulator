@@ -66,7 +66,7 @@ const mutations = {
         if (!Array.isArray(rooms)) {
             rooms = [rooms]
         }
-        state.rooms = rooms.concat(state.slides)
+        state.rooms = rooms.concat(state.rooms)
     }
 
 }

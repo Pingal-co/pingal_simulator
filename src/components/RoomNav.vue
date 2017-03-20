@@ -26,9 +26,13 @@
 	import RoomNavSlide from '@/components/RoomNavSlide'
 
 	export default {
-		props: ['rooms'],
 		components: {
 			RoomNavSlide
+		},
+		computed: {
+			rooms() {
+				return this.$store.state.rooms
+			}
 		}
 	}
 </script>
