@@ -52,7 +52,6 @@ export default {
 
     methods: {
       onSend() {
-        console.log(this.slide);
         this.$store.dispatch('pushSlide', {
           room: this.room, 
           slide: this.slide, 

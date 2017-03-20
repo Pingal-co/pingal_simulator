@@ -1,18 +1,20 @@
 <template>
-	<md-list-item class="room-nav-slide">
-	  <md-avatar>
-	    <img :src="room.image" alt="room.name" />
-	  </md-avatar>
+	<div @click="joinRoom">
+		<md-list-item :class="['room-nav-slide', selected]">
+		  <md-avatar>
+		    <img :src="room.image" alt="room.name" />
+		  </md-avatar>
 
-	  <div class="md-list-text-container">
-	    <span>{{room.name}}</span>
-	    <p>{{room.subtitle}}</p>
-	  </div>
+		  <div class="md-list-text-container">
+		    <span>{{room.name}}</span>
+		    <p>{{room.subtitle}}</p>
+		  </div>
 
-	  <div class="formatted-time">{{formattedTime}}</div>
+		  <div class="formatted-time">{{formattedTime}}</div>
 
-	  <!-- <md-divider class="md-inset"></md-divider> -->
-	</md-list-item>
+		  <!-- <md-divider class="md-inset"></md-divider> -->
+		</md-list-item>
+	</div>
 </template>
 
 <script>
@@ -21,6 +23,21 @@
 		computed: {
 			formattedTime() {
 				return formatAMPM(this.room.updated_at)
+			},
+			// Styling
+			selected() {
+				if ("rooms:" + this.room.id == this.$store.state.currentRoom.topic) {
+					return 'selected'
+				} else {
+					return null
+				}
+			}
+		},
+		methods: {
+			joinRoom() {
+				this.$store.dispatch('updateCurrentRoom', {
+					room: this.room
+				})
 			}
 		}
 	}
@@ -42,7 +59,15 @@
 <style lang="scss" scoped>
 	$border-color: rgb(225, 225, 225);
 
+	.room-nav-slide {
+		cursor: pointer;
+	}
+
 	.room-nav-slide:hover {
+		background-color: $border-color;
+	}
+
+	.selected {
 		background-color: $border-color;
 	}
 

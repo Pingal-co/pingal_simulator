@@ -11,7 +11,7 @@
                   <div class="expand-custom">
                       <div class="md-title">  {{ slide.text }}</div> 
                       <div v-if="slide.type === 'suggestTopic'">
-                        <suggestTopic :topics="slide.topics" :room="room"></suggestTopic>
+                        <suggestTopic :topics="slide.topics"></suggestTopic>
                       </div> 
                       <div v-else-if="slide.type === 'signUp'">
                         <signUp></signup>
@@ -66,7 +66,7 @@
 
   import moment from 'moment';
   export default {
-    props: ['slide', 'room'] ,
+    props: ['slide'] ,
     computed: {
         datetime() {
            return moment(this.slide.inserted_at).format('YYYY-MM-DD [at] hh:mm')

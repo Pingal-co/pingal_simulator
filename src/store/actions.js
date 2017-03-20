@@ -8,6 +8,7 @@ import {
   httpDelete,
   joinUserChannel,
   joinWorldChannel,
+  joinRoomChannel,
   socket,
   closeSocket
 } from '../chatserver'
@@ -35,7 +36,6 @@ const actions = {
   pushSlide ({ commit }, {room, slide, event}) {
     // channel endpoint : only push data; room.on() will receive the data
     console.log("pushed slide")
-    console.log(socket)
     return sendToChannel(room, slide, event)
        // .catch((error) => {
        //   error.response.json()
@@ -71,6 +71,7 @@ const actions = {
           commit('SET_CURRENT_USER', user)
           commit('SET_CURRENT_JWT', jwt)
           // Close existing socket and re-open for authenticated user
+          console.log("closing socket and reconnecting")
           closeSocket()
           socket.connect({guardian_token: jwt})
           commit('SET_CURRENT_ROOM', joinWorldChannel(user.id))
@@ -93,8 +94,9 @@ const actions = {
   },
 
   /* START <ROOM DISPATCH ACTION HANDLERS> */
-  updateCurrentRoom ({commit}, room) {
-      commit('SET_CURRENT_ROOM', room.id)
+  updateCurrentRoom ({commit}, {room}) {
+      commit('CLEAR_SLIDES')
+      commit('SET_CURRENT_ROOM', joinRoomChannel(room.id))
   }
 
 }

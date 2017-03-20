@@ -1,8 +1,9 @@
 import router from '../router'
 import store from '../store'
 import uniqueId from 'uniqid'
-import {socket} from './socket-config'
+import {socket, closeSocket} from './socket-config'
 
+import Cookies from 'js-cookie'
 /*
   To make it clean, I have three separate channels [User, Pingal, Room] to talk to Phoenix
   I am also adding a fourth "World" channel to see what everyone is talking to Pingal
@@ -147,7 +148,7 @@ export let joinPingalChannel = ({ userId, jwt }) => {
   return roomChannel
 }
 
-export let joinRoomChannel = ({roomId}) => {
+export let joinRoomChannel = (roomId) => {
   let roomChannel = joinRoom(`rooms:${roomId}`, {})
 
   roomChannel.on('get:slides_in_room', getSlidesInRoom)

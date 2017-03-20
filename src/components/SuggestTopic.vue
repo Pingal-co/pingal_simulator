@@ -8,7 +8,7 @@
 
 <script>
 	export default {
-		props: ['topics', 'room'],
+		props: ['topics'],
 		computed: {
 			responseSlide() {
 				return {
@@ -17,6 +17,9 @@
 		          room: this.room, 
 		          user: this.user,
 		        }
+			},
+			room() {
+				return this.$store.state.currentRoom
 			}
 		},
 		methods: {

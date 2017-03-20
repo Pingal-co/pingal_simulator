@@ -14,8 +14,8 @@
 			</md-list-item>
 			<!-- Users -->
 			<room-nav-slide 
-				v-for="(room, index) in rooms"
-				:key="index"
+				v-for="room in rooms"
+				:key="room.id"
 				:room="room"	
 			/>
 	  </md-list>

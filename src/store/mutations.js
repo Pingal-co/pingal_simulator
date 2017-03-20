@@ -15,6 +15,10 @@ const mutations = {
         state.slides = slides
     },
 
+    CLEAR_SLIDES (state) {
+        state.slides = []
+    },
+
     APPEND_SLIDES (state, slides) {
         slides = slides.slides.reverse()
         // if (!Array.isArray(slides)) {
@@ -48,7 +52,7 @@ const mutations = {
     },
 
     LOG_OUT (state) {
-        state.currentUser = {};
+        state.currentUser = null;
         Cookies.remove('user');
         Cookies.remove('jwt');
     },
@@ -66,7 +70,7 @@ const mutations = {
         if (!Array.isArray(rooms)) {
             rooms = [rooms]
         }
-        state.rooms = rooms.concat(state.rooms)
+        state.rooms = rooms.concat(state.rooms) 
     }
 
 }

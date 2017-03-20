@@ -12,8 +12,7 @@
          
       <div class="slides-section">
         <slide-list
-          :slides="slides"
-          :room="room">
+          :slides="slides">
         </slide-list>
 
         <input-tool-bar

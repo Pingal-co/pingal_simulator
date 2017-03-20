@@ -33,7 +33,6 @@ export default {
     computed: {
       name() {
         var user = this.$store.state.currentUser
-        console.log(user)
         if (user) {
           return user.name
         } else {

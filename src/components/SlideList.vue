@@ -3,8 +3,7 @@
     <slide 
         v-for="slide in slides" 
         v-bind:key="slide.id" 
-        :slide="slide"
-        :room="room">
+        :slide="slide">
     </slide>
     <li id="scrollAnchor"></li>
   </md-list>
@@ -14,7 +13,7 @@
   import Slide from '@/components/Slide'
   export default {
     name: 'SlideList',
-    props: ['slides', 'room'],
+    props: ['slides'],
     components: { Slide },
     updated() {
       // Scroll most recent into view
