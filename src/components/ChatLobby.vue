@@ -19,7 +19,6 @@
 
         <input-tool-bar
           :mute-speaker="true"
-          :room="room"
           :topic="topic"
           :user="user">
         </input-tool-bar>
@@ -34,7 +33,6 @@
   import RoomNav from '@/components/RoomNav'
   import SlideList from '@/components/SlideList'
   import InputToolBar from '@/components/InputToolBar'
-  import {joinWorldChannel} from '@/chatserver'
 
   // npm modules
   import Cookies from 'js-cookie'
@@ -50,7 +48,7 @@
     data () {
       return {
         roomNav: [], // require('@/store/room_nav_data'),
-        room: joinWorldChannel(Cookies.get('session')),
+        room: this.$store.state.currentRoom,
         topic: '1',
         user: { _id: 2, name: 'Sam', hash: 'Sam', avatar: 'mood'},
       }

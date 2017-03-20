@@ -1,5 +1,4 @@
-import { 
-	socket, 
+import {  
 	sendToChannel, 
 	joinUserChannel, 
 	joinPingalChannel, 
@@ -8,6 +7,7 @@ import {
 } from './socket-api'
 
 import { 
+	socket,
 	socketURL,
 	apiURL,
 	closeSocket

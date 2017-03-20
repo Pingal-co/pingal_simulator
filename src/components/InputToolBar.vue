@@ -18,7 +18,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 export default {
-    props: ['muteSpeaker', 'room', 'topic', 'user'],
+    props: ['muteSpeaker', 'topic', 'user'],
     data() {
       return {
         text: '',
@@ -43,6 +43,10 @@ export default {
           sponsored: false,
           inserted_at: new Date(),
         }
+      },
+
+      room() {
+        return this.$store.state.currentRoom
       }
     },
 

@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import actions from './actions'
 import mutations from './mutations'
 import Cookies from 'js-cookie'
+import {joinWorldChannel} from '@/chatserver'
 
 Vue.use(Vuex)
 
@@ -13,13 +14,16 @@ user = user ? JSON.parse(user) : {};
 let jwt = Cookies.get('jwt');
 jwt = jwt ? jwt : null;
 
+// Load channels
+let currentRoom = joinWorldChannel(Cookies.get('session'))
+
 // contains the state of entire app
 const state = {
   slides: [],
   currentSlide: {},
   currentUser: user,
   rooms: [],
-  currentRoom: {},
+  currentRoom: currentRoom,
   jwt: jwt,
 }
 

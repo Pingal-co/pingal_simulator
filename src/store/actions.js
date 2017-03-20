@@ -6,7 +6,10 @@ import {
   httpPost,
   httpUpdate,
   httpDelete,
-  joinUserChannel
+  joinUserChannel,
+  joinWorldChannel,
+  socket,
+  closeSocket
 } from '../chatserver'
 
 let userChannel = null
@@ -32,6 +35,7 @@ const actions = {
   pushSlide ({ commit }, {room, slide, event}) {
     // channel endpoint : only push data; room.on() will receive the data
     console.log("pushed slide")
+    console.log(socket)
     return sendToChannel(room, slide, event)
        // .catch((error) => {
        //   error.response.json()
@@ -50,6 +54,10 @@ const actions = {
         // Store jwt session and user
         commit('SET_CURRENT_USER', user)
         commit('SET_CURRENT_JWT', jwt)
+        // Close existing socket and re-open for authenticated user
+        closeSocket()
+        socket.connect({guardian_token: jwt})
+        commit('SET_CURRENT_ROOM', joinWorldChannel(user.id))
       })
   },
   
@@ -62,6 +70,10 @@ const actions = {
           commit('APPEND_SLIDE', {isPingal: true, text: `Welcome back ${user.name}!`})
           commit('SET_CURRENT_USER', user)
           commit('SET_CURRENT_JWT', jwt)
+          // Close existing socket and re-open for authenticated user
+          closeSocket()
+          socket.connect({guardian_token: jwt})
+          commit('SET_CURRENT_ROOM', joinWorldChannel(user.id))
       })
       .catch((error) => {
           error.response.json()

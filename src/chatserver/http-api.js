@@ -19,7 +19,7 @@ let buildHeaders = () => {
   const jwt = Cookies.get('jwt')
 
   return new Headers(Object.assign({}, defaultHeaders, {
-    Authorization: 'Bearer ' + jwt
+    Authorization: 'access ' + jwt
   }))
 }
 

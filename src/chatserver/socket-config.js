@@ -1,4 +1,5 @@
 import { Socket } from 'phoenix-elixir'
+import Cookies from 'js-cookie'
 
 const { socketScheme, scheme, hostname } =
   process.env.NODE_ENV === 'production'
@@ -14,8 +15,6 @@ export const socketURL = `${socketScheme}://${hostname}/socket`
 export const closeSocket = () => socket.disconnect()
 
 // define the socket per user: anonymous, user_id
-export let socket = new Socket(socketURL, {params: {
-        	user: 1
-        }
-    });
-socket.connect();
+let jwt = Cookies.get('jwt')
+export let socket = new Socket(socketURL, {});
+socket.connect({guardian_token: jwt});

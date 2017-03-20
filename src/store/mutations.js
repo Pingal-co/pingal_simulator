@@ -55,7 +55,7 @@ const mutations = {
 
     /* START <ROOM MUTATION HANDLERS> */
     SET_CURRENT_ROOM (state, room) {
-        state.currentRoom = { ...state.currentRoom, ...room }
+        state.currentRoom = room // { ...state.currentRoom, ...room }
     },
 
     SET_ROOMS (state, rooms) {
