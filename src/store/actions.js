@@ -33,10 +33,10 @@ Store in Veux is immutable.
 const actions = {
 
   /* START <SLIDE DISPATCH ACTION HANDLERS> */
-  pushSlide ({ commit }, {room, slide, event}) {
+  pushSlide ({ commit }, {roomChannel, slide, event}) {
     // channel endpoint : only push data; room.on() will receive the data
     console.log("pushed slide")
-    return sendToChannel(room, slide, event)
+    return sendToChannel(roomChannel, slide, event)
        // .catch((error) => {
        //   error.response.json()
        //   .then((errorJSON) => {
@@ -57,7 +57,7 @@ const actions = {
         // Close existing socket and re-open for authenticated user
         closeSocket()
         socket.connect({guardian_token: jwt})
-        commit('SET_CURRENT_ROOM', joinWorldChannel(user.id))
+        commit('SET_CURRENT_ROOM_CHANNEL', joinWorldChannel(user.id))
       })
   },
   
@@ -74,7 +74,7 @@ const actions = {
           console.log("closing socket and reconnecting")
           closeSocket()
           socket.connect({guardian_token: jwt})
-          commit('SET_CURRENT_ROOM', joinWorldChannel(user.id))
+          commit('SET_CURRENT_ROOM_CHANNEL', joinWorldChannel(user.id))
       })
       .catch((error) => {
           error.response.json()
@@ -94,9 +94,9 @@ const actions = {
   },
 
   /* START <ROOM DISPATCH ACTION HANDLERS> */
-  updateCurrentRoom ({commit}, {room}) {
+  updateCurrentRoomChannel ({commit}, {room}) {
       commit('CLEAR_SLIDES')
-      commit('SET_CURRENT_ROOM', joinRoomChannel(room.id))
+      commit('SET_CURRENT_ROOM_CHANNEL', joinRoomChannel(room.id))
   }
 
 }

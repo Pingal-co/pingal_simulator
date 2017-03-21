@@ -45,15 +45,15 @@ export default {
         }
       },
 
-      room() {
-        return this.$store.state.currentRoom
+      roomChannel() {
+        return this.$store.state.currentRoomChannel
       }
     },
 
     methods: {
       onSend() {
         this.$store.dispatch('pushSlide', {
-          room: this.room, 
+          roomChannel: this.roomChannel, 
           slide: this.slide, 
           event: 'request'})
             .then(() => {

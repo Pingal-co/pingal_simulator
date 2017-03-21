@@ -10,22 +10,14 @@
 	export default {
 		props: ['topics'],
 		computed: {
-			responseSlide() {
-				return {
-		          _id: Math.round(Math.random() * 1000000),
-		          text: "Join topic ",
-		          room: this.room, 
-		          user: this.user,
-		        }
-			},
-			room() {
-				return this.$store.state.currentRoom
+			roomChannel() {
+				return this.$store.state.currentRoomChannel
 			}
 		},
 		methods: {
 			clickTopic(topic) {
 				this.$store.dispatch('pushSlide', {
-		          room: this.room,
+		          roomChannel: this.roomChannel,
 		          slide: {text: 'Join topic @' + topic}, 
 		          event: 'request'
 				})

@@ -15,7 +15,7 @@ let jwt = Cookies.get('jwt');
 jwt = jwt ? jwt : null;
 
 // Load channels
-let currentRoom = joinWorldChannel(Cookies.get('session'))
+let currentRoomChannel = joinWorldChannel(Cookies.get('session'))
 
 // contains the state of entire app
 const state = {
@@ -23,7 +23,7 @@ const state = {
   currentSlide: {},
   currentUser: user,
   rooms: [],
-  currentRoom: currentRoom,
+  currentRoomChannel: currentRoomChannel,
   jwt: jwt,
 }
 

@@ -58,7 +58,7 @@
     },
     data () {
       return {
-        room: this.$store.state.currentRoom,
+        roomChannel: this.$store.state.currentRoomChannel,
         topic: '1',
         user: { _id: 2, name: 'Sam', hash: 'Sam', avatar: 'mood'},
         windowWidth: window.innerWidth,
@@ -96,19 +96,6 @@
     }
   }
 
-/*
-[ 
-          {
-            _id: Math.round(Math.random() * 1000000),
-            body: "Hey, my name's Pingal. I'm a personal superconnector.",
-            user: { _id: 1, avatar: 'collections', name: 'Pingal' },
-            timestamp: new Date(Date.now()),
-            location: { latitude: 48.864601, longitude: 2.398704},
-            channels: [{'topic': 'tea', 'topic_id': 'room:1:15'},{'topic': 'tech', 'topic_id': 'room:1:16'}],
-            buttons: [{id: 1, text: 'Action 1'}, {id: 2, text: 'Action 2'}]
-          }
-        ]
-*/
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -126,6 +113,7 @@
 
   .slides-section {
     overflow-y: scroll;
+    overflow-x: hidden;
     height: calc(100vh - 108px);
     width: 100%;
   }

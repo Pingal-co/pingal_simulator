@@ -15,8 +15,11 @@
     <md-button v-if="mobile" class="md-icon-button" @click.native="toggleLeftSidenav">
       <md-icon class="md-size-2x">home</md-icon>
     </md-button>
-    <md-icon></md-icon>
-     <div class="profile-button">{{name}}</div>
+    <div v-else></div> <!-- Left flush -->
+
+    <h2>{{this.$store.state.currentRoomChannel.topic}}</h2>
+
+    <div class="profile-button">{{name}}</div>
   </div>
 </template>
 
@@ -63,7 +66,7 @@ export default {
     background-color: rgb(244, 128, 45);
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
   }
 
   .profile-button {

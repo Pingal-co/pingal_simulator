@@ -60,6 +60,7 @@ let addRoom = (room) => {
 }
 
 let getSlidesInRoom = (slides) => {
+  console.log("getting slides in room")
   store.commit('APPEND_SLIDES', slides)
 }
 

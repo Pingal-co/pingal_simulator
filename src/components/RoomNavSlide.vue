@@ -26,7 +26,7 @@
 			},
 			// Styling
 			selected() {
-				if ("rooms:" + this.room.id == this.$store.state.currentRoom.topic) {
+				if ("rooms:" + this.room.id == this.$store.state.currentRoomChannel.topic) {
 					return 'selected'
 				} else {
 					return null
@@ -35,7 +35,7 @@
 		},
 		methods: {
 			joinRoom() {
-				this.$store.dispatch('updateCurrentRoom', {
+				this.$store.dispatch('updateCurrentRoomChannel', {
 					room: this.room
 				})
 			}
