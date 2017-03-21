@@ -1,10 +1,12 @@
 <template>
   <div class="input-toolbar">
+    <!--
     <div class="input-suggestions">
       <div v-for="suggestion in inputSuggestions" class="suggestion" @click="suggestionClick(suggestion)">
           {{suggestion.text}}
       </div>
     </div>
+    -->
     <form novalidate>
       <div :class="['input-box', mobile ? 'mobile' : '']">
         <form @submit.prevent="onSend" class="input-form">
