@@ -8,6 +8,7 @@ import {
   httpDelete,
   joinUserChannel,
   joinWorldChannel,
+  joinPingalChannel,
   joinRoomChannel,
   socket,
   closeSocket
@@ -57,7 +58,7 @@ const actions = {
         // Close existing socket and re-open for authenticated user
         closeSocket()
         socket.connect({guardian_token: jwt})
-        commit('SET_CURRENT_ROOM_CHANNEL', joinWorldChannel(user.id))
+        commit('SET_CURRENT_ROOM_CHANNEL', joinPingalChannel(user.id))
       })
   },
   
@@ -74,7 +75,7 @@ const actions = {
           console.log("closing socket and reconnecting")
           closeSocket()
           socket.connect({guardian_token: jwt})
-          commit('SET_CURRENT_ROOM_CHANNEL', joinWorldChannel(user.id))
+          commit('SET_CURRENT_ROOM_CHANNEL', joinPingalChannel(user.id))
       })
       .catch((error) => {
           error.response.json()

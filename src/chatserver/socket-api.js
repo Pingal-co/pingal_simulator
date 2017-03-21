@@ -134,16 +134,22 @@ export let joinWorldChannel = (session) => {
   roomChannel.on('response:logIn', responseLogIn)
   roomChannel.on('response:logOut', responseLogOut)
 
-
   roomChannel.on('add:slide', addSlide)
 
   return roomChannel
 }
 
-export let joinPingalChannel = ({ userId, jwt }) => {
-  let roomChannel = joinRoom(`pingal:${userId}`, { token: jwt })
+export let joinPingalChannel = (userId) => { //, jwt 
+  let roomChannel = joinRoom(`pings:user:${userId}`) //, { token: jwt } authenticating on socket directly instead
 
   roomChannel.on('get:slides_in_room', getSlidesInRoom)
+
+  roomChannel.on('response:', response)
+  roomChannel.on('response:signUp', responseSignUp)
+  roomChannel.on('response:suggestTopic', responseSuggestTopic)
+  roomChannel.on('response:joinTopic', responseJoinTopic)
+  roomChannel.on('response:logIn', responseLogIn)
+  roomChannel.on('response:logOut', responseLogOut)
 
   roomChannel.on('add:slide', addSlide)
 
