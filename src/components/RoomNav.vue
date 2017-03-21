@@ -31,7 +31,6 @@
 		},
 		computed: {
 			rooms() {
-				console.log(this.$store.state.rooms)
 				return this.$store.state.rooms
 			}
 		}
