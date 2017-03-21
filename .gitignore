@@ -43,3 +43,6 @@ jspm_packages
 # Optional REPL history
 .node_repl_history
 >>>>>>> c8a0e8cc67086f52a99444ac6fc74f7ec2b32833
+
+# ignore merge directory
+/merge
