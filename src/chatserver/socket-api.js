@@ -59,9 +59,10 @@ let addRoom = (room) => {
   store.commit('APPEND_ROOMS', room)
 }
 
-let getSlidesInRoom = (slides) => {
+let getSlidesInRoom = (data) => {
   console.log("getting slides in room")
-  store.commit('APPEND_SLIDES', slides)
+  console.log(data)
+  store.commit('APPEND_SLIDES', data.slides)
 }
 
 // Responses

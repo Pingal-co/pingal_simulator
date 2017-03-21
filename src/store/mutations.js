@@ -20,7 +20,7 @@ const mutations = {
     },
 
     APPEND_SLIDES (state, slides) {
-        slides = slides.slides.reverse()
+        slides = slides.reverse()
         // if (!Array.isArray(slides)) {
         //     slides = [slides]
         // }
