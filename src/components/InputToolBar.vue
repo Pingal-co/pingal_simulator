@@ -6,7 +6,7 @@
       </div>
     </div>
     <form novalidate>
-      <div class="input-box">
+      <div :class="['input-box', mobile ? 'mobile' : '']">
         <form @submit.prevent="onSend" class="input-form">
           <input type="text" v-model="text" class="input-text" placeholder="Type a message..." ref="inputText" autofocus />
         </form>
@@ -18,7 +18,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 export default {
-    props: ['muteSpeaker', 'topic', 'user'],
+    props: ['muteSpeaker', 'topic', 'user', 'mobile'],
     data() {
       return {
         text: '',
@@ -89,6 +89,10 @@ export default {
     height: 54px;
     border-top: 1px solid $border-color;
     display: flex;
+  }
+
+  .mobile {
+    width: 100vw;
   }
 
   .input-form {

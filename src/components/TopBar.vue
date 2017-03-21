@@ -12,6 +12,10 @@
         </md-button>
 
      </md-toolbar> -->
+    <md-button v-if="mobile" class="md-icon-button" @click.native="toggleLeftSidenav">
+      <md-icon class="md-size-2x">home</md-icon>
+    </md-button>
+    <md-icon></md-icon>
      <div class="profile-button">{{name}}</div>
   </div>
 </template>
@@ -28,6 +32,8 @@ export default {
       showMenuIcon: {
         default: true
       },
+      toggleLeftSidenav: Function,
+      mobile: Boolean,
     },
 
     computed: {

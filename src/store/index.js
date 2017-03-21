@@ -48,6 +48,7 @@ const getters = {
 }
 
 const store = new Vuex.Store({
+  // strict: process.env.NODE_ENV !== 'production', // If can work, nice to use
   state,
   getters,
   mutations,

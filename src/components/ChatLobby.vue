@@ -3,12 +3,23 @@
     <top-bar
       :show-login-icon="false"
       :show-menu-icon="false"
+      :toggleLeftSidenav="toggleLeftSidenav"
+      :mobile="mobile"
     >
     </top-bar>
 
     <div class="main">
-      <room-nav>
-      </room-nav>
+
+      <div v-if="mobile">
+        <md-sidenav class="md-left" ref="leftSidenav">
+          <room-nav>
+          </room-nav>
+        </md-sidenav>
+      </div>
+      <div v-else>
+          <room-nav>
+          </room-nav>
+      </div>  
          
       <div class="slides-section">
         <slide-list
@@ -18,7 +29,9 @@
         <input-tool-bar
           :mute-speaker="true"
           :topic="topic"
-          :user="user">
+          :user="user"
+          :mobile="mobile"
+          >
         </input-tool-bar>
       </div>
     </div>
@@ -48,13 +61,38 @@
         room: this.$store.state.currentRoom,
         topic: '1',
         user: { _id: 2, name: 'Sam', hash: 'Sam', avatar: 'mood'},
+        windowWidth: window.innerWidth,
       }
     },
 
     computed: {
       slides() {
         return this.$store.state.slides
+      },
+      mobile() {
+        if (this.windowWidth < 768) {
+          return true
+        } else {
+          return false
+        }
       }
+    },
+
+    methods: {
+      toggleLeftSidenav() {
+        this.$refs.leftSidenav.toggle(); 
+      },
+      handleResize() {
+        this.windowWidth = window.innerWidth;
+      }
+    },
+
+    mounted() {
+      window.addEventListener('resize', this.handleResize)
+    },
+
+    beforeDestroy() {
+      window.removeEventListener('resize', this.handleResize)
     }
   }
 
