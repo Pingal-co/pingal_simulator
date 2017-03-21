@@ -55,17 +55,19 @@ let addSlide = (slide, delay = 0) => {
   }, delay)
 } 
 
-let addRoom = (room) => {
-  store.commit('APPEND_ROOMS', room)
-}
-
 let getSlidesInRoom = (data) => {
   console.log("getting slides in room")
   console.log(data)
   store.commit('APPEND_SLIDES', data.slides)
 }
 
-// Responses
+// Direct object match responses
+
+let addRooms = ({rooms}) => {
+  store.commit('APPEND_ROOMS', rooms)
+}
+
+// Response:
 const responseDelay = 300
 let response = ({slide}) => {
   slide.isPingal = true
@@ -94,7 +96,7 @@ let responseJoinTopic = ({slide, topicRoom}) => {
   // Join topic logic here
   slide.isPingal = true
   addSlide(slide, responseDelay)
-  addRoom(topicRoom)
+  addRooms({rooms: topicRoom})
 }
 
 let responseLogOut = ({slide}) => {
@@ -151,6 +153,7 @@ export let joinPingalChannel = (userId) => { //, jwt
   roomChannel.on('response:logIn', responseLogIn)
   roomChannel.on('response:logOut', responseLogOut)
 
+  roomChannel.on('add:rooms', addRooms)
   roomChannel.on('add:slide', addSlide)
 
   return roomChannel

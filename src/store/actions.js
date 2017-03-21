@@ -69,10 +69,10 @@ const actions = {
       .then(({ jwt, user }) => {
           // userChannel = joinUserChannel({ id: user.id, jwt })
           commit('APPEND_SLIDE', {isPingal: true, text: `Welcome back ${user.name}!`})
+          // Store jwt session and user
           commit('SET_CURRENT_USER', user)
           commit('SET_CURRENT_JWT', jwt)
           // Close existing socket and re-open for authenticated user
-          console.log("closing socket and reconnecting")
           closeSocket()
           socket.connect({guardian_token: jwt})
           commit('SET_CURRENT_ROOM_CHANNEL', joinPingalChannel(user.id))
