@@ -11,17 +11,23 @@
                   <div class="expand-custom">
                       <div class="md-title">  {{ slide.text }}</div> 
                       <div v-if="slide.type === 'suggestTopic'">
-                        <suggestTopic :topics="slide.topics"></suggestTopic>
+                        <suggest-topics :topics="slide.topics"></suggest-topics>
                       </div> 
                       <div v-else-if="slide.type === 'signUp'">
-                        <signUp></signup>
+                        <sign-up></sign-up>
                       </div>
                       <div v-else-if="slide.type === 'logIn'">
-                        <logIn></login>
-                      </div>              
+                        <log-in></log-in>
+                      </div> 
+                      <div v-else-if="slide.type === 'nextAction'">
+                        <context-buttons :buttons="slide.buttons"></context-buttons>
+                      </div>  
+                      <!--           
                       <md-card-actions v-else-if="slide.type === 'topics'">
                           <md-button v-for="channel in slide.channels" v-bind:key="channel._id" :channel="channel">{{channel.topic}}</md-button>
                       </md-card-actions>
+                      -->
+
                   </div>                   
                 </md-card-content> 
               </md-card-area>
@@ -62,7 +68,8 @@
 <script>
   import SignUp from '@/components/Signup'
   import LogIn from '@/components/Login'
-  import SuggestTopic from '@/components/SuggestTopic'
+  import SuggestTopics from '@/components/SuggestTopics'
+  import ContextButtons from '@/components/ContextButtons'
 
   import moment from 'moment';
   export default {
@@ -81,7 +88,8 @@
     components: {
       SignUp,
       LogIn,
-      SuggestTopic
+      SuggestTopics,
+      ContextButtons
     }
   }
   
