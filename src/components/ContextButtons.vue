@@ -18,7 +18,7 @@
 			clickAction(button) {
 				this.$store.dispatch('pushSlide', {
 		          roomChannel: this.roomChannel,
-		          slide: {text: button.command}, 
+		          slide: {text: button.bot}, 
 		          event: 'request'
 				})
 			}
