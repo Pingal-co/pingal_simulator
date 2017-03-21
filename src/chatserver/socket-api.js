@@ -30,13 +30,13 @@ let joinRoom = (roomName = DEFAULT_LOBBY, params = {}) => {
 
   room.join()
     .receive('ok', _ => {
-      console.log('joined successfully to pingal:lobby')
+      console.log(`joined successfully to ${roomName}`)
     })
     .receive('error', resp => {
       console.log(`Unable to join ${resp} `)
     })
     .receive('timeout', _ => {
-      console.log('Check all connections: network, database, ...')
+      console.log('Timeout: Check all connections: network, database, ...')
     })
 
   // add some room-level event handlers
@@ -45,7 +45,6 @@ let joinRoom = (roomName = DEFAULT_LOBBY, params = {}) => {
 
   return room
 }
-
 
 /* Channel.on functions */
 
@@ -69,6 +68,24 @@ let addRooms = ({rooms}) => {
 
 // Response:
 const responseDelay = 300
+let response = ({slide}) => {
+  //slide.type = 'suggestTopic'
+  // slide.isPingal = true
+  console.log("Name or Interest or Something Else")
+  console.log(slide)
+
+  
+  if (slide && "topicRoom" in slide ) {
+      addRoom(topicRoom)
+  }
+  if (slide && slide.type === 'logOut') {
+    store.commit('LOG_OUT')
+  }
+
+  addSlide(slide, responseDelay)
+  
+}
+/*
 let response = ({slide}) => {
   slide.isPingal = true
   addSlide(slide, responseDelay)
@@ -104,7 +121,7 @@ let responseLogOut = ({slide}) => {
   slide.isPingal = true
   addSlide(slide, responseDelay)
 }
-
+*/
 /* 
   External Functions
 */
@@ -129,13 +146,17 @@ export let joinWorldChannel = (session) => {
 
   roomChannel.on('get:slides_in_room', getSlidesInRoom)
 
+  // pingal response
   roomChannel.on('response:', response)
-  roomChannel.on('response:signUp', responseSignUp)
-  roomChannel.on('response:suggestTopic', responseSuggestTopic)
-  roomChannel.on('response:joinTopic', responseJoinTopic)
-  roomChannel.on('response:logIn', responseLogIn)
-  roomChannel.on('response:logOut', responseLogOut)
+  roomChannel.on('response:name', response)
+  roomChannel.on('response:interests', response)
+  roomChannel.on('response:signUp', response)
+  roomChannel.on('response:suggestTopic', response)
+  roomChannel.on('response:logIn', response)
+  roomChannel.on('response:joinTopic', response)
+  roomChannel.on('response:logOut', response)
 
+  // user text message
   roomChannel.on('add:slide', addSlide)
 
   return roomChannel
