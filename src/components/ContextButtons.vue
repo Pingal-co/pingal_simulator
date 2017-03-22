@@ -1,9 +1,9 @@
 <template>
-	<md-card-actions>
-	  <md-button v-for="button, index in buttons" :key="index">
-	  	<div @click="clickAction(button)">{{button.text}}</div>
-	  </md-button>
-	</md-card-actions>
+	<div class="buttons">
+	  <div v-for="button, index in buttons" :key="index">
+	  	<div @click="clickAction(button)" class="button">{{button.text}}</div>
+	  </div>
+	</div>
 </template>
 
 <script>
@@ -37,3 +37,36 @@
 		}
 	}
 </script>
+
+<style lang="scss">
+  $primary-darker-color: rgb(217, 98, 12);
+  $primary-color: rgb(244, 128, 45);
+
+  .buttons {
+  	display: flex;
+  	flex-wrap: wrap;
+  	justify-content: center;
+  	padding-top: 9px;
+  }
+
+  .button {
+    border: 1px solid $primary-darker-color;
+    padding: 14px;
+    border-radius: 20px;
+    margin: 12px;
+    color: $primary-darker-color;
+    background-color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .button:hover {
+  	border: 1px solid white;
+  	color: white;
+  	background-color: $primary-color;
+  }
+
+  .button:active {
+  	background-color: $primary-darker-color;
+  }
+</style>

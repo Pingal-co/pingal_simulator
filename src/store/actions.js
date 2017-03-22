@@ -102,6 +102,8 @@ const actions = {
     } else {  
       commit('SET_CURRENT_ROOM_CHANNEL', joinWorldChannel(session))
     }
+
+    commit('SET_CURRENT_ROOM', {name: 'Pingal'})
   },
 
   /* START <ROOM DISPATCH ACTION HANDLERS> */

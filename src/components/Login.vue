@@ -51,4 +51,10 @@
 		color: green;
 		padding-top: 20px
 	}
+
+	.login-form {
+		display: flex;
+	    flex-wrap: wrap;
+	    justify-content: center;
+	}
 </style>

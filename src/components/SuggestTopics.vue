@@ -1,9 +1,14 @@
 <template>
-	<md-card-actions>
-	  <md-button v-for="topic, index in topics" :key="index">
-	  	<div @click="clickTopic(topic)">@{{topic}}</div>
-	  </md-button>
-	</md-card-actions>
+	<div class="topics-container">
+		<div class="topics-header">
+			Trending Nearby
+		</div>
+		<div class="topics">
+		  <div v-for="topic, index in topics" :key="index">
+		  	<div @click="clickTopic(topic)" class="topic">@{{topic}}</div>
+		  </div>
+		</div>
+	</div>
 </template>
 
 <script>
@@ -25,3 +30,49 @@
 		}
 	}
 </script>
+
+<style lang="scss">
+	$primary-darker-color: rgb(217, 98, 12);
+  	$primary-color: rgb(244, 128, 45);
+ 	$primary-color-l1: rgb(250, 192, 150);
+  	$primary-color-l2: rgb(252, 224, 203);
+  	$primary-color-l3: rgb(254, 247, 242);
+
+	.topics-container {
+		padding-top: 18px;
+	}
+
+	.topics-header {
+		display: flex;
+		justify-content: center;
+		background-color: $primary-color;
+		padding: 12px;
+		font-size: 18px;
+		color: white;
+	}
+
+	.topics {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		height: 300px;
+		background-color: $primary-color-l3;
+		overflow-y: scroll;
+	}
+
+	.topic {
+		width: 100%;
+		padding: 20px;
+		font-size: 16px;
+		cursor: pointer;
+	}
+
+	.topic:hover {
+		background-color: $primary-color-l2;
+	}
+
+	.topic:active {
+		background-color: $primary-color-l1;
+	}
+
+</style>

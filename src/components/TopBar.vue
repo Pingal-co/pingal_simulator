@@ -131,6 +131,9 @@ export default {
 
   .md-menu-content {
     margin-top: 45px !important;
+    min-width: 240px !important;
+    padding: 6px 12px 9px 12px;
+    background-color: white;
   }
 
 </style>
