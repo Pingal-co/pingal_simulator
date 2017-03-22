@@ -27,6 +27,7 @@ const state = {
   slides: [],
   currentSlide: {},
   currentUser: user,
+  session: session,
   rooms: [],
   currentRoom: {name: "Pingal"},
   currentRoomChannel: currentRoomChannel,

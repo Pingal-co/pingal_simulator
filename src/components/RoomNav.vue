@@ -2,16 +2,18 @@
 	<div class="room-nav">
 		<md-list class="custom-list md-double-line room-nav-list">
 			<!-- Pingal -->
-			<md-list-item class="room-nav-slide pingal-nav">
-			  <md-avatar>
-			    <img src="../assets/pingal_play_icon.png" alt="Pingal" />
-			  </md-avatar>
+			<div @click="joinPingal">
+				<md-list-item :class="['room-nav-slide', selected]">
+				  <md-avatar>
+				    <img src="../assets/pingal_play_icon.png" alt="Pingal" />
+				  </md-avatar>
 
-			  <div class="md-list-text-container">
-			    <span>Pingal</span>
-			    <p>What would you like to talk about?</p>
-			  </div>
-			</md-list-item>
+				  <div class="md-list-text-container">
+				    <span>Pingal</span>
+				    <p>What would you like to talk about?</p>
+				  </div>
+				</md-list-item>
+			</div>
 			<!-- Users -->
 			<room-nav-slide 
 				v-for="room in rooms"
@@ -29,9 +31,29 @@
 		components: {
 			RoomNavSlide
 		},
+
 		computed: {
 			rooms() {
 				return this.$store.state.rooms
+			},
+			currentRoomChannel() {
+				return this.$store.state.currentRoomChannel
+			},
+			selected() {
+				if (this.currentRoomChannel.topic.slice(0, 5) == 'pings') {
+					return 'selected'
+				} else {
+					return null
+				}
+			}
+		},
+
+		methods: {
+			joinPingal() {
+				let user = this.$store.state.user;
+				let session = this.$store.state.session;
+				let params = user ? {user: user} : {session: session};
+				this.$store.dispatch('setCurrentPingalChannel', params);
 			}
 		}
 	}
@@ -51,11 +73,19 @@
 		padding-top: 0px;
 	}
 
-	.pingal-nav {
-		background-color: $border-color;
+	.room-nav-slide {
+		cursor: pointer;
 	}
 
 	.room-nav-slide:hover {
+		background-color: $border-color;
+	}
+
+	.room-nav-slide:active {
+		background-color: rgb(215, 215, 215);
+	}
+
+	.selected {
 		background-color: $border-color;
 	}
 

@@ -94,6 +94,16 @@ const actions = {
       })
   },
 
+  setCurrentPingalChannel({commit}, {user, session}) {
+    commit('CLEAR_SLIDES')
+    
+    if (user) {
+      commit('SET_CURRENT_ROOM_CHANNEL', joinPingalChannel(user.id))
+    } else {  
+      commit('SET_CURRENT_ROOM_CHANNEL', joinWorldChannel(session))
+    }
+  },
+
   /* START <ROOM DISPATCH ACTION HANDLERS> */
   updateCurrentRoomChannel ({commit}, {room}) {
       commit('CLEAR_SLIDES')
