@@ -15,12 +15,24 @@
 			}
 		},
 		methods: {
-			clickAction(button) {
+			onSend(button){
 				this.$store.dispatch('pushSlide', {
 		          roomChannel: this.roomChannel,
 		          slide: {text: button.bot}, 
 		          event: 'request'
 				})
+
+			},
+			clickAction(button) {
+				if (button.action === 'fill') {
+					 this.$store.dispatch('updateInputText', {
+						 text: button.text
+					 })
+					// dispatch an action
+				} else if (button.action === 'send') {
+					this.onSend(button)
+				} 
+
 			}
 		}
 	}

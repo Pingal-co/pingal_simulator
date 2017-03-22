@@ -10,6 +10,9 @@
                   </md-avatar>
                   <div class="expand-custom">
                       <div class="md-title">  {{ slide.text }}</div> 
+                      <div v-if="slide.brain && slide.brain.index_terms.length > 0">
+                        <search-planner :terms="slide.brain.index_terms"></search-planner>
+                      </div> 
                       <div v-if="slide.type === 'suggestTopic'">
                         <suggest-topics :topics="slide.topics"></suggest-topics>
                       </div> 
@@ -21,7 +24,10 @@
                       </div> 
                       <div v-else-if="slide.type === 'nextAction'">
                         <context-buttons :buttons="slide.buttons"></context-buttons>
-                      </div>  
+                      </div>
+                      
+
+                       
                       <!--           
                       <md-card-actions v-else-if="slide.type === 'topics'">
                           <md-button v-for="channel in slide.channels" v-bind:key="channel._id" :channel="channel">{{channel.topic}}</md-button>
@@ -70,6 +76,7 @@
   import LogIn from '@/components/Login'
   import SuggestTopics from '@/components/SuggestTopics'
   import ContextButtons from '@/components/ContextButtons'
+  import SearchPlanner from '@/components/SearchPlanner'
 
   import moment from 'moment';
   export default {
@@ -89,7 +96,8 @@
       SignUp,
       LogIn,
       SuggestTopics,
-      ContextButtons
+      ContextButtons,
+      SearchPlanner
     }
   }
   

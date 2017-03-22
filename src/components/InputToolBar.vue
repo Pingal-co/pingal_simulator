@@ -10,7 +10,7 @@
     <form novalidate>
       <div :class="['input-box', mobile ? 'mobile' : '']">
         <form @submit.prevent="onSend" class="input-form">
-          <input type="text" v-model="text" class="input-text" placeholder="Type a message..." ref="inputText" autofocus />
+          <input type="text" v-model="text" class="input-text" :placeholder="placeholder" ref="inputText" autofocus />
         </form>
       </div> 
     </form>
@@ -19,6 +19,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+
 export default {
     props: ['muteSpeaker', 'topic', 'user', 'mobile'],
     data() {
@@ -34,6 +35,10 @@ export default {
     },
 
     computed: {
+      ...mapGetters([
+        'placeholder',
+        'currentRoomChannel'
+      ]),
       slide() {
         return {
           _id: Math.round(Math.random() * 1000000),
@@ -47,15 +52,19 @@ export default {
         }
       },
 
+      /*
       roomChannel() {
         return this.$store.state.currentRoomChannel
       }
+      */
+      
+
     },
 
     methods: {
       onSend() {
         this.$store.dispatch('pushSlide', {
-          roomChannel: this.roomChannel, 
+          roomChannel: this.currentRoomChannel, 
           slide: this.slide, 
           event: 'request'})
             .then(() => {
