@@ -13,11 +13,11 @@
 
      </md-toolbar> -->
     <md-button v-if="mobile" class="md-icon-button" @click.native="toggleLeftSidenav">
-      <md-icon class="md-size-2x">home</md-icon>
+      <md-icon class="chat-icon">chat</md-icon>
     </md-button>
     <div v-else></div> <!-- Left flush -->
 
-    <h2>{{this.$store.state.currentRoomChannel.topic}}</h2>
+    <div class="room-name">{{currentRoom.name}}</div>
 
     <div v-if="user">
       <md-menu md-direction="bottom left">
@@ -80,6 +80,9 @@ export default {
     },
     user() {
       return this.$store.state.currentUser
+    },
+    currentRoom() {
+      return this.$store.state.currentRoom
     }
   },
 
@@ -113,6 +116,17 @@ export default {
 
   .login-container {
     padding: 4px 12px 4px 12px;
+  }
+
+  .chat-icon {
+    font-size: 28px !important;
+    color: white;
+    right: 5px !important;
+  }
+
+  .room-name {
+    color: white;
+    font-size: 22px;
   }
 
 </style>

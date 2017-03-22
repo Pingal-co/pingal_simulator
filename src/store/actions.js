@@ -98,6 +98,7 @@ const actions = {
   updateCurrentRoomChannel ({commit}, {room}) {
       commit('CLEAR_SLIDES')
       commit('SET_CURRENT_ROOM_CHANNEL', joinRoomChannel(room.id))
+      commit('SET_CURRENT_ROOM', room)
   }
 
 }

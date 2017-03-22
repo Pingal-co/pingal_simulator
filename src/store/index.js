@@ -28,7 +28,7 @@ const state = {
   currentSlide: {},
   currentUser: user,
   rooms: [],
-  currentRoom: {},
+  currentRoom: {name: "Pingal"},
   currentRoomChannel: currentRoomChannel,
   jwt: jwt,
 }

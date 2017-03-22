@@ -58,6 +58,12 @@ const mutations = {
         Cookies.remove('jwt');
     },
 
+    SET_CURRENT_ROOM (state, room) {
+        console.log("settting room")
+        console.log(room)
+        state.currentRoom = room
+    },
+
     /* START <ROOM MUTATION HANDLERS> */
     SET_CURRENT_ROOM_CHANNEL (state, roomChannel) {
         state.currentRoomChannel = roomChannel // { ...state.currentRoom, ...room }
