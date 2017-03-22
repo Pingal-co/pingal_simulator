@@ -53,6 +53,7 @@ const mutations = {
 
     LOG_OUT (state) {
         state.currentUser = null;
+        state.rooms = [];
         Cookies.remove('user');
         Cookies.remove('jwt');
     },

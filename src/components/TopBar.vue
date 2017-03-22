@@ -19,43 +19,80 @@
 
     <h2>{{this.$store.state.currentRoomChannel.topic}}</h2>
 
-    <div class="profile-button">{{name}}</div>
+    <div v-if="user">
+      <md-menu md-direction="bottom left">
+        <md-button md-menu-trigger>
+          <div class="profile-button">{{name}}</div>
+        </md-button>
+
+        <md-menu-content>
+          <div @click="logOut"><md-menu-item>Logout</md-menu-item></div>
+        </md-menu-content>
+      </md-menu>
+    </div>
+    <div v-else>
+      <md-menu md-direction="bottom left">
+        <md-button md-menu-trigger>
+          <div class="profile-button">Login</div>
+        </md-button>
+
+        <md-menu-content>
+          <div class="login-container">
+            <login />
+          </div>
+        </md-menu-content>
+      </md-menu>
+    </div>
+    
   </div>
 </template>
 
 <script>
 
+import Login from '@/components/Login'
 import Cookies from 'js-cookie'
 
-export default {
-    props: {
-      showLoginIcon: {
-        default: true
-      },
-      showMenuIcon: {
-        default: true
-      },
-      toggleLeftSidenav: Function,
-      mobile: Boolean,
-    },
 
-    computed: {
-      name() {
-        var user = this.$store.state.currentUser
-        if (user) {
-          return user.name
-        } else {
-          return ''
-        }
+export default {
+  components: {
+    Login
+  },
+
+  props: {
+    showLoginIcon: {
+      default: true
+    },
+    showMenuIcon: {
+      default: true
+    },
+    toggleLeftSidenav: Function,
+    mobile: Boolean,
+  },
+
+  computed: {
+    name() {
+      var user = this.$store.state.currentUser
+      if (user) {
+        return user.name
+      } else {
+        return ''
       }
     },
+    user() {
+      return this.$store.state.currentUser
+    }
+  },
 
-    methods:{
-      login: function () {
-        console.log('login')
-      },
+  methods:{
+    logIn() {
+      console.log('login')
+    },
+    logOut() {
+      console.log("logged out")
+      this.$store.commit('LOG_OUT')
     }
   }
+}
   
 </script>
 
@@ -72,6 +109,10 @@ export default {
   .profile-button {
     color: white;
     padding-right: 12px;
+  }
+
+  .login-container {
+    padding: 4px 12px 4px 12px;
   }
 
 </style>

@@ -99,7 +99,8 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<!-- Removed "scoped" as it's making CSS overides of the MD framework impossible -->
+<style lang="scss">
   h1, h2 {
     font-weight: normal;
   }
@@ -117,5 +118,10 @@
     height: calc(100vh - 108px);
     width: 100%;
   }
+
+  .md-sidenav-content {
+    width: 360px !important;
+  }
+
 </style>
 

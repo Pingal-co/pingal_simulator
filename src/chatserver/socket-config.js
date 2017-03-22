@@ -16,5 +16,5 @@ export const closeSocket = () => socket.disconnect()
 
 // define the socket per user: anonymous, user_id
 let jwt = Cookies.get('jwt')
-export let socket = new Socket(socketURL, {});
-socket.connect({guardian_token: jwt});
+export let socket = new Socket(socketURL, {params: {guardian_token: jwt}});
+socket.connect();

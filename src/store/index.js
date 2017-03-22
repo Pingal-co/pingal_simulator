@@ -12,7 +12,7 @@ Vue.use(Vuex)
 
 // Load cookie data
 let user = Cookies.get('user');
-user = user ? JSON.parse(user) : {};
+user = user ? JSON.parse(user) : null;
 
 let jwt = Cookies.get('jwt');
 jwt = jwt ? jwt : null;

@@ -168,11 +168,11 @@ export let joinPingalChannel = (userId) => { //, jwt
   roomChannel.on('get:slides_in_room', getSlidesInRoom)
 
   roomChannel.on('response:', response)
-  roomChannel.on('response:signUp', responseSignUp)
-  roomChannel.on('response:suggestTopic', responseSuggestTopic)
-  roomChannel.on('response:joinTopic', responseJoinTopic)
-  roomChannel.on('response:logIn', responseLogIn)
-  roomChannel.on('response:logOut', responseLogOut)
+  roomChannel.on('response:signUp', response)
+  roomChannel.on('response:suggestTopic', response)
+  roomChannel.on('response:joinTopic', response)
+  roomChannel.on('response:logIn', response)
+  roomChannel.on('response:logOut', response)
 
   roomChannel.on('add:rooms', addRooms)
   roomChannel.on('add:slide', addSlide)
