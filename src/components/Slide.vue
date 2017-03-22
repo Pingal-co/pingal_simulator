@@ -5,7 +5,7 @@
             <md-card v-if="slide.isPingal === true">
               <md-card-area md-inset>
                 <md-card-content>
-                  <md-avatar>
+                  <md-avatar class="pingal-avatar">
                     <img src="../assets/pingal_play_icon.png" alt="Pingal">
                   </md-avatar>
                   <div class="expand-custom">
@@ -25,15 +25,6 @@
                       <div v-else-if="slide.type === 'nextAction'">
                         <context-buttons :buttons="slide.buttons"></context-buttons>
                       </div>
-                      
-
-                       
-                      <!--           
-                      <md-card-actions v-else-if="slide.type === 'topics'">
-                          <md-button v-for="channel in slide.channels" v-bind:key="channel._id" :channel="channel">{{channel.topic}}</md-button>
-                      </md-card-actions>
-                      -->
-
                   </div>                   
                 </md-card-content> 
               </md-card-area>
@@ -41,9 +32,6 @@
 
             <!-- User Slide -->
             <md-card v-else>
-<!--               <md-card-content>
-                 <div class="md-subhead"> {{ slide.user.name }}, {{ datetime }}</div>
-              </md-card-content> -->
 <!-- 
               <md-card-expand v-if="slide.buttons">
                   <md-button class="md-icon-button" md-expand-trigger>
@@ -57,15 +45,19 @@
               </md-card-expand> -->
 
               <md-card-area md-inset>
+                <div class="user-name">
+                  Author Name 
+                  <span class="datetime">{{datetime}}</span>
+                </div>
                 <md-card-content>
-                  <md-avatar class="md-avatar-icon md-warn">
+                  <md-avatar class="md-avatar-icon md-warn custom-avatar">
                       <md-icon><!-- {{ slide.user.avatar }} --></md-icon>
                   </md-avatar>
                       <div class="expand-custom">
                           <div class="md-title">  {{ slide.text }}</div>                  
                       </div>                   
                   </md-card-content> 
-               </md-card-area>                      
+              </md-card-area>                      
             </md-card>
         </md-list-item>
     </div>
@@ -83,6 +75,7 @@
     props: ['slide'] ,
     computed: {
         datetime() {
+          console.log(this.slide)
            return moment(this.slide.inserted_at).format('YYYY-MM-DD [at] hh:mm')
           // return this.slide.inserted_at
       }
@@ -123,7 +116,7 @@
 
 
   .card-custom {
-    margin-top: 8px;
+    padding-top: 8px;
     display: flex;
 
     .md-card {
@@ -131,11 +124,13 @@
         flex-direction: column;
         border-radius: $card-radius;
         box-shadow: none;  
+        background-color: transparent;
     }
 
     .md-title {
         font-size: 16px;
         font-weight: 400;
+        overflow-wrap: break-word;
     }
     .md-button {
         border-radius: 8px;
@@ -145,6 +140,7 @@
         padding: 12px;
         display: flex;
         justify-content: flex-end;
+        align-items: center;
 
         &:last-child {
             padding-bottom: 16px;
@@ -156,11 +152,31 @@
         flex-direction: column;
     }
 
+    .user-name {
+      font-size: 12px;
+      color: rgb(160, 160, 160);
+      margin-left: 58px;
+      margin-bottom: -12px;
+    }
+
+    .custom-avatar, .pingal-avatar {
+      align-self: flex-start;
+    }
+
+    .custom-avatar {
+      background-color: rgb(244, 128, 45) !important;
+    }
+
+    .datetime {
+      padding-left: 28px;
+      visibility: hidden;
+    }
+
     .md-card-actions {
         padding: 8px;
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
 
         .md-button {
             margin: 0;
@@ -185,6 +201,14 @@
     flex-wrap: wrap;
   }
    
+ }
+
+ .card-custom:hover {
+  background-color: rgb(255, 250, 247); // rgb(254, 249, 245); //rgb(254, 243, 234)
+ }
+
+ .card-custom:hover .datetime {
+  visibility: visible;
  }
  
 

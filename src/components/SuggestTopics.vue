@@ -36,7 +36,8 @@
   	$primary-color: rgb(244, 128, 45);
  	$primary-color-l1: rgb(250, 192, 150);
   	$primary-color-l2: rgb(252, 224, 203);
-  	$primary-color-l3: rgb(254, 247, 242);
+  	$primary-color-l3: rgb(254, 243, 234);
+  	$primary-color-l4: rgb(254, 247, 242); 
 
 	.topics-container {
 		padding-top: 18px;
@@ -55,7 +56,7 @@
 		display: flex;
 		flex-direction: column;
 		width: 100%;
-		height: 300px;
+		height: 342px;
 		background-color: $primary-color-l3;
 		overflow-y: scroll;
 	}

@@ -27,6 +27,7 @@
 
   .slide-list {
     padding-bottom: 54px !important;
+    padding-top: 0px !important;
   }
 
 </style>

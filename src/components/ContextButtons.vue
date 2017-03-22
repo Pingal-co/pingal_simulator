@@ -55,13 +55,13 @@
     border-radius: 20px;
     margin: 12px;
     color: $primary-darker-color;
-    background-color: white;
+    background-color: transparent;
     font-size: 16px;
     cursor: pointer;
   }
 
   .button:hover {
-  	border: 1px solid white;
+  	border: 1px solid transparent;
   	color: white;
   	background-color: $primary-color;
   }
