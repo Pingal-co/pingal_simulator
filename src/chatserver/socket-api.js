@@ -155,6 +155,8 @@ export let joinWorldChannel = (session) => {
   roomChannel.on('response:logIn', response)
   roomChannel.on('response:joinTopic', response)
   roomChannel.on('response:logOut', response)
+  roomChannel.on('response:planIntroduction', response)
+  roomChannel.on('response:brain', response)
 
   // user text message
   roomChannel.on('add:slide', addSlide)

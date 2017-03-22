@@ -31,6 +31,7 @@ const state = {
   currentRoom: {name: "Pingal"},
   currentRoomChannel: currentRoomChannel,
   jwt: jwt,
+  placeholder: "Type a Message"
 }
 
 
@@ -41,15 +42,17 @@ const state = {
 */
 
 const getters = {
-  // slides: (state) => state.slides,
-  // currentSlide: (state) => state.currentSlide,
-  // getSlidesCount: (state) => state.slides.length,
+   slides: (state) => state.slides,
+   currentSlide: (state) => state.currentSlide,
+   getSlidesCount: (state) => state.slides.length,
 
-  // rooms: (state) => state.rooms,
-  // currentRoom: (state) => state.currentRoom,
-  // getRoomsCount: (state) => state.rooms.length,
+   rooms: (state) => state.rooms,
+   currentRoom: (state) => state.currentRoom,
+   currentRoomChannel: (state) => state.currentRoomChannel,
+   getRoomsCount: (state) => state.rooms.length,
 
-  // currentUser: (state) => state.currentUser,
+   currentUser: (state) => state.currentUser,
+   placeholder: (state) => state.placeholder,
 
 }
 

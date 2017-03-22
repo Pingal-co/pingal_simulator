@@ -76,6 +76,12 @@ const mutations = {
             rooms = [rooms]
         }
         state.rooms = rooms.concat(state.rooms) 
+    },
+
+    /* INPUT TOOLBAR */
+    UPDATE_INPUTTEXT (state, text) {
+        console.log(text)
+        state.placeholder = text
     }
 
 }
