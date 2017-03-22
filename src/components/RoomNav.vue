@@ -58,5 +58,11 @@
 	.room-nav-slide:hover {
 		background-color: $border-color;
 	}
+
+	@media only screen and (max-width: 768px) {
+		.room-nav {
+			height: 100vh;
+		}
+	}
 </style>
 

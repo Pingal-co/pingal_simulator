@@ -59,8 +59,6 @@ const mutations = {
     },
 
     SET_CURRENT_ROOM (state, room) {
-        console.log("settting room")
-        console.log(room)
         state.currentRoom = room
     },
 

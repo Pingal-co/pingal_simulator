@@ -129,4 +129,8 @@ export default {
     font-size: 22px;
   }
 
+  .md-menu-content {
+    margin-top: 45px !important;
+  }
+
 </style>

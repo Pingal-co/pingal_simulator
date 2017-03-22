@@ -66,6 +66,10 @@
 		background-color: $border-color;
 	}
 
+	.room-nav-slide:active {
+		background-color: rgb(215, 215, 215);
+	}
+
 	.selected {
 		background-color: $border-color;
 	}
