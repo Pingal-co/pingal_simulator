@@ -10,7 +10,9 @@
   }
 </script>
 
-<style>
+<style lang="scss">
+  $pingal-blue: #0383f9;
+  
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -18,6 +20,14 @@
     /*text-align: center;*/
     color: #2c3e50;
     /*margin-top: 60px;*/
+  }
+
+
+  ::selection {
+    background: $pingal-blue !important; /* WebKit/Blink Browsers */
+  }
+  ::-moz-selection {
+    background: $pingal-blue !important; /* Gecko Browsers */
   }
 </style>
 

@@ -1,7 +1,7 @@
 <template>
 	<div class="buttons">
 	  <div v-for="button, index in buttons" :key="index">
-	  	<div @click="clickAction(button)" class="button">{{button.text}}</div>
+	  	<div @click="clickAction(button)" class="button noselect">{{button.text}}</div>
 	  </div>
 	</div>
 </template>
@@ -69,4 +69,14 @@
   .button:active {
   	background-color: $primary-darker-color;
   }
+
+  .noselect {
+	  -webkit-touch-callout: none; /* iOS Safari */
+	    -webkit-user-select: none; /* Safari */
+	     -khtml-user-select: none; /* Konqueror HTML */
+	       -moz-user-select: none; /* Firefox */
+	        -ms-user-select: none; /* Internet Explorer/Edge */
+	            user-select: none; /* Non-prefixed version, currently
+	                                  supported by Chrome and Opera */
+	}
 </style>
