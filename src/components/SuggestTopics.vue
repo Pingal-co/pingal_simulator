@@ -39,8 +39,11 @@
   	$primary-color-l3: rgb(254, 243, 234);
   	$primary-color-l4: rgb(254, 247, 242); 
 
+  	$border-radius: 24px;
+
 	.topics-container {
 		padding-top: 18px;
+		padding-bottom: 9px;
 	}
 
 	.topics-header {
@@ -50,6 +53,8 @@
 		padding: 12px;
 		font-size: 18px;
 		color: white;
+		border-top-right-radius: $border-radius;
+		border-top-left-radius: $border-radius;
 	}
 
 	.topics {
@@ -59,6 +64,8 @@
 		height: 342px;
 		background-color: $primary-color-l3;
 		overflow-y: scroll;
+		border-bottom-right-radius: $border-radius;
+    	border-bottom-left-radius: $border-radius;
 	}
 
 	.topic {

@@ -7,7 +7,7 @@
 
 		  <div class="md-list-text-container">
 		    <span>{{room.name}}</span>
-		    <p>{{room.subtitle}}</p>
+		    <p>{{subtitle}}</p>
 		  </div>
 
 		  <div class="formatted-time">{{formattedTime}}</div>
@@ -25,7 +25,7 @@
 		props: ['room'],
 		computed: {
 			formattedTime() {
-				return moment(this.room.updated_at).calendar(null, {
+				return moment(this.room.last_slide.updated_at).calendar(null, {
                       sameDay: 'h:mm a',
                       nextDay: '[The Future]',
                       nextWeek: "[How's your time machine work?]",
@@ -33,6 +33,17 @@
                       lastWeek: 'dddd',
                       sameElse: 'MMMM Do'
                   });
+			},
+			subtitle() {
+				let slide = this.room.last_slide
+				if (slide.text && slide.author_name) {
+					return slide.author_name + ": " + slide.text
+				} else if (slide.text) {
+					return slide.text
+				} else {
+					return "Say hello to someone new :)"
+				}
+				
 			},
 			// Styling
 			selected() {

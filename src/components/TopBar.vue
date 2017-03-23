@@ -144,7 +144,6 @@ export default {
 
   .logout {
     width: 100%;
-    padding: 12px
   }
 
   .md-list-item-container {

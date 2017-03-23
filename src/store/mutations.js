@@ -68,7 +68,7 @@ const mutations = {
     },
 
     SET_ROOMS (state, rooms) {
-        state.rooms = rooms
+        state.rooms = rooms.reverse()
     },
 
     APPEND_ROOMS (state, rooms) {

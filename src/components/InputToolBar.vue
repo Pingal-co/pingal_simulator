@@ -45,6 +45,7 @@ export default {
           text: this.text,
           room: this.topic, 
           user: this.user,
+          author_name: this.user.name,
           edit: false,
           public: false,
           sponsored: false,

@@ -38,7 +38,7 @@
             <md-card v-else>
               <md-card-area md-inset>
                 <div class="user-name">
-                  Author Name 
+                  {{slide.author_name}}
                   <span class="datetime">{{datetime}}</span>
                 </div>
                 <md-card-content>

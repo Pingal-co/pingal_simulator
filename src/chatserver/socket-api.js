@@ -62,7 +62,7 @@ let getSlidesInRoom = (data) => {
 // Direct object match responses
 
 let addRooms = ({rooms}) => {
-  store.commit('APPEND_ROOMS', rooms)
+  store.commit('SET_ROOMS', rooms)
 }
 
 // Response:
