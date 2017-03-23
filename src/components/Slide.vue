@@ -4,6 +4,10 @@
             <!-- Pingal Slide -->
             <md-card v-if="slide.isPingal === true">
               <md-card-area md-inset>
+                <div class="user-name">
+                  Pingal
+                  <span class="datetime">{{datetime}}</span>
+                </div>
                 <md-card-content>
                   <md-avatar class="pingal-avatar">
                     <img src="../assets/pingal_play_icon.png" alt="Pingal">
@@ -32,18 +36,6 @@
 
             <!-- User Slide -->
             <md-card v-else>
-<!-- 
-              <md-card-expand v-if="slide.buttons">
-                  <md-button class="md-icon-button" md-expand-trigger>
-                      <md-icon>keyboard_arrow_down</md-icon>
-                  </md-button>
-                  <md-card-content>
-                      <md-card-actions>
-                          <md-button v-for="button in slide.buttons" v-bind:key="button._id" :action="button">{{button.text}}</md-button>
-                      </md-card-actions>
-                  </md-card-content>
-              </md-card-expand> -->
-
               <md-card-area md-inset>
                 <div class="user-name">
                   Author Name 
@@ -54,7 +46,7 @@
                       <md-icon><!-- {{ slide.user.avatar }} --></md-icon>
                   </md-avatar>
                       <div class="expand-custom">
-                          <div class="md-title">  {{ slide.text }}</div>                  
+                          <div class="md-title">{{ slide.text }}</div>                  
                       </div>                   
                   </md-card-content> 
               </md-card-area>                      
@@ -71,12 +63,19 @@
   import SearchPlanner from '@/components/SearchPlanner'
 
   import moment from 'moment';
+
   export default {
     props: ['slide'] ,
     computed: {
         datetime() {
-           return moment(this.slide.inserted_at).format('YYYY-MM-DD [at] hh:mm')
-          // return this.slide.inserted_at
+           return moment(this.slide.inserted_at).calendar(null, {
+                      sameDay: 'h:mm a',
+                      nextDay: '[The Future]',
+                      nextWeek: "[How's your time machine work?]",
+                      lastDay: '[Yesterday at] h:mm a',
+                      lastWeek: 'dddd [at] h:mm a',
+                      sameElse: 'h:mm a [on] MMMM Do[,] YYYY'
+                  });
       }
     },
     methods: {
@@ -94,6 +93,13 @@
   }
   
 </script>
+
+<style lang="scss">    
+// unscoped material override
+  .md-list-item-container {
+    min-height: 70px !important;
+  }
+</style>
 
 <style lang="scss" scoped>
   /* 
@@ -115,7 +121,7 @@
 
 
   .card-custom {
-    padding-top: 8px;
+    padding-top: 15px;
     display: flex;
 
     .md-card {

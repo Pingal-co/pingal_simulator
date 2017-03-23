@@ -19,12 +19,20 @@
 
 <script>
 	import Cookies from 'js-cookie'
+	import moment from 'moment'
 
 	export default {
 		props: ['room'],
 		computed: {
 			formattedTime() {
-				return formatAMPM(this.room.updated_at)
+				return moment(this.room.updated_at).calendar(null, {
+                      sameDay: 'h:mm a',
+                      nextDay: '[The Future]',
+                      nextWeek: "[How's your time machine work?]",
+                      lastDay: '[Yesterday]',
+                      lastWeek: 'dddd',
+                      sameElse: 'MMMM Do'
+                  });
 			},
 			// Styling
 			selected() {
@@ -42,18 +50,6 @@
 				})
 			}
 		}
-	}
-
-	function formatAMPM(date) {
-	  date = new Date(date)
-	  var hours = date.getHours();
-	  var minutes = date.getMinutes();
-	  var ampm = hours >= 12 ? 'pm' : 'am';
-	  hours = hours % 12;
-	  hours = hours ? hours : 12; // the hour '0' should be '12'
-	  minutes = minutes < 10 ? '0'+minutes : minutes;
-	  var strTime = hours + ':' + minutes + ampm;
-	  return strTime;
 	}
 </script>
 
