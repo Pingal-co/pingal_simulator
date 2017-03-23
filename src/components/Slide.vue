@@ -10,8 +10,8 @@
                   </md-avatar>
                   <div class="expand-custom">
                       <div class="md-title">  {{ slide.text }}</div> 
-                      <div v-if="slide.brain && slide.brain.index_terms.length > 0">
-                        <search-planner :terms="slide.brain.index_terms"></search-planner>
+                      <div v-if="slide.brain && slide.brain.index_terms && slide.brain.index_terms.length > 0">
+                        <search-planner></search-planner>
                       </div> 
                       <div v-if="slide.type === 'suggestTopic'">
                         <suggest-topics :topics="slide.topics"></suggest-topics>
