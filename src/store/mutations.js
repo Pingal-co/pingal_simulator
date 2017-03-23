@@ -33,11 +33,11 @@ const mutations = {
 
     /* START <CURRENT SLIDE MUTATION HANDLERS> */
     SET_CURRENT_SLIDE (state, slide) {
-        state.currentslide = slide
+        state.currentSlide = slide
     },
 
     DELETE_CURRENT_SLIDE (state) {
-        state.currentslide = null
+        state.currentSlide = null
     },
 
     /* START <USER MUTATION HANDLERS> */

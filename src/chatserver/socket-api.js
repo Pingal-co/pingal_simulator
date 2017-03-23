@@ -50,7 +50,9 @@ let joinRoom = (roomName = DEFAULT_LOBBY, params = {}) => {
 
 let addSlide = (slide, delay = 0) => {
   setTimeout(function() {
+    console.log(slide)
     store.commit('APPEND_SLIDE', slide)
+    store.commit('SET_CURRENT_SLIDE',slide)
   }, delay)
 } 
 
