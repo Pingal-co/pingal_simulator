@@ -21,11 +21,8 @@
 			roomChannel() {
 				return this.$store.state.currentRoomChannel
 			}
-
-			/*
-
-			*/
 		},
+		
 		methods: {
 			onSend(button){
 				let slide = (this.hasIndex) ? {
