@@ -1,8 +1,8 @@
 <template>
-    <md-chips v-model="keywords" :md-max="30" md-static>
+    <md-chips v-model="getIndex" :md-max="30" md-static>
     <template scope="chip">            
         <span>{{ chip.value }}</span>
-        <small v-if="chip.value === first_key">(favorite)</small>
+        <small v-if="chip.value === getKeyPhrase">(favorite)</small>
     </template>
     </md-chips>
 
@@ -12,9 +12,23 @@
 </template>
 
 <script>
+    import { mapGetters, mapActions } from 'vuex'
 	export default {
-		props: ['terms'],
+		// props: ['terms'],
+        // mix the getters into computed with object spread operator
         computed: {
+            ...mapGetters([
+                'getKeyPhrase',
+                'getIndex'
+            ])
+            
+                
+        }
+    }
+
+
+/*
+            ,
             first_key(){
                 return Object.keys(this.terms[0])[0]
             },
@@ -22,7 +36,7 @@
                     let obj = this.terms ? this.terms[0] : {}
                     let key = obj && Object.keys(obj)[0]
                     return [key].concat(obj[key])
-                /*
+
                 // getter
                 get: () => { 
                     console.log(this.terms)
@@ -39,9 +53,6 @@
                     this.terms = [{ key : updatedTerms }]
                 }
                 */
-                
-            }
-        }
-    }
 	
 </script>
+
