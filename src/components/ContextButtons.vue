@@ -7,18 +7,39 @@
 </template>
 
 <script>
+    import { mapGetters, mapActions } from 'vuex'
 	export default {
 		props: ['buttons'],
+		// mix the getters into computed with object spread operator
 		computed: {
+			...mapGetters([
+                'getKeyPhrase',
+                'getIndex',
+				'hasIndex',
+				'recallMemory'
+            ]),
 			roomChannel() {
 				return this.$store.state.currentRoomChannel
 			}
+
+			/*
+
+			*/
 		},
 		methods: {
 			onSend(button){
+				let slide = (this.hasIndex) ? {
+					text: button.bot, 
+					index: this.getIndex.join(" "),
+					topic: this.getKeyPhrase,
+					previous_text: this.recallMemory
+				} : {text: button.bot}
+				console.log("sending slide via context button")
+				console.log(slide)
+				//let slide = {text: button.bot}
 				this.$store.dispatch('pushSlide', {
 		          roomChannel: this.roomChannel,
-		          slide: {text: button.bot}, 
+		          slide: slide, 
 		          event: 'request'
 				})
 
