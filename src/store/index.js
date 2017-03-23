@@ -54,6 +54,34 @@ const getters = {
 
    currentUser: (state) => state.currentUser,
    placeholder: (state) => state.placeholder,
+	
+   getBrain: (state) => { 
+     let brain = (state.currentSlide.isPingal && state.currentSlide.brain) ? state.currentSlide.brain : {}
+     return brain
+   },
+
+   hasIndex: (state) => {
+     let brain = (state.currentSlide.isPingal && state.currentSlide.brain) ? state.currentSlide.brain : {}
+      return brain && brain.index_terms && brain.index_terms.length > 0
+   },
+
+	 getIndex: (state) => {
+        let brain = (state.currentSlide.isPingal && state.currentSlide.brain) ? state.currentSlide.brain : {}
+        let first_obj = (brain && brain.index_terms) ? brain.index_terms[0] : {}
+        let key = first_obj && Object.keys(first_obj)[0]
+        return [key].concat(first_obj[key])
+			},
+	
+    getKeyPhrase() {
+          let brain = (state.currentSlide.isPingal && state.currentSlide.brain) ? state.currentSlide.brain : {}
+          let first_obj = (brain && brain.index_terms) ? brain.index_terms[0] : {}
+          return first_obj && Object.keys(first_obj)[0]
+    },
+	
+    recallMemory(){
+       let brain = (state.currentSlide.isPingal && state.currentSlide.brain) ? state.currentSlide.brain : {}
+       return brain && brain.text
+    }
 
 }
 
