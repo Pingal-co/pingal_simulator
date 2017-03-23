@@ -22,7 +22,9 @@
       </div>  
          
       <div class="slides-section">
-        <slide-list
+      
+        <loading v-if="slides.length === 0" />
+        <slide-list v-else
           :slides="slides">
         </slide-list>
 
@@ -44,6 +46,7 @@
   import RoomNav from '@/components/RoomNav'
   import SlideList from '@/components/SlideList'
   import InputToolBar from '@/components/InputToolBar'
+  import Loading from '@/components/Loading'
 
   // npm modules
   import Cookies from 'js-cookie'
@@ -54,7 +57,8 @@
       TopBar,
       RoomNav,
       SlideList,
-      InputToolBar
+      InputToolBar,
+      Loading
     },
     data () {
       return {

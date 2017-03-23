@@ -26,7 +26,9 @@
         </md-button>
 
         <md-menu-content>
-          <div @click="logOut"><md-menu-item>Logout</md-menu-item></div>
+          <div @click="logOut">
+            <md-menu-item class="logout">Logout</md-menu-item>
+          </div>
         </md-menu-content>
       </md-menu>
     </div>
@@ -99,7 +101,7 @@ export default {
   
 </script>
 
-<style>
+<style lang="scss">
   .top-bar {
     height: 54px;
     width: 100%;
@@ -115,7 +117,7 @@ export default {
   }
 
   .login-container {
-    padding: 4px 12px 4px 12px;
+    padding: 12px 24px 12px 24px;
   }
 
   .chat-icon {
@@ -132,8 +134,21 @@ export default {
   .md-menu-content {
     margin-top: 45px !important;
     min-width: 240px !important;
-    padding: 6px 12px 9px 12px;
+    // padding: 6px 12px 9px 12px;
     background-color: white;
   }
 
+  .md-list {
+    padding: 0px !important;
+  }
+
+  .logout {
+    width: 100%;
+    padding: 12px
+  }
+
+  .md-list-item-container {
+    display: flex;
+    justify-content: center !important;
+  }
 </style>

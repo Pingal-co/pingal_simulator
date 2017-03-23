@@ -50,15 +50,12 @@ let joinRoom = (roomName = DEFAULT_LOBBY, params = {}) => {
 
 let addSlide = (slide, delay = 0) => {
   setTimeout(function() {
-    console.log(slide)
     store.commit('APPEND_SLIDE', slide)
     store.commit('SET_CURRENT_SLIDE',slide)
   }, delay)
 } 
 
 let getSlidesInRoom = (data) => {
-  console.log("getting slides in room")
-  console.log(data)
   store.commit('APPEND_SLIDES', data.slides)
 }
 
@@ -73,7 +70,7 @@ const responseDelay = 300
 let response = ({slide}) => {
   //slide.type = 'suggestTopic'
   // slide.isPingal = true
-  console.log("Name or Interest or Something Else")
+  console.log("Name or Interest or Something Else (slide v)")
   console.log(slide)
 
   

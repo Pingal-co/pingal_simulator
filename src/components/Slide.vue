@@ -75,7 +75,6 @@
     props: ['slide'] ,
     computed: {
         datetime() {
-          console.log(this.slide)
            return moment(this.slide.inserted_at).format('YYYY-MM-DD [at] hh:mm')
           // return this.slide.inserted_at
       }
