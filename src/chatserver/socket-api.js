@@ -50,6 +50,7 @@ let joinRoom = (roomName = DEFAULT_LOBBY, params = {}) => {
 
 let addSlide = (slide, delay = 0) => {
   setTimeout(function() {
+    console.log(slide)
     store.commit('APPEND_SLIDE', slide)
     store.commit('SET_CURRENT_SLIDE',slide)
   }, delay)
@@ -174,6 +175,8 @@ export let joinPingalChannel = (userId) => { //, jwt
   roomChannel.on('response:joinTopic', response)
   roomChannel.on('response:logIn', response)
   roomChannel.on('response:logOut', response)
+  roomChannel.on('response:planIntroduction', response)
+  roomChannel.on('response:brain', response)
 
   roomChannel.on('add:rooms', addRooms)
   roomChannel.on('add:slide', addSlide)
