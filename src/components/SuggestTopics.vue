@@ -39,7 +39,7 @@
   	$primary-color-l3: rgb(254, 243, 234);
   	$primary-color-l4: rgb(254, 247, 242); 
 
-  	$border-radius: 24px;
+  	$border-radius: 20px;
 
 	.topics-container {
 		padding-top: 18px;
