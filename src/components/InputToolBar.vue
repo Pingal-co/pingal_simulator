@@ -24,7 +24,6 @@ export default {
     props: ['muteSpeaker', 'topic', 'user', 'mobile'],
     data() {
       return {
-        text: '',
         inputSuggestions: [{text: 'Sign up', action: 'send'},
           {text: 'Join room', action: 'send'}, 
           {text: 'Log in', action: 'send'}, 
@@ -53,6 +52,10 @@ export default {
         }
       },
 
+      text() {
+        return this.$store.state.currentInput.text
+      }
+
       /*
       roomChannel() {
         return this.$store.state.currentRoomChannel
@@ -79,6 +82,12 @@ export default {
         } else if (suggestion.action === 'send') {
           this.onSend()
         }  
+        this.$refs.inputText.focus() 
+      }
+    },
+
+    updated() {
+      if (this.$store.state.currentInput.focus) {
         this.$refs.inputText.focus() 
       }
     }

@@ -24,13 +24,14 @@ let currentRoomChannel = jwt ? joinPingalChannel(user.id) : joinWorldChannel(ses
 
 // contains the state of entire app
 const state = {
-  slides: [],
   currentSlide: {},
   currentUser: user,
-  session: session,
-  rooms: [],
   currentRoom: {name: "Pingal"},
   currentRoomChannel: currentRoomChannel,
+  currentInput: {text: '', focus: true},
+  slides: [],
+  session: session,
+  rooms: [],
   jwt: jwt,
   placeholder: "Type a Message"
 }
