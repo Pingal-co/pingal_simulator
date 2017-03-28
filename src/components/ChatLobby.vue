@@ -4,12 +4,14 @@
       :show-login-icon="false"
       :show-menu-icon="false"
       :toggleLeftSidenav="toggleLeftSidenav"
+      :toggleRightSidenav="toggleRightSidenav"
       :mobile="mobile"
     >
     </top-bar>
 
     <div class="main">
 
+      <!-- room nav -->
       <div v-if="mobile">
         <md-sidenav class="md-left" ref="leftSidenav">
           <room-nav>
@@ -20,9 +22,9 @@
           <room-nav>
           </room-nav>
       </div>  
-         
-      <div class="slides-section">
       
+      <!-- slides in room -->
+      <div class="slides-section">   
         <loading v-if="slides.length === 0" />
         <slide-list v-else
           :slides="slides">
@@ -37,9 +39,17 @@
         </input-tool-bar>
       </div>
 
-      <div class="right-side">
-        <room-menu /></room-menu>
-      </div>
+      <!-- room menu -->
+        <div v-if="mobile">
+          <md-sidenav class="md-right" ref="rightSidenav">        
+            <room-menu></room-menu>
+          </md-sidenav>
+        </div>
+        <div v-else>
+          <div class="right-side">
+            <room-menu></room-menu>
+          </div>
+        </div>
     </div>
     
   </div>
@@ -91,6 +101,9 @@
     methods: {
       toggleLeftSidenav() {
         this.$refs.leftSidenav.toggle(); 
+      },
+      toggleRightSidenav() {
+        this.$refs.rightSidenav.toggle();
       },
       handleResize() {
         this.windowWidth = window.innerWidth;

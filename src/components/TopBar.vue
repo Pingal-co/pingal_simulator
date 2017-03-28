@@ -1,52 +1,54 @@
 <template>
   <div class="top-bar"> <!-- phone-viewport custom-bar  -->
-     <!-- <md-toolbar class="md-warn">
-        <md-button class="md-icon-button" v-if="showMenuIcon" @click.native="$refs.sidenav.toggle()">
-          <md-icon>menu</md-icon>
-        </md-button>
 
-        <span style="flex: 1"></span>
-
-        <md-button class="md-icon-button" v-if="showLoginIcon" @click="login">
-          <md-icon>lock</md-icon>
-        </md-button>
-
-     </md-toolbar> -->
-    <md-button v-if="mobile" class="md-icon-button" @click.native="toggleLeftSidenav">
-      <md-icon class="chat-icon">chat</md-icon>
-    </md-button>
-    <div v-else></div> <!-- Left flush -->
-
-    <div class="room-name">{{currentRoom.name}}</div>
-
-    <div v-if="user">
-      <md-menu md-direction="bottom left">
-        <md-button md-menu-trigger>
-          <div class="profile-button">{{name}}</div>
-        </md-button>
-
-        <md-menu-content>
-          <div @click="logOut">
-            <md-menu-item class="logout">Logout</md-menu-item>
-          </div>
-        </md-menu-content>
-      </md-menu>
+    <div>
+    <!-- Left -->
+      <md-button v-if="mobile" class="md-icon-button" @click.native="toggleLeftSidenav">
+        <md-icon class="chat-icon">chat</md-icon>
+      </md-button>
+      <div v-else></div> 
     </div>
-    <div v-else>
-      <md-menu md-direction="bottom left">
-        <md-button md-menu-trigger>
-          <div class="profile-button">Login</div>
-        </md-button>
 
-        <md-menu-content>
-          <div class="login-container">
-            <login />
-          </div>
-        </md-menu-content>
-      </md-menu>
+    <div>
+    <!-- Middle -->
+      <div class="room-name">{{currentRoom.name}}</div>
     </div>
-    
+
+    <!-- Right -->
+    <div class="top-bar-right">
+      <div v-if="user">
+        <md-menu md-direction="bottom left">
+          <md-button md-menu-trigger>
+            <div class="profile-button">{{name}}</div>
+          </md-button>
+
+          <md-menu-content>
+            <div @click="logOut">
+              <md-menu-item class="logout">Logout</md-menu-item>
+            </div>
+          </md-menu-content>
+        </md-menu>
+      </div>
+      <div v-else>
+        <md-menu md-direction="bottom left">
+          <md-button md-menu-trigger>
+            <div class="profile-button">Login</div>
+          </md-button>
+
+          <md-menu-content>
+            <div class="login-container">
+              <login></login>
+            </div>
+          </md-menu-content>
+        </md-menu>
+      </div>
+
+      <md-button v-if="mobile" class="md-icon-button" @click.native="toggleRightSidenav">
+        <md-icon class="menu-icon">menu</md-icon>
+      </md-button>
+    </div>
   </div>
+
 </template>
 
 <script>
@@ -68,6 +70,7 @@ export default {
       default: true
     },
     toggleLeftSidenav: Function,
+    toggleRightSidenav: Function,
     mobile: Boolean,
   },
 
@@ -109,6 +112,14 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  .top-bar-right {
+    display: flex;
+  }
+
+  .menu-icon {
+    color: white;
   }
 
   .profile-button {
