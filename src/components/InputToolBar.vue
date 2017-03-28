@@ -106,7 +106,7 @@ export default {
   }
 
   .input-box {
-    width: calc(100vw - 360px);
+    width: calc(100vw - 720px);
     height: 54px;
     border-top: 1px solid $border-color;
     display: flex;

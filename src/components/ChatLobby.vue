@@ -36,6 +36,10 @@
           >
         </input-tool-bar>
       </div>
+
+      <div class="right-side">
+        <room-menu /></room-menu>
+      </div>
     </div>
     
   </div>
@@ -44,6 +48,7 @@
 <script>
   import TopBar from '@/components/TopBar'
   import RoomNav from '@/components/RoomNav'
+  import RoomMenu from '@/components/RoomMenu'
   import SlideList from '@/components/SlideList'
   import InputToolBar from '@/components/InputToolBar'
   import Loading from '@/components/Loading'
@@ -56,6 +61,7 @@
     components: {
       TopBar,
       RoomNav,
+      RoomMenu,
       SlideList,
       InputToolBar,
       Loading
@@ -105,6 +111,9 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <!-- Removed "scoped" as it's making CSS overides of the MD framework impossible -->
 <style lang="scss">
+  $border-color: rgb(225, 225, 225);
+  $primary-darker-color: rgb(217, 98, 12);
+
   h1, h2 {
     font-weight: normal;
   }
@@ -121,6 +130,14 @@
     overflow-x: hidden;
     height: calc(100vh - 108px);
     width: 100%;
+  }
+
+  .right-side {
+    min-width: 360px;
+    max-width: 360px;
+    height: calc(100vh - 54px);
+    border-left: 1px solid $border-color;
+    overflow-y: scroll;
   }
 
   .md-sidenav-content {
