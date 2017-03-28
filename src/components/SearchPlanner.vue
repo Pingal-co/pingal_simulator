@@ -1,5 +1,5 @@
 <template>
-    <md-chips v-model="getIndex" :md-max="60">
+    <md-chips v-model="getIndex" :md-max="60" class="chips">
     <template scope="chip">            
         <span>{{ chip.value }}</span>
         <small v-if="chip.value === getKeyPhrase">(favorite)</small>
@@ -57,7 +57,7 @@
 </script>
 
 <style lang="scss">
-    .md-list-item .md-button:not(.md-button-ghost):not(.md-list-item-container) {
+    .md-list-item .chips .md-button:not(.md-button-ghost):not(.md-list-item-container) {
         position: absolute !important;
     }
 </style>
