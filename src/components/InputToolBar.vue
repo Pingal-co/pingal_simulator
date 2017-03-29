@@ -11,6 +11,7 @@
       <div :class="['input-box', mobile ? 'mobile' : '']">
         <form @submit.prevent="onSend" class="input-form">
           <input type="text" v-model="text" class="input-text" :placeholder="placeholder" ref="inputText" autofocus />
+          <span style="display:none">{{focus}}</span>
         </form>
       </div> 
     </form>
@@ -61,6 +62,15 @@ export default {
         }   
       },
 
+      focus: {
+        get() {
+          return this.$store.state.currentInput.focus
+        },
+        set(value) {
+          this.$store.commit('INPUT_FOCUS')
+        }   
+      },
+
       /*
       roomChannel() {
         return this.$store.state.currentRoomChannel
@@ -80,6 +90,11 @@ export default {
               this.$store.commit('UPDATE_INPUT_TEXT', '')
             })
       },
+      focusInput() {
+        if (this.focus > 0) {
+          this.$refs.inputText.focus() 
+        }
+      }
       // suggestionClick(suggestion) {
       //   this.text = suggestion.text
       //   if (suggestion.action === 'fill') {
@@ -92,10 +107,7 @@ export default {
     },
 
     updated() {
-      // Focus input
-      if (this.$store.state.currentInput.focus) {
-        this.$refs.inputText.focus() 
-      }
+      this.focusInput()
     }
   }
   

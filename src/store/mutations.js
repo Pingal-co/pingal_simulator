@@ -84,7 +84,7 @@ const mutations = {
     },
 
     INPUT_FOCUS (state) {
-        state.currentInput.focus = true
+        state.currentInput.focus += 1
     }
 
 }

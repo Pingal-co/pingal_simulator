@@ -28,7 +28,7 @@ const state = {
   currentUser: user,
   currentRoom: {name: "Pingal"},
   currentRoomChannel: currentRoomChannel,
-  currentInput: {text: '', focus: true},
+  currentInput: {text: '', focus: 1},
   slides: [],
   session: session,
   rooms: [],

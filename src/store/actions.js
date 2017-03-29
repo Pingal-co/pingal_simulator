@@ -104,6 +104,9 @@ const actions = {
     }
 
     commit('SET_CURRENT_ROOM', {name: 'Pingal'})
+    
+    // Focus input
+    commit('INPUT_FOCUS')
   },
 
   /* START <ROOM DISPATCH ACTION HANDLERS> */
@@ -111,6 +114,8 @@ const actions = {
       commit('CLEAR_SLIDES')
       commit('SET_CURRENT_ROOM_CHANNEL', joinRoomChannel(room.id))
       commit('SET_CURRENT_ROOM', room)
+      // Focus input
+      commit('INPUT_FOCUS')
   },
 
 }
