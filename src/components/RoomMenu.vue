@@ -27,9 +27,12 @@
 			  </div>
 
 		      <div v-if="user.expanded" class="user-expanded">
-			      <md-button class="md-icon-button md-list-action">
-			        <md-icon class="md-primary">chat_bubble</md-icon>
-			      </md-button>
+		      	<md-button class="md-raised md-primary get-introduced">
+		      	  Get Introduced
+			      <md-icon class="get-introduced-icon">chat_bubble</md-icon>
+			    </md-button>
+		      	  
+		      	  Unwatch
 		      </div>
 		    </md-list-item>
 		  </md-list>
@@ -153,9 +156,19 @@
 	}
 
 	.user-expanded {
-		// height: 108px;
-		height: 54px;
+		height: 70px;
 		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+	}
+
+	.get-introduced {
+	}
+
+	.get-introduced-icon {
+		color: white !important;
+		padding-left: 5px;
 	}
 
 	.create-room {
