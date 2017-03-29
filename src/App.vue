@@ -12,6 +12,10 @@
 
 <style lang="scss">
   $pingal-blue: #0383f9;
+
+  body {
+    overflow: hidden;
+  }
   
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;

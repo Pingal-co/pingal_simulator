@@ -1,6 +1,5 @@
 <template>
 	<div class="room-menu">
-
 		<div class="room-topics">
 			<div class="room-topics-header">
 				Your Topics

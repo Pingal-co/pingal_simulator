@@ -120,6 +120,7 @@ export default {
 
   .menu-icon {
     color: white;
+    padding-top: 3px;
   }
 
   .profile-button {

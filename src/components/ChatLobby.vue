@@ -40,16 +40,16 @@
       </div>
 
       <!-- room menu -->
-        <div v-if="mobile">
-          <md-sidenav class="md-right" ref="rightSidenav">        
-            <room-menu></room-menu>
-          </md-sidenav>
+      <div v-if="mobile">
+        <md-sidenav class="md-right" ref="rightSidenav">        
+          <room-menu></room-menu>
+        </md-sidenav>
+      </div>
+      <div v-else>
+        <div class="right-side">
+          <room-menu></room-menu>
         </div>
-        <div v-else>
-          <div class="right-side">
-            <room-menu></room-menu>
-          </div>
-        </div>
+      </div>
     </div>
     
   </div>
