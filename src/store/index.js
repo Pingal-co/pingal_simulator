@@ -29,6 +29,8 @@ const state = {
   currentRoom: {name: "Pingal"},
   currentRoomChannel: currentRoomChannel,
   currentInput: {text: '', focus: 1},
+  showRight: true,
+  showLeft: true,
   slides: [],
   session: session,
   rooms: [],

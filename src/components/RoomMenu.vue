@@ -12,8 +12,8 @@
 		</div>
 
 		<div class="room-connections">
-		  <md-list>
- 			<div class="room-connections-header">Connections</div>
+		  <div class="room-connections-header">Connections</div>
+		  <md-list class="connection-panel-list">
 		    <md-list-item class="connection-panel" v-for="user, index in users" :key="index">
 		      <md-avatar>
 		        <img :src="user.image" alt="People">
@@ -27,6 +27,8 @@
 		    </md-list-item>
 		  </md-list>
 		</div>
+
+		<md-button class="md-raised md-primary">Create Group Chat</md-button>
 	</div>
 </template>
 
@@ -37,8 +39,17 @@
 	export default {
 	  data: () => ({
 	      interests: interests,
-	      users: users
-	  })
+	      users: users,
+	  }),
+	  computed: {
+	  	invitations() {
+	  		let invitees = []
+	  		for (var i = 0; i < users.length; i++) {
+	  			invitees.push(users[i].name)
+	  		}
+	  		return invitees
+	  	}
+	  }
 	};
 </script>
 
@@ -59,8 +70,12 @@
 		padding: 8px 18px 0px 18px;
 	}
 
-	.room-connections {
+	.connection-panel-list {
+		max-height: calc(40vh - 54px);
+		overflow-y: scroll;
+	}
 
+	.room-connections {
 	}
 
 	.connection-panel {

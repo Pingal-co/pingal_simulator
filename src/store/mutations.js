@@ -85,7 +85,15 @@ const mutations = {
 
     INPUT_FOCUS (state) {
         state.currentInput.focus += 1
-    }
+    },
+
+    TOGGLE_SHOW_RIGHT (state) {
+        state.showRight = !state.showRight
+    },
+
+    TOGGLE_SHOW_LEFT (state) {
+        state.showLeft = !state.showLeft
+    },
 
 }
 

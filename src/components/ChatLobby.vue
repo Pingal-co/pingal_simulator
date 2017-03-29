@@ -85,9 +85,7 @@
         roomChannel: this.$store.state.currentRoomChannel,
         topic: '1',
         user: { _id: 2, name: 'Sam', hash: 'Sam', avatar: 'mood'},
-        windowWidth: window.innerWidth,
-        showRight: true,
-        showLeft: true,
+        windowWidth: window.innerWidth
       }
     },
 
@@ -101,6 +99,12 @@
         } else {
           return false
         }
+      },
+      showRight() {
+        return this.$store.state.showRight
+      },
+      showLeft() {
+        return this.$store.state.showLeft
       }
     },
 
@@ -109,7 +113,7 @@
         if (this.mobile) {
           this.$refs.leftSidenav.toggle(); 
         } else {
-          this.showLeft = !this.showLeft
+          this.$store.commit("TOGGLE_SHOW_LEFT")
         }
         
       },
@@ -117,7 +121,7 @@
         if (this.mobile) {
           this.$refs.rightSidenav.toggle();
         } else {
-          this.showRight = !this.showRight
+          this.$store.commit("TOGGLE_SHOW_RIGHT")
         }  
       },
       handleResize() {

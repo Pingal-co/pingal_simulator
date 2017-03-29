@@ -89,7 +89,7 @@ export default {
     },
     currentRoom() {
       return this.$store.state.currentRoom
-    }
+    },
   },
 
   methods:{
@@ -107,6 +107,7 @@ export default {
 
 <style lang="scss">
   $pingal-blue: #0383f9;
+  $secondary-color: rgb(57, 73, 171);
 
   .top-bar {
     height: 54px;
@@ -145,7 +146,7 @@ export default {
   }
 
   .highlight-icon {
-    color: $pingal-blue;
+    color: $secondary-color;
   }
 
   .room-name {
