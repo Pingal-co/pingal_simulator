@@ -4,7 +4,7 @@
     <div>
     <!-- Left -->
       <md-button class="md-icon-button" @click.native="toggleLeftSidenav">
-        <md-icon class="chat-icon">chat</md-icon>
+        <md-icon :class="['chat-icon', showLeft ? 'highlight-icon' : null]">chat</md-icon>
       </md-button>
     </div>
 
@@ -43,7 +43,7 @@
       </div>
 
       <md-button class="md-icon-button menu-button" @click.native="toggleRightSidenav">
-        <md-icon class="menu-icon">menu</md-icon>
+        <md-icon :class="['menu-icon', showRight ? 'highlight-icon' : null]">menu</md-icon>
       </md-button>
     </div>
   </div>
@@ -71,6 +71,8 @@ export default {
     toggleLeftSidenav: Function,
     toggleRightSidenav: Function,
     mobile: Boolean,
+    showLeft: Boolean,
+    showRight: Boolean,
   },
 
   computed: {
@@ -104,6 +106,8 @@ export default {
 </script>
 
 <style lang="scss">
+  $pingal-blue: #0383f9;
+
   .top-bar {
     height: 54px;
     width: 100%;
@@ -121,10 +125,6 @@ export default {
     margin-top: 3px !important;
   }
 
-  .menu-icon {
-    color: white;
-  }
-
   .profile-button {
     color: white;
     padding-right: 12px;
@@ -138,6 +138,14 @@ export default {
     font-size: 28px !important;
     color: white;
     right: 5px !important;
+  }
+
+  .menu-icon {
+    color: white;
+  }
+
+  .highlight-icon {
+    color: $pingal-blue;
   }
 
   .room-name {

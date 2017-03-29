@@ -6,6 +6,8 @@
       :toggleLeftSidenav="toggleLeftSidenav"
       :toggleRightSidenav="toggleRightSidenav"
       :mobile="mobile"
+      :showLeft="showLeft"
+      :showRight="showRight"
     >
     </top-bar>
 
