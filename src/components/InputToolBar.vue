@@ -113,13 +113,12 @@ export default {
   $primary-darker-color: rgb(217, 98, 12);
 
   .input-toolbar {
-    position: fixed;
-    bottom: 0px;
+    width: 100%;
     z-index: 3;
+    align-self: flex-end;
   }
 
   .input-box {
-    width: calc(100vw - 720px);
     height: 54px;
     border-top: 1px solid $border-color;
     display: flex;

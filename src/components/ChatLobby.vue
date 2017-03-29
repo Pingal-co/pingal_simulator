@@ -152,10 +152,11 @@
   }
 
   .slides-section {
-    overflow-y: scroll;
     overflow-x: hidden;
-    height: calc(100vh - 108px);
+    height: calc(100vh - 54px);
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .right-side {

@@ -42,7 +42,7 @@
         </md-menu>
       </div>
 
-      <md-button class="md-icon-button" @click.native="toggleRightSidenav">
+      <md-button class="md-icon-button menu-button" @click.native="toggleRightSidenav">
         <md-icon class="menu-icon">menu</md-icon>
       </md-button>
     </div>
@@ -117,9 +117,12 @@ export default {
     display: flex;
   }
 
+  .menu-button {
+    margin-top: 3px !important;
+  }
+
   .menu-icon {
     color: white;
-    padding-top: 3px;
   }
 
   .profile-button {
