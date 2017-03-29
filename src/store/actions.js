@@ -113,12 +113,6 @@ const actions = {
       commit('SET_CURRENT_ROOM', room)
   },
 
-  /* Input Toolbar */
-  updateInputText ( {commit}, {text}) {
-    console.log(text)
-    commit('UPDATE_INPUT_TEXT', text)
-  }
-
 }
 
 export default actions

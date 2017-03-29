@@ -2,7 +2,7 @@
 	<div class="room-menu">
 		<div class="room-interests">
 			<div class="room-interests-header">
-				Your Interests
+				Interests
 			</div>
 			<md-chips v-model="interests" :md-max="20" md-input-placeholder="Add Interest...">
 			  <template scope="chip">
@@ -13,8 +13,8 @@
 
 		<div class="room-connections">
 		  <md-list>
- 			<div class="room-connections-header">Your Connections</div>
-		    <md-list-item class="connection-panel" v-for="user in users">
+ 			<div class="room-connections-header">Connections</div>
+		    <md-list-item class="connection-panel" v-for="user, index in users" :key="index">
 		      <md-avatar>
 		        <img :src="user.image" alt="People">
 		      </md-avatar>

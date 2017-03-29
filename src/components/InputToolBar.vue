@@ -29,7 +29,7 @@ export default {
           {text: 'Log in', action: 'send'}, 
           {text: 'My name is ...', action: 'fill'}, 
           {text: 'I like ...', action: 'fill'}, 
-          {text: 'Log out', action: 'send'}]
+          {text: 'Log out', action: 'send'}],
       }
     },
 
@@ -52,9 +52,14 @@ export default {
         }
       },
 
-      text() {
-        return this.$store.state.currentInput.text
-      }
+      text: {
+        get() {
+          return this.$store.state.currentInput.text
+        },
+        set(value) {
+          this.$store.commit('UPDATE_INPUT_TEXT', value)
+        }   
+      },
 
       /*
       roomChannel() {
@@ -72,21 +77,22 @@ export default {
           slide: this.slide, 
           event: 'request'})
             .then(() => {
-              this.text = ''
+              this.$store.commit('UPDATE_INPUT_TEXT', '')
             })
       },
-      suggestionClick(suggestion) {
-        this.text = suggestion.text
-        if (suggestion.action === 'fill') {
-          // something
-        } else if (suggestion.action === 'send') {
-          this.onSend()
-        }  
-        this.$refs.inputText.focus() 
-      }
+      // suggestionClick(suggestion) {
+      //   this.text = suggestion.text
+      //   if (suggestion.action === 'fill') {
+      //     // something
+      //   } else if (suggestion.action === 'send') {
+      //     this.onSend()
+      //   }  
+      //   this.$refs.inputText.focus() 
+      // },
     },
 
     updated() {
+      // Focus input
       if (this.$store.state.currentInput.focus) {
         this.$refs.inputText.focus() 
       }

@@ -80,11 +80,7 @@ const mutations = {
 
     /* INPUT TOOLBAR */
     UPDATE_INPUT_TEXT (state, text) {
-        console.log(text)
-        console.log("input state")
-        console.log(state)
-        // state.placeholder = text
-        state.currentInput.text = text
+        state.currentInput.text =  text
     },
 
     INPUT_FOCUS (state) {

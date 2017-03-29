@@ -43,9 +43,9 @@
 			},
 			clickAction(button) {
 				if (button.action === 'fill') {
-					 this.$store.dispatch('updateInputText', {
-						 text: button.text.slice(0, -3)
-					 })
+					 console.log("click action")
+					 console.log(button)
+					 this.$store.commit('UPDATE_INPUT_TEXT', button.text.slice(0, -3))
 					 this.$store.commit('INPUT_FOCUS')
 					// dispatch an action
 				} else if (button.action === 'send') {
