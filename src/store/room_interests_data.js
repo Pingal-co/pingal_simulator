@@ -1,0 +1,1 @@
+module.exports = ["neuroscience", "AI", "psychology", "meditation", "minds", "consciousness"]

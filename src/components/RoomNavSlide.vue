@@ -66,6 +66,7 @@
 
 <style lang="scss" scoped>
 	$border-color: rgb(225, 225, 225);
+	$border-color-darker: rgb(215, 215, 215);
 
 	.room-nav-slide {
 		cursor: pointer;
@@ -80,7 +81,7 @@
 	}
 
 	.selected {
-		background-color: $border-color;
+		background-color: $border-color-darker;
 	}
 
 	.formatted-time {

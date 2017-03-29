@@ -1,13 +1,12 @@
 <template>
 	<div class="room-menu">
-		<div class="room-topics">
-			<div class="room-topics-header">
-				Your Topics
+		<div class="room-interests">
+			<div class="room-interests-header">
+				Your Interests
 			</div>
-			<md-chips v-model="topics" :md-max="20" md-input-placeholder="Topics...">
+			<md-chips v-model="interests" :md-max="20" md-input-placeholder="Add Interest...">
 			  <template scope="chip">
 			    <span>{{ chip.value }}</span>
-			    <small v-if="chip.value === 'Amsterdam'">(favorite)</small>
 			  </template>
 			</md-chips>
 		</div>
@@ -15,39 +14,15 @@
 		<div class="room-connections">
 		  <md-list>
  			<div class="room-connections-header">Your Connections</div>
-		    <md-list-item>
+		    <md-list-item class="connection-panel" v-for="user in users">
 		      <md-avatar>
-		        <img src="https://placeimg.com/40/40/people/5" alt="People">
+		        <img :src="user.image" alt="People">
 		      </md-avatar>
 
-		      <span>Abbey Christansen</span>
+		      <span>{{user.name}}</span>
 
 		      <md-button class="md-icon-button md-list-action">
 		        <md-icon class="md-primary">chat_bubble</md-icon>
-		      </md-button>
-		    </md-list-item>
-
-		    <md-list-item>
-		      <md-avatar>
-		        <img src="https://placeimg.com/40/40/people/1" alt="People">
-		      </md-avatar>
-
-		      <span>Alex Nelson</span>
-
-		      <md-button class="md-icon-button md-list-action">
-		        <md-icon class="md-primary">chat_bubble</md-icon>
-		      </md-button>
-		    </md-list-item>
-
-		    <md-list-item>
-		      <md-avatar>
-		        <img src="https://placeimg.com/40/40/people/6" alt="People">
-		      </md-avatar>
-
-		      <span>Mary Johnson</span>
-
-		      <md-button class="md-icon-button md-list-action">
-		        <md-icon>chat_bubble</md-icon>
 		      </md-button>
 		    </md-list-item>
 		  </md-list>
@@ -56,15 +31,20 @@
 </template>
 
 <script>
+	import users from '@/store/room_users_data'
+	import interests from '@/store/room_interests_data.js'
+
 	export default {
 	  data: () => ({
-	      topics: ['Amsterdam', 'London', 'Tokio']
+	      interests: interests,
+	      users: users
 	  })
 	};
 </script>
 
 <style lang="scss">
 	$border-color: rgb(225, 225, 225);
+	$border-color-darker: rgb(215, 215, 215);
 	$primary-darker-color: rgb(217, 98, 12);
 
 	.room-menu {
@@ -75,7 +55,7 @@
 		// justify-content: center;	
 	}
 
-	.room-topics {
+	.room-interests {
 		padding: 8px 18px 0px 18px;
 	}
 
@@ -83,12 +63,24 @@
 
 	}
 
-	.room-topics-header, .room-connections-header {
+	.connection-panel {
+		cursor: pointer;
+	}
+
+	.connection-panel:hover {
+		background-color: $border-color;
+	}
+
+	.connection-panel:active {
+		background-color: $border-color-darker;
+	}
+
+	.room-interests-header, .room-connections-header {
 		color: rgba(0,0,0,.54);
     	font-size: 14px;
 	}
 
-	.room-topics-header {
+	.room-interests-header {
 		padding-top: 12px;
 	}
 
