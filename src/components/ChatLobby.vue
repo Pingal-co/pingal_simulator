@@ -19,8 +19,10 @@
         </md-sidenav>
       </div>
       <div v-else>
+        <div v-if="showLeft">
           <room-nav>
           </room-nav>
+        </div>
       </div>  
       
       <!-- slides in room -->
@@ -46,7 +48,7 @@
         </md-sidenav>
       </div>
       <div v-else>
-        <div class="right-side">
+        <div v-if="showRight" class="right-side">
           <room-menu></room-menu>
         </div>
       </div>
@@ -82,6 +84,8 @@
         topic: '1',
         user: { _id: 2, name: 'Sam', hash: 'Sam', avatar: 'mood'},
         windowWidth: window.innerWidth,
+        showRight: true,
+        showLeft: true,
       }
     },
 
@@ -100,10 +104,19 @@
 
     methods: {
       toggleLeftSidenav() {
-        this.$refs.leftSidenav.toggle(); 
+        if (this.mobile) {
+          this.$refs.leftSidenav.toggle(); 
+        } else {
+          this.showLeft = !this.showLeft
+        }
+        
       },
       toggleRightSidenav() {
-        this.$refs.rightSidenav.toggle();
+        if (this.mobile) {
+          this.$refs.rightSidenav.toggle();
+        } else {
+          this.showRight = !this.showRight
+        }  
       },
       handleResize() {
         this.windowWidth = window.innerWidth;

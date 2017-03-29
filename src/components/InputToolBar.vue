@@ -62,13 +62,8 @@ export default {
         }   
       },
 
-      focus: {
-        get() {
-          return this.$store.state.currentInput.focus
-        },
-        set(value) {
-          this.$store.commit('INPUT_FOCUS')
-        }   
+      focus() {
+        return this.$store.state.currentInput.focus  
       },
 
       /*

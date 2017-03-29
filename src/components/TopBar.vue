@@ -3,10 +3,9 @@
 
     <div>
     <!-- Left -->
-      <md-button v-if="mobile" class="md-icon-button" @click.native="toggleLeftSidenav">
+      <md-button class="md-icon-button" @click.native="toggleLeftSidenav">
         <md-icon class="chat-icon">chat</md-icon>
       </md-button>
-      <div v-else></div> 
     </div>
 
     <div>
@@ -43,7 +42,7 @@
         </md-menu>
       </div>
 
-      <md-button v-if="mobile" class="md-icon-button" @click.native="toggleRightSidenav">
+      <md-button class="md-icon-button" @click.native="toggleRightSidenav">
         <md-icon class="menu-icon">menu</md-icon>
       </md-button>
     </div>
