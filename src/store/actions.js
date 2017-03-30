@@ -122,8 +122,19 @@ const actions = {
       commit('INPUT_FOCUS')
   },
 
-  createGroupChat ({commit}, {users}) {
-    console.log(users)
+  createGroupRoom ({commit}, {users}) {
+    console.log("create group room")
+    // Create room 
+  },
+
+  unwatch ({commit}, {userId, currentRoom}) {
+    console.log("unwatch user")
+    // Unwatch user
+  },
+
+  getIntroduced ({commit}, {userId}) {
+    console.log("get introduced")
+    // Get introduced to user
   }
 
 }

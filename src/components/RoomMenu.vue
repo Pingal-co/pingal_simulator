@@ -27,18 +27,20 @@
 			  </div>
 
 		      <div v-if="user.expanded" class="user-expanded">
-		      	<md-button class="md-raised md-primary get-introduced">
+		      	<md-button @click.native="getIntroduced(user.id)" class="md-raised md-primary get-introduced">
 		      	  Get Introduced
 			      <md-icon class="get-introduced-icon">chat_bubble</md-icon>
 			    </md-button>
 		      	  
+		      	<md-button @click.native="unwatch(user.id)">
 		      	  Unwatch
+		      	</md-button>
 		      </div>
 		    </md-list-item>
 		  </md-list>
 		</div>
 
-		<md-button @click.native="createGroupChat" class="md-raised md-primary create-room">
+		<md-button @click.native="createGroupRoom" class="md-raised md-primary create-room">
 			Invite to Private Group Chat
 		</md-button>
 	</div>
@@ -83,10 +85,23 @@
 	  		this.users[index].expanded = !this.users[index].expanded
 	  		this.$forceUpdate();
 	  	},
-	  	createGroupChat() {
+	  	createGroupRoom() {
 	  		let users = this.users.filter(user => user.selected);
-	  		this.$store.dispatch('createGroupChat', {
+	  		this.$store.dispatch('createGroupRoom', {
 	  			users: users,
+	  		})
+	  	},
+	  	getIntroduced(userId) {
+	  		console.log("get Introduced")
+	  		this.$store.dispatch("getIntroduced", {
+	  			userId: userId
+	  		})
+	  	},
+	  	unwatch(userId) {
+	  		console.log("unwatch")
+	  		this.$store.dispatch("unwatch", {
+	  			currentRoom: currentRoom,
+	  			userId: userId
 	  		})
 	  	}
 	  },
