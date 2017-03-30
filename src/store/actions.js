@@ -130,6 +130,8 @@ const actions = {
   unwatch ({commit}, {userId, currentRoom}) {
     console.log("unwatch user")
     // Unwatch user
+    // tell server
+    commit('UNWATCH', userId)
   },
 
   getIntroduced ({commit}, {userId}) {

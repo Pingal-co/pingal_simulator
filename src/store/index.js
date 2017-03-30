@@ -8,6 +8,8 @@ import {
   joinPingalChannel
 } from '@/chatserver'
 
+import connections from './room_users_data'
+
 Vue.use(Vuex)
 
 // Load cookie data
@@ -30,6 +32,7 @@ const state = {
   currentRoomChannel: currentRoomChannel,
   currentRoomInputChannel: currentRoomChannel,
   currentInput: {text: '', focus: 1},
+  connections: connections,
   showRight: false,
   showLeft: true,
   slides: [],

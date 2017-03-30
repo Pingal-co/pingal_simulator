@@ -82,6 +82,11 @@ const mutations = {
         state.rooms = rooms.concat(state.rooms) 
     },
 
+    UNWATCH (state, userId) {
+        let connections = state.connections.filter(user => user.id != userId)
+        state.connections = connections
+    },
+
     SHOW_RIGHT (state) {
         state.showRight = true
     },

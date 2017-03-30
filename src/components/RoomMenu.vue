@@ -12,7 +12,7 @@
 		</div>
 
 		<div class="room-connections">
-		  <div class="room-connections-header">Connections</div>
+		  <div class="room-connections-header">Connections ({{users.length}})</div>
 		  <md-list class="connection-panel-list">
 		    <md-list-item class="connection-panel" v-for="user, index in users" :key="index" @click.native="toggleUser(index)">
 		      <div class="user-panel-content">
@@ -32,7 +32,7 @@
 			      <md-icon class="get-introduced-icon">chat_bubble</md-icon>
 			    </md-button>
 		      	  
-		      	<md-button @click.native="unwatch(user.id)">
+		      	<md-button @click.native="unwatch(user.id)" :ref="'unwatch' + user.id">
 		      	  Unwatch
 		      	</md-button>
 		      </div>
@@ -47,8 +47,6 @@
 </template>
 
 <script>
-	import users from '@/store/room_users_data'
-	import interests from '@/store/room_interests_data.js'
 	export default {
 	  data: () => ({
 	      checkbox: '',
@@ -62,7 +60,7 @@
 	  		return invitees
 	  	},
 	  	users() {
-	  		return users
+	  		return this.$store.state.connections
 	  	},
 	  	currentRoom() {
 	  		return this.$store.state.currentRoom
@@ -87,9 +85,13 @@
 	  	},
 	  	createGroupRoom() {
 	  		let users = this.users.filter(user => user.selected);
-	  		this.$store.dispatch('createGroupRoom', {
-	  			users: users,
-	  		})
+	  		if (users.length < 2) {
+	  			alert('Select at least two people to invite.')
+	  		} else {
+		  		this.$store.dispatch('createGroupRoom', {
+		  			users: users,
+		  		})
+	  		}
 	  	},
 	  	getIntroduced(userId) {
 	  		console.log("get Introduced")
@@ -98,9 +100,8 @@
 	  		})
 	  	},
 	  	unwatch(userId) {
-	  		console.log("unwatch")
 	  		this.$store.dispatch("unwatch", {
-	  			currentRoom: currentRoom,
+	  			currentRoom: this.currentRoom,
 	  			userId: userId
 	  		})
 	  	}
