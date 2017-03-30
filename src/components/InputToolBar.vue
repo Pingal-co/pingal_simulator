@@ -37,19 +37,20 @@ export default {
     computed: {
       ...mapGetters([
         'placeholder',
-        'currentRoomChannel'
+        'currentRoomChannel',
+        'currentRoomInputChannel'
       ]),
       slide() {
         return {
           _id: Math.round(Math.random() * 1000000),
           text: this.text,
-          room: this.topic, 
-          user: this.user,
-          author_name: this.user.name,
-          edit: false,
-          public: false,
-          sponsored: false,
-          inserted_at: new Date(),
+         //  room: this.topic, 
+         // user: this.user,
+         // author_name: this.user.name,
+         // edit: false,
+         // public: false,
+         // sponsored: false,
+          inserted_at: new Date()
         }
       },
 
@@ -78,7 +79,7 @@ export default {
     methods: {
       onSend() {
         this.$store.dispatch('pushSlide', {
-          roomChannel: this.currentRoomChannel, 
+          roomChannel: this.currentRoomInputChannel, 
           slide: this.slide, 
           event: 'request'})
             .then(() => {

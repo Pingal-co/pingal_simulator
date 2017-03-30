@@ -28,7 +28,7 @@
 		  </md-list>
 		</div>
 
-		<md-button class="md-raised md-primary">Create Group Chat</md-button>
+		<md-button class="md-raised md-primary">Private Group Chat</md-button>
 	</div>
 </template>
 

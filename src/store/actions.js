@@ -10,6 +10,7 @@ import {
   joinWorldChannel,
   joinPingalChannel,
   joinRoomChannel,
+  joinRoomInputChannel,
   socket,
   closeSocket
 } from '../chatserver'
@@ -113,6 +114,7 @@ const actions = {
   updateCurrentRoomChannel ({commit}, {room}) {
       commit('CLEAR_SLIDES')
       commit('SET_CURRENT_ROOM_CHANNEL', joinRoomChannel(room.id))
+      commit('SET_CURRENT_ROOM_INPUT_CHANNEL', joinRoomInputChannel(room.id))
       commit('SET_CURRENT_ROOM', room)
       // Focus input
       commit('INPUT_FOCUS')
