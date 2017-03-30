@@ -67,6 +67,10 @@ const mutations = {
         state.currentRoomChannel = roomChannel // { ...state.currentRoom, ...room }
     },
 
+    SET_CURRENT_ROOM_INPUT_CHANNEL (state, inputChannel) {
+        state.currentRoomInputChannel = inputChannel // { ...state.currentRoom, ...room }
+    },
+
     SET_ROOMS (state, rooms) {
         state.rooms = rooms.reverse()
     },

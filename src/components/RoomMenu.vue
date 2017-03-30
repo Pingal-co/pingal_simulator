@@ -38,14 +38,13 @@
 		  </md-list>
 		</div>
 
-		<md-button class="md-raised md-primary create-room">Invite to Group Chat</md-button>
+		<md-button class="md-raised md-primary create-room">Invite to Private Group Chat</md-button>
 	</div>
 </template>
 
 <script>
 	import users from '@/store/room_users_data'
 	import interests from '@/store/room_interests_data.js'
-
 	export default {
 	  data: () => ({
 	      checkbox: '',
@@ -84,7 +83,6 @@
 	  		this.$forceUpdate();
 	  	}
 	  },
-
 	 // beforeMount() {
 	 // 	for (var i = 0; i < this.users.length; i++) {
 	 // 		this.$set(users[i], 'expanded', false)
@@ -97,7 +95,6 @@
 	$border-color: rgb(225, 225, 225);
 	$border-color-darker: rgb(215, 215, 215);
 	$primary-darker-color: rgb(217, 98, 12);
-
 	.room-menu {
 		width: 100%;
 		height: 100%;
@@ -105,62 +102,49 @@
 		flex-direction: column;
 		// justify-content: center;	
 	}
-
 	.room-interests {
 		padding: 8px 18px 0px 18px;
 	}
-
 	.connection-panel-list {
 		max-height: calc(50vh - 54px);
 		overflow-y: scroll;
 	}
-
 	.room-connections {
 	}
-
 	.connection-panel {
 		cursor: pointer;
 	}
-
 	.connection-panel .md-list-item-container {
 		display: flex !important;
 		flex-direction: column !important;
 	}
-
 	.connection-panel:hover {
 		background-color: $border-color;
 	}
-
 	.connection-panel:active {
 		background-color: $border-color-darker;
 	}
-
 	.room-interests-header, .room-connections-header {
 		color: rgba(0,0,0,.54);
     	font-size: 14px;
 	}
-
 	.room-interests-header {
 		padding-top: 12px;
 	}
-
 	.room-connections-header {
 		padding-top: 6px;
 		padding-left: 18px;
 		padding-bottom: 6px; 
 	}
-
 	.checkbox {
 		z-index: 8;
 	}
-
 	.user-panel-content {
 		width: 100%;
 		display: flex;
 		align-items: center;
 		justify-content: space-around;
 	}
-
 	.user-expanded {
 		height: 70px;
 		width: 100%;
@@ -168,18 +152,13 @@
 		align-items: center;
 		justify-content: space-around;
 	}
-
 	.get-introduced {
 	}
-
 	.get-introduced-icon {
 		color: white !important;
 		padding-left: 5px;
 	}
-
 	.create-room {
 		margin-top: 16px !important;
 	}
-
-
 </style>

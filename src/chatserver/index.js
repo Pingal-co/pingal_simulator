@@ -3,6 +3,7 @@ import {
 	joinUserChannel, 
 	joinPingalChannel, 
 	joinRoomChannel, 
+	joinRoomInputChannel, 
 	joinWorldChannel 
 } from './socket-api'
 
@@ -19,6 +20,6 @@ export {
   socket, closeSocket,
   apiURL, socketURL,
   httpGet, httpPost, httpUpdate, httpDelete,
-  joinUserChannel, joinPingalChannel, joinRoomChannel, joinWorldChannel,
+  joinUserChannel, joinPingalChannel, joinRoomChannel, joinRoomInputChannel, joinWorldChannel,
   sendToChannel
 }

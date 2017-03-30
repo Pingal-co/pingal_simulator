@@ -28,8 +28,9 @@ const state = {
   currentUser: user,
   currentRoom: {name: "Pingal"},
   currentRoomChannel: currentRoomChannel,
+  currentRoomInputChannel: currentRoomChannel,
   currentInput: {text: '', focus: 1},
-  showRight: true,
+  showRight: false,
   showLeft: true,
   slides: [],
   session: session,
@@ -53,6 +54,7 @@ const getters = {
    rooms: (state) => state.rooms,
    currentRoom: (state) => state.currentRoom,
    currentRoomChannel: (state) => state.currentRoomChannel,
+   currentRoomInputChannel: (state) => state.currentRoomInputChannel,
    getRoomsCount: (state) => state.rooms.length,
 
    currentUser: (state) => state.currentUser,
