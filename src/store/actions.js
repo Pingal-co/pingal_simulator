@@ -105,6 +105,7 @@ const actions = {
     }
 
     commit('SET_CURRENT_ROOM', {name: 'Pingal'})
+    commit('HIDE_RIGHT')
     
     // Focus input
     commit('INPUT_FOCUS')
@@ -116,9 +117,14 @@ const actions = {
       commit('SET_CURRENT_ROOM_CHANNEL', joinRoomChannel(room.id))
       commit('SET_CURRENT_ROOM_INPUT_CHANNEL', joinRoomInputChannel(room.id))
       commit('SET_CURRENT_ROOM', room)
+      commit('SHOW_RIGHT')
       // Focus input
       commit('INPUT_FOCUS')
   },
+
+  createGroupChat ({commit}, {users}) {
+    console.log(users)
+  }
 
 }
 

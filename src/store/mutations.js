@@ -82,6 +82,14 @@ const mutations = {
         state.rooms = rooms.concat(state.rooms) 
     },
 
+    SHOW_RIGHT (state) {
+        state.showRight = true
+    },
+
+    HIDE_RIGHT (state) {
+        state.showRight = false
+    },
+
     /* INPUT TOOLBAR */
     UPDATE_INPUT_TEXT (state, text) {
         state.currentInput.text =  text

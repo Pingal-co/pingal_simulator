@@ -38,7 +38,9 @@
 		  </md-list>
 		</div>
 
-		<md-button class="md-raised md-primary create-room">Invite to Private Group Chat</md-button>
+		<md-button @click.native="createGroupChat" class="md-raised md-primary create-room">
+			Invite to Private Group Chat
+		</md-button>
 	</div>
 </template>
 
@@ -58,7 +60,6 @@
 	  		return invitees
 	  	},
 	  	users() {
-	  		console.log("users")
 	  		return users
 	  	},
 	  	currentRoom() {
@@ -81,13 +82,19 @@
 	  		}
 	  		this.users[index].expanded = !this.users[index].expanded
 	  		this.$forceUpdate();
+	  	},
+	  	createGroupChat() {
+	  		let users = this.users.filter(user => user.selected);
+	  		this.$store.dispatch('createGroupChat', {
+	  			users: users,
+	  		})
 	  	}
 	  },
-	 // beforeMount() {
-	 // 	for (var i = 0; i < this.users.length; i++) {
-	 // 		this.$set(users[i], 'expanded', false)
-	 // 	}
-	 // }
+		// beforeMount() {
+		// 	for (var i = 0; i < this.users.length; i++) {
+		// 		this.$set(users[i], 'expanded', false)
+		// 	}
+		// }
 	};
 </script>
 

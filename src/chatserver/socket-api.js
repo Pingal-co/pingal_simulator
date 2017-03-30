@@ -186,7 +186,8 @@ export let joinPingalChannel = (userId) => { //, jwt
   roomChannel.on('response:planIntroduction', response)
   roomChannel.on('response:brain', response)
 
-  roomChannel.on('add:rooms', setRooms)
+  roomChannel.on('set:rooms', setRooms)
+  roomChannel.on('add:rooms', addRooms)
   roomChannel.on('add:slide', addSlide)
 
   return roomChannel
