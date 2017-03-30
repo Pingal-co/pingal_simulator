@@ -25,6 +25,8 @@
 		props: ['room'],
 		computed: {
 			formattedTime() {
+				// console.log(this.room)
+				// console.log("formattedTime")
 				if (!this.room.last_slide) {
 					return ''
 				} else {

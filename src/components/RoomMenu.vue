@@ -48,7 +48,6 @@
 
 	export default {
 	  data: () => ({
-	      interests: interests,
 	      checkbox: '',
 	  }),
 	  computed: {
@@ -60,8 +59,15 @@
 	  		return invitees
 	  	},
 	  	users() {
+	  		console.log("users")
 	  		return users
 	  	},
+	  	currentRoom() {
+	  		return this.$store.state.currentRoom
+	  	},
+	  	interests() {
+	  		return this.currentRoom.nearby_index.split(" ").slice(0, 20)
+	  	}
 	  },
 	  methods: {
 	  	toggleUser(index) {
