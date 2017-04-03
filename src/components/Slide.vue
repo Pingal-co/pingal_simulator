@@ -67,15 +67,15 @@
   export default {
     props: ['slide'] ,
     computed: {
-        datetime() {
-           return moment(this.slide.inserted_at).calendar(null, {
-                      sameDay: 'h:mm a',
-                      nextDay: '[The Future]',
-                      nextWeek: "[How's your time machine work?]",
-                      lastDay: '[Yesterday at] h:mm a',
-                      lastWeek: 'dddd [at] h:mm a',
-                      sameElse: 'h:mm a [on] MMMM Do[,] YYYY'
-                  });
+      datetime() {
+         return moment(this.slide.inserted_at).calendar(null, {
+                    sameDay: 'h:mm a',
+                    nextDay: '[The Future]',
+                    nextWeek: "[How's your time machine work?]",
+                    lastDay: '[Yesterday at] h:mm a',
+                    lastWeek: 'dddd [at] h:mm a',
+                    sameElse: 'h:mm a [on] MMMM Do[,] YYYY'
+                });
       },
       iconName() {
         return this.slide.author_name ? this.slide.author_name[0].toUpperCase() : null

@@ -82,6 +82,10 @@ const mutations = {
         state.rooms = rooms.concat(state.rooms) 
     },
 
+    WATCH (state, user) {
+        state.connections = state.connections.concat(user)
+    },
+
     UNWATCH (state, userId) {
         let connections = state.connections.filter(user => user.id != userId)
         state.connections = connections

@@ -122,9 +122,11 @@ const actions = {
       commit('INPUT_FOCUS')
   },
 
-  createGroupRoom ({commit}, {users}) {
+  createGroupRoom ({commit}, {roomChannel, users}) {
     console.log("create group room")
+    console.log(users)
     // Create room 
+    return sendToChannel(roomChannel, {users: users}, 'add:group')
   },
 
   unwatch ({commit}, {userId, currentRoom}) {

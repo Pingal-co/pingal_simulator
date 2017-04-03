@@ -8,7 +8,7 @@ import {
   joinPingalChannel
 } from '@/chatserver'
 
-import connections from './room_users_data'
+// import connections from './room_users_data'
 
 Vue.use(Vuex)
 
@@ -32,7 +32,7 @@ const state = {
   currentRoomChannel: currentRoomChannel,
   currentRoomInputChannel: currentRoomChannel,
   currentInput: {text: '', focus: 1},
-  connections: connections,
+  connections: [],
   showRight: false,
   showLeft: true,
   slides: [],

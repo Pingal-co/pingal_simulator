@@ -47,11 +47,17 @@
 </template>
 
 <script>
+	import { mapGetters } from 'vuex'
+
 	export default {
 	  data: () => ({
 	      checkbox: '',
 	  }),
 	  computed: {
+		...mapGetters([
+			'currentRoomChannel',
+			'currentRoomInputChannel'
+		]),
 	  	invitations() {
 	  		let invitees = []
 	  		for (var i = 0; i < this.users.length; i++) {
@@ -90,6 +96,7 @@
 	  		} else {
 		  		this.$store.dispatch('createGroupRoom', {
 		  			users: users,
+		  			roomChannel: this.currentRoomChannel
 		  		})
 	  		}
 	  	},

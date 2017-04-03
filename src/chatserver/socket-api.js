@@ -52,7 +52,7 @@ let addSlide = (slide, delay = 0) => {
   setTimeout(function() {
     console.log(slide)
     store.commit('APPEND_SLIDE', slide)
-    store.commit('SET_CURRENT_SLIDE',slide)
+    store.commit('SET_CURRENT_SLIDE', slide)
   }, delay)
 } 
 
@@ -68,6 +68,21 @@ let addRooms = ({rooms}) => {
 
 let setRooms = ({rooms}) => {
   store.commit('SET_ROOMS', rooms)
+}
+
+let addGroup = ({room}) => {
+  addRooms({rooms: room})
+  store.commit('CLEAR_SLIDES')
+  store.commit('SET_CURRENT_ROOM_CHANNEL', joinRoomChannel(room.id))
+  store.commit('SET_CURRENT_ROOM_INPUT_CHANNEL', joinRoomInputChannel(room.id))
+  store.commit('SET_CURRENT_ROOM', room)
+  store.commit('SHOW_RIGHT')
+  // Focus input
+  store.commit('INPUT_FOCUS')
+}
+
+let watch = ({room_id, user}) => {
+  store.commit('WATCH', user)
 }
 
 // Response:
@@ -93,43 +108,7 @@ let response = ({slide, topicRoom}) => {
   addSlide(slide, responseDelay)
   
 }
-/*
-let response = ({slide}) => {
-  slide.isPingal = true
-  addSlide(slide, responseDelay)
-}
 
-let responseSignUp = ({slide}) => {
-  slide.type = 'signUp'
-  slide.isPingal = true
-  addSlide(slide, responseDelay)
-}
-
-let responseLogIn = ({slide}) => {
-  slide.type = 'logIn'
-  slide.isPingal = true
-  addSlide(slide, responseDelay)
-}
-
-let responseSuggestTopic = ({slide}) => {
-  slide.type = 'suggestTopic'
-  slide.isPingal = true
-  addSlide(slide, responseDelay)
-}
-
-let responseJoinTopic = ({slide, topicRoom}) => {
-  // Join topic logic here
-  slide.isPingal = true
-  addSlide(slide, responseDelay)
-  addRooms({rooms: topicRoom})
-}
-
-let responseLogOut = ({slide}) => {
-  store.commit('LOG_OUT')
-  slide.isPingal = true
-  addSlide(slide, responseDelay)
-}
-*/
 /* 
   External Functions
 */
@@ -199,6 +178,8 @@ export let joinRoomChannel = (roomId) => {
   roomChannel.on('get:slides_in_room', getSlidesInRoom)
 
   roomChannel.on('add:slide', addSlide)
+  roomChannel.on('watch', watch)
+  roomChannel.on('add:group', addGroup)
   roomChannel.on('response:brain', response)
 
   return roomChannel
