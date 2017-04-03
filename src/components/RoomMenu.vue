@@ -72,7 +72,8 @@
 	  		return this.$store.state.currentRoom
 	  	},
 	  	interests() {
-	  		return this.currentRoom.nearby_index.split(" ").slice(0, 20)
+	  		let interests = this.currentRoom.nearby_index
+	  		return interests ? interests.split(" ").slice(0, 20) : null
 	  	}
 	  },
 	  methods: {
@@ -103,7 +104,8 @@
 	  	getIntroduced(userId) {
 	  		console.log("get Introduced")
 	  		this.$store.dispatch("getIntroduced", {
-	  			userId: userId
+	  			userId: userId,
+	  			roomChannel: this.currentRoomChannel
 	  		})
 	  	},
 	  	unwatch(userId) {

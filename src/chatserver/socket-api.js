@@ -81,6 +81,10 @@ let addGroup = ({room}) => {
   store.commit('INPUT_FOCUS')
 }
 
+let addIntroduction = ({room}) => {
+  addGroup({room})
+}
+
 let watch = ({room_id, user}) => {
   store.commit('WATCH', user)
 }
@@ -180,6 +184,7 @@ export let joinRoomChannel = (roomId) => {
   roomChannel.on('add:slide', addSlide)
   roomChannel.on('watch', watch)
   roomChannel.on('add:group', addGroup)
+  roomChannel.on('add:introduction', addIntroduction)
   roomChannel.on('response:brain', response)
 
   return roomChannel

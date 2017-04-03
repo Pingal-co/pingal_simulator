@@ -136,9 +136,10 @@ const actions = {
     commit('UNWATCH', userId)
   },
 
-  getIntroduced ({commit}, {userId}) {
+  getIntroduced ({commit}, {userId, roomChannel}) {
     console.log("get introduced")
     // Get introduced to user
+    return sendToChannel(roomChannel, {userId: userId}, 'add:introduction')
   }
 
 }
