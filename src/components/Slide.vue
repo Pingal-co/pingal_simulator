@@ -43,7 +43,7 @@
                 </div>
                 <md-card-content>
                   <md-avatar class="md-avatar-icon md-warn custom-avatar">
-                      <md-icon><!-- {{ slide.user.avatar }} --></md-icon>
+                      <div class="icon-name">{{ iconName }}</div>
                   </md-avatar>
                       <div class="expand-custom">
                           <div class="md-title">{{ slide.text }}</div>                  
@@ -76,6 +76,9 @@
                       lastWeek: 'dddd [at] h:mm a',
                       sameElse: 'h:mm a [on] MMMM Do[,] YYYY'
                   });
+      },
+      iconName() {
+        return this.slide.author_name ? this.slide.author_name[0].toUpperCase() : null
       }
     },
     methods: {
@@ -175,6 +178,15 @@
     .datetime {
       padding-left: 28px;
       visibility: hidden;
+    }
+
+    .icon-name {
+      // padding-left: 3px;
+      text-align: center;
+      padding-top: 10px;
+      font-size: 26px;
+      color: white;
+      font-family: 'Avenir', Helvetica, Arial, sans-serif;
     }
 
     .md-card-actions {

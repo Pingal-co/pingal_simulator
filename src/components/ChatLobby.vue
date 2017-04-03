@@ -84,7 +84,6 @@
       return {
         roomChannel: this.$store.state.currentRoomChannel,
         topic: '1',
-        user: { _id: 2, name: 'Sam', hash: 'Sam', avatar: 'mood'},
         windowWidth: window.innerWidth
       }
     },
@@ -92,6 +91,10 @@
     computed: {
       slides() {
         return this.$store.state.slides
+      },
+      user() {
+        let user = this.$store.state.currentUser
+        return user ? user : { _id: 2, name: 'Anonymous', hash: 'Anonymous', avatar: 'mood'}
       },
       mobile() {
         if (this.windowWidth < 768) {

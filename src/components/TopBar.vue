@@ -108,6 +108,7 @@ export default {
 <style lang="scss">
   $pingal-blue: #0383f9;
   $secondary-color: rgb(57, 73, 171);
+  $primary-color-l1: rgb(250, 192, 150);
 
   .top-bar {
     height: 54px;
@@ -146,7 +147,7 @@ export default {
   }
 
   .highlight-icon {
-    color: $secondary-color;
+    color: $primary-color-l1;
   }
 
   .room-name {
