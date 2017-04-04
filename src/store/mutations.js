@@ -51,6 +51,10 @@ const mutations = {
         Cookies.set('jwt', jwt, { expires: 365 });
     },
 
+    SET_USERS (state, users) {
+        state.connections = users
+    },
+
     LOG_OUT (state) {
         state.currentUser = null;
         state.rooms = [];

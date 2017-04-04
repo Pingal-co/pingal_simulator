@@ -27,7 +27,7 @@
 			onSend(button){
 				let slide = (this.hasIndex) ? {
 					text: button.bot, 
-					index: this.getIndex.join(" "),
+					index: this.getIndex.join(","),
 					topic: this.getKeyPhrase,
 					previous_text: this.recallMemory
 				} : {text: button.bot}

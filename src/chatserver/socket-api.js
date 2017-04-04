@@ -57,7 +57,11 @@ let addSlide = (slide, delay = 0) => {
 } 
 
 let getSlidesInRoom = (data) => {
-  store.commit('APPEND_SLIDES', data.slides)
+  store.commit('SET_SLIDES', data.slides)
+}
+
+let getUsersInRoom = (data) => {
+  store.commit('SET_USERS', data.users)
 }
 
 // Direct object match responses
@@ -180,6 +184,7 @@ export let joinRoomChannel = (roomId) => {
   let roomChannel = joinRoom(`rooms:${roomId}`, {})
 
   roomChannel.on('get:slides_in_room', getSlidesInRoom)
+  roomChannel.on('get:users_in_room', getUsersInRoom)
 
   roomChannel.on('add:slide', addSlide)
   roomChannel.on('watch', watch)

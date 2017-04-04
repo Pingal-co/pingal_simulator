@@ -1,5 +1,35 @@
 <template>
-	<div class="room-menu">
+	<div v-if="currentRoom.type == 'pingal'" class="room-menu">pingal</div>
+	<!-- Personal/Private Group -->
+	<div v-else-if="currentRoom.type == 2" class="room-menu">
+		<div class="room-connections">
+		  <div class="room-connections-header">Connections ({{users.length}})</div>
+		  <md-list class="connection-panel-list">
+		    <md-list-item class="connection-panel" v-for="user, index in users" :key="index" @click.native="toggleUser(index)">
+		      <div class="user-panel-content">
+			      <md-avatar>
+			        <img :src="user.image" alt="People">
+			      </md-avatar>
+
+			      <span>{{user.name}}</span>
+			  </div>
+
+		      <div v-if="user.expanded" class="user-expanded">
+		      	<md-button @click.native="getIntroduced(user.id)" class="md-raised md-primary get-introduced">
+		      	  Message
+			      <md-icon class="get-introduced-icon">chat_bubble</md-icon>
+			    </md-button>
+		      	  
+		      	<md-button @click.native="unwatch(user.id)" :ref="'unwatch' + user.id">
+		      	  Remove
+		      	</md-button>
+		      </div>
+		    </md-list-item>
+		  </md-list>
+		</div>
+	</div>
+	<!-- Default to public room -->
+	<div v-else class="room-menu">
 		<div class="room-interests">
 			<div class="room-interests-header">
 				Interests
@@ -73,7 +103,7 @@
 	  	},
 	  	interests() {
 	  		let interests = this.currentRoom.nearby_index
-	  		return interests ? interests.split(" ").slice(0, 20) : null
+	  		return interests ? interests.split(",").slice(0, 20) : null
 	  	}
 	  },
 	  methods: {
