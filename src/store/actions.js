@@ -123,10 +123,11 @@ const actions = {
   },
 
   createGroupRoom ({commit}, {roomChannel, users}) {
-    console.log("create group room")
-    console.log(users)
-    // Create room 
     return sendToChannel(roomChannel, {users: users}, 'add:group')
+  },
+
+  updateInterests ({commit}, {roomChannel, interests}) {
+    return sendToChannel(roomChannel, {interests: interests}, 'update:interests')
   },
 
   unwatch ({commit}, {userId, currentRoom}) {

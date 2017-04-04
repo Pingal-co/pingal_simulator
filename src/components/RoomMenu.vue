@@ -3,7 +3,7 @@
 	<!-- Personal/Private Group -->
 	<div v-else-if="currentRoom.type == 2" class="room-menu">
 		<div class="room-connections">
-		  <div class="room-connections-header">Connections ({{users.length}})</div>
+		  <div class="room-connections-header pt">Connections ({{users.length}})</div>
 		  <md-list class="connection-panel-list">
 		    <md-list-item class="connection-panel" v-for="user, index in users" :key="index" @click.native="toggleUser(index)">
 		      <div class="user-panel-content">
@@ -34,11 +34,11 @@
 			<div class="room-interests-header">
 				Interests
 			</div>
-			<md-chips v-model="interests" :md-max="20" md-input-placeholder="Add Interest...">
-			  <template scope="chip">
-			    <span>{{ chip.value }}</span>
-			  </template>
-			</md-chips>
+			
+			<interests 
+				:interests="interests" 
+				:maxCount="25" 
+			/>
 		</div>
 
 		<div class="room-connections">
@@ -78,11 +78,15 @@
 
 <script>
 	import { mapGetters } from 'vuex'
+	import Interests from '@/components/Interests'
 
 	export default {
 	  data: () => ({
 	      checkbox: '',
 	  }),
+	  components: {
+	  	Interests,
+	  },
 	  computed: {
 		...mapGetters([
 			'currentRoomChannel',
@@ -197,6 +201,9 @@
 		padding-top: 6px;
 		padding-left: 18px;
 		padding-bottom: 6px; 
+	}
+	.pt {
+		padding-top: 20px;
 	}
 	.checkbox {
 		z-index: 8;
