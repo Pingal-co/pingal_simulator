@@ -127,6 +127,7 @@ const actions = {
   },
 
   updateInterests ({commit}, {roomChannel, interests}) {
+    commit('SET_CURRENT_ROOM_NEARBY_INDEX', interests)
     return sendToChannel(roomChannel, {interests: interests}, 'update:interests')
   },
 

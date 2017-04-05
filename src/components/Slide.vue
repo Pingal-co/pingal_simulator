@@ -42,12 +42,13 @@
                   <span class="datetime">{{datetime}}</span>
                 </div>
                 <md-card-content>
-                  <md-avatar class="md-avatar-icon md-warn custom-avatar">
+   <!--                <md-avatar class="md-avatar-icon md-warn custom-avatar">
                       <div class="icon-name">{{ iconName }}</div>
-                  </md-avatar>
-                      <div class="expand-custom">
-                          <div class="md-title">{{ slide.text }}</div>                  
-                      </div>                   
+                  </md-avatar> -->
+                  <avatar :name="slide.author_name" />
+                  <div class="expand-custom">
+                      <div class="md-title">{{ slide.text }}</div>                  
+                  </div>                   
                   </md-card-content> 
               </md-card-area>                      
             </md-card>
@@ -61,6 +62,7 @@
   import SuggestTopics from '@/components/SuggestTopics'
   import ContextButtons from '@/components/ContextButtons'
   import SearchPlanner from '@/components/SearchPlanner'
+  import Avatar from '@/components/Avatar'
 
   import moment from 'moment';
 
@@ -77,9 +79,6 @@
                     sameElse: 'h:mm a [on] MMMM Do[,] YYYY'
                 });
       },
-      iconName() {
-        return this.slide.author_name ? this.slide.author_name[0].toUpperCase() : null
-      }
     },
     methods: {
       login() {
@@ -91,7 +90,8 @@
       LogIn,
       SuggestTopics,
       ContextButtons,
-      SearchPlanner
+      SearchPlanner,
+      Avatar
     }
   }
   
@@ -166,29 +166,10 @@
       margin-left: 58px;
       margin-bottom: -12px;
     }
-
-    .custom-avatar, .pingal-avatar {
-      align-self: flex-start;
-    }
-
-    .custom-avatar {
-      background-color: rgb(244, 128, 45) !important;
-    }
-
     .datetime {
       padding-left: 28px;
       visibility: hidden;
     }
-
-    .icon-name {
-      // padding-left: 3px;
-      text-align: center;
-      padding-top: 10px;
-      font-size: 26px;
-      color: white;
-      font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    }
-
     .md-card-actions {
         padding: 8px;
         display: flex;

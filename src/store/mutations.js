@@ -65,6 +65,9 @@ const mutations = {
     SET_CURRENT_ROOM (state, room) {
         state.currentRoom = room
     },
+    SET_CURRENT_ROOM_NEARBY_INDEX (state, nearby_index) {
+        state.currentRoom.nearby_index = nearby_index
+    },
 
     /* START <ROOM MUTATION HANDLERS> */
     SET_CURRENT_ROOM_CHANNEL (state, roomChannel) {

@@ -7,9 +7,7 @@
 		  <md-list class="connection-panel-list">
 		    <md-list-item class="connection-panel" v-for="user, index in users" :key="index" @click.native="toggleUser(index)">
 		      <div class="user-panel-content">
-			      <md-avatar>
-			        <img :src="user.image" alt="People">
-			      </md-avatar>
+			      <avatar :name="user.name" />
 
 			      <span>{{user.name}}</span>
 			  </div>
@@ -46,9 +44,7 @@
 		  <md-list class="connection-panel-list">
 		    <md-list-item class="connection-panel" v-for="user, index in users" :key="index" @click.native="toggleUser(index)">
 		      <div class="user-panel-content">
-			      <md-avatar>
-			        <img :src="user.image" alt="People">
-			      </md-avatar>
+			      <avatar :name="user.name" />
 
 			      <span>{{user.name}}</span>
 
@@ -79,6 +75,7 @@
 <script>
 	import { mapGetters } from 'vuex'
 	import Interests from '@/components/Interests'
+	import Avatar from '@/components/Avatar'
 
 	export default {
 	  data: () => ({
@@ -86,6 +83,7 @@
 	  }),
 	  components: {
 	  	Interests,
+	  	Avatar
 	  },
 	  computed: {
 		...mapGetters([
@@ -108,7 +106,7 @@
 	  	interests() {
 	  		let interests = this.currentRoom.nearby_index
 	  		return interests ? interests.split(",").slice(0, 20) : null
-	  	}
+	  	},
 	  },
 	  methods: {
 	  	toggleUser(index) {

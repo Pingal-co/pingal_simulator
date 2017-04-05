@@ -1,9 +1,7 @@
 <template>
 	<div @click="joinRoom">
 		<md-list-item :class="['room-nav-slide', selected]">
-		  <md-avatar>
-		    <img :src="room.image" alt="room.name" />
-		  </md-avatar>
+		  <avatar :name="room.name" />
 
 		  <div class="md-list-text-container">
 		    <span>{{room.name}}</span>
@@ -20,9 +18,13 @@
 <script>
 	import Cookies from 'js-cookie'
 	import moment from 'moment'
+	import Avatar from '@/components/Avatar'
 
 	export default {
 		props: ['room'],
+		components: {
+			Avatar
+		},
 		computed: {
 			formattedTime() {
 				// console.log(this.room)
