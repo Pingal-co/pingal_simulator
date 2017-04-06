@@ -2,6 +2,9 @@
 	<div v-if="currentRoom.type == 'pingal'" class="room-menu">pingal</div>
 	<!-- Personal/Private Group -->
 	<div v-else-if="currentRoom.type == 2" class="room-menu">
+		<div class="add-people">
+			
+		</div>
 		<div class="room-connections">
 		  <div class="room-connections-header pt">Connections ({{users.length}})</div>
 		  <md-list class="connection-panel-list">

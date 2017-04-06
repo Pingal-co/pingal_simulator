@@ -1,5 +1,5 @@
 <template>
-    <div class="card-custom">
+    <div class="card-custom" @click="toggleExpanded">
         <md-list-item >
             <!-- Pingal Slide -->
             <md-card v-if="slide.isPingal === true">
@@ -42,14 +42,28 @@
                   <span class="datetime">{{datetime}}</span>
                 </div>
                 <md-card-content>
-   <!--                <md-avatar class="md-avatar-icon md-warn custom-avatar">
-                      <div class="icon-name">{{ iconName }}</div>
-                  </md-avatar> -->
                   <avatar :name="slide.author_name" />
                   <div class="expand-custom">
                       <div class="md-title">{{ slide.text }}</div>                  
-                  </div>                   
-                  </md-card-content> 
+                  </div>                 
+                </md-card-content> 
+                <div v-if="expanded" class="expanded">
+                  <md-card>
+                    <md-card-area md-inset>
+                      <div class="user-name">
+                        {{slide.author_name}}
+                        <span class="datetime">{{datetime}}</span>
+                      </div>
+                      <md-card-content>
+                        <avatar :name="slide.author_name" />
+                        <div class="expand-custom">
+                            <div class="md-title">{{ slide.text }}</div>                  
+                        </div>                 
+                      </md-card-content> 
+                    </md-card-area>
+                  </md-card>
+                  <input type="text" class="reply-box" placeholder="Type a response..." ref="inputText" id="reply-box" />
+                </div>  
               </md-card-area>                      
             </md-card>
         </md-list-item>
@@ -67,7 +81,12 @@
   import moment from 'moment';
 
   export default {
-    props: ['slide'] ,
+    props: ['slide'],
+    data() {
+      return {
+        expanded: false,
+      }
+    },
     computed: {
       datetime() {
          return moment(this.slide.inserted_at).calendar(null, {
@@ -78,11 +97,13 @@
                     lastWeek: 'dddd [at] h:mm a',
                     sameElse: 'h:mm a [on] MMMM Do[,] YYYY'
                 });
-      },
+      }
     },
     methods: {
-      login() {
-        console.log('login')
+      toggleExpanded(e) {
+        if (e.target.id != 'reply-box') {
+          this.expanded = !this.expanded
+        }
       }
     },
     components: {
@@ -122,10 +143,33 @@
                         0 1px 1px rgba(#000, $shadow-key-penumbra-opacity),
                         0 2px 1px -1px rgba(#000, $shadow-ambient-shadow-opacity) !default;
 
+  $primary-darker-color: rgb(217, 98, 12);
+  $primary-color: rgb(244, 128, 45);
+  $primary-color-l1: rgb(250, 192, 150);
+  $primary-color-l2: rgb(252, 224, 203);
+  $primary-color-l3: rgb(254, 243, 234);
+  $primary-color-l4: rgb(254, 247, 242); 
+  $primary-color-l5: rgb(255, 250, 247);
+
+  .expanded {
+    width: 100%;
+    margin-left: 44px;
+    padding-bottom: 16px;
+  }
+
+  .reply-box {
+    width: 480px;
+    font-size: 16px;
+    outline: none;
+    padding: 8px 12px 8px 12px;
+    margin-left: 14px;
+  }
+
 
   .card-custom {
     padding-top: 15px;
     display: flex;
+    cursor: pointer;
 
     .md-card {
         display: flex;
@@ -158,6 +202,10 @@
     .expand-custom {
         display: flex;
         flex-direction: column;
+    }
+
+    .pingal-avatar {
+      align-self: flex-start;
     }
 
     .user-name {
@@ -202,7 +250,11 @@
  }
 
  .card-custom:hover {
-  background-color: rgb(255, 250, 247); // rgb(254, 249, 245); //rgb(254, 243, 234)
+  background-color: $primary-color-l5;
+ }
+
+ .card-custom:active {
+  background-color: $primary-color-l3;
  }
 
  .card-custom:hover .datetime {

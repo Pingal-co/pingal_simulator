@@ -14,11 +14,18 @@
 				  </div>
 				</md-list-item>
 			</div>
-			<!-- Users -->
+			<!-- Chats and Channels -->
+			<div class="room-nav-header">Chats</div>
 			<room-nav-slide 
-				v-for="room in rooms"
-				:key="room.id"
-				:room="room"	
+				v-for="chat in chats"
+				:key="chat.id"
+				:room="chat"	
+			/>
+			<div class="room-nav-header">Channels</div>
+			<room-nav-slide 
+				v-for="channel in channels"
+				:key="channel.id"
+				:room="channel"	
 			/>
 	  </md-list>
  	</div>
@@ -35,6 +42,12 @@
 		computed: {
 			rooms() {
 				return this.$store.state.rooms
+			},
+			chats() {
+				return this.rooms.filter(room => room.type === 2)
+			},
+			channels() {
+				return this.rooms.filter(room => room.type === 1)
 			},
 			currentRoomChannel() {
 				return this.$store.state.currentRoomChannel
@@ -68,7 +81,11 @@
 		min-width: 360px;
 		overflow: scroll;
 	}
-
+	.room-nav-header {
+		color: rgba(0, 0, 0, 0.54);
+    	font-size: 14px;
+    	padding: 12px 12px 6px 15px;
+	}
 	.room-nav-list {
 		padding-top: 0px;
 	}
