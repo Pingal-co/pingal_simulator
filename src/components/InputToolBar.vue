@@ -38,12 +38,14 @@ export default {
       ...mapGetters([
         'placeholder',
         'currentRoomChannel',
-        'currentRoomInputChannel'
+        'currentRoomInputChannel',
+        'bot'
       ]),
       slide() {
         return {
           _id: Math.round(Math.random() * 1000000),
           text: this.text,
+          bot: this.bot,
          //  room: this.topic, 
          // user: this.user,
          author_name: this.user.name,
