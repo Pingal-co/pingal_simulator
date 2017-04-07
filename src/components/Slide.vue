@@ -48,21 +48,21 @@
                   </div>                 
                 </md-card-content> 
                 <div v-if="expanded" class="expanded">
-                  <md-card>
+                  <md-card v-for="reply in slide.replies">
                     <md-card-area md-inset>
                       <div class="user-name">
-                        {{slide.author_name}}
-                        <span class="datetime">{{datetime}}</span>
+                        {{reply.author_name}}
+                        <span class="datetime">{{datetime}} need to fix</span>
                       </div>
                       <md-card-content>
-                        <avatar :name="slide.author_name" />
+                        <avatar :name="reply.author_name" />
                         <div class="expand-custom">
-                            <div class="md-title">{{ slide.text }}</div>                  
+                            <div class="md-title">{{ reply.text }}</div>                  
                         </div>                 
                       </md-card-content> 
                     </md-card-area>
                   </md-card>
-                  <reply-input :slideId="slide.id" />
+                  <reply-input :parentId="slide.id" />
                 </div>  
               </md-card-area>                      
             </md-card>

@@ -27,7 +27,6 @@
 		},
 		computed: {
 			formattedTime() {
-				console.log(this.room)
 				if (!this.room.last_slide) {
 					return ''
 				} else {

@@ -1,6 +1,6 @@
 <template>
 	<form @submit.prevent="onSend" class="reply-form">
-		<input v-model="text" type="text" class="reply-box" placeholder="Type a response..." ref="inputText" id="reply-box" />
+		<input v-model="text" type="text" class="reply-box" placeholder="Type a reply..." ref="inputText" id="reply-box" />
 	</form>
 </template>
 
@@ -8,27 +8,34 @@
 	import { mapGetters } from 'vuex'
 
 	export default {
-		props: ['slideId'],
+		props: ['parentId'],
 		data() {
 			return {
 				text: '',
 			}
 		},
 		computed: {
-		...mapGetters([
-	        'currentRoomChannel',
-	        'currentRoomInputChannel'
-	      ])
+			...mapGetters([
+		        'currentRoomChannel',
+		        'currentRoomInputChannel'
+		      ]),
+			slide() {
+				return {
+					text: this.text,
+					parent_id: this.parentId,
+				}
+			}
 		},
 		methods: {
 			onSend() {
 				this.$store.dispatch('pushSlide', {
 					roomChannel: this.currentRoomInputChannel, 
-					slide: {text: this.text, response_to_slide_id: this.slideId}, 
-					event: 'add:response'})
-					.then(() => {
-						this.text = ''
-					})
+					slide: this.slide, 
+					event: 'add:reply'
+				})
+				.then(() => {
+					this.text = ''
+				})
 			}
 		}
 

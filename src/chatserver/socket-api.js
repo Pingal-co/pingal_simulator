@@ -56,6 +56,10 @@ let addSlide = (slide, delay = 0) => {
   }, delay)
 } 
 
+let addReply = ({slide}) => {
+  store.commit('APPEND_REPLY', slide)
+}
+
 let getSlidesInRoom = (data) => {
   store.commit('SET_SLIDES', data.slides)
 }
@@ -186,7 +190,8 @@ export let joinRoomChannel = (roomId) => {
   roomChannel.on('get:slides_in_room', getSlidesInRoom)
   roomChannel.on('get:users_in_room', getUsersInRoom)
 
-  roomChannel.on('add:slide', addSlide)
+  // roomChannel.on('add:slide', addSlide)
+  // roomChannel.on('add:reply', addReply)
   roomChannel.on('watch', watch)
   roomChannel.on('add:group', addGroup)
   roomChannel.on('add:introduction', addIntroduction)
@@ -198,6 +203,7 @@ export let joinRoomChannel = (roomId) => {
 export let joinRoomInputChannel = (roomId) => {
   let roomInputChannel = joinRoom(`rooms:input:${roomId}`, {})
   roomInputChannel.on('add:slide', addSlide)
+  roomInputChannel.on('add:reply', addReply)
   return roomInputChannel
 }
 

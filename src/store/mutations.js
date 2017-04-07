@@ -31,6 +31,11 @@ const mutations = {
         state.slides = state.slides.concat(slide);
     },
 
+    APPEND_REPLY (state, reply) {
+        let parent = state.slides.filter(slide => slide.id === reply.parent_id)[0]
+        parent.replies = parent.replies.concat(reply)
+    },
+
     /* START <CURRENT SLIDE MUTATION HANDLERS> */
     SET_CURRENT_SLIDE (state, slide) {
         state.currentSlide = slide
