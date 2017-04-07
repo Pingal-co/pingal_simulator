@@ -26,11 +26,15 @@
 		methods: {
 			onSend(button){
 				let slide = (this.hasIndex) ? {
-					text: button.bot, 
+					text: '', 
+					bot: button.bot,
 					index: this.getIndex.join(","),
 					topic: this.getKeyPhrase,
 					previous_text: this.recallMemory
-				} : {text: button.bot}
+				} : {
+					text: '',
+					bot: button.bot,
+				}
 				console.log("sending slide via context button")
 				console.log(slide)
 				//let slide = {text: button.bot}
@@ -47,6 +51,7 @@
 					 console.log(button)
 					 this.$store.commit('UPDATE_INPUT_TEXT', button.text.slice(0, -3))
 					 this.$store.commit('INPUT_FOCUS')
+					 this.$store.commit('SET_BOT', button.bot)
 					// dispatch an action
 				} else if (button.action === 'send') {
 					this.onSend(button)
