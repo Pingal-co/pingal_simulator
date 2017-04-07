@@ -1,64 +1,68 @@
 <template>
-    <div class="card-custom" @click="toggleExpanded">
-        <md-list-item >
-            <!-- Pingal Slide -->
-            <md-card v-if="slide.isPingal === true">
-              <md-card-area md-inset>
-                <div class="user-name">
-                  Pingal
-                  <span class="datetime">{{datetime}}</span>
-                </div>
-                <md-card-content>
-                  <md-avatar class="pingal-avatar">
-                    <img src="../assets/pingal_play_icon.png" alt="Pingal">
-                  </md-avatar>
-                  <div class="expand-custom">
-                      <div class="md-title">  {{ slide.text }}</div> 
-                      <div v-if="slide.brain && slide.brain.index_terms && slide.brain.index_terms.length > 0">
-                        <search-planner></search-planner>
-                      </div> 
-                      <div v-if="slide.type === 'suggestTopic'">
-                        <suggest-topics :topics="slide.topics"></suggest-topics>
-                      </div> 
-                      <div v-else-if="slide.type === 'signUp'">
-                        <sign-up></sign-up>
-                      </div>
-                      <div v-else-if="slide.type === 'logIn'">
-                        <log-in></log-in>
-                      </div> 
-                      <div v-else-if="slide.type === 'nextAction'">
-                        <context-buttons :buttons="slide.buttons"></context-buttons>
-                      </div>
-                  </div>                   
-                </md-card-content> 
-              </md-card-area>
-            </md-card>
+  <!-- Pingal Slide -->
+  <div class="card-custom" v-if="slide.isPingal === true">
+    <md-list-item >
+        <md-card >
+          <md-card-area md-inset>
+            <div class="user-name">
+              Pingal
+              <span class="datetime">{{datetime}}</span>
+            </div>
+            <md-card-content>
+              <md-avatar class="pingal-avatar">
+                <img src="../assets/pingal_play_icon.png" alt="Pingal">
+              </md-avatar>
+              <div class="expand-custom">
+                  <div class="md-title">  {{ slide.text }}</div> 
+                  <div v-if="slide.brain && slide.brain.index_terms && slide.brain.index_terms.length > 0">
+                    <search-planner></search-planner>
+                  </div> 
+                  <div v-if="slide.type === 'suggestTopic'">
+                    <suggest-topics :topics="slide.topics"></suggest-topics>
+                  </div> 
+                  <div v-else-if="slide.type === 'signUp'">
+                    <sign-up></sign-up>
+                  </div>
+                  <div v-else-if="slide.type === 'logIn'">
+                    <log-in></log-in>
+                  </div> 
+                  <div v-else-if="slide.type === 'nextAction'">
+                    <context-buttons :buttons="slide.buttons"></context-buttons>
+                  </div>
+              </div>                   
+            </md-card-content> 
+          </md-card-area>
+        </md-card>
+    </md-list-item>
+  </div>
 
-            <!-- User Slide -->
-            <md-card v-else>
-              <md-card-area md-inset>
-                <div class="user-name">
-                  {{slide.author_name}}{{replies.length}}
-                  <span class="datetime">{{datetime}}</span>
-                </div>
-                <md-card-content>
-                  <avatar :name="slide.author_name" />
-                  <div class="expand-custom">
-                      <div class="md-title">{{ slide.text }}</div>                  
-                  </div>                 
-                </md-card-content> 
-                <div v-if="expanded" class="expanded">
-                  <reply-slide v-for="slide in replies" :slide="slide" :key="slide.id" />
-                  <reply-input :parentId="slide.id" ref="replyInput" />
-                </div>  
-                <div v-else class="expanded">
-                  <reply-slide v-for="slide in replies.slice(0, 3)" :slide="slide" :key="slide.id" />
-                  <div class="more">{{more}}</div>
-                </div>
-              </md-card-area>                      
-            </md-card>
-        </md-list-item>
-    </div>
+  <!-- User Slide -->
+  <div v-else class="card-custom" @click="toggleExpanded">
+    <md-list-item>
+        <md-card>
+          <md-card-area md-inset>
+            <div class="user-name">
+              {{slide.author_name}}
+              <span class="datetime">{{datetime}}</span>
+            </div>
+            <md-card-content>
+              <avatar :name="slide.author_name" />
+              <div class="expand-custom">
+                  <div class="md-title">{{ slide.text }}</div>                  
+              </div>                 
+            </md-card-content> 
+            <div v-if="expanded" class="expanded">
+              <reply-slide v-for="slide in replies" :slide="slide" :key="slide.id" />
+              <reply-input :parentId="slide.id" ref="replyInput" />
+            </div>  
+            <div v-else class="expanded">
+              <reply-slide v-for="slide in replies.slice(0, 3)" :slide="slide" :key="slide.id" />
+              <div class="more">{{more}}</div>
+            </div>
+          </md-card-area>                      
+        </md-card>
+    </md-list-item>
+  </div>
 </template>
 
 <script>

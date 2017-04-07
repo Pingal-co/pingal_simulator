@@ -15,13 +15,13 @@
 				</md-list-item>
 			</div>
 			<!-- Chats and Channels -->
-			<div class="room-nav-header">Chats</div>
+			<div v-if="chats.length > 0" class="room-nav-header">Chats</div>
 			<room-nav-slide 
 				v-for="chat in chats"
 				:key="chat.id"
 				:room="chat"	
 			/>
-			<div class="room-nav-header">Channels</div>
+			<div v-if="channels.length > 0" class="room-nav-header">Channels</div>
 			<room-nav-slide 
 				v-for="channel in channels"
 				:key="channel.id"

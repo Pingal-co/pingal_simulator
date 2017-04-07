@@ -66,14 +66,6 @@ export default {
       focus() {
         return this.$store.state.currentInput.focus  
       },
-
-      /*
-      roomChannel() {
-        return this.$store.state.currentRoomChannel
-      }
-      */
-      
-
     },
 
     methods: {

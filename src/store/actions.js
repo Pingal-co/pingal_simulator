@@ -59,7 +59,9 @@ const actions = {
         // Close existing socket and re-open for authenticated user
         closeSocket()
         socket.connect({guardian_token: jwt})
-        commit('SET_CURRENT_ROOM_CHANNEL', joinPingalChannel(user.id))
+        let currentRoomChannel = joinPingalChannel(user.id)
+        commit('SET_CURRENT_ROOM_CHANNEL', currentRoomChannel)
+        commit('SET_CURRENT_ROOM_INPUT_CHANNEL', currentRoomChannel)
       })
   },
   
@@ -76,7 +78,9 @@ const actions = {
           // Close existing socket and re-open for authenticated user
           closeSocket()
           socket.connect({guardian_token: jwt})
-          commit('SET_CURRENT_ROOM_CHANNEL', joinPingalChannel(user.id))
+          let currentRoomChannel = joinPingalChannel(user.id)
+          commit('SET_CURRENT_ROOM_CHANNEL', currentRoomChannel)
+          commit('SET_CURRENT_ROOM_INPUT_CHANNEL', currentRoomChannel)
       })
       .catch((error) => {
           error.response.json()
