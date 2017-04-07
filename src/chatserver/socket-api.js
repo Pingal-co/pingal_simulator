@@ -156,6 +156,7 @@ export let joinWorldChannel = (session) => {
   roomChannel.on('response:logOut', response)
   roomChannel.on('response:planIntroduction', response)
   roomChannel.on('response:brain', response)
+  roomChannel.on('response:dialogPingal', response)
 
   // user text message
   roomChannel.on('add:slide', addSlide)
@@ -176,6 +177,7 @@ export let joinPingalChannel = (userId) => { //, jwt
   roomChannel.on('response:logOut', response)
   roomChannel.on('response:planIntroduction', response)
   roomChannel.on('response:brain', response)
+  roomChannel.on('response:dialogPingal', response)
 
   roomChannel.on('set:rooms', setRooms)
   roomChannel.on('add:rooms', addRooms)
@@ -196,6 +198,7 @@ export let joinRoomChannel = (roomId) => {
   roomChannel.on('add:group', addGroup)
   roomChannel.on('add:introduction', addIntroduction)
   roomChannel.on('response:brain', response)
+  roomChannel.on('response:dialogPingal', response)
 
   return roomChannel
 }
