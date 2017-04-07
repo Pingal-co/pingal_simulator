@@ -36,6 +36,9 @@
 				.then(() => {
 					this.text = ''
 				})
+			},
+			focus() {
+				this.$refs.inputText.focus();
 			}
 		}
 

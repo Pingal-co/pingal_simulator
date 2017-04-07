@@ -38,7 +38,7 @@
             <md-card v-else>
               <md-card-area md-inset>
                 <div class="user-name">
-                  {{slide.author_name}}
+                  {{slide.author_name}}{{replies.length}}
                   <span class="datetime">{{datetime}}</span>
                 </div>
                 <md-card-content>
@@ -48,22 +48,13 @@
                   </div>                 
                 </md-card-content> 
                 <div v-if="expanded" class="expanded">
-                  <md-card v-for="reply in slide.replies">
-                    <md-card-area md-inset>
-                      <div class="user-name">
-                        {{reply.author_name}}
-                        <span class="datetime">{{datetime}} need to fix</span>
-                      </div>
-                      <md-card-content>
-                        <avatar :name="reply.author_name" />
-                        <div class="expand-custom">
-                            <div class="md-title">{{ reply.text }}</div>                  
-                        </div>                 
-                      </md-card-content> 
-                    </md-card-area>
-                  </md-card>
-                  <reply-input :parentId="slide.id" />
+                  <reply-slide v-for="slide in replies" :slide="slide" :key="slide.id" />
+                  <reply-input :parentId="slide.id" ref="replyInput" />
                 </div>  
+                <div v-else class="expanded">
+                  <reply-slide v-for="slide in replies.slice(0, 3)" :slide="slide" :key="slide.id" />
+                  <div class="more">{{more}}</div>
+                </div>
               </md-card-area>                      
             </md-card>
         </md-list-item>
@@ -78,6 +69,7 @@
   import SearchPlanner from '@/components/SearchPlanner'
   import Avatar from '@/components/Avatar'
   import ReplyInput from '@/components/ReplyInput'
+  import ReplySlide from '@/components/ReplySlide'
 
   import moment from 'moment';
 
@@ -98,12 +90,30 @@
                     lastWeek: 'dddd [at] h:mm a',
                     sameElse: 'h:mm a [on] MMMM Do[,] YYYY'
                 });
+      },
+      replies() {
+        return this.slide.replies ? this.slide.replies : []
+      },
+      more() {
+        let count = this.replies.length - 3
+        if (count > 0) {
+          return '+ ' + count + ' replies'
+        } else {
+          return 'reply'
+        }
       }
     },
     methods: {
       toggleExpanded(e) {
+        // this.$refs.replyInput.focus()
+        // console.log(this.$refs.replyInput)
         if (e.target.id != 'reply-box') {
           this.expanded = !this.expanded
+          if (this.expanded) {
+            this.$nextTick(function() {
+              this.$refs.replyInput.focus()
+            })
+          }
         }
       }
     },
@@ -114,7 +124,8 @@
       ContextButtons,
       SearchPlanner,
       Avatar,
-      ReplyInput
+      ReplyInput,
+      ReplySlide
     }
   }
   
@@ -157,6 +168,13 @@
     width: 100%;
     margin-left: 44px;
     padding-bottom: 16px;
+  }
+
+  .more {
+    padding-left: 25px;
+    color: #a0a0a0;
+    font-size: 12px;
+    margin-top: -9px;
   }
 
 

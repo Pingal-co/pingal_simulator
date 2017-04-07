@@ -190,8 +190,8 @@ export let joinRoomChannel = (roomId) => {
   roomChannel.on('get:slides_in_room', getSlidesInRoom)
   roomChannel.on('get:users_in_room', getUsersInRoom)
 
-  // roomChannel.on('add:slide', addSlide)
-  // roomChannel.on('add:reply', addReply)
+  roomChannel.on('add:slide', addSlide)
+  roomChannel.on('add:reply', addReply)
   roomChannel.on('watch', watch)
   roomChannel.on('add:group', addGroup)
   roomChannel.on('add:introduction', addIntroduction)
