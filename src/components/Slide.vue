@@ -62,7 +62,7 @@
                       </md-card-content> 
                     </md-card-area>
                   </md-card>
-                  <input type="text" class="reply-box" placeholder="Type a response..." ref="inputText" id="reply-box" />
+                  <reply-input :slideId="slide.id" />
                 </div>  
               </md-card-area>                      
             </md-card>
@@ -77,6 +77,7 @@
   import ContextButtons from '@/components/ContextButtons'
   import SearchPlanner from '@/components/SearchPlanner'
   import Avatar from '@/components/Avatar'
+  import ReplyInput from '@/components/ReplyInput'
 
   import moment from 'moment';
 
@@ -112,7 +113,8 @@
       SuggestTopics,
       ContextButtons,
       SearchPlanner,
-      Avatar
+      Avatar,
+      ReplyInput
     }
   }
   
@@ -155,14 +157,6 @@
     width: 100%;
     margin-left: 44px;
     padding-bottom: 16px;
-  }
-
-  .reply-box {
-    width: 480px;
-    font-size: 16px;
-    outline: none;
-    padding: 8px 12px 8px 12px;
-    margin-left: 14px;
   }
 
 
