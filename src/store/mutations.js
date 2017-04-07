@@ -128,6 +128,10 @@ const mutations = {
         state.showLeft = !state.showLeft
     },
 
+     SET_BOT (state, bot) {
+        state.bot = bot
+    },
+
 }
 
 export default mutations
