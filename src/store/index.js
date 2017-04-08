@@ -40,7 +40,7 @@ const state = {
   rooms: [],
   jwt: jwt,
   placeholder: "Type a Message",
-  bot: "brain"
+  bot: "dialog"
 }
 
 
@@ -64,7 +64,7 @@ const getters = {
    currentUser: (state) => state.currentUser,
    placeholder: (state) => state.placeholder,
 	 bot: (state) => state.bot,
-   
+
    getBrain: (state) => { 
      let brain = (state.currentSlide.isPingal && state.currentSlide.brain) ? state.currentSlide.brain : {}
      return brain
