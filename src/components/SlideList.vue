@@ -26,7 +26,7 @@
 <style lang="scss" scope>
 
   .slide-list {
-    padding-bottom: 54px !important;
+    // padding-bottom: 54px !important;
     padding-top: 0px !important;
     overflow-y: scroll;
     max-height: calc(100vh - 108px);
