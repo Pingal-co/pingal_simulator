@@ -68,8 +68,6 @@ const mutations = {
     },
 
     SET_CURRENT_ROOM (state, room) {
-        console.log("set current room")
-        console.log(room)
         state.currentRoom = room
     },
     SET_CURRENT_ROOM_NEARBY_INDEX (state, nearby_index) {
