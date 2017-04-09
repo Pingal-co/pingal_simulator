@@ -1,6 +1,6 @@
 <template>
   <!-- Pingal Slide -->
-  <div class="card-custom" v-if="slide.isPingal === true">
+  <div class="card-custom" v-if="slide.isPingal === true || slide.user_id === 1">
     <md-list-item >
         <md-card >
           <md-card-area md-inset>
