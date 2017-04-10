@@ -94,8 +94,8 @@ const mutations = {
         state.rooms = rooms.concat(state.rooms) 
     },
 
-    WATCH (state, user) {
-        state.connections = state.connections.concat(user)
+    WATCH (state, users) {
+        state.connections = state.connections.concat(users)
     },
 
     UNWATCH (state, userId) {

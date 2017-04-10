@@ -2,6 +2,7 @@ import router from '../router'
 import store from '../store'
 import uniqueId from 'uniqid'
 import {socket, closeSocket} from './socket-config'
+import { Presence } from 'phoenix-elixir'
 
 import Cookies from 'js-cookie'
 /*
@@ -97,6 +98,19 @@ let watch = ({room_id, user}) => {
   store.commit('WATCH', user)
 }
 
+let renderPresence = (presences) => {
+  console.log("Presence")
+  const users_in_room = [];
+  Presence.list(presences, (id, obj) => {
+        return { 
+            ...obj.user,
+            room_id: obj.metas[0].room_id
+          }})           
+          .map(user => users_in_room.push(user));
+  console.log(users_in_room)
+  store.commit('WATCH', users_in_room)
+};
+
 // Response:
 const responseDelay = 300
 let response = ({slide, topicRoom}) => {
@@ -189,24 +203,40 @@ export let joinPingalChannel = (userId) => { //, jwt
 export let joinRoomChannel = (roomId) => {
   let roomChannel = joinRoom(`rooms:${roomId}`, {})
 
+
   roomChannel.on('get:slides_in_room', getSlidesInRoom)
   roomChannel.on('get:users_in_room', getUsersInRoom)
 
   roomChannel.on('add:slide', addSlide)
   roomChannel.on('add:reply', addReply)
-  roomChannel.on('watch', watch)
+
   roomChannel.on('add:group', addGroup)
   roomChannel.on('add:introduction', addIntroduction)
   roomChannel.on('response:brain', response)
   roomChannel.on('response:dialogPingal', response)
+
+  //roomChannel.on('watch', watch)
 
   return roomChannel
 }
 
 export let joinRoomInputChannel = (roomId) => {
   let roomInputChannel = joinRoom(`rooms:input:${roomId}`, {})
+  let presences = {}
   roomInputChannel.on('add:slide', addSlide)
   roomInputChannel.on('add:reply', addReply)
+    // presence
+  roomInputChannel.on("presence_state", state => {
+      //console.log(state)
+      presences = Presence.syncState(presences, state)
+      console.log(presences)
+      renderPresence(presences)
+  })
+  roomInputChannel.on("presence_diff", diff => {
+      presences = Presence.syncDiff(presences, diff)
+      console.log(presences)
+      renderPresence(presences)
+  })
   return roomInputChannel
 }
 
