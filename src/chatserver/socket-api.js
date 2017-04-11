@@ -52,6 +52,21 @@ let joinRoom = (roomName = DEFAULT_LOBBY, params = {}) => {
 let addSlide = (slide, delay = 0) => {
   setTimeout(function() {
     console.log(slide)
+    if (!('text' in slide)) {
+      // joining or leaving event: 
+      if (Object.keys(slide["joins"]).length > 0) {
+        let first = slide["joins"]
+        
+        let u = first[Object.keys(first)[0]]
+        console.log(u)
+        slide.text = `User ${u.user.name} joined`
+      } else {
+        let first = slide["leaves"]
+        let u = first[Object.keys(first)[0]]
+        slide.text = `User ${u.user.name} left`
+      }
+      
+    }
     store.commit('APPEND_SLIDE', slide)
     store.commit('SET_CURRENT_SLIDE', slide)
   }, delay)
@@ -107,8 +122,9 @@ let renderPresence = (presences) => {
             room_id: obj.metas[0].room_id
           }})           
           .map(user => users_in_room.push(user));
+
   console.log(users_in_room)
-  store.commit('WATCH', users_in_room)
+  store.commit('SET_USERS', users_in_room)
 };
 
 // Response:
@@ -200,12 +216,13 @@ export let joinPingalChannel = (userId) => { //, jwt
   return roomChannel
 }
 
+let presences = {}
 export let joinRoomChannel = (roomId) => {
   let roomChannel = joinRoom(`rooms:${roomId}`, {})
 
 
   roomChannel.on('get:slides_in_room', getSlidesInRoom)
-  roomChannel.on('get:users_in_room', getUsersInRoom)
+  //roomChannel.on('get:users_in_room', getUsersInRoom)
 
   roomChannel.on('add:slide', addSlide)
   roomChannel.on('add:reply', addReply)
@@ -217,12 +234,16 @@ export let joinRoomChannel = (roomId) => {
 
   //roomChannel.on('watch', watch)
 
+  roomChannel.on("presence_diff", diff => {
+      presences = Presence.syncDiff(presences, diff)
+      console.log(presences)
+      renderPresence(presences)
+  })
   return roomChannel
 }
 
 export let joinRoomInputChannel = (roomId) => {
   let roomInputChannel = joinRoom(`rooms:input:${roomId}`, {})
-  let presences = {}
   roomInputChannel.on('add:slide', addSlide)
   roomInputChannel.on('add:reply', addReply)
     // presence

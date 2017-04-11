@@ -101,6 +101,9 @@
 	  		return invitees
 	  	},
 	  	users() {
+			console.log("users")
+			console.log(this.$store.state.connections)
+			console.log(this.$store.state.currentUser)
 	  		return this.$store.state.connections
 	  	},
 	  	currentRoom() {
