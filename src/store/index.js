@@ -79,7 +79,9 @@ const getters = {
         let brain = (state.currentSlide.isPingal && state.currentSlide.brain) ? state.currentSlide.brain : {}
         let first_obj = (brain && brain.index_terms) ? brain.index_terms[0] : {}
         let key = first_obj && Object.keys(first_obj)[0]
-        return [key].concat(first_obj[key])
+        // Make first index the key itself if not already
+        let index = key == first_obj[key][0] ? first_obj[key] : [key].concat(first_obj[key])     
+        return index
 			},
 	
     getKeyPhrase() {

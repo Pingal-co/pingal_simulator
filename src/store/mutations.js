@@ -132,6 +132,12 @@ const mutations = {
         state.bot = bot
     },
 
+    UPDATE_CURRENT_SLIDE_BRAIN_INDEX (state, index_terms) {
+        let terms = state.currentSlide.brain.index_terms[0]
+        let keyphrase = state.currentSlide.brain.keyphrases[0]
+        terms[keyphrase] = index_terms
+    }
+
 }
 
 export default mutations
