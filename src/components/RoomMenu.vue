@@ -38,7 +38,8 @@
 			
 			<interests 
 				:interests="interests" 
-				:maxCount="25" 
+				:maxCount="100"
+				:pageSize="25" 
 			/>
 		</div>
 
@@ -111,7 +112,7 @@
 	  	},
 	  	interests() {
 	  		let interests = this.currentRoom.nearby_index
-	  		return interests ? interests.split(",").slice(0, 20) : null
+	  		return interests ? interests.split(",") : []
 	  	},
 	  },
 	  methods: {

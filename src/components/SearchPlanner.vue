@@ -1,5 +1,5 @@
 <template>
-    <md-chips v-model="getIndex" :md-max="60" class="chips">
+    <md-chips v-model="getIndex" @change="change" :md-max="maxCount" class="chips" :md-input-placeholder="placeholder">
     <template scope="chip">            
         <span>{{ chip.value }}</span>
         <small v-if="chip.value === getKeyPhrase">(favorite)</small>
@@ -20,9 +20,23 @@
             ...mapGetters([
                 'getKeyPhrase',
                 'getIndex'
-            ])
-            
-                
+            ]),
+            placeholder() {
+                if (this.getIndex.length >= this.maxCount) {
+                    return this.maxCount + '/' + this.maxCount
+                } else {
+                    console.log(this.getIndex)
+                    return 'Add Interest... ' + this.getIndex.length + '/' + this.maxCount
+                }
+            },
+            maxCount() {
+                return 100
+            }         
+        },
+        methods: {
+            change() {
+                this.$store.commit('UPDATE_CURRENT_SLIDE_BRAIN_INDEX', this.getIndex)
+            }
         }
     }
 
