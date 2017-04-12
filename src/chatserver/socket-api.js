@@ -233,12 +233,19 @@ export let joinRoomChannel = (roomId) => {
   roomChannel.on('response:dialogPingal', response)
 
   //roomChannel.on('watch', watch)
-
+    // presence
+  roomChannel.on("presence_state", state => {
+      //console.log(state)
+      presences = Presence.syncState(presences, state)
+      console.log(presences)
+      renderPresence(presences)
+  })
   roomChannel.on("presence_diff", diff => {
       presences = Presence.syncDiff(presences, diff)
       console.log(presences)
       renderPresence(presences)
   })
+  
   return roomChannel
 }
 
