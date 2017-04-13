@@ -2,7 +2,7 @@
   <md-list class="custom-list md-triple-line slide-list">  
     <slide 
         v-for="slide in slides" 
-        v-bind:key="slide.id" 
+        :key="slide.id" 
         :slide="slide">
     </slide>
     <li id="scrollAnchor"></li>
@@ -16,6 +16,11 @@
     props: ['slides'],
     components: { Slide },
     updated() {
+      // Scroll most recent into view
+      var scrollAnchor = this.$el.querySelector('#scrollAnchor')
+      scrollAnchor.scrollIntoView()
+    },
+    mounted() {
       // Scroll most recent into view
       var scrollAnchor = this.$el.querySelector('#scrollAnchor')
       scrollAnchor.scrollIntoView()
