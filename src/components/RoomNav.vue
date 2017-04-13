@@ -15,7 +15,7 @@
 				</md-list-item>
 			</div>
 			<!-- Chats and Radars -->
-			<div v-if="channels.length > 0" class="room-nav-header">Radars</div>
+			<div v-if="channels.length > 0" class="room-nav-header">Relays</div>
 			<room-nav-slide 
 				v-for="channel in channels"
 				:key="channel.id"

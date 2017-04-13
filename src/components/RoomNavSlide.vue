@@ -31,12 +31,12 @@
 					return ''
 				} else {
 					return moment(this.room.last_slide.updated_at).calendar(null, {
-					  sameDay: 'h:mm a',
-					  nextDay: '[The Future]',
-					  nextWeek: "[How's your time machine work?]",
-					  lastDay: '[Yesterday]',
-					  lastWeek: 'dddd',
-					  sameElse: 'MMMM Do'
+					  sameDay: '[Today at] h:mm a',
+					  lastDay: '[Yesterday at] h:mm a',
+					  nextDay: '[Tomorrow at] h:mm a',
+					  nextWeek: "[Next] dddd [at] h:mm a",
+					  lastWeek: '[Last] dddd [at] h:mm a',
+					  sameElse: 'MM/DD/YYYY'
 					});
 				}
 			},
