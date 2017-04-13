@@ -58,8 +58,17 @@ const mutations = {
 
     SET_USERS (state, users) {
           // filter out your own name, show everyone except yourself
-       users = users.filter(user => user.id != state.currentUser.id) 
-       state.connections = users
+       //users = users.filter(user => user.id != state.currentUser.id) 
+       // avoid duplicate user objects
+      users = users.filter(user => {
+           for (let u=0; u<state.connections.length; u++) {
+                if (state.connections[u].id == user.id) {
+                    return false
+                }
+           }
+           return true
+       })
+       state.connections = state.connections.concat(users)
 
     },
 
