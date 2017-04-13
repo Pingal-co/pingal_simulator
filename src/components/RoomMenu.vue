@@ -57,7 +57,7 @@
 			  </div>
 
 		      <div v-if="user.expanded" class="user-expanded">
-		      	<md-button @click.native="getIntroduced(user.id)" class="md-raised md-primary get-introduced">
+		      	<md-button @click.native="getIntroduced(user.id)" class="get-introduced">
 		      	  Get Introduced
 			      <md-icon class="get-introduced-icon">chat_bubble</md-icon>
 			    </md-button>
@@ -69,10 +69,14 @@
 		    </md-list-item>
 		  </md-list>
 		</div>
-
-		<md-button @click.native="createGroupRoom" class="md-raised md-primary create-room">
+		<!--
+		<md-button @click.native="createGroupRoom" class="md-raised create-room button noselect">
 			Invite to Private Group Chat
 		</md-button>
+		-->
+		<div class="buttons">
+		 <div @click="createGroupRoom" class="button noselect">Invite to Private Group Chat</div>
+	  	</div>
 	</div>
 </template>
 
@@ -166,6 +170,7 @@
 	$border-color: rgb(225, 225, 225);
 	$border-color-darker: rgb(215, 215, 215);
 	$primary-darker-color: rgb(217, 98, 12);
+  	$primary-color: rgb(244, 128, 45);
 	.room-menu {
 		width: 100%;
 		height: 100%;
@@ -234,5 +239,41 @@
 	}
 	.create-room {
 		margin-top: 16px !important;
+	}
+	.buttons {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		padding-top: 9px;
+   }
+	.button {
+    border: 1px solid $primary-darker-color;
+    padding: 14px;
+    border-radius: 20px;
+    margin: 12px;
+    color: $primary-darker-color;
+    background-color: transparent;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .button:hover {
+  	border: 1px solid transparent;
+  	color: white;
+  	background-color: $primary-color;
+  }
+
+  .button:active {
+  	background-color: $primary-darker-color;
+  }
+
+  .noselect {
+	  -webkit-touch-callout: none; /* iOS Safari */
+	    -webkit-user-select: none; /* Safari */
+	     -khtml-user-select: none; /* Konqueror HTML */
+	       -moz-user-select: none; /* Firefox */
+	        -ms-user-select: none; /* Internet Explorer/Edge */
+	            user-select: none; /* Non-prefixed version, currently
+	                                  supported by Chrome and Opera */
 	}
 </style>

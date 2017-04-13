@@ -226,6 +226,7 @@
 
     .user-name {
       font-size: 12px;
+      font-weight: bold;
       color: rgb(160, 160, 160);
       margin-left: 58px;
       margin-bottom: -12px;
