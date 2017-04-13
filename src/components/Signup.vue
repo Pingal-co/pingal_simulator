@@ -87,4 +87,8 @@
 		color: green;
 		padding-top: 20px
 	}
+
+	.signup-form {
+		max-width: 300px;
+	}
 </style>
