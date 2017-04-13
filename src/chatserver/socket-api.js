@@ -52,18 +52,21 @@ let joinRoom = (roomName = DEFAULT_LOBBY, params = {}) => {
 let addSlide = (slide, delay = 0) => {
   setTimeout(function() {
     console.log(slide)
-    if (!('text' in slide)) {
+    if ((!('text' in slide)) && ('joins' in slide)) {
       // joining or leaving event: 
-      if (Object.keys(slide["joins"]).length > 0) {
-        let first = slide["joins"]
-        
-        let u = first[Object.keys(first)[0]]
-        console.log(u)
-        slide.text = `User ${u.user.name} joined`
-      } else {
-        let first = slide["leaves"]
-        let u = first[Object.keys(first)[0]]
-        slide.text = `User ${u.user.name} left`
+        if (Object.keys(slide["joins"]).length > 0) {
+          let first = slide["joins"]
+          
+          let u = first[Object.keys(first)[0]]
+          let metas = u.metas[Object.keys(u.metas)[0]]
+          console.log(u)
+          slide.text = `Meet: ${u.user.name}, who is interested in ${metas.introduction} `
+          slide.isPingal = true
+        } else {
+          let first = slide["leaves"]
+          let u = first[Object.keys(first)[0]]
+          slide.text = `User ${u.user.name} left`
+          
       }
       
     }
@@ -216,10 +219,10 @@ export let joinPingalChannel = (userId) => { //, jwt
   return roomChannel
 }
 
-let presences = {}
+
 export let joinRoomChannel = (roomId) => {
   let roomChannel = joinRoom(`rooms:${roomId}`, {})
-
+  let presences = {}
 
   roomChannel.on('get:slides_in_room', getSlidesInRoom)
   //roomChannel.on('get:users_in_room', getUsersInRoom)
@@ -240,6 +243,7 @@ export let joinRoomChannel = (roomId) => {
       console.log(presences)
       renderPresence(presences)
   })
+  
   roomChannel.on("presence_diff", diff => {
       presences = Presence.syncDiff(presences, diff)
       console.log(presences)
@@ -251,6 +255,7 @@ export let joinRoomChannel = (roomId) => {
 
 export let joinRoomInputChannel = (roomId) => {
   let roomInputChannel = joinRoom(`rooms:input:${roomId}`, {})
+  let presences = {}
   roomInputChannel.on('add:slide', addSlide)
   roomInputChannel.on('add:reply', addReply)
     // presence
