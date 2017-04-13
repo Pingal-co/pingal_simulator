@@ -5,6 +5,7 @@ import {socket, closeSocket} from './socket-config'
 import { Presence } from 'phoenix-elixir'
 
 import Cookies from 'js-cookie'
+import _ from 'lodash'
 /*
   To make it clean, I have three separate channels [User, Pingal, Room] to talk to Phoenix
   I am also adding a fourth "World" channel to see what everyone is talking to Pingal
@@ -27,22 +28,29 @@ let isCurrentSlide = (slideId) => {
 }
 
 let joinRoom = (roomName = DEFAULT_LOBBY, params = {}) => {
-  const room = socket.channel(roomName, params)
+  // only join if not joined previously or the state is closed
+  //let room = _.find(socket.channels, (rm)=> rm.topic === roomName)
 
-  room.join()
-    .receive('ok', _ => {
-      console.log(`joined successfully to ${roomName}`)
-    })
-    .receive('error', resp => {
-      console.log(`Unable to join ${resp} `)
-    })
-    .receive('timeout', _ => {
-      console.log('Timeout: Check all connections: network, database, ...')
-    })
+  //if (!room) {
+       let room = socket.channel(roomName, params)
+ // }
+  
+  if (room.state === 'closed') {
+    room.join()
+      .receive('ok', _ => {
+        console.log(`joined successfully to ${roomName}`)
+      })
+      .receive('error', resp => {
+        console.log(`Unable to join ${resp} `)
+      })
+      .receive('timeout', _ => {
+        console.log('Timeout: Check all connections: network, database, ...')
+      })
 
-  // add some room-level event handlers
-  room.onError(event => console.log('Room error.', event))
-  room.onClose(event => console.log('Room closed.'))
+    // add some room-level event handlers
+    room.onError(event => console.log('Room error.', event))
+    room.onClose(event => console.log('Room closed.'))
+  }
 
   return room
 }
