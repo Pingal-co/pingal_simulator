@@ -78,8 +78,11 @@ let addSlide = (slide, delay = 0) => {
       }
       
     }
-    store.commit('APPEND_SLIDE', slide)
-    store.commit('SET_CURRENT_SLIDE', slide)
+    // do not commit if slide is empty
+    if (('text' in slide) && (slide.text)) {
+      store.commit('APPEND_SLIDE', slide)
+      store.commit('SET_CURRENT_SLIDE', slide)
+    }
   }, delay)
 } 
 
