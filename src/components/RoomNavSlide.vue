@@ -36,7 +36,7 @@
 					  nextDay: '[Tomorrow at] h:mm a',
 					  nextWeek: "[Next] dddd [at] h:mm a",
 					  lastWeek: '[Last] dddd [at] h:mm a',
-					  sameElse: 'MM/DD/YYYY'
+					  sameElse: 'h:mm a [on] MMMM Do[,] YYYY'
 					});
 				}
 			},

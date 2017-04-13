@@ -87,11 +87,11 @@
     computed: {
       datetime() {
          return moment(this.slide.inserted_at).calendar(null, {
-                    sameDay: 'h:mm a',
-                    nextDay: '[The Future]',
-                    nextWeek: "[How's your time machine work?]",
+                    sameDay: '[Today at] h:mm a',
+                    nextDay: '[Tomorrow at] h:mm a',
                     lastDay: '[Yesterday at] h:mm a',
-                    lastWeek: 'dddd [at] h:mm a',
+                    nextWeek: "[Next] dddd [at] h:mm a",
+                    lastWeek: '[Last] dddd [at] h:mm a',
                     sameElse: 'h:mm a [on] MMMM Do[,] YYYY'
                 });
       },
