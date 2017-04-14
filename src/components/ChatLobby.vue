@@ -30,7 +30,7 @@
       <!-- slides in room -->
       <div class="slides-section">   
         <!--<loading v-if="slides.length === 0" /> -->
-        <slide-list v-else
+        <slide-list 
           :slides="slides">
         </slide-list>
 
