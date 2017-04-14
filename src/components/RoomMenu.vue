@@ -135,14 +135,11 @@
 	  	},
 	  	createGroupRoom() {
 	  		let users = this.users.filter(user => user.selected);
-	  		if (users.length < 2) {
-	  			alert('Select at least two people to invite.')
-	  		} else {
-		  		this.$store.dispatch('createGroupRoom', {
-		  			users: users,
-		  			roomChannel: this.currentRoomChannel
-		  		})
-	  		}
+			this.$store.dispatch('createGroupRoom', {
+				users: users,
+				roomChannel: this.currentRoomChannel
+			})
+
 	  	},
 	  	getIntroduced(userId) {
 	  		console.log("get Introduced")
