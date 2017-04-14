@@ -59,6 +59,19 @@ let joinRoom = (roomName = DEFAULT_LOBBY, params = {}) => {
 
 let addSlide = (slide, delay = 0) => {
   setTimeout(function() {
+    // do not commit if slide is empty
+    if (('text' in slide) && (slide.text)) {
+      store.commit('APPEND_SLIDE', slide)
+      store.commit('SET_CURRENT_SLIDE', slide)
+    }
+  }, delay)
+} 
+
+let addReply = ({slide}) => {
+  store.commit('APPEND_REPLY', slide)
+}
+
+let addPresence = (slide) => {
     console.log(slide)
     if ((!('text' in slide)) && ('joins' in slide)) {
       // joining or leaving event: 
@@ -78,16 +91,7 @@ let addSlide = (slide, delay = 0) => {
       }
       
     }
-    // do not commit if slide is empty
-    if (('text' in slide) && (slide.text)) {
-      store.commit('APPEND_SLIDE', slide)
-      store.commit('SET_CURRENT_SLIDE', slide)
-    }
-  }, delay)
-} 
-
-let addReply = ({slide}) => {
-  store.commit('APPEND_REPLY', slide)
+    addSlide(slide)
 }
 
 let getSlidesInRoom = (data) => {
@@ -260,6 +264,8 @@ export let joinRoomChannel = (roomId) => {
       console.log(presences)
       renderPresence(presences)
   })
+
+  roomChannel.on('add:presence', addPresence)
   
   return roomChannel
 }
