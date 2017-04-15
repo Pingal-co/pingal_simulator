@@ -15,7 +15,7 @@
 			      <span>{{user.name}}</span>
 			  </div>
 
-		      <div v-if="user.expanded" class="user-expanded">
+		      <div v-if="user && user.expanded" class="user-expanded">
 		      	<md-button @click.native="getIntroduced(user.id)" class="md-raised md-primary get-introduced">
 		      	  Message
 			      <md-icon class="get-introduced-icon">chat_bubble</md-icon>
@@ -44,7 +44,7 @@
 		</div>
 
 		<div class="room-connections">
-		  <div class="room-connections-header">Connections ({{users.length}})</div>
+		  <div class="room-connections-header">Connections and Controls ({{users.length}})</div>
 		  <md-list class="connection-panel-list">
 		    <md-list-item class="connection-panel" v-for="user, index in users" :key="index" @click.native="toggleUser(index)">
 		      <div class="user-panel-content">
@@ -56,14 +56,25 @@
 			      </md-checkbox>
 			  </div>
 
-		      <div v-if="user.expanded" class="user-expanded">
+		      <div v-if="user && user.expanded" class="user-expanded">
+				<!--  
 		      	<md-button @click.native="getIntroduced(user.id)" class="get-introduced">
 		      	  Get Introduced
 			      <md-icon class="get-introduced-icon">chat_bubble</md-icon>
 			    </md-button>
-		      	  
+				-->
+
+				<md-button v-if="user.pause" @click.native="play_watch(index, user.id)" :ref="'play_watch' + user.id">
+					Watch
+					<md-icon class="get-introduced-icon">play_circle_outline</md-icon>
+				</md-button>
+				<md-button v-else @click.native="pause_watch(index, user.id)" :ref="'pause_watch' + user.id">
+					Pause
+					<md-icon class="get-introduced-icon">pause_circle_outline</md-icon>
+				</md-button>
 		      	<md-button @click.native="unwatch(user.id)" :ref="'unwatch' + user.id">
 		      	  Unwatch
+					<md-icon class="get-introduced-icon">delete_forever</md-icon>
 		      	</md-button>
 		      </div>
 		    </md-list-item>
@@ -123,7 +134,7 @@
 	  	toggleUser(index) {
 	  		// let newUser = Object.assign({}, this.users[index], {expanded: true});
 	  		// this.$set(users, index, newUser);
-	  		for (var i = 0; i < this.users.length; i++) {
+	  		for (let i = 0; i < this.users.length; i++) {
 	  			if (this.users[i].expanded) {
 		  			if (i !== index) {
 	  					this.users[i].expanded = false
@@ -133,6 +144,16 @@
 	  		this.users[index].expanded = !this.users[index].expanded
 	  		this.$forceUpdate();
 	  	},
+		pauseUserBroadcast(index){
+			for (let i = 0; i < this.users.length; i++) {
+	  			if (this.users[i].pause) {
+		  			if (i !== index) {
+	  					this.users[i].pause = false
+	  				}
+	  			}
+	  		}
+	  		this.users[index].pause = !this.users[index].pause
+		},
 	  	createGroupRoom() {
 	  		let users = this.users.filter(user => user.selected);
 			this.$store.dispatch('createGroupRoom', {
@@ -148,12 +169,31 @@
 	  			roomChannel: this.currentRoomChannel
 	  		})
 	  	},
+		getConnectionRoom(userId) {
+			let user = this.users.filter(user => user.id == userId)[0]
+			return user		
+   		},
 	  	unwatch(userId) {
 	  		this.$store.dispatch("unwatch", {
-	  			currentRoom: this.currentRoom,
-	  			userId: userId
+	  			user: this.getConnectionRoom(userId),
+			    roomChannel: this.currentRoomChannel
+	  		})
+	  	},
+		pause_watch(index, userId) {
+			this.pauseUserBroadcast(index)
+	  		this.$store.dispatch("pause_watch", {
+	  			user: this.getConnectionRoom(userId),
+			    roomChannel: this.currentRoomChannel
+	  		})
+	  	},
+		play_watch(index, userId) {
+			this.pauseUserBroadcast(index)
+	  		this.$store.dispatch("play_watch", {
+	  			user: this.getConnectionRoom(userId),
+			    roomChannel: this.currentRoomChannel
 	  		})
 	  	}
+
 	  },
 		// beforeMount() {
 		// 	for (var i = 0; i < this.users.length; i++) {

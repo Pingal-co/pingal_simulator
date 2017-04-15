@@ -135,11 +135,29 @@ const actions = {
     return sendToChannel(roomChannel, {interests: interests}, 'update:interests')
   },
 
-  unwatch ({commit}, {userId, currentRoom}) {
+  unwatch ({commit}, {user, roomChannel}) {
     console.log("unwatch user")
     // Unwatch user
     // tell server
-    commit('UNWATCH', userId)
+    sendToChannel(roomChannel, {room_id: user.room_id, from:''}, 'unwatch')
+    // commit locally
+    commit('UNWATCH', user.id)
+  },
+
+  pause_watch ({commit}, {user, roomChannel}) {
+    console.log("pause user broadcast")
+    console.log(user)
+    // Unwatch user
+    // tell server
+    sendToChannel(roomChannel, {room_id: user.room_id, from:''}, 'unwatch')
+  },
+
+  play_watch ({commit}, {user, roomChannel}) {
+    console.log("play user broadcast")
+    console.log(user)
+    // Unwatch user
+    // tell server
+    sendToChannel(roomChannel, {room_id: user.room_id, from:''}, 'watch')
   },
 
   getIntroduced ({commit}, {userId, roomChannel}) {

@@ -174,6 +174,7 @@ let response = ({slide, topicRoom}) => {
 */
 export let sendToChannel = (room, slide, event = 'add:slide') => {
   console.log('sending to room...');
+  //console.log(slide)
   room.push(event, slide)
         .receive('ok', (msg) => console.log('sent'))
         .receive('error', (reasons) => console.log('failed', reasons))

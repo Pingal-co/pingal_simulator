@@ -62,6 +62,8 @@ const getters = {
    getRoomsCount: (state) => state.rooms.length,
 
    currentUser: (state) => state.currentUser,
+   connections: (state) => state.connections,
+
    placeholder: (state) => state.placeholder,
 	 bot: (state) => state.bot,
 
