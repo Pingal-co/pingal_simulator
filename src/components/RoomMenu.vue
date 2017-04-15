@@ -65,15 +65,15 @@
 				-->
 
 				<md-button v-if="user.pause" @click.native="play_watch(index, user.id)" :ref="'play_watch' + user.id">
-					Watch
+					Watch again
 					<md-icon class="get-introduced-icon">play_circle_outline</md-icon>
 				</md-button>
 				<md-button v-else @click.native="pause_watch(index, user.id)" :ref="'pause_watch' + user.id">
-					Pause
+					Hold
 					<md-icon class="get-introduced-icon">pause_circle_outline</md-icon>
 				</md-button>
 		      	<md-button @click.native="unwatch(user.id)" :ref="'unwatch' + user.id">
-		      	  Unwatch
+		      	  Remove
 					<md-icon class="get-introduced-icon">delete_forever</md-icon>
 		      	</md-button>
 		      </div>
