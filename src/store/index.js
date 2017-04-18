@@ -28,7 +28,7 @@ let currentRoomChannel = jwt ? joinPingalChannel(user.id) : joinWorldChannel(ses
 const state = {
   currentSlide: {},
   currentUser: user,
-  currentRoom: {name: "Pingal"},
+  currentRoom: {name: "Pingal", type: "pingal"},
   currentRoomChannel: currentRoomChannel,
   currentRoomInputChannel: currentRoomChannel,
   currentInput: {text: '', focus: 1},

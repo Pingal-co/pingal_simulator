@@ -15,6 +15,12 @@
 				</md-list-item>
 			</div>
 			<!-- Chats and Radars -->
+			<div v-if="introductions.length > 0" class="room-nav-header">Introductions</div>
+			<room-nav-slide 
+				v-for="introduction in introductions"
+				:key="introduction.id"
+				:room="introduction"	
+			/>
 			<div v-if="channels.length > 0" class="room-nav-header">Relays</div>
 			<room-nav-slide 
 				v-for="channel in channels"
@@ -43,6 +49,9 @@
 		computed: {
 			rooms() {
 				return this.$store.state.rooms
+			},
+			introductions() {
+				return this.rooms.filter(room => room.type === 3)
 			},
 			chats() {
 				return this.rooms.filter(room => room.type === 2)

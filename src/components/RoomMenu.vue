@@ -1,5 +1,7 @@
 <template>
-	<div v-if="currentRoom.type == 'pingal'" class="room-menu">pingal</div>
+	<div v-if="currentRoom.type == 'pingal' || currentRoom.type == 0" class="room-menu">
+		Number of introductions per month:  
+	</div>
 	<!-- Personal/Private Group -->
 	<div v-else-if="currentRoom.type == 2" class="room-menu">
 		<div class="add-people">
@@ -29,7 +31,7 @@
 		  </md-list>
 		</div>
 	</div>
-	<!-- Default to public room -->
+	<!-- Default to public room, type = 1 -->
 	<div v-else class="room-menu">
 		<div class="room-interests">
 			<div class="room-interests-header">
