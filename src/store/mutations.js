@@ -82,6 +82,10 @@ const mutations = {
     SET_CURRENT_ROOM (state, room) {
         state.currentRoom = room
     },
+    CLEAR_ROOM_NOTIFICATIONS (state, room) {
+        let clearRoom = state.rooms.filter(r => r.id === room.id)[0]
+        clearRoom.user_active_notifications = []
+    },
     SET_CURRENT_ROOM_NEARBY_INDEX (state, nearby_index) {
         state.currentRoom.nearby_index = nearby_index
     },
