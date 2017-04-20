@@ -121,10 +121,15 @@ const actions = {
       commit('SET_CURRENT_ROOM_CHANNEL', joinRoomChannel(room.id))
       commit('SET_CURRENT_ROOM_INPUT_CHANNEL', joinRoomInputChannel(room.id))
       commit('SET_CURRENT_ROOM', room)
-      commit('CLEAR_ROOM_NOTIFICATIONS', room)
       commit('SHOW_RIGHT')
       // Focus input
       commit('INPUT_FOCUS')
+  },
+
+  denotify ({commit}, {room, userChannel}) {
+    commit('CLEAR_ROOM_NOTIFICATIONS', room)
+    console.log("denotify to userchannel")
+    return sendToChannel(userChannel, {room: room}, 'denotify')
   },
 
   createGroupRoom ({commit}, {roomChannel, users}) {

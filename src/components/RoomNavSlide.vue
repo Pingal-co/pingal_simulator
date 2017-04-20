@@ -69,6 +69,10 @@
 			joinRoom() {
 				this.$store.dispatch('updateCurrentRoomChannel', {
 					room: this.room
+				}),
+				this.$store.dispatch('denotify', {
+					room: this.room,
+					userChannel: this.$store.state.userChannel,
 				})
 			}
 		}
