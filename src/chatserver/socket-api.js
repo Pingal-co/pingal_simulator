@@ -210,13 +210,15 @@ export let sendToChannel = (room, slide, event = 'add:slide') => {
 //   return userChannel
 // }
 
+let notify = (data) => {
+  console.log("notify")
+  console.log(data)
+}
+
 export let joinUserChannel = (userId) => {
   let userChannel = joinUser(userId);
 
-  console.log("userChannel")
-  console.log(userChannel)
-
-  userChannel.on('notification', console.log("user channel notification"))
+  roomChannel.on('notify', notify)
 
   return userChannel
 }
