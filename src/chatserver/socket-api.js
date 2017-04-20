@@ -218,7 +218,7 @@ let notify = (data) => {
 export let joinUserChannel = (userId) => {
   let userChannel = joinUser(userId);
 
-  roomChannel.on('notify', notify)
+  userChannel.on('notify', notify)
 
   return userChannel
 }
