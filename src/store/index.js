@@ -5,7 +5,8 @@ import mutations from './mutations'
 import Cookies from 'js-cookie'
 import {
   joinWorldChannel, 
-  joinPingalChannel
+  joinPingalChannel,
+  joinUserChannel
 } from '@/chatserver'
 
 // import connections from './room_users_data'
@@ -22,12 +23,15 @@ jwt = jwt ? jwt : null;
 let session = Cookies.get('session');
 
 // Load current room as pings channel
-let currentRoomChannel = jwt ? joinPingalChannel(user.id) : joinWorldChannel(session)
+let currentRoomChannel = jwt ? joinPingalChannel(user.id) : joinWorldChannel(session);
+
+let userChannel = jwt ? joinUserChannel(user.id) : null; // what should this default to
 
 // contains the state of entire app
 const state = {
   currentSlide: {},
   currentUser: user,
+  userChannel: userChannel,
   currentRoom: {name: "Pingal"},
   currentRoomChannel: currentRoomChannel,
   currentRoomInputChannel: currentRoomChannel,
