@@ -126,6 +126,12 @@ const actions = {
       commit('INPUT_FOCUS')
   },
 
+  denotify ({commit}, {room, userChannel}) {
+    commit('CLEAR_ROOM_NOTIFICATIONS', room)
+    console.log("denotify to userchannel")
+    return sendToChannel(userChannel, {room: room}, 'denotify')
+  },
+
   createGroupRoom ({commit}, {roomChannel, users}) {
     return sendToChannel(roomChannel, {users: users}, 'add:group')
   },

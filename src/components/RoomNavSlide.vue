@@ -3,12 +3,12 @@
 		<md-list-item :class="['room-nav-slide', selected]">
 		  <avatar :name="room.name" />
 
-		  <div class="md-list-text-container">
+		  <div :class="'md-list-text-container ' + notification">
 		    <span>{{room.name}}</span>
 		    <p>{{subtitle}}</p>
 		  </div>
 
-		  <div class="formatted-time">{{formattedTime}}</div>
+		  <div :class="'formatted-time ' + notification">{{formattedTime}}</div>
 
 		  <!-- <md-divider class="md-inset"></md-divider> -->
 		</md-list-item>
@@ -60,12 +60,19 @@
 				} else {
 					return null
 				}
+			},
+			notification() {
+				return this.room.user_active_notifications.length > 0 ? 'notification' : null
 			}
 		},
 		methods: {
 			joinRoom() {
 				this.$store.dispatch('updateCurrentRoomChannel', {
 					room: this.room
+				}),
+				this.$store.dispatch('denotify', {
+					room: this.room,
+					userChannel: this.$store.state.userChannel,
 				})
 			}
 		}
@@ -98,4 +105,9 @@
 		padding-left: 12px;
 		color: rgb(151, 151, 151);
 	}
+
+	.notification {
+		font-weight: bold;
+	}
+
 </style>

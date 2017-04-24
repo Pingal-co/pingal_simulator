@@ -55,6 +55,28 @@ let joinRoom = (roomName = DEFAULT_LOBBY, params = {}) => {
   return room
 }
 
+let joinUser = (userId, params = {}) => {
+  let userChannel = socket.channel("users:" + userId, params)
+
+  if (userChannel.state === 'closed') {
+    userChannel.join()
+      .receive('ok', _ => {
+        console.log(`joined successfully userChannel`)
+      })
+      .receive('error', resp => {
+        console.log(`Unable to join userChannel ${resp}`)
+      })
+      .receive('timeout', _ => {
+        console.log('Timeout: on userChannel: check connections, network, database, etc.')
+      })
+
+    userChannel.onError(event => console.log('User channel error', event))
+    userChannel.onClose(event => console.log('User channel closed'))
+  }
+
+  return userChannel
+}
+
 /* Channel.on functions */
 
 let addSlide = (slide, delay = 0) => {
@@ -180,13 +202,27 @@ export let sendToChannel = (room, slide, event = 'add:slide') => {
         .receive('error', (reasons) => console.log('failed', reasons))
 }
 
-export let joinUserChannel = ({ id, jwt }) => {
-  let userChannel = socket.channel(`users:${id}`, { token: jwt })
+// export let joinUserChannel = ({ id, jwt }) => {
+//   let userChannel = socket.channel(`users:${id}`, { token: jwt })
 
-  userChannel.join()
-    .receive('ok', (msg) => console.log('user joined'))
+//   userChannel.join()
+//     .receive('ok', (msg) => console.log('user joined'))
+//   return userChannel
+// }
+
+let notify = (data) => {
+  console.log("notify")
+  console.log(data)
+}
+
+export let joinUserChannel = (userId) => {
+  let userChannel = joinUser(userId);
+
+  userChannel.on('notify', notify)
+
   return userChannel
 }
+
 
 export let joinWorldChannel = (session) => {
   let path = DEFAULT_LOBBY + ":" + session
@@ -234,7 +270,6 @@ export let joinPingalChannel = (userId) => { //, jwt
 
   return roomChannel
 }
-
 
 export let joinRoomChannel = (roomId) => {
   let roomChannel = joinRoom(`rooms:${roomId}`, {})
