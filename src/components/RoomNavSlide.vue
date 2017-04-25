@@ -1,14 +1,15 @@
 <template>
 	<div @click="joinRoom">
-		<md-list-item :class="['room-nav-slide', selected]">
+		<md-list-item :class="['room-nav-slide', selected, intro]">
 		  <avatar :name="room.name" />
 
-		  <div :class="'md-list-text-container ' + notification">
+		  <div :class="['md-list-text-container', notification]">
 		    <span>{{room.name}}</span>
 		    <p>{{subtitle}}</p>
 		  </div>
 
-		  <div :class="'formatted-time ' + notification">{{formattedTime}}</div>
+		  <div v-if="room.type === 3">expires in {{timeRemaining}} hours</div>
+		  <div v-else :class="'formatted-time ' + notification">{{formattedTime}}</div>
 
 		  <!-- <md-divider class="md-inset"></md-divider> -->
 		</md-list-item>
@@ -40,6 +41,9 @@
 					});
 				}
 			},
+			timeRemaining() {
+				return 48
+			},
 			subtitle() {
 				let slide = this.room.last_slide
 				if (!slide) {
@@ -64,6 +68,9 @@
 			notification() {
 				let notifications = this.room.user_active_notifications ? this.room.user_active_notifications : []
 				return notifications.length > 0 ? 'notification' : null
+			},
+			intro() {
+				return this.room.type === 3 ? 'intro' : null
 			}
 		},
 		methods: {
@@ -83,6 +90,13 @@
 <style lang="scss" scoped>
 	$border-color: rgb(225, 225, 225);
 	$border-color-darker: rgb(215, 215, 215);
+
+	$primary-darker-color: rgb(217, 98, 12);
+  	$primary-color: rgb(244, 128, 45);
+ 	$primary-color-l1: rgb(250, 192, 150);
+  	$primary-color-l2: rgb(252, 224, 203);
+  	$primary-color-l3: rgb(254, 243, 234);
+  	$primary-color-l4: rgb(254, 247, 242); 
 
 	.room-nav-slide {
 		cursor: pointer;
@@ -110,5 +124,13 @@
 	.notification {
 		font-weight: bold;
 	}
+
+	.intro {
+		background-color: $primary-color-l2;
+	}
+	.intro:hover {
+		background-color: $primary-color-l1;
+	}
+
 
 </style>
