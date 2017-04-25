@@ -169,7 +169,7 @@ let renderPresence = (presences) => {
 
 // Response:
 const responseDelay = 300
-let response = ({slide, topicRoom}) => {
+let response = ({slide, topicRoom, introRoom}) => {
   //slide.type = 'suggestTopic'
   // slide.isPingal = true
   console.log("Name or Interest or Something Else (slide v)")
@@ -177,14 +177,18 @@ let response = ({slide, topicRoom}) => {
 
   
   if (slide && "topicRoom" in slide ) {
-      addRoom(topicRoom)
+    addRoom(topicRoom)
   }
-  if (slide && slide.type === 'logOut') {
+  else if (slide && slide.type === 'logOut') {
     store.commit('LOG_OUT')
   }
-  if (slide && slide.type === 'joinTopic') {
+  else if (slide && slide.type === 'joinTopic') {
     console.log("join Topic room")
     addRooms({rooms: topicRoom})
+  }
+  else if (slide && slide.type === 'intro') {
+    console.log("intro person")
+    addRooms({rooms: introRoom})
   }
 
   addSlide(slide, responseDelay)
@@ -242,6 +246,7 @@ export let joinWorldChannel = (session) => {
   roomChannel.on('response:planIntroduction', response)
   roomChannel.on('response:brain', response)
   roomChannel.on('response:dialogPingal', response)
+  roomChannel.on('response:intro', response)
 
   // user text message
   roomChannel.on('add:slide', addSlide)
@@ -263,6 +268,7 @@ export let joinPingalChannel = (userId) => { //, jwt
   roomChannel.on('response:planIntroduction', response)
   roomChannel.on('response:brain', response)
   roomChannel.on('response:dialogPingal', response)
+  roomChannel.on('response:intro', response)
 
   roomChannel.on('set:rooms', setRooms)
   roomChannel.on('add:rooms', addRooms)

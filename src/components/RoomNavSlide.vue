@@ -62,7 +62,8 @@
 				}
 			},
 			notification() {
-				return this.room.user_active_notifications.length > 0 ? 'notification' : null
+				let notifications = this.room.user_active_notifications ? this.room.user_active_notifications : []
+				return notifications.length > 0 ? 'notification' : null
 			}
 		},
 		methods: {
