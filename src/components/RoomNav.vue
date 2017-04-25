@@ -21,18 +21,19 @@
 				:key="introduction.id"
 				:room="introduction"	
 			/> -->
-			<div v-if="channels.length > 0" class="room-nav-header">Relays</div>
-			<room-nav-slide 
-				v-for="channel in channels"
-				:key="channel.id"
-				:room="channel"	
-			/>
 			<div v-if="chats.length > 0" class="room-nav-header">Chats</div>
 			<room-nav-slide 
 				v-for="chat in chats"
 				:key="chat.id"
 				:room="chat"	
 			/>
+			<div v-if="channels.length > 0" class="room-nav-header">Relays</div>
+			<room-nav-slide 
+				v-for="channel in channels"
+				:key="channel.id"
+				:room="channel"	
+			/>
+
 
 	  </md-list>
  	</div>

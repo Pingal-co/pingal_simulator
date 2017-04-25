@@ -8,7 +8,7 @@
 		    <p>{{subtitle}}</p>
 		  </div>
 
-		  <div v-if="room.type === 3">expires in {{timeRemaining}} hours</div>
+		  <div v-if="room.type === 3" class="time-remaining">expires in {{timeRemaining}} hours</div>
 		  <div v-else :class="'formatted-time ' + notification">{{formattedTime}}</div>
 
 		  <!-- <md-divider class="md-inset"></md-divider> -->
@@ -131,6 +131,8 @@
 	.intro:hover {
 		background-color: $primary-color-l1;
 	}
-
+	.time-remaining {
+		font-size: 12px;
+	}
 
 </style>
