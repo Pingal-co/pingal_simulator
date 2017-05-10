@@ -22,6 +22,7 @@
 				this.$store.dispatch('updateCurrentRoomChannel', {
 					room: this.room
 				})
+				this.$store.commit('HIDE_RIGHT')
 			}
 		}
 	}
