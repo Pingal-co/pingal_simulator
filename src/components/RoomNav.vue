@@ -14,6 +14,8 @@
 				  </div>
 				</md-list-item>
 			</div>
+			<feedback-nav />
+			
 			<!-- Chats and Radars -->
 <!-- 			<div v-if="introductions.length > 0" class="room-nav-header">Introductions</div>
 			<room-nav-slide 
@@ -33,18 +35,19 @@
 				:key="channel.id"
 				:room="channel"	
 			/>
-
-
-	  </md-list>
+	  	</md-list>
+	  	
  	</div>
 </template>
 
 <script>
 	import RoomNavSlide from '@/components/RoomNavSlide'
+	import FeedbackNav from '@/components/FeedbackNav'
 
 	export default {
 		components: {
-			RoomNavSlide
+			RoomNavSlide,
+			FeedbackNav
 		},
 
 		computed: {
