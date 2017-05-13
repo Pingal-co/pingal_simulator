@@ -1,21 +1,25 @@
 <template>
-	<form novalidate @submit.stop.prevent="signup" class="signup-form">
-		<span class="error-message">{{error}}</span>
-		<span class="success-message""">{{success}}</span>
-	  <md-input-container>
-	    <label>Email</label>
-	    <md-input type="email" v-model="email"></md-input>
-	  </md-input-container>
-	    <md-input-container>
-	    <label>Password</label>
-	    <md-input type="password" v-model="password"></md-input>
-	  </md-input-container>
-	    <md-input-container>
-	    <label>Password Confirmation</label>
-	    <md-input type="password" v-model="passwordConfirmation"></md-input>
-	  </md-input-container>
-	  <md-button class="md-raised md-primary" type="submit">Sign up</md-button>
-	</form>
+	<div>
+		<div class="fb-login-button fb-custom-signup" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true"></div>
+
+		<form novalidate @submit.stop.prevent="signup" class="signup-form">
+			<span class="error-message">{{error}}</span>
+			<span class="success-message""">{{success}}</span>
+		  <md-input-container>
+		    <label>Email</label>
+		    <md-input type="email" v-model="email"></md-input>
+		  </md-input-container>
+		    <md-input-container>
+		    <label>Password</label>
+		    <md-input type="password" v-model="password"></md-input>
+		  </md-input-container>
+		    <md-input-container>
+		    <label>Password Confirmation</label>
+		    <md-input type="password" v-model="passwordConfirmation"></md-input>
+		  </md-input-container>
+		  <md-button class="md-raised md-primary" type="submit">Sign up</md-button>
+		</form>
+	</div>
 </template>
 
 <script>
@@ -28,6 +32,16 @@
 				error: '',
 				success: ''
 			}
+		},
+		created() {
+		  // Initialize Facebook SDK
+		  (function(d, s, id){
+	         var js, fjs = d.getElementsByTagName(s)[0];
+	         if (d.getElementById(id)) {return;}
+	         js = d.createElement(s); js.id = id;
+	         js.src = "//connect.facebook.net/en_US/sdk.js";
+	         fjs.parentNode.insertBefore(js, fjs);
+	       }(document, 'script', 'facebook-jssdk'));
 		},
 		methods: {
 			signup() {
@@ -90,5 +104,10 @@
 
 	.signup-form {
 		max-width: 300px;
+	}
+
+	.fb-custom-signup {
+		margin-top: 12px;
+		margin-bottom: 12px;
 	}
 </style>

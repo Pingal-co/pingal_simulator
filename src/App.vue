@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+      <div id="fb-root"></div>
       <router-view></router-view>  
   </div>
 </template>
@@ -7,6 +8,18 @@
 <script>
   export default {
     name: 'app',
+    created() {
+      // Load Facebook SDK
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '450878908577944',
+          cookie     : true,
+          xfbml      : true,
+          version    : 'v2.8'
+        });
+        FB.AppEvents.logPageView();   
+      };
+    }
   }
 </script>
 
