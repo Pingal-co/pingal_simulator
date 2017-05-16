@@ -3,7 +3,8 @@
     <slide 
         v-for="slide in slides" 
         :key="slide.id" 
-        :slide="slide">
+        :slide="slide"
+        :fbReinitialize="fbReinitialize">
     </slide>
     <li id="scrollAnchor"></li>
   </md-list>
@@ -13,7 +14,7 @@
   import Slide from '@/components/Slide'
   export default {
     name: 'SlideList',
-    props: ['slides'],
+    props: ['slides', 'fbReinitialize'],
     components: { Slide },
     updated() {
       // Scroll most recent into view

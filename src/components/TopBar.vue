@@ -34,7 +34,7 @@
             <div class="profile-button">Login</div>
           </md-button>
 
-          <md-menu-content>
+          <md-menu-content class="custom-login-dropdown">
             <div class="login-container">
               <login></login>
             </div>
@@ -73,6 +73,7 @@ export default {
     mobile: Boolean,
     showLeft: Boolean,
     showRight: Boolean,
+    fbReinitialize: Function,
   },
 
   computed: {
@@ -101,36 +102,7 @@ export default {
       this.$store.commit('LOG_OUT')
     },
     logInLoad() {
-      // Remove Facebook SDK and reinitialize
-      FB = null
-      // Remove old facebook elements
-      let fb_js = document.getElementById("facebook-jssdk");
-      let fb_root = document.getElementById("fb-root");
-      fb_js.remove(fb_js.selectedIndex);
-      fb_root.remove(fb_root.selectedIndex)
-      // Re-append Facebook elements to ready for script re-init
-      let new_fb_root = document.createElement("div")
-      new_fb_root.id = "fb-root"
-      let body = document.getElementsByTagName('body')[0]
-      body.insertBefore(new_fb_root, body.firstChild);
-
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '450878908577944',
-          cookie     : true,
-          xfbml      : true,
-          version    : 'v2.8'
-        });
-        FB.AppEvents.logPageView();   
-      };
-
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
+      this.fbReinitialize()
     }
   },
 }
@@ -189,7 +161,7 @@ export default {
 
   .md-menu-content {
     margin-top: 45px !important;
-    min-width: 240px !important;
+    // min-width: 240px !important;
     // padding: 6px 12px 9px 12px;
     background-color: white;
   }
@@ -205,5 +177,9 @@ export default {
   .md-list-item-container {
     display: flex;
     justify-content: center !important;
+  }
+
+  .custom-login-dropdown {
+    width: 278px !important;
   }
 </style>
