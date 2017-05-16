@@ -153,7 +153,25 @@
             xfbml      : true,
             version    : 'v2.8'
           });
-          FB.AppEvents.logPageView();   
+          FB.AppEvents.logPageView(); 
+          // Global functions
+          FB.checkLoginState = function() {
+            FB.getLoginStatus(function(response) {
+                if (response.status === 'connected') {
+                  // Log in or Sign Up
+                  FB.api(
+                    '/me',
+                    'GET',
+                    {"fields":"id,name,email,age_range,picture,gender"},
+                    function(response) {
+                        console.log(response)
+                    }
+                  );
+                } else {
+                  // The person is not logged into this app or we are unable to tell. 
+                }
+            });
+          }  
         };
 
         (function(d, s, id){

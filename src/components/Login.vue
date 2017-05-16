@@ -1,6 +1,7 @@
 <template>
 	<div>
-		<div class="fb-login-button fb-custom-signup" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true"></div>
+		<div class="fb-login-button fb-custom-signup" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true" 
+		data-scope="public_profile,email" onlogin="FB.checkLoginState()"></div>
 
 		<form novalidate @submit.stop.prevent="logIn" class="login-form">
 			<span class="error-message">{{error}}</span>
