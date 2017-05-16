@@ -90,6 +90,14 @@ const actions = {
       })
   },
 
+  fbConnect ({ commit }, {name, email} ) {
+    console.log("fb connect")
+    return httpPost(`${apiURL}/users/fbconnect`, {name: name, email: email})
+      .then(({jwt, user}) => {
+        console.log("success fbconnect")
+      })
+  },
+
   currentUser ({ commit }) {
     return httpGet(`${apiURL}/current_user`)
       .then(({ user }) => {

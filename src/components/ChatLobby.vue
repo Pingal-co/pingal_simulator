@@ -146,6 +146,7 @@
         let body = document.getElementsByTagName('body')[0]
         body.insertBefore(new_fb_root, body.firstChild);
 
+        let store = this.$store
         window.fbAsyncInit = function() {
           FB.init({
             appId      : '450878908577944',
@@ -154,7 +155,7 @@
             version    : 'v2.8'
           });
           FB.AppEvents.logPageView(); 
-          // Global functions
+          
           FB.checkLoginState = function() {
             FB.getLoginStatus(function(response) {
                 if (response.status === 'connected') {
@@ -164,7 +165,7 @@
                     'GET',
                     {"fields":"id,name,email,age_range,picture,gender"},
                     function(response) {
-                        console.log(response)
+                        store.dispatch('fbConnect', response)
                     }
                   );
                 } else {
