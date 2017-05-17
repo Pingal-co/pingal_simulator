@@ -102,13 +102,13 @@ let addPresence = (slide) => {
           
           let u = first[Object.keys(first)[0]]
           let metas = u.metas[Object.keys(u.metas)[0]]
-          console.log(u)
-          slide.text = `Meet: ${u.user.name}, who is interested in ${metas.introduction} `
-          slide.isPingal = true
+          //console.log(u)
+          //slide.text = `Meet: ${u.user.name}, who is interested in ${metas.introduction} `
+          //slide.isPingal = true
         } else {
           let first = slide["leaves"]
           let u = first[Object.keys(first)[0]]
-          slide.text = `User ${u.user.name} left`
+          //slide.text = `User ${u.user.name} left`
           
       }
       
