@@ -35,13 +35,13 @@
 	<div v-else class="room-menu">
 		<div class="room-interests">
 			<div class="room-interests-header">
-				Interests
+				Your Active Interests
 			</div>
 			
 			<interests 
 				:interests="interests" 
 				:maxCount="100"
-				:pageSize="25" 
+				:pageSize="6" 
 			/>
 		</div>
 
@@ -285,7 +285,7 @@
 		justify-content: center;
 		padding-top: 9px;
    }
-	.button {
+   .button {
     border: 1px solid $primary-darker-color;
     padding: 14px;
     border-radius: 20px;
@@ -294,6 +294,7 @@
     background-color: transparent;
     font-size: 16px;
     cursor: pointer;
+    height: 50px;
   }
 
   .button:hover {

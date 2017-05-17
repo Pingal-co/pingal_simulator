@@ -38,7 +38,7 @@ const state = {
   currentInput: {text: '', focus: 1},
   connections: [],
   showRight: false,
-  showLeft: true,
+  showLeft: false,
   slides: [],
   session: session,
   rooms: [],

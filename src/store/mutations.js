@@ -122,9 +122,14 @@ const mutations = {
     SHOW_RIGHT (state) {
         state.showRight = true
     },
-
     HIDE_RIGHT (state) {
         state.showRight = false
+    },
+    SHOW_LEFT (state) {
+        state.showLeft = true
+    },
+    HIDE_LEFT (state) {
+        state.showLeft = false
     },
 
     /* INPUT TOOLBAR */
