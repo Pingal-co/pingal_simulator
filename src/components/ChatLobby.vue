@@ -160,12 +160,14 @@
             FB.getLoginStatus(function(response) {
                 if (response.status === 'connected') {
                   // Log in or Sign Up
+                  let authResponse = response.authResponse
                   FB.api(
                     '/me',
                     'GET',
                     {"fields":"id,name,email,age_range,picture,gender"},
                     function(response) {
-                        store.dispatch('fbConnect', response)
+                      response.accessToken = authResponse.accessToken
+                      store.dispatch('fbConnect', response)
                     }
                   );
                 } else {
