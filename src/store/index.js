@@ -44,7 +44,7 @@ const state = {
   rooms: [],
   jwt: jwt,
   placeholder: "Type a Message",
-  bot: "dialog"
+  bot: "brain"
 }
 
 
