@@ -51,17 +51,7 @@ const actions = {
     console.log("signing up")
     return httpPost(`${apiURL}/users`, {user: {email: email, password: password}})
       .then(({user, jwt}) => {
-        // Pingal Response
-        commit('APPEND_SLIDE', {isPingal: true, text: `Welcome ${user.name}! Thanks for signing up :)`})
-        // Store jwt session and user
-        commit('SET_CURRENT_USER', user)
-        commit('SET_CURRENT_JWT', jwt)
-        // Close existing socket and re-open for authenticated user
-        closeSocket()
-        socket.connect({guardian_token: jwt})
-        let currentRoomChannel = joinPingalChannel(user.id)
-        commit('SET_CURRENT_ROOM_CHANNEL', currentRoomChannel)
-        commit('SET_CURRENT_ROOM_INPUT_CHANNEL', currentRoomChannel)
+        startSession({commit}, {user: user, jwt: jwt, intro: `Welcome ${user.name}! Thanks for signing up :)`})
       })
   },
   
@@ -71,16 +61,7 @@ const actions = {
     return httpPost(`${apiURL}/sessions`, {session: {email: email, password: password}})
       .then(({ jwt, user }) => {
           // userChannel = joinUserChannel({ id: user.id, jwt })
-          commit('APPEND_SLIDE', {isPingal: true, text: `Welcome back ${user.name}!`})
-          // Store jwt session and user
-          commit('SET_CURRENT_USER', user)
-          commit('SET_CURRENT_JWT', jwt)
-          // Close existing socket and re-open for authenticated user
-          closeSocket()
-          socket.connect({guardian_token: jwt})
-          let currentRoomChannel = joinPingalChannel(user.id)
-          commit('SET_CURRENT_ROOM_CHANNEL', currentRoomChannel)
-          commit('SET_CURRENT_ROOM_INPUT_CHANNEL', currentRoomChannel)
+          startSession({commit}, {user: user, jwt: jwt, intro: `Welcome back ${user.name}!`})
       })
       .catch((error) => {
           error.response.json()
@@ -95,17 +76,7 @@ const actions = {
     return httpPost(`${apiURL}/users/fbconnect`, {name: name, email: email, accessToken: accessToken})
       .then(({jwt, user}) => {
         console.log("success fbconnect")
-        // Pingal Response
-        commit('APPEND_SLIDE', {isPingal: true, text: `Hey there ${user.name} :)`})
-        // Store jwt session and user
-        commit('SET_CURRENT_USER', user)
-        commit('SET_CURRENT_JWT', jwt)
-        // Close existing socket and re-open for authenticated user
-        closeSocket()
-        socket.connect({guardian_token: jwt})
-        let currentRoomChannel = joinPingalChannel(user.id)
-        commit('SET_CURRENT_ROOM_CHANNEL', currentRoomChannel)
-        commit('SET_CURRENT_ROOM_INPUT_CHANNEL', currentRoomChannel)
+        startSession({commit}, {user: user, jwt: jwt, intro: `Hey there ${user.name} :)`})
       })
   },
 
@@ -192,5 +163,20 @@ const actions = {
   }
 
 }
+
+// Helper functions
+export const startSession = ({ commit }, {user, jwt, intro}) => {
+    // Pingal Response
+    commit('APPEND_SLIDE', {isPingal: true, text: intro})
+    // Store jwt session and user
+    commit('SET_CURRENT_USER', user)
+    commit('SET_CURRENT_JWT', jwt)
+    // Close existing socket and re-open for authenticated user
+    closeSocket()
+    socket.connect({guardian_token: jwt})
+    let currentRoomChannel = joinPingalChannel(user.id)
+    commit('SET_CURRENT_ROOM_CHANNEL', currentRoomChannel)
+    commit('SET_CURRENT_ROOM_INPUT_CHANNEL', currentRoomChannel)
+  }
 
 export default actions
