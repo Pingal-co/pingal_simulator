@@ -29,7 +29,7 @@
 				:key="chat.id"
 				:room="chat"	
 			/>
-			<div v-if="channels.length > 0" class="room-nav-header">Build Instant Community</div>
+			<div v-if="channels.length > 0" class="room-nav-header">Instantly Cluster People</div>
 			<room-nav-slide 
 				v-for="channel in channels"
 				:key="channel.id"
