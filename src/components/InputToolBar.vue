@@ -79,6 +79,7 @@ export default {
             .then(() => {
               this.$store.commit('UPDATE_INPUT_TEXT', '')
             })
+        // this.$store.commit('SET_BOT', "dialog")
       },
       focusInput() {
         if (this.focus > 0) {
