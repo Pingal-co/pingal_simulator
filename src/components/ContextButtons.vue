@@ -49,7 +49,7 @@
 				if (button.action === 'fill') {
 					 console.log("click action")
 					 console.log(button)
-					 this.$store.commit('UPDATE_INPUT_TEXT', button.text.slice(0, -3))
+					 this.$store.commit('UPDATE_INPUT_TEXT', button.text)
 					 this.$store.commit('INPUT_FOCUS')
 					 this.$store.commit('SET_BOT', button.bot)
 					// dispatch an action
