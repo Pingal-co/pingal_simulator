@@ -35,7 +35,7 @@
 	<div v-else class="room-menu">
 		<div class="room-interests">
 			<div class="room-interests-header">
-				Your Active Interests
+				Optimize Your Interests
 			</div>
 			
 			<interests 
@@ -46,7 +46,7 @@
 		</div>
 
 		<div class="room-connections">
-		  <div class="room-connections-header">Connections and Controls ({{users.length}})</div>
+		  <div class="room-connections-header">Discover Connections ({{users.length}})</div>
 		  <md-list class="connection-panel-list">
 		    <md-list-item class="connection-panel" v-for="user, index in users" :key="index" @click.native="toggleUser(index)">
 		      <div class="user-panel-content">
@@ -71,11 +71,11 @@
 					<md-icon class="get-introduced-icon">play_circle_outline</md-icon>
 				</md-button>
 				<md-button v-else @click.native="pause_watch(index, user.id)" :ref="'pause_watch' + user.id">
-					Hold
+					Mute
 					<md-icon class="get-introduced-icon">pause_circle_outline</md-icon>
 				</md-button>
 		      	<md-button @click.native="unwatch(user.id)" :ref="'unwatch' + user.id">
-		      	  Remove
+		      	  UnWatch
 					<md-icon class="get-introduced-icon">delete_forever</md-icon>
 		      	</md-button>
 		      </div>
