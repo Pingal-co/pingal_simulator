@@ -134,7 +134,11 @@
       },
       fbReinitialize() {
         // Remove Facebook SDK and reinitialize
-        FB = null
+        if (typeof FB == "undefined") {
+          let FB = null
+        } else {
+          FB = null
+        }  
         // Remove old facebook elements
         let fb_js = document.getElementById("facebook-jssdk");
         let fb_root = document.getElementById("fb-root");
