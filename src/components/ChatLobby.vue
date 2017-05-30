@@ -1,5 +1,15 @@
 <template>
   <div class="lobby">
+
+    <!-- Mobile Room navs and menu -->
+    <md-sidenav v-if="mobile" class="md-left" ref="leftSidenav">
+      <room-nav>
+      </room-nav>
+    </md-sidenav>
+    <md-sidenav v-if="mobile" class="md-right" ref="rightSidenav">
+        <room-menu></room-menu>
+    </md-sidenav>
+
     <top-bar
       :show-login-icon="false"
       :show-menu-icon="false"
@@ -15,17 +25,9 @@
     <div class="main">
 
       <!-- room nav -->
-      <div v-if="mobile">
-        <md-sidenav class="md-left" ref="leftSidenav">
+      <div v-if="!mobile && showLeft">
           <room-nav>
           </room-nav>
-        </md-sidenav>
-      </div>
-      <div v-else>
-        <div v-if="showLeft">
-          <room-nav>
-          </room-nav>
-        </div>
       </div>  
       
       <!-- slides in room -->
@@ -46,15 +48,8 @@
       </div>
 
       <!-- room menu -->
-      <div v-if="mobile">
-        <md-sidenav class="md-right" ref="rightSidenav">        
+      <div v-if="!mobile && showRight" class="right-side">
           <room-menu></room-menu>
-        </md-sidenav>
-      </div>
-      <div v-else>
-        <div v-if="showRight" class="right-side">
-          <room-menu></room-menu>
-        </div>
       </div>
     </div>
     
