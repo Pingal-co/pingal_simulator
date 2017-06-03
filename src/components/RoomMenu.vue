@@ -33,17 +33,7 @@
 	</div>
 	<!-- Default to public room, type = 1 -->
 	<div v-else class="room-menu">
-		<div class="room-interests">
-			<div class="room-interests-header">
-				Optimize Your Interests
-			</div>
-			
-			<interests 
-				:interests="interests" 
-				:maxCount="100"
-				:pageSize="6" 
-			/>
-		</div>
+
 
 		<div class="room-connections">
 		  <div class="room-connections-header">Discover Connections ({{users.length}})</div>
@@ -81,15 +71,29 @@
 		      </div>
 		    </md-list-item>
 		  </md-list>
+			<div class="buttons">
+		 		<div @click="createGroupRoom" class="button noselect">Invite to Private Group Chat</div>
+	  		</div>
 		</div>
 		<!--
 		<md-button @click.native="createGroupRoom" class="md-raised create-room button noselect">
 			Invite to Private Group Chat
 		</md-button>
 		-->
-		<div class="buttons">
-		 <div @click="createGroupRoom" class="button noselect">Invite to Private Group Chat</div>
-	  	</div>
+
+		
+		<div class="room-interests">
+			<div class="room-interests-header">
+				Optimize Your Interests
+			</div>
+			
+			<interests 
+				:interests="interests" 
+				:maxCount="100"
+				:pageSize="6" 
+			/>
+		</div>
+
 	</div>
 </template>
 
