@@ -2,17 +2,18 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import actions from './actions'
 import mutations from './mutations'
-import Cookies from 'js-cookie'
+//import Cookies from 'js-cookie'
+/*
 import {
   joinWorldChannel, 
   joinPingalChannel,
   joinUserChannel
 } from '@/chatserver'
-
+*/
 // import connections from './room_users_data'
 
 Vue.use(Vuex)
-
+/*
 // Load cookie data
 let user = Cookies.get('user');
 user = user ? JSON.parse(user) : null;
@@ -26,23 +27,29 @@ let session = Cookies.get('session');
 let currentRoomChannel = jwt ? joinPingalChannel(user.id) : joinWorldChannel(session);
 
 let userChannel = jwt ? joinUserChannel(user.id) : null; // what should this default to
-
+*/
 // contains the state of entire app
 const state = {
   currentSlide: {},
-  currentUser: user,
-  userChannel: userChannel,
+  //currentUser: user,
+  currentUser: null,
+  //userChannel: userChannel,
+  userChannel: null,
   currentRoom: {name: "Pingal", type: "pingal"},
-  currentRoomChannel: currentRoomChannel,
-  currentRoomInputChannel: currentRoomChannel,
+ // currentRoomChannel: currentRoomChannel,
+ // currentRoomInputChannel: currentRoomChannel,
+  currentRoomChannel: null,
+  currentRoomInputChannel: null,
   currentInput: {text: '', focus: 1},
   connections: [],
   showRight: false,
-  showLeft: false,
+  showLeft: true,
   slides: [],
-  session: session,
+  // session: session,
+  session: null,
   rooms: [],
-  jwt: jwt,
+  // jwt: jwt,
+  jwt: null,
   placeholder: "Type a Message",
   bot: "dialog"
 }
