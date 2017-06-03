@@ -36,8 +36,8 @@
 <style lang="scss">
   $pingal-blue: #0383f9;
 
-  body {
-    overflow: hidden;
+  html, body {
+    overflow-x:hidden 
   }
   
   #app {

@@ -298,7 +298,7 @@
     background-color: transparent;
     font-size: 16px;
     cursor: pointer;
-    height: 50px;
+    min-height: 50px;
   }
 
   .button:hover {
