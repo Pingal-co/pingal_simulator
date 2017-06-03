@@ -72,6 +72,7 @@ export default {
 
     methods: {
       onSend() {
+        console.log("sending slide")
         this.$store.dispatch('pushSlide', {
           roomChannel: this.currentRoomInputChannel, 
           slide: this.slide, 
