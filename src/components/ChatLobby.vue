@@ -92,8 +92,15 @@
 
     computed: {
       slides() {
-        return this.$store.state.slides
+        let sld = this.$store.state.slides
+        console.log("roomChannel")
+        console.log(this.roomChannel)
+        //sld = sld.filter(slide => slide.to_room_id === this.roomChannel.topic)
+        console.log("data slides:")
+        console.log(sld)
+        return sld
       },
+
       user() {
         let user = this.$store.state.currentUser
         return user ? user : { _id: 2, name: 'Anonymous', hash: 'Anonymous', avatar: 'mood'}
