@@ -90,7 +90,7 @@ const actions = {
   },
 
   setCurrentPingalChannel({commit}, {user, session}) {
-    commit('CLEAR_SLIDES')
+    //commit('CLEAR_SLIDES')
     
     if (user) {
       commit('SET_CURRENT_ROOM_CHANNEL', joinPingalChannel(user.id))
@@ -107,7 +107,7 @@ const actions = {
 
   /* START <ROOM DISPATCH ACTION HANDLERS> */
   updateCurrentRoomChannel ({commit}, {room}) {
-      commit('CLEAR_SLIDES')
+      //commit('CLEAR_SLIDES')
       commit('SET_CURRENT_ROOM_CHANNEL', joinRoomChannel(room.id))
       commit('SET_CURRENT_ROOM_INPUT_CHANNEL', joinRoomInputChannel(room.id))
       commit('SET_CURRENT_ROOM', room)
