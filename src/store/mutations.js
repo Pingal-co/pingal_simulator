@@ -5,6 +5,7 @@ You cannot directly call a mutation handler.
 To invoke a mutation handler, you need to call store.commit with its string type
 */
 import Cookies from 'js-cookie'
+import _ from 'lodash'
 
 const mutations = {
 
@@ -24,11 +25,12 @@ const mutations = {
         // if (!Array.isArray(slides)) {
         //     slides = [slides]
         // }
-        state.slides = state.slides.concat(slides)
+        let slds = state.slides.concat(slides)
+        state.slides = _.uniq(slds, (sld) => {return sld.id})
     },
 
-    APPEND_SLIDE (state, slide) {
-        state.slides = state.slides.concat(slide);
+    APPEND_SLIDE (state, slide) {        
+        state.slides = state.slides.filter(sld => sld.id != slide.id).concat(slide)
     },
 
     APPEND_REPLY (state, reply) {
@@ -54,6 +56,14 @@ const mutations = {
     SET_CURRENT_JWT (state, jwt) {
         state.jwt = jwt;
         Cookies.set('jwt', jwt, { expires: 365 });
+    },
+
+    SET_SESSION (state, session) {
+        state.session = session
+    },
+
+    SET_USER_CHANNEL (state, userChannel) {
+        state.userChannel = userChannel 
     },
 
     SET_USERS (state, users) {
