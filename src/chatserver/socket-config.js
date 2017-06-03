@@ -3,7 +3,7 @@ import Cookies from 'js-cookie'
 
 const { socketScheme, scheme, hostname } =
   process.env.NODE_ENV === 'production'
-  ? { socketScheme: 'ws', scheme: 'http', hostname: 'demo324.pingal.ai:4020' }
+  ? { socketScheme: 'ws', scheme: 'http', hostname: 'beta.pingal.ai:4020' }
   : { socketScheme: 'ws', scheme: 'http', hostname: 'localhost:4020' }
 /*
 const { socketScheme, scheme, hostname } =
