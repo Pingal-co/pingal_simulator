@@ -65,7 +65,7 @@
 
 <style lang="scss" scoped>
 	.toggleMore {
-		margin-top: -15px;
+		margin-top: 10px;
 		margin-bottom: 20px;
 		text-align: center;
 		color: rgba(0, 0, 0, 0.54);
