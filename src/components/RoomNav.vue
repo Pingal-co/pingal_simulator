@@ -10,7 +10,7 @@
 
 				  <div class="md-list-text-container">
 				    <span>Pingal</span>
-				    <p>What would you like to talk about?</p>
+				    <p>Train me</p>
 				  </div>
 				</md-list-item>
 			</div>
@@ -23,17 +23,18 @@
 				:key="introduction.id"
 				:room="introduction"	
 			/> -->
-			<div v-if="chats.length > 0" class="room-nav-header">Chats</div>
-			<room-nav-slide 
-				v-for="chat in chats"
-				:key="chat.id"
-				:room="chat"	
-			/>
-			<div v-if="channels.length > 0" class="room-nav-header">Instantly Cluster People</div>
+
+			<div v-if="channels.length > 0" class="room-nav-header">Topic Networks</div>
 			<room-nav-slide 
 				v-for="channel in channels"
 				:key="channel.id"
 				:room="channel"	
+			/>
+			<div v-if="chats.length > 0" class="room-nav-header">Private Group Chats</div>
+			<room-nav-slide 
+				v-for="chat in chats"
+				:key="chat.id"
+				:room="chat"	
 			/>
 	  	</md-list>
 	  	
@@ -61,7 +62,10 @@
 				return this.rooms.filter(room => room.type === 2 || room.type === 3)
 			},
 			channels() {
-				return this.rooms.filter(room => room.type === 1)
+				let ch = this.rooms.filter(room => room.type === 1)
+				console.log("channels:")
+				console.log(ch)
+				return ch
 			},
 			currentRoomChannel() {
 				return this.$store.state.currentRoomChannel
