@@ -26,13 +26,13 @@ if (!Cookies.get('session')) {
 } 
 
 // talking to phoenix
-// import server from './server'
-// server()
+import server from './server'
+server()
 
 // keep Router and store in sync
-// Vue.use(Router)
-// Vue.use(Vuex)
-// sync(store, router)
+Vue.use(router)
+Vue.use(Vuex)
+sync(store, router)
 
 Vue.config.productionTip = false
 
