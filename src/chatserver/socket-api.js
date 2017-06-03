@@ -1,10 +1,8 @@
 import router from '../router'
 import store from '../store'
-import uniqueId from 'uniqid'
 import {socket, closeSocket} from './socket-config'
 import { Presence } from 'phoenix-elixir'
 
-import Cookies from 'js-cookie'
 import _ from 'lodash'
 /*
   To make it clean, I have three separate channels [User, Pingal, Room] to talk to Phoenix
@@ -29,11 +27,13 @@ let isCurrentSlide = (slideId) => {
 
 let joinRoom = (roomName = DEFAULT_LOBBY, params = {}) => {
   // only join if not joined previously or the state is closed
-  //let room = _.find(socket.channels, (rm)=> rm.topic === roomName)
-
-  //if (!room) {
-       let room = socket.channel(roomName, params)
- // }
+  let room = _.find(socket.channels, (rm)=> rm.topic === roomName)
+  //console.log(socket)
+  if (!room) {
+         room = socket.channel(roomName, params)
+         //console.log("joined room")
+         //console.log(room)
+  }
   
   if (room.state === 'closed') {
     room.join()
@@ -82,6 +82,8 @@ let joinUser = (userId, params = {}) => {
 let addSlide = (slide, delay = 0) => {
   setTimeout(function() {
     // do not commit if slide is empty
+    console.log("received")
+    console.log(slide)
     if (('text' in slide) && (slide.text)) {
       store.commit('APPEND_SLIDE', slide)
       store.commit('SET_CURRENT_SLIDE', slide)
@@ -94,7 +96,7 @@ let addReply = ({slide}) => {
 }
 
 let addPresence = (slide) => {
-    console.log(slide)
+    //console.log(slide)
     if ((!('text' in slide)) && ('joins' in slide)) {
       // joining or leaving event: 
         if (Object.keys(slide["joins"]).length > 0) {
@@ -117,7 +119,8 @@ let addPresence = (slide) => {
 }
 
 let getSlidesInRoom = (data) => {
-  store.commit('SET_SLIDES', data.slides)
+  //store.commit('SET_SLIDES', data.slides)
+  store.commit('APPEND_SLIDES', data.slides)
 }
 
 let getUsersInRoom = (data) => {
@@ -131,12 +134,14 @@ let addRooms = ({rooms}) => {
 }
 
 let setRooms = ({rooms}) => {
+  console.log("setting rooms")
   store.commit('SET_ROOMS', rooms)
+  joinAllChannels(rooms)
 }
 
 let addGroup = ({room}) => {
   addRooms({rooms: room})
-  store.commit('CLEAR_SLIDES')
+  //store.commit('CLEAR_SLIDES')
   store.commit('SET_CURRENT_ROOM_CHANNEL', joinRoomChannel(room.id))
   store.commit('SET_CURRENT_ROOM_INPUT_CHANNEL', joinRoomInputChannel(room.id))
   store.commit('SET_CURRENT_ROOM', room)
@@ -154,7 +159,7 @@ let watch = ({room_id, user}) => {
 }
 
 let renderPresence = (presences) => {
-  console.log("Presence")
+  //console.log("Presence")
   const users_in_room = [];
   Presence.list(presences, (id, obj) => {
         return { 
@@ -163,7 +168,7 @@ let renderPresence = (presences) => {
           }})           
           .map(user => users_in_room.push(user));
 
-  console.log(users_in_room)
+  //console.log(users_in_room)
   store.commit('SET_USERS', users_in_room)
 };
 
@@ -230,6 +235,12 @@ export let joinUserChannel = (userId) => {
   return userChannel
 }
 
+export let joinAllChannels = (rooms) => {
+    // also join all user rooms automatically
+  //console.log(rooms)
+  rooms.forEach((room) => joinRoomChannel(room.id))
+  //rooms.forEach((room) => joinRoomInputChannel(room.id))
+}
 
 export let joinWorldChannel = (session) => {
   let path = DEFAULT_LOBBY + ":" + session
@@ -300,13 +311,13 @@ export let joinRoomChannel = (roomId) => {
   roomChannel.on("presence_state", state => {
       //console.log(state)
       presences = Presence.syncState(presences, state)
-      console.log(presences)
+      //console.log(presences)
       renderPresence(presences)
   })
   
   roomChannel.on("presence_diff", diff => {
       presences = Presence.syncDiff(presences, diff)
-      console.log(presences)
+      //console.log(presences)
       renderPresence(presences)
   })
 
@@ -318,18 +329,18 @@ export let joinRoomChannel = (roomId) => {
 export let joinRoomInputChannel = (roomId) => {
   let roomInputChannel = joinRoom(`rooms:input:${roomId}`, {})
   let presences = {}
-  roomInputChannel.on('add:slide', addSlide)
-  roomInputChannel.on('add:reply', addReply)
+   roomInputChannel.on('add:slide', addSlide)
+   roomInputChannel.on('add:reply', addReply)
     // presence
   roomInputChannel.on("presence_state", state => {
       //console.log(state)
       presences = Presence.syncState(presences, state)
-      console.log(presences)
+      //console.log(presences)
       renderPresence(presences)
   })
   roomInputChannel.on("presence_diff", diff => {
       presences = Presence.syncDiff(presences, diff)
-      console.log(presences)
+      //console.log(presences)
       renderPresence(presences)
   })
   return roomInputChannel
