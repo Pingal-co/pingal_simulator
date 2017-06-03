@@ -1,10 +1,10 @@
 <template>
 	<div @click="joinRoom">
 		<md-list-item :class="['room-nav-slide', selected, intro]">
-		  <avatar :name="room.name" />
+		  <avatar :name="room.topic" />
 
 		  <div :class="['md-list-text-container', notification]">
-		    <span>{{room.name}}</span>
+		    <span>{{room.topic}}</span>
 		    <p>{{subtitle}}</p>
 		  </div>
 
