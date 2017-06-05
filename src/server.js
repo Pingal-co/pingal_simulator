@@ -32,11 +32,11 @@ export default function start() {
   store.commit('SET_SESSION', session)
 
   // Load current room as pings channel
-  let currentRoomChannel = jwt ? joinPingalChannel(user.id) : joinWorldChannel(session);
+  let currentRoomChannel = user ? joinPingalChannel(user.id) : joinWorldChannel(session);
   store.commit('SET_CURRENT_ROOM_CHANNEL', currentRoomChannel)
   store.commit('SET_CURRENT_ROOM_INPUT_CHANNEL', currentRoomChannel)
 
-  let userChannel = jwt ? joinUserChannel(user.id) : null; // what should this default to
+  let userChannel = user ? joinUserChannel(user.id) : null; // what should this default to
   store.commit('SET_USER_CHANNEL', userChannel)
 
 
