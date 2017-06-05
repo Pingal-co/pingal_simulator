@@ -86,6 +86,10 @@ export default {
       }
     },
     user() {
+      let user = this.$store.state.currentUser
+      console.log("user is")
+      console.log(user)
+      console.log(user == null)
       return this.$store.state.currentUser
     },
     currentRoom() {

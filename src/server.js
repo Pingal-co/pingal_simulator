@@ -16,9 +16,11 @@ export default function start() {
     // Load cookie data
   let user = Cookies.get('user');
   user = user ? JSON.parse(user) : null;
-  store.commit('SET_CURRENT_USER', user)
-  console.log(`connecting to server for user: ${store.getters.currentUser.name}, id: ${store.getters.currentUser.id}`)
-
+  if (user) {
+    store.commit('SET_CURRENT_USER', user)
+    console.log(`connecting to server for user: ${store.getters.currentUser.name}, id: ${store.getters.currentUser.id}`)
+  }
+  
   /* Fetch and Set the current user in case there's one */
   //if (localStorage.getItem('id_token')) {
   //  store.dispatch('currentUser')
