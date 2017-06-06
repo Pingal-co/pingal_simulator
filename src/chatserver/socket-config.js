@@ -1,17 +1,19 @@
 import { Socket } from 'phoenix-elixir'
 import Cookies from 'js-cookie'
 
+/*
 const { socketScheme, scheme, hostname } =
   process.env.NODE_ENV === 'production'
   ? { socketScheme: 'ws', scheme: 'http', hostname: 'beta.pingal.ai:4020' }
   : { socketScheme: 'ws', scheme: 'http', hostname: 'localhost:4020' }
-/*
-// use just hostname in production to avoid unwanted CORS error
+*/
+
+// use just hostname in production to avoid unwanted CORS errors
 const { socketScheme, scheme, hostname } =
   process.env.NODE_ENV === 'production'
-  ? { socketScheme: 'wss', scheme: 'https', hostname: window.location.hostname }
+  ? { socketScheme: 'wss', scheme: 'http', hostname: window.location.hostname }
   : { socketScheme: 'ws', scheme: 'http', hostname: 'localhost:4020' }
-*/
+
 export const apiURL = `${scheme}://${hostname}/api`
 export const socketURL = `${socketScheme}://${hostname}/socket`
 // export const apiURL = 'http://demo324.pingal.ai:4010/api'
