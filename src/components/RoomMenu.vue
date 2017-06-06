@@ -84,7 +84,7 @@
 		
 		<div class="room-interests">
 			<div class="room-interests-header">
-				Optimize Your Interests
+				Hashtags Amplifier
 			</div>
 			
 			<interests 
