@@ -6,6 +6,7 @@ const { socketScheme, scheme, hostname } =
   ? { socketScheme: 'ws', scheme: 'http', hostname: 'beta.pingal.ai:4020' }
   : { socketScheme: 'ws', scheme: 'http', hostname: 'localhost:4020' }
 /*
+// use just hostname in production to avoid unwanted CORS error
 const { socketScheme, scheme, hostname } =
   process.env.NODE_ENV === 'production'
   ? { socketScheme: 'wss', scheme: 'https', hostname: window.location.hostname }
