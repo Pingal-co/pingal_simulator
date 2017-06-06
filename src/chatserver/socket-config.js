@@ -11,7 +11,7 @@ const { socketScheme, scheme, hostname } =
 // use just hostname in production to avoid unwanted CORS errors
 const { socketScheme, scheme, hostname } =
   process.env.NODE_ENV === 'production'
-  ? { socketScheme: 'wss', scheme: 'http', hostname: window.location.hostname }
+  ? { socketScheme: 'ws', scheme: 'http', hostname: window.location.hostname }
   : { socketScheme: 'ws', scheme: 'http', hostname: 'localhost:4020' }
 
 export const apiURL = `${scheme}://${hostname}/api`
