@@ -238,15 +238,15 @@
   }
 
   .right-side {
-    min-width: 360px;
-    max-width: 360px;
+    min-width: 320px;
+    max-width: 320px;
     height: calc(100vh - 54px);
     border-left: 1px solid $border-color;
     overflow-y: scroll;
   }
 
   .md-sidenav-content {
-    width: 360px !important;
+    width: 320px !important;
     max-width: 85%;
   }
 

@@ -96,8 +96,8 @@
 	.room-nav {
 		height: calc(100vh - 54px);
 		border-right: 1px solid $border-color;
-		min-width: 360px;
-		max-width: 360px;
+		min-width: 320px;
+		max-width: 320px;
 		overflow: scroll;
 	}
 	.room-nav-header {

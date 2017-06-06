@@ -30,8 +30,8 @@
 
 <style lang="scss" scoped>	
 	.feedback-channel {
-		min-width: 359px;
-		max-width: 359px;
+		min-width: 319px;
+		max-width: 319px;
 		height: 54px;
 		font-size: 16px;
 		z-index: 10;

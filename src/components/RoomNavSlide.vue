@@ -1,17 +1,19 @@
 <template>
 	<div @click="joinRoom">
 		<md-list-item :class="['room-nav-slide', selected, intro]">
-		  <avatar :name="room.topic" />
+		  <avatar :name="room.topic" /> 
 
 		  <div :class="['md-list-text-container', notification]">
 		    <span>{{room.topic}}</span>
 		    <p>{{subtitle}}</p>
 		  </div>
 
+		  <!--
 		  <div v-if="room.type === 3" class="time-remaining">expires in {{timeRemaining}} hours</div>
 		  <div v-else :class="'formatted-time ' + notification">{{formattedTime}}</div>
-
-		  <!-- <md-divider class="md-inset"></md-divider> -->
+		 
+		  <md-divider class="md-inset"></md-divider> 
+		   -->
 		</md-list-item>
 	</div>
 </template>
