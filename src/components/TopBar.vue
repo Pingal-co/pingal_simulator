@@ -86,7 +86,8 @@ export default {
       }
     },
     user() {
-      return this.$store.state.currentUser
+      let user = this.$store.state.currentUser
+      return user
     },
     currentRoom() {
       return this.$store.state.currentRoom

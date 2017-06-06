@@ -10,7 +10,7 @@
 
 				  <div class="md-list-text-container">
 				    <span>Pingal</span>
-				    <p>Train me</p>
+				    <p>What interests you?</p>
 				  </div>
 				</md-list-item>
 			</div>

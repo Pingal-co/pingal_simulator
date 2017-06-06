@@ -15,6 +15,7 @@
         </form>
       </div> 
     </form>
+    <!-- <div v-if="text.length > 0" class="send" :click="onSend">Send</div> -->
   </div>    
 </template>
 

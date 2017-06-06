@@ -247,6 +247,7 @@
 
   .md-sidenav-content {
     width: 360px !important;
+    max-width: 85%;
   }
 
 </style>
