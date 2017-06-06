@@ -82,8 +82,8 @@ let joinUser = (userId, params = {}) => {
 let addSlide = (slide, delay = 0) => {
   setTimeout(function() {
     // do not commit if slide is empty
-    console.log("received")
-    console.log(slide)
+    //console.log("received")
+    //console.log(slide)
     if (('text' in slide) && (slide.text)) {
       store.commit('APPEND_SLIDE', slide)
       store.commit('SET_CURRENT_SLIDE', slide)

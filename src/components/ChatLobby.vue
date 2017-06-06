@@ -63,6 +63,7 @@
   import SlideList from '@/components/SlideList'
   import InputToolBar from '@/components/InputToolBar'
   import Loading from '@/components/Loading'
+  import { mapGetters, mapActions } from 'vuex'
 
   // npm modules
   import Cookies from 'js-cookie'
@@ -86,11 +87,18 @@
     },
 
     computed: {
+        ...mapGetters([
+             'getSlidesByRoom'
+        ]),
       slides() {
+        /*
         let sld = this.$store.state.slides
         console.log("roomChannel")
         console.log(this.roomChannel)
-        //sld = sld.filter(slide => slide.to_room_id === this.roomChannel.topic)
+        console.log(sld)
+        sld = sld.filter(slide => (slide.to_room_id === this.roomChannel.topic) || (`rooms:${slide.room_id}` === this.roomChannel.topic))
+        */
+        let sld = this.getSlidesByRoom
         console.log("data slides:")
         console.log(sld)
         return sld
