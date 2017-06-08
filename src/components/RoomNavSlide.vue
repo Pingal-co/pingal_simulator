@@ -1,7 +1,7 @@
 <template>
 	<div @click="joinRoom">
 		<md-list-item :class="['room-nav-slide', selected, intro]">
-		  <avatar :name="room.topic" /> 
+		  <avatar :name="room.topic" />
 
 		  <div :class="['md-list-text-container', notification]">
 		    <span>{{room.topic}}</span>
@@ -98,10 +98,17 @@
  	$primary-color-l1: rgb(250, 192, 150);
   	$primary-color-l2: rgb(252, 224, 203);
   	$primary-color-l3: rgb(254, 243, 234);
-  	$primary-color-l4: rgb(254, 247, 242); 
+  	//$primary-color-l4: rgb(254, 247, 242); 
+	//$primary-color-l4: rgb(254, 250, 245); 
 
 	.room-nav-slide {
 		cursor: pointer;
+		font-size: 14px;
+		font-weight: bold;
+		//color: white;
+		//background-color: rgb(232, 230, 225);
+		//background-color: rgb(144, 168, 142);
+
 	}
 
 	.room-nav-slide:hover {
@@ -125,6 +132,7 @@
 
 	.notification {
 		font-weight: bold;
+		//color: white;
 	}
 
 	.intro {

@@ -15,7 +15,7 @@
 		data() {
 			return {
 				allVisibile: false,
-				toggleMoreText: 'View Hidden Hashtags'
+				toggleMoreText: 'View Hidden Interest'
 			}
 		},
 		computed: {
@@ -23,7 +23,7 @@
 				if (this.interests.length >= this.maxCount) {
 					return this.maxCount + '/' + this.maxCount
 				} else {
-					return 'Add Hashtag... ' + this.interests.length + '/' + this.maxCount
+					return 'Add Interest ... ' + this.interests.length + '/' + this.maxCount
 				}
 			},
 			visibleInterests() {
@@ -53,9 +53,9 @@
 			toggleMore() {
 				this.allVisibile = !this.allVisibile
 				if (this.allVisibile) {
-					this.toggleMoreText = 'Hide Hashtags'
+					this.toggleMoreText = 'Hide Interest'
 				} else {
-					this.toggleMoreText = 'View Hidden Hashtags'
+					this.toggleMoreText = 'View Hidden Interest'
 				}
 
 			}

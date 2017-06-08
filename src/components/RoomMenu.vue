@@ -34,9 +34,20 @@
 	<!-- Default to public room, type = 1 -->
 	<div v-else class="room-menu">
 
-
+				
+		<div class="room-interests">
+			<div class="room-interests-header">
+				 Related topics to find relevant people 
+			</div>
+			
+			<interests 
+				:interests="interests" 
+				:maxCount="100"
+				:pageSize="6" 
+			/>
+		</div>
 		<div class="room-connections">
-		  <div class="room-connections-header">Discover Connections ({{users.length}})</div>
+		  <div class="room-connections-header">Linked to relevant people ({{users.length}})</div>
 		  <md-list class="connection-panel-list">
 		    <md-list-item class="connection-panel" v-for="user, index in users" :key="index" @click.native="toggleUser(index)">
 		      <div class="user-panel-content">
@@ -81,18 +92,7 @@
 		</md-button>
 		-->
 
-		
-		<div class="room-interests">
-			<div class="room-interests-header">
-				Hashtags Amplifier
-			</div>
-			
-			<interests 
-				:interests="interests" 
-				:maxCount="100"
-				:pageSize="6" 
-			/>
-		</div>
+
 
 	</div>
 </template>
@@ -246,6 +246,8 @@
 	.room-interests-header, .room-connections-header {
 		color: rgba(0,0,0,.54);
     	font-size: 14px;
+		//color: #d9620c;
+		background-color: white;
 	}
 	.room-interests-header {
 		padding-top: 12px;
