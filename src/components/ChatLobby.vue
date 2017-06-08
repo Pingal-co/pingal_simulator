@@ -10,7 +10,7 @@
         <room-menu></room-menu>
     </md-sidenav>
 
-    <top-bar
+          <top-bar
       :show-login-icon="false"
       :show-menu-icon="false"
       :toggleLeftSidenav="toggleLeftSidenav"
@@ -29,6 +29,8 @@
           <room-nav>
           </room-nav>
       </div>  
+
+
       
       <!-- slides in room -->
       <div class="slides-section">   

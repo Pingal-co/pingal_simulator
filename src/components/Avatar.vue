@@ -24,8 +24,8 @@
 
 	}
 	.icon-name {
-		font-size: 26px;
+		font-size: 16px;
 		color: white;
-		font-family: 'Avenir', Helvetica, Arial, sans-serif;
+		font-family: 'Lato', Helvetica, Arial, sans-serif;
     }
 </style>

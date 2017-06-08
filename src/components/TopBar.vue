@@ -114,14 +114,17 @@ export default {
   $pingal-blue: #0383f9;
   $secondary-color: rgb(57, 73, 171);
   $primary-color-l1: rgb(250, 192, 150);
+  $primary-color-l3: rgb(254, 243, 234);
 
   .top-bar {
     height: 54px;
     width: 100%;
     background-color: rgb(244, 128, 45);
+    //background-color: $primary-color-l1;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border: 1px solid $primary-color-l1;
   }
 
   .top-bar-right {
@@ -134,6 +137,7 @@ export default {
 
   .profile-button {
     color: white;
+    //color: #d9620c;
     padding-right: 12px;
   }
 
@@ -144,6 +148,7 @@ export default {
   .chat-icon {
     font-size: 28px !important;
     color: white;
+    //color: #d9620c;
     right: 5px !important;
   }
 
@@ -157,6 +162,7 @@ export default {
 
   .room-name {
     color: white;
+    //color: #d9620c;
     font-size: 22px;
   }
 
