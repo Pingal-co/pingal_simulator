@@ -66,10 +66,11 @@ const getters = {
    currentSlide: (state) => state.currentSlide,
    getSlidesCount: (state) => state.slides.length,
    getSlidesByRoom: (state) => {
-        let sld = state.slides.filter(slide => (state.currentRoomChannel.topic === slide.to_room_id) || (state.currentRoomChannel.topic === `rooms:${slide.room_id}`))
+        let allslds = state.slides.filter(slide => (state.currentRoomChannel.topic === slide.to_room_id) || (state.currentRoomChannel.topic === `rooms:${slide.room_id}`))
+        //let allslds = state.slides
         console.log(`slides by room: ${state.currentRoomChannel.topic}`)
-        console.log(sld)
-        return sld
+        console.log(allslds)
+        return allslds
       },
 
    rooms: (state) => state.rooms,

@@ -89,13 +89,22 @@ const actions = {
       })
   },
 
+  pingalSuggest ({commit}, {roomChannel}) {
+    // send "suggest"
+    return sendToChannel(roomChannel, {bot: "suggest"}, 'request')
+  },
+
   setCurrentPingalChannel({commit}, {user, session}) {
     //commit('CLEAR_SLIDES')
     
     if (user) {
-      commit('SET_CURRENT_ROOM_CHANNEL', joinPingalChannel(user.id))
-    } else {  
-      commit('SET_CURRENT_ROOM_CHANNEL', joinWorldChannel(session))
+      let ch = joinPingalChannel(user.id)
+      commit('SET_CURRENT_ROOM_CHANNEL', ch )
+      commit('SET_CURRENT_ROOM_INPUT_CHANNEL', ch)
+    } else { 
+      let ch = joinWorldChannel(session) 
+      commit('SET_CURRENT_ROOM_CHANNEL', ch)
+      commit('SET_CURRENT_ROOM_INPUT_CHANNEL', ch)
     }
 
     commit('SET_CURRENT_ROOM', {name: 'Pingal'})
