@@ -85,6 +85,7 @@
 				let session = this.$store.state.session;
 				let params = user ? {user: user} : {session: session};
 				this.$store.dispatch('setCurrentPingalChannel', params);
+				this.$store.dispatch('pingalSuggest', {roomChannel: this.currentRoomChannel});
 			}
 		}
 	}
@@ -92,21 +93,25 @@
 
 <style lang="scss" scoped>
 	$border-color: rgb(225, 225, 225);
+	$primary-color-l2: rgb(252, 224, 203);
 
 	.room-nav {
 		height: calc(100vh - 54px);
 		border-right: 1px solid $border-color;
+		//background-color: rgb(244, 128, 45);
 		min-width: 320px;
 		max-width: 320px;
 		overflow: scroll;
 	}
 	.room-nav-header {
-		color: rgba(0, 0, 0, 0.54);
-    	font-size: 14px;
+		color: #d9620c;
+    	font-size: 16px;
     	padding: 12px 12px 6px 15px;
+		background-color: white;
 	}
 	.room-nav-list {
 		padding-top: 0px;
+		background-color: rgb(244, 128, 45);
 	}
 
 	.room-nav-slide {
