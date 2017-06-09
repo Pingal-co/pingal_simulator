@@ -82,8 +82,13 @@ let joinUser = (userId, params = {}) => {
 let addSlide = (slide, delay = 0) => {
   setTimeout(function() {
     // do not commit if slide is empty
-    //console.log("received")
-    //console.log(slide)
+    console.log("received")
+    console.log(slide)
+
+    if (slide.slide) {
+      slide = slide.slide
+    }
+    
     if (('text' in slide) && (slide.text)) {
       store.commit('APPEND_SLIDE', slide)
       store.commit('SET_CURRENT_SLIDE', slide)
@@ -238,7 +243,7 @@ export let joinUserChannel = (userId) => {
 export let joinAllChannels = (rooms) => {
     // also join all user rooms automatically
   //console.log(rooms)
-  rooms.forEach((room) => joinRoomChannel(room.id))
+  //rooms.forEach((room) => joinRoomChannel(room.id))
   //rooms.forEach((room) => joinRoomInputChannel(room.id))
 }
 
