@@ -124,7 +124,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid $primary-color-l1;
+    // border: 1px solid $primary-color-l1;
   }
 
   .top-bar-right {

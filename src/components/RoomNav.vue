@@ -10,7 +10,7 @@
 
 				  <div class="md-list-text-container">
 				    <span>Pingal</span>
-				    <p>What interests you?</p>
+				    <p class="subtitle-text">What interests you?</p>
 				  </div>
 				</md-list-item>
 			</div>
@@ -92,13 +92,18 @@
 </script>
 
 <style lang="scss" scoped>
+	$primary-darker-color: rgb(217, 98, 12);
 	$border-color: rgb(225, 225, 225);
 	$primary-color-l2: rgb(252, 224, 203);
+	$secondary: rgb(78, 67, 58);
+	$secondary-d2: rgb(68, 57, 48);
+	$secondary-l2: rgb(88, 77, 68);
 
 	.room-nav {
 		height: calc(100vh - 54px);
 		border-right: 1px solid $border-color;
-		//background-color: rgb(244, 128, 45);
+		// background-color: rgb(244, 128, 45);
+		background-color: $secondary;
 		min-width: 320px;
 		max-width: 320px;
 		overflow: scroll;
@@ -107,27 +112,47 @@
 		color: #d9620c;
     	font-size: 16px;
     	padding: 12px 12px 6px 15px;
-		background-color: white;
+		// background-color: white;
+		background-color: $secondary;
 	}
 	.room-nav-list {
 		padding-top: 0px;
-		background-color: rgb(244, 128, 45);
+		// background-color: rgb(244, 128, 45);
+		background-color: $secondary !important;
 	}
 
 	.room-nav-slide {
+		// color: white;
+		color: rgba(165, 148, 142, 1);
 		cursor: pointer;
 	}
 
 	.room-nav-slide:hover {
-		background-color: $border-color;
+		// background-color: $border-color;
+		background-color: $secondary-d2;
 	}
 
 	.room-nav-slide:active {
-		background-color: rgb(215, 215, 215);
+		// background-color: rgb(215, 215, 215);
+		background-color: $secondary-l2;
 	}
 
 	.selected {
-		background-color: $border-color;
+		// background-color: $border-color-darker;
+		background-color: $primary-darker-color;
+		color: white;
+	}
+
+	.selected:hover {
+		background-color: $primary-darker-color;
+	}
+
+	.selected .subtitle-text {
+		color: rgba(220, 220, 220, 1) !important;
+	}
+
+	.subtitle-text {
+		color: rgba(165, 148, 142, 0.85) !important;
 	}
 
 	@media only screen and (max-width: 768px) {

@@ -5,7 +5,7 @@
 
 		  <div :class="['md-list-text-container', notification]">
 		    <span>{{room.topic}}</span>
-		    <p>{{subtitle}}</p>
+		    <p class="subtitle-text">{{subtitle}}</p>
 		  </div>
 
 		  <!--
@@ -99,28 +99,49 @@
   	$primary-color-l2: rgb(252, 224, 203);
   	$primary-color-l3: rgb(254, 243, 234);
   	//$primary-color-l4: rgb(254, 247, 242); 
-	//$primary-color-l4: rgb(254, 250, 245); 
+	//$primary-color-l4: rgb(254, 250, 245);
+	$secondary-d2: rgb(68, 57, 48);
+	$secondary-l2: rgb(88, 77, 68);
+	$secondary-text: rgba(170, 152, 146, 1);
+	$secondary-text-l1: rgba(170, 152, 146, 0.8);
 
 	.room-nav-slide {
 		cursor: pointer;
 		font-size: 14px;
 		font-weight: bold;
-		//color: white;
+		// color: white;
+		color: $secondary-text;
 		//background-color: rgb(232, 230, 225);
 		//background-color: rgb(144, 168, 142);
 
 	}
 
 	.room-nav-slide:hover {
-		background-color: $border-color;
+		// background-color: $border-color;
+		background-color: $secondary-d2;
 	}
 
 	.room-nav-slide:active {
-		background-color: rgb(215, 215, 215);
+		// background-color: rgb(215, 215, 215);
+		background-color: $secondary-l2;
+	}
+
+	.subtitle-text {
+		color: $secondary-text-l1 !important;
 	}
 
 	.selected {
-		background-color: $border-color-darker;
+		// background-color: $border-color-darker;
+		background-color: $primary-darker-color;
+		color: white;
+	}
+
+	.selected:hover {
+		background-color: $primary-darker-color;
+	}
+
+	.selected .subtitle-text {
+		color: rgba(220, 220, 220, 1) !important;
 	}
 
 	.formatted-time {

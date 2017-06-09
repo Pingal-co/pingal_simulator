@@ -36,7 +36,8 @@
 		font-size: 16px;
 		z-index: 10;
 		// background-color: rgb(244, 128, 45);
-		background-color: white;
+		// background-color: white;
+		background-color: rgb(78, 67, 58);
 		// color: white;
 		border-top: 1px solid #d9620c;
 		color: #d9620c;
@@ -49,9 +50,9 @@
 		justify-content: center;
 	}
 	.feedback-channel:hover {
-		background-color: rgb(244, 128, 45);
+		background-color: #d9620c;
 		color: white;
-		border-top: 1px solid rgb(244, 128, 45);
+		border-top: 1px solid #d9620c;
 	}
 	.feedback-channel:active {
 		background-color: #d9620c;
