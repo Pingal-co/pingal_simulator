@@ -100,10 +100,10 @@
         console.log(sld)
         sld = sld.filter(slide => (slide.to_room_id === this.roomChannel.topic) || (`rooms:${slide.room_id}` === this.roomChannel.topic))
         */
-        let sld = this.getSlidesByRoom
-        console.log("data slides:")
-        console.log(sld)
-        return sld
+        //let sld = this.getSlidesByRoom
+        //console.log("data slides:")
+        //console.log(sld)
+        return this.getSlidesByRoom
       },
 
       user() {
