@@ -1,11 +1,11 @@
 <template>
 	<div @click="joinRoom">
-		<md-list-item :class="['room-nav-slide', selected, intro]">
+		<md-list-item :class="['room-nav-slide', selected, intro, alert]">
 		  <avatar :name="room.topic" />
 
 		  <div :class="['md-list-text-container', notification]">
 		    <span>{{room.topic}}</span>
-		    <p class="subtitle-text">{{subtitle}}</p>
+		    <p :class="['subtitle-text', alert_subtitle]">{{subtitle}}</p>
 		  </div>
 
 		  <!--
@@ -73,6 +73,12 @@
 			},
 			intro() {
 				return this.room.type === 3 ? 'intro' : null
+			},
+			alert() {
+				return this.room.alert ? 'alert' : null
+			},
+			alert_subtitle() {
+				return this.room.alert ? 'alert_subtitle' : null
 			}
 		},
 		methods: {
@@ -113,7 +119,6 @@
 		color: $secondary-text;
 		//background-color: rgb(232, 230, 225);
 		//background-color: rgb(144, 168, 142);
-
 	}
 
 	.room-nav-slide:hover {
@@ -154,6 +159,23 @@
 	.notification {
 		font-weight: bold;
 		//color: white;
+	}
+
+	@keyframes alert {
+	    0%   {background-color: inherit;}
+	    50%  {background-color: $primary-darker-color; color: white; }
+	    100% {background-color: inherit;}
+	}
+	@keyframes alert_subtitle {
+	    0%   {color: inherit;}
+	    50%  {color: rgba(220, 220, 220, 1) !important; }
+	    100% {color: inherit;}
+	}
+	.alert {
+		animation: alert 3s infinite;
+	}
+	.alert_subtitle {
+		animation: alert_subtitle 3s infinite;
 	}
 
 	.intro {

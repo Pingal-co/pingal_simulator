@@ -107,6 +107,7 @@
 		min-width: 320px;
 		max-width: 320px;
 		overflow: scroll;
+		padding-bottom: 54px; // neccesary for Feedback and Ideas covering bottom item 
 	}
 	.room-nav-header {
 		color: #d9620c;

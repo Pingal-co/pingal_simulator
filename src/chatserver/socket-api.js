@@ -187,21 +187,24 @@ let response = ({slide, topicRoom, introRoom}) => {
 
   
   if (slide && "topicRoom" in slide ) {
-    addRoom(topicRoom)
     store.commit('SHOW_LEFT')
+    addRoom(topicRoom)
+    // is this deprecated?
   }
   else if (slide && slide.type === 'logOut') {
     store.commit('LOG_OUT')
   }
   else if (slide && slide.type === 'joinTopic') {
     console.log("join Topic room")
-    addRooms({rooms: topicRoom})
     store.commit('SHOW_LEFT')
+    topicRoom['alert'] = true
+    addRooms({rooms: topicRoom})
   }
   else if (slide && slide.type === 'intro') {
     console.log("intro person")
-    addRooms({rooms: introRoom})
     store.commit('SHOW_LEFT')
+    topicRoom['alert'] = true
+    addRooms({rooms: introRoom})
   }
 
   addSlide(slide, responseDelay)
