@@ -81,7 +81,9 @@ const getters = {
    rooms: (state) => state.rooms,
    searchRoomsPhrase: (state) => state.searchRoomsPhrase,
    searchRooms: (state) => state.rooms.filter(room => 
-                              room.topic ? room.topic.toLowerCase().includes(state.searchRoomsPhrase) : true),
+                              room.topic ? 
+                                  room.topic.toLowerCase().includes(state.searchRoomsPhrase) 
+                                : state.searchRoomsPhrase.length < 1),
    currentRoom: (state) => state.currentRoom,
    currentRoomChannel: (state) => state.currentRoomChannel,
    currentRoomInputChannel: (state) => state.currentRoomInputChannel,
