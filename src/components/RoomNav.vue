@@ -2,10 +2,8 @@
 	<div class="room-nav">
 		<md-list class="custom-list md-double-line room-nav-list">
 			<!-- Pingal -->
-			<div class="search-slide">
-				<input type="text" class="search-box" placeholder="Search" />
-			</div>
-			
+			<search-slide />
+
 			<div @click="joinPingal">
 				<md-list-item :class="['room-nav-slide', selected]">
 				  <md-avatar>
@@ -49,11 +47,13 @@
 <script>
 	import RoomNavSlide from '@/components/RoomNavSlide'
 	import FeedbackNav from '@/components/FeedbackNav'
+	import SearchSlide from '@/components/SearchSlide'
 
 	export default {
 		components: {
 			RoomNavSlide,
-			FeedbackNav
+			FeedbackNav,
+			SearchSlide
 		},
 
 		computed: {
@@ -159,24 +159,6 @@
 
 	.subtitle-text {
 		color: rgba(165, 148, 142, 0.85) !important;
-	}
-
-	.search-slide {
-		display: flex;
-		height: 54px;
-		justify-content: center;
-		align-items: center;
-		// margin-bottom: -10px;
-	}
-
-	.search-box {
-		background-color: rgb(166, 148, 142);
-		border-radius: 4px;
-		width: 94%;
-		// height: 100%;
-		border: none;
-		outline: none;
-		padding: 8px;
 	}
 
 	@media only screen and (max-width: 768px) {
