@@ -6,13 +6,15 @@
 
 <script>
 	export default {
-		data() {
-			return {
-				phrase: '',
+		computed: {
+			phrase: {
+				get() {
+					return this.$store.state.searchRoomsPhrase
+				},
+				set(value) {
+					this.$store.commit('SET_SEARCH_ROOMS_PHRASE', value)
+				}
 			}
-		},
-		updated() {
-			this.$emit('search', this.phrase)
 		}
 	}
 </script>

@@ -41,6 +41,7 @@ const state = {
   currentRoomChannel: null,
   currentRoomInputChannel: null,
   currentInput: {text: '', focus: 1},
+  searchRoomsPhrase: '',
   connections: [],
   showRight: false,
   showLeft: true,
@@ -78,6 +79,9 @@ const getters = {
       },
 
    rooms: (state) => state.rooms,
+   searchRoomsPhrase: (state) => state.searchRoomsPhrase,
+   searchRooms: (state) => state.rooms.filter(room => 
+                              room.topic ? room.topic.toLowerCase().includes(state.searchRoomsPhrase) : true),
    currentRoom: (state) => state.currentRoom,
    currentRoomChannel: (state) => state.currentRoomChannel,
    currentRoomInputChannel: (state) => state.currentRoomInputChannel,

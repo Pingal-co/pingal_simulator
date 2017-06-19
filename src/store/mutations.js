@@ -164,6 +164,11 @@ const mutations = {
         state.bot = bot
     },
 
+    // Room Nav Search
+    SET_SEARCH_ROOMS_PHRASE (state, phrase) {
+        state.searchRoomsPhrase = phrase
+    },
+
     UPDATE_CURRENT_SLIDE_BRAIN_INDEX (state, index_terms) {
         let terms = state.currentSlide.brain.index_terms[0]
         let keyphrase = state.currentSlide.brain.keyphrases[0]

@@ -2,7 +2,7 @@
 	<div class="room-nav">
 		<md-list class="custom-list md-double-line room-nav-list">
 			<!-- Pingal -->
-			<search-slide @search="searchFilter" />
+			<search-slide />
 
 			<div @click="joinPingal">
 				<md-list-item :class="['room-nav-slide', selected]">
@@ -58,7 +58,7 @@
 
 		computed: {
 			rooms() {
-				return this.$store.state.rooms
+				return this.$store.getters.searchRooms
 			},
 			// introductions() {
 			// 	return this.rooms.filter(room => room.type === 3)
@@ -91,9 +91,6 @@
 				let params = user ? {user: user} : {session: session};
 				this.$store.dispatch('setCurrentPingalChannel', params);
 				this.$store.dispatch('pingalSuggest', {roomChannel: this.currentRoomChannel});
-			},
-			searchFilter(phrase) {
-				console.log(phrase)
 			}
 		}
 	}
