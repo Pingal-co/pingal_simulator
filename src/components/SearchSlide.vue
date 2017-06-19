@@ -1,13 +1,19 @@
 <template>
 	<div class="search-slide">
-		<input type="text" class="search-box" placeholder="Search" />
+		<input type="text" v-model="phrase" class="search-box" placeholder="Search" />
 	</div>
 </template>
 
 <script>
-	
 	export default {
-
+		data() {
+			return {
+				phrase: '',
+			}
+		},
+		updated() {
+			this.$emit('search', this.phrase)
+		}
 	}
 </script>
 

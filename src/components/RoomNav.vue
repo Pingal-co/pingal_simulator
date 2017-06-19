@@ -2,7 +2,7 @@
 	<div class="room-nav">
 		<md-list class="custom-list md-double-line room-nav-list">
 			<!-- Pingal -->
-			<search-slide />
+			<search-slide @search="searchFilter" />
 
 			<div @click="joinPingal">
 				<md-list-item :class="['room-nav-slide', selected]">
@@ -91,6 +91,9 @@
 				let params = user ? {user: user} : {session: session};
 				this.$store.dispatch('setCurrentPingalChannel', params);
 				this.$store.dispatch('pingalSuggest', {roomChannel: this.currentRoomChannel});
+			},
+			searchFilter(phrase) {
+				console.log(phrase)
 			}
 		}
 	}
