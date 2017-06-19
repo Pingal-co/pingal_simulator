@@ -2,6 +2,10 @@
 	<div class="room-nav">
 		<md-list class="custom-list md-double-line room-nav-list">
 			<!-- Pingal -->
+			<div class="search-slide">
+				<input type="text" class="search-box" placeholder="Search" />
+			</div>
+			
 			<div @click="joinPingal">
 				<md-list-item :class="['room-nav-slide', selected]">
 				  <md-avatar>
@@ -14,7 +18,6 @@
 				  </div>
 				</md-list-item>
 			</div>
-			<feedback-nav />
 			
 			<!-- Chats and Radars -->
 <!-- 			<div v-if="introductions.length > 0" class="room-nav-header">Introductions</div>
@@ -36,6 +39,8 @@
 				:key="chat.id"
 				:room="chat"	
 			/>
+
+			<feedback-nav />
 	  	</md-list>
 	  	
  	</div>
@@ -154,6 +159,24 @@
 
 	.subtitle-text {
 		color: rgba(165, 148, 142, 0.85) !important;
+	}
+
+	.search-slide {
+		display: flex;
+		height: 54px;
+		justify-content: center;
+		align-items: center;
+		// margin-bottom: -10px;
+	}
+
+	.search-box {
+		background-color: rgb(166, 148, 142);
+		border-radius: 4px;
+		width: 94%;
+		// height: 100%;
+		border: none;
+		outline: none;
+		padding: 8px;
 	}
 
 	@media only screen and (max-width: 768px) {
