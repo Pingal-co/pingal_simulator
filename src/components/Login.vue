@@ -41,6 +41,7 @@
 				// 	this.success = 'Success!'
 				// 	this.error = ''
 				// })
+				this.$emit('closeLogin')
 			}
 		},
 	}

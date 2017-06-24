@@ -29,14 +29,14 @@
         </md-menu>
       </div>
       <div v-else>
-        <md-menu md-direction="bottom left">
+        <md-menu md-direction="bottom left" ref="loginMenu">
           <md-button md-menu-trigger @click.native="logInLoad">
             <div class="profile-button">Login</div>
           </md-button>
 
           <md-menu-content class="custom-login-dropdown">
             <div class="login-container">
-              <login></login>
+              <login @closeLogin="closeLogin"></login>
             </div>
           </md-menu-content>
         </md-menu>
@@ -104,6 +104,9 @@ export default {
     },
     logInLoad() {
       this.fbReinitialize()
+    },
+    closeLogin() {
+      this.$refs.loginMenu.close();
     }
   },
 }
