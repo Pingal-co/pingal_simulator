@@ -10,7 +10,7 @@
         <room-menu></room-menu>
     </md-sidenav>
 
-          <top-bar
+    <top-bar
       :show-login-icon="false"
       :show-menu-icon="false"
       :toggleLeftSidenav="toggleLeftSidenav"
@@ -29,8 +29,6 @@
           <room-nav>
           </room-nav>
       </div>  
-
-
       
       <!-- slides in room -->
       <div class="slides-section">   
@@ -84,7 +82,7 @@
       return {
         roomChannel: this.$store.state.currentRoomChannel,
         topic: '1',
-        windowWidth: window.innerWidth
+        windowWidth: window.innerWidth,
       }
     },
 
@@ -118,10 +116,10 @@
         }
       },
       showRight() {
-        return this.$store.state.showRight
+        return this.$store.getters.showRight
       },
       showLeft() {
-        return this.$store.state.showLeft
+        return this.$store.getters.showLeft
       }
     },
 
@@ -131,8 +129,7 @@
           this.$refs.leftSidenav.toggle(); 
         } else {
           this.$store.commit("TOGGLE_SHOW_LEFT")
-        }
-        
+        }   
       },
       toggleRightSidenav() {
         if (this.mobile) {
@@ -201,6 +198,14 @@
            fjs.parentNode.insertBefore(js, fjs);
          }(document, 'script', 'facebook-jssdk'));
       },
+    },
+
+    watch: {
+      'showLeft': function() {
+        if (this.mobile && this.showLeft) {
+          this.$refs.leftSidenav.open()
+        }
+      }
     },
 
     mounted() {

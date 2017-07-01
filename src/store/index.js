@@ -44,7 +44,7 @@ const state = {
   searchRoomsPhrase: '',
   connections: [],
   showRight: false,
-  showLeft: true,
+  showLeft: window.innerWidth < 768 ? false : true,
   slides: [],
   // session: session,
   session: null,
@@ -84,6 +84,8 @@ const getters = {
                               room.topic ? 
                                   room.topic.toLowerCase().includes(state.searchRoomsPhrase) 
                                 : state.searchRoomsPhrase.length < 1),
+   showLeft: (state) => state.showLeft,
+   showRight: (state) => state.showRight,
    currentRoom: (state) => state.currentRoom,
    currentRoomChannel: (state) => state.currentRoomChannel,
    currentRoomInputChannel: (state) => state.currentRoomInputChannel,
