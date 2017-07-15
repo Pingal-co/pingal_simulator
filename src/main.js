@@ -7,6 +7,7 @@ import Vuex from 'vuex'
 import store from './store'
 import { sync } from 'vuex-router-sync'
 import VueMaterial from 'vue-material'
+import VueYouTubeEmbed from 'vue-youtube-embed'
 import 'vue-material/dist/vue-material.css'
 
 // Fastclick to load on mobile browser without delay
@@ -19,6 +20,8 @@ import Cookies from 'js-cookie'
 
 // theme and css
 Vue.use(VueMaterial)
+
+Vue.use(VueYouTubeEmbed)
 
 // Make non-logged in user session
 if (!Cookies.get('session')) {

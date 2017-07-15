@@ -4,7 +4,15 @@
 			<!-- Text -->
 			<span v-if="i % 2 === 0">{{s}}</span>
 			<!-- Link -->
-			<span v-else><a :href="s" target="_blank">{{s}}</a></span>
+			<span v-else>
+				<!-- Youtube embed -->
+				<span v-if="isYoutube(s)">
+					<youtube :video-id="parsedYoutubeId(s)"></youtube>
+				</span>
+				<span v-else>
+					<a :href="s" target="_blank">{{s}}</a>
+				</span>	
+			</span>
 		</span>
 	</div>
 </template>
@@ -15,6 +23,20 @@
 		computed: {
 			linkArray() {
 				return this.text.split(/(https?:\/\/[^\s]+)/)
+			}
+		},
+		methods: {
+			isYoutube(link) {
+				return link.match(/https?:\/\/w*\.?youtube.com\/watch\?v=/) || link.match(/https?:\/\/youtu\.be\//) ? true : false
+			},
+			parsedYoutubeId(link) {
+				if (link.match(/https?:\/\/w*\.?youtube.com\/watch\?v=/)) {
+					return link.split(/https?:\/\/w*\.?youtube.com\/watch\?v=/)[1]
+				} else if (link.match(/https?:\/\/youtu\.be\//)) {
+					return link.split(/https?:\/\/youtu\.be\//)[1]
+				} else {
+					return ''
+				}
 			}
 		}
 	}
