@@ -7,7 +7,7 @@
 			<span v-else>
 				<!-- Youtube embed -->
 				<span v-if="isYoutube(s)">
-					<youtube :video-id="parsedYoutubeId(s)"></youtube>
+					<youtube :video-id="parsedYoutubeId(s)" class="youtube-iframe"></youtube>
 				</span>
 				<span v-else>
 					<a :href="s" target="_blank">{{s}}</a>
@@ -42,7 +42,14 @@
 	}
 </script>
 
-<style>
-	
+<style lang="scss">
+
+	.youtube-iframe-div {
+		
+	}
+
+	iframe:not(.md-image) {
+		min-height: 400px;
+	}
 </style>
 
