@@ -9,6 +9,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "7": "0.0.1",
     "animate.css": "^3.5.2",
     "fastclick": "^1.0.6",
     "font-awesome": "^4.7.0",
@@ -16,6 +17,7 @@
     "marked": "^0.3.6",
     "md5": "^2.2.1",
     "moment": "^2.17.1",
+    "node": "0.0.0",
     "phoenix-elixir": "^1.2.1",
     "rand-token": "^0.3.0",
     "shortcode-tokenizer": "^0.1.1",

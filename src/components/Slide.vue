@@ -48,7 +48,9 @@
             <md-card-content>
               <avatar :name="slide.author_name" />
               <div class="expand-custom">
-                  <div class="md-title">{{ slide.text }}</div>                  
+                  <div class="md-title">
+                    <slide-text :text="slide.text" />
+                  </div>                  
               </div>                 
             </md-card-content> 
             <div v-if="expanded" class="expanded">
@@ -74,6 +76,7 @@
   import Avatar from '@/components/Avatar'
   import ReplyInput from '@/components/ReplyInput'
   import ReplySlide from '@/components/ReplySlide'
+  import SlideText from '@/components/SlideText'
 
   import moment from 'moment';
 
@@ -129,7 +132,8 @@
       SearchPlanner,
       Avatar,
       ReplyInput,
-      ReplySlide
+      ReplySlide,
+      SlideText
     }
   }
   
