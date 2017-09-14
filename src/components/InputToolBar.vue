@@ -6,6 +6,9 @@
           <div v-if="i === currentSuggestionIndex" class="suggestion suggestionSelected">{{suggestion.text}}</div>
           <div v-else class="suggestion">{{suggestion.text}}</div>
       </div>
+      <div v-if="currentSuggestionIndex !== -2" class="close-suggestions" @click="currentSuggestionIndex = -2">
+        <div class="white-arrow">↓</div>
+      </div>
     </div>
     
     <div :class="['input-box', mobile ? 'mobile' : '']">
@@ -16,9 +19,6 @@
       <div class="arrow-container">
         <div v-if="currentSuggestionIndex === -2" class="open-suggestions" @click="currentSuggestionIndex = -1">
           <div class="white-arrow">↑</div>
-        </div>
-        <div v-if="currentSuggestionIndex !== -2" class="open-suggestions" @click="currentSuggestionIndex = -2">
-          <div class="white-arrow">↓</div>
         </div>
       </div>
     </div> 
@@ -173,7 +173,7 @@ export default {
     background-color: white;
   }
 
-  .open-suggestions {
+  .open-suggestions, .close-suggestions {
     background-color: rgb(244, 128, 45);
     display: flex;
     justify-content: center;
@@ -183,6 +183,13 @@ export default {
     border-radius: 30px;
     margin-right: 7px;
     cursor: pointer;
+  }
+
+  .close-suggestions {
+    align-self: flex-end;
+    top: 7px;
+    right: 0px;
+    position: absolute;
   }
 
   .white-arrow {
@@ -218,7 +225,9 @@ export default {
     cursor: pointer;
     color: black;
     font-size: 16px;
-    padding: 8px;
+    font-family: system-ui;
+    letter-spacing: normal;
+    padding: 9px 10px 9px 12px;
     user-select: none;
   }
 
