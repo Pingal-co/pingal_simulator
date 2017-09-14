@@ -1,21 +1,27 @@
  <template>
   <div class="input-toolbar">
     
-    <div class="input-suggestions">
+    <div v-if="currentSuggestionIndex !== -2" class="input-suggestions">
       <div v-for="(suggestion, i) in inputSuggestions" @click="suggestionClick(suggestion, i)">
           <div v-if="i === currentSuggestionIndex" class="suggestion suggestionSelected">{{suggestion.text}}</div>
           <div v-else class="suggestion">{{suggestion.text}}</div>
       </div>
     </div>
     
-    <form novalidate>
-      <div :class="['input-box', mobile ? 'mobile' : '']">
-        <form @submit.prevent="onSend" class="input-form">
-          <input type="text" v-model="text" class="input-text" :placeholder="placeholder" ref="inputText" v-on:keyup.up="upSuggestionKey" v-on:keyup.down="downSuggestionkey" autofocus />
-          <span style="display:none">{{focus}}</span>
-        </form>
-      </div> 
-    </form>
+    <div :class="['input-box', mobile ? 'mobile' : '']">
+      <form @submit.prevent="onSend" class="input-form">
+        <input type="text" v-model="text" class="input-text" :placeholder="placeholder" ref="inputText" v-on:keyup.up="upSuggestionKey" v-on:keyup.down="downSuggestionkey" autofocus />
+        <span style="display:none">{{focus}}</span>
+      </form>
+      <div class="arrow-container">
+        <div v-if="currentSuggestionIndex === -2" class="open-suggestions" @click="currentSuggestionIndex = -1">
+          <div class="white-arrow">↑</div>
+        </div>
+        <div v-if="currentSuggestionIndex !== -2" class="open-suggestions" @click="currentSuggestionIndex = -2">
+          <div class="white-arrow">↓</div>
+        </div>
+      </div>
+    </div> 
     <!-- <div v-if="text.length > 0" class="send" :click="onSend">Send</div> -->
   </div>    
 </template>
@@ -104,17 +110,17 @@ export default {
         if (this.currentSuggestionIndex < this.inputSuggestions.length - 1) {
           this.currentSuggestionIndex += 1
         } else {
-          this.currentSuggestionIndex = -1
+          this.currentSuggestionIndex = -2
         }
-        this.text = this.currentSuggestionIndex === -1 ? '' : this.inputSuggestions[this.currentSuggestionIndex].text
+        this.text = this.currentSuggestionIndex < 0 ? '' : this.inputSuggestions[this.currentSuggestionIndex].text
       },
       downSuggestionkey() {
-        if (this.currentSuggestionIndex >= 0) {
+        if (this.currentSuggestionIndex >= -1) {
           this.currentSuggestionIndex -= 1
         } else {
           this.currentSuggestionIndex = this.inputSuggestions.length - 1
         }
-        this.text = this.currentSuggestionIndex === -1 ? '' : this.inputSuggestions[this.currentSuggestionIndex].text
+        this.text = this.currentSuggestionIndex < 0 ? '' : this.inputSuggestions[this.currentSuggestionIndex].text
       }
     },
 
@@ -160,10 +166,35 @@ export default {
     padding: 0px 12px 0px 12px;
   }
 
+  .arrow-container {
+    z-index: 2;
+    height: 54px;
+    display: flex;
+    background-color: white;
+  }
+
+  .open-suggestions {
+    background-color: rgb(244, 128, 45);
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 30px;
+    margin-right: 7px;
+    cursor: pointer;
+  }
+
+  .white-arrow {
+    padding-top: 5px;
+    font-size: 30px;
+    color: white;
+    font-family: 'Lato', Helvetica, Arial, sans-serif;
+    user-select: none;
+  }
+
   .input-suggestions {
     position: relative;
-    // width: 100%;
-    // bottom: 54px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column-reverse;
@@ -186,13 +217,13 @@ export default {
     width: 100%;
     cursor: pointer;
     color: black;
-    font-size: 14px;
-    padding: 6px;
+    font-size: 16px;
+    padding: 8px;
     user-select: none;
   }
 
   .suggestion:hover, .suggestionSelected {
-    background-color: #A6948E;
+    background-color: #E0E0E0;
   }
 
 </style>

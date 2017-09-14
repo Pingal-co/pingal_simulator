@@ -36,7 +36,6 @@
     padding-top: 0px !important;
     overflow-y: scroll;
     flex: 1;
-    // height: auto;
     width: 100%;
     display: block !important;
   }
