@@ -2,9 +2,9 @@
   <div class="input-toolbar">
     
     <div class="input-suggestions">
-      <div v-for="(suggestion, i) in inputSuggestions" class="suggestion" @click="suggestionClick(suggestion, i)">
-          <div v-if="i === currentSuggestionIndex" class="suggestionSelected">{{suggestion.text}}</div>
-          <div v-else>{{suggestion.text}}</div>
+      <div v-for="(suggestion, i) in inputSuggestions" @click="suggestionClick(suggestion, i)">
+          <div v-if="i === currentSuggestionIndex" class="suggestion suggestionSelected">{{suggestion.text}}</div>
+          <div v-else class="suggestion">{{suggestion.text}}</div>
       </div>
     </div>
     
@@ -32,7 +32,7 @@ export default {
           {text: 'Log in', action: 'send'}, 
           {text: 'My name is ...', action: 'fill'}, 
           {text: 'I like ...', action: 'fill'}, 
-          {text: 'Log out', action: 'send'}],
+          {text: 'This is a much longer phrase than anyone wanted. So long in fact that it ran right off the end of the page.', action: 'send'}],
         currentSuggestionIndex: -1,
       }
     },
@@ -149,6 +149,7 @@ export default {
     display: flex;
     width: 100%;
     height: 100%;
+    z-index: 2;
   }
 
   .input-text {
@@ -160,11 +161,18 @@ export default {
   }
 
   .input-suggestions {
+    position: relative;
+    // width: 100%;
+    // bottom: 54px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column-reverse;
     justify-content: center;
-    background-color: #4E433A;
+    background-color: white;
+    box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.16), 0px 0px 3px 1px rgba(0,0,0,0.08);
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    overflow: hidden;
   }
 
   .suggestion {
@@ -177,16 +185,14 @@ export default {
     // font-size: 16px;
     width: 100%;
     cursor: pointer;
-    color: white;
-  }
-
-  .suggestion:hover {
     color: black;
-    background-color: white;
+    font-size: 14px;
+    padding: 6px;
+    user-select: none;
   }
 
-  .suggestionSelected {
-     color: red;
+  .suggestion:hover, .suggestionSelected {
+    background-color: #A6948E;
   }
 
 </style>
