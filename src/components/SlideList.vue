@@ -35,7 +35,8 @@
     // padding-bottom: 54px !important;
     padding-top: 0px !important;
     overflow-y: scroll;
-    max-height: calc(100vh - 108px);
+    flex: 1;
+    // height: auto;
     width: 100%;
     display: block !important;
   }
