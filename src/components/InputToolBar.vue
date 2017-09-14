@@ -2,7 +2,7 @@
   <div class="input-toolbar">
     
     <div class="input-suggestions">
-      <div v-for="(suggestion, i) in inputSuggestions" class="suggestion" @click="suggestionClick(suggestion)">
+      <div v-for="(suggestion, i) in inputSuggestions" class="suggestion" @click="suggestionClick(suggestion, i)">
           <div v-if="i === currentSuggestionIndex" class="suggestionSelected">{{suggestion.text}}</div>
           <div v-else>{{suggestion.text}}</div>
       </div>
@@ -90,8 +90,9 @@ export default {
           this.$refs.inputText.focus() 
         }
       },
-      suggestionClick(suggestion) {
+      suggestionClick(suggestion, i) {
         this.text = suggestion.text
+        this.currentSuggestionIndex = i;
         // if (suggestion.action === 'fill') {
         //   // something
         // } else if (suggestion.action === 'send') {
@@ -105,6 +106,7 @@ export default {
         } else {
           this.currentSuggestionIndex = -1
         }
+        this.text = this.currentSuggestionIndex === -1 ? '' : this.inputSuggestions[this.currentSuggestionIndex].text
       },
       downSuggestionkey() {
         if (this.currentSuggestionIndex >= 0) {
@@ -112,6 +114,7 @@ export default {
         } else {
           this.currentSuggestionIndex = this.inputSuggestions.length - 1
         }
+        this.text = this.currentSuggestionIndex === -1 ? '' : this.inputSuggestions[this.currentSuggestionIndex].text
       }
     },
 
