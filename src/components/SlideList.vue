@@ -29,7 +29,7 @@
   }
 </script>
 
-<style lang="scss" scope>
+<style lang="scss" scoped>
 
   .slide-list {
     // padding-bottom: 54px !important;

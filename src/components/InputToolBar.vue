@@ -3,7 +3,7 @@
     
     <div v-if="currentSuggestionIndex !== -2" class="input-suggestions">
       <div v-for="(suggestion, i) in inputSuggestions" @click="suggestionClick(suggestion, i)">
-          <div v-if="i === currentSuggestionIndex" class="suggestion suggestionSelected">{{suggestion.text}}</div>
+          <div v-if="i === currentSuggestionIndex" class="suggestion suggestion-selected">{{suggestion.text}}</div>
           <div v-else class="suggestion">{{suggestion.text}}</div>
       </div>
       <div v-if="currentSuggestionIndex !== -2" class="close-suggestions" @click="currentSuggestionIndex = -2">
@@ -131,7 +131,7 @@ export default {
   
 </script>
 
-<style lang="scss" scope>
+<style lang="scss" scoped>
   $border-color: rgb(225, 225, 225);
   $primary-darker-color: rgb(217, 98, 12);
 
@@ -139,100 +139,93 @@ export default {
     width: 100%;
     z-index: 3;
     align-self: flex-end;
-  }
 
-  .input-box {
-    height: 54px;
-    border-top: 1px solid $border-color;
-    display: flex;
-  }
+    .input-suggestions {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column-reverse;
+      justify-content: center;
+      background-color: white;
+      box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.16), 0px 0px 3px 1px rgba(0,0,0,0.08);
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
+      overflow: hidden;
 
-  .mobile {
-    width: 100vw;
-  }
+        .suggestion {
+          width: 100%;
+          cursor: pointer;
+          color: black;
+          font-size: 16px;
+          font-family: system-ui;
+          letter-spacing: normal;
+          padding: 9px 10px 9px 12px;
+          user-select: none;
+        }
 
-  .input-form {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-  }
+        .suggestion:hover, .suggestion-selected {
+          background-color: #E0E0E0;
+        }
 
-  .input-text {
-    width: 100%;
-    font-size: 16px;
-    border: none;
-    outline: none;
-    padding: 0px 12px 0px 12px;
-  }
+        .close-suggestions {
+          align-self: flex-end;
+          top: 7px;
+          right: 0px;
+          position: absolute;
+        }
+    }
 
-  .arrow-container {
-    z-index: 2;
-    height: 54px;
-    display: flex;
-    background-color: white;
-  }
+    .input-box {
+      height: 54px;
+      border-top: 1px solid $border-color;
+      display: flex;
 
-  .open-suggestions, .close-suggestions {
-    background-color: rgb(244, 128, 45);
-    display: flex;
-    justify-content: center;
-    align-self: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 30px;
-    margin-right: 7px;
-    cursor: pointer;
-  }
+      .input-form {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
 
-  .close-suggestions {
-    align-self: flex-end;
-    top: 7px;
-    right: 0px;
-    position: absolute;
-  }
+        .input-text {
+          width: 100%;
+          font-size: 16px;
+          border: none;
+          outline: none;
+          padding: 0px 12px 0px 12px;
+        }
+      }
 
-  .white-arrow {
-    padding-top: 5px;
-    font-size: 30px;
-    color: white;
-    font-family: 'Lato', Helvetica, Arial, sans-serif;
-    user-select: none;
-  }
+      .arrow-container {
+        z-index: 2;
+        height: 54px;
+        display: flex;
+        background-color: white;
+      }
+    }
 
-  .input-suggestions {
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column-reverse;
-    justify-content: center;
-    background-color: white;
-    box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.16), 0px 0px 3px 1px rgba(0,0,0,0.08);
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-    overflow: hidden;
-  }
+    .open-suggestions, .close-suggestions {
+      background-color: rgb(244, 128, 45);
+      display: flex;
+      justify-content: center;
+      align-self: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 30px;
+      margin-right: 7px;
+      cursor: pointer;
+    }
 
-  .suggestion {
-    // border: 1px solid $primary-darker-color;
-    // padding: 14px;
-    // border-radius: 20px;
-    // margin: 12px;
-    // color: $primary-darker-color;
-    // background-color: white;
-    // font-size: 16px;
-    width: 100%;
-    cursor: pointer;
-    color: black;
-    font-size: 16px;
-    font-family: system-ui;
-    letter-spacing: normal;
-    padding: 9px 10px 9px 12px;
-    user-select: none;
-  }
+    .white-arrow {
+      padding-top: 5px;
+      font-size: 30px;
+      color: white;
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      user-select: none;
+    }
 
-  .suggestion:hover, .suggestionSelected {
-    background-color: #E0E0E0;
+    .mobile {
+      width: 100vw;
+    }
   }
 
 </style>
