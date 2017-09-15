@@ -7,7 +7,7 @@
           <div v-else class="suggestion">{{suggestion.text}}</div>
       </div>
       <div v-if="currentSuggestionIndex !== -2" class="close-suggestions" @click="currentSuggestionIndex = -2">
-        <div class="white-arrow">↓</div>
+        <div class="arrow arrow-down">↓</div>
       </div>
     </div>
     
@@ -18,7 +18,7 @@
       </form>
       <div class="arrow-container">
         <div v-if="currentSuggestionIndex === -2" class="open-suggestions" @click="currentSuggestionIndex = -1">
-          <div class="white-arrow">↑</div>
+          <div class="arrow arrow-up">↑</div>
         </div>
       </div>
     </div> 
@@ -33,12 +33,17 @@ export default {
     props: ['muteSpeaker', 'topic', 'user', 'mobile'],
     data() {
       return {
-        inputSuggestions: [{text: 'Sign up', action: 'send'},
-          {text: 'Join room', action: 'send'}, 
-          {text: 'Log in', action: 'send'}, 
-          {text: 'My name is ...', action: 'fill'}, 
-          {text: 'I like ...', action: 'fill'}, 
-          {text: 'This is a much longer phrase than anyone wanted. So long in fact that it ran right off the end of the page.', action: 'send'}],
+        inputSuggestions: [{text: 'Yep, can you share your location with me, please?', action: 'fill'},
+        {text: 'Yep, can you please put in where you want to be picked up :rideshare', action: 'fill'},
+        {text: ':rideshare', action: 'fill'},
+        {text: ':open_lyft', action: 'fill'},
+        {text: ':pick_me_up', action: 'fill'}],
+        // [{text: 'Sign up', action: 'send'},
+        //   {text: 'Join room', action: 'send'}, 
+        //   {text: 'Log in', action: 'send'}, 
+        //   {text: 'My name is ...', action: 'fill'}, 
+        //   {text: 'I like ...', action: 'fill'}, 
+        //   {text: 'This is a much longer phrase than anyone wanted. So long in fact that it ran right off the end of the page.', action: 'send'}],
         currentSuggestionIndex: -1,
       }
     },
@@ -169,8 +174,7 @@ export default {
 
         .close-suggestions {
           align-self: flex-end;
-          top: 7px;
-          right: 0px;
+          top: 6px;
           position: absolute;
         }
     }
@@ -204,23 +208,29 @@ export default {
     }
 
     .open-suggestions, .close-suggestions {
-      background-color: rgb(244, 128, 45);
+      background-color: transparent;
       display: flex;
       justify-content: center;
       align-self: center;
-      width: 40px;
-      height: 40px;
+      width: 35px;
+      height: 35px;
       border-radius: 30px;
-      margin-right: 7px;
       cursor: pointer;
     }
 
-    .white-arrow {
-      padding-top: 5px;
-      font-size: 30px;
-      color: white;
+    .arrow {
+      font-size: 27px;
+      color: rgb(244, 128, 45);
       font-family: 'Lato', Helvetica, Arial, sans-serif;
       user-select: none;
+    }
+
+    .arrow-up {
+      padding-top: 2px;
+    }
+
+    .arrow-down {
+
     }
 
     .mobile {
