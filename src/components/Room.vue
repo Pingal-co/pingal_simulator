@@ -1,5 +1,5 @@
 <template>
-	<div class="slides-section"> this is a room.....</div>
+	<div class="slides-section"> this is a room {{$route.params.room_id}}</div>
 </template>
 
 <script>

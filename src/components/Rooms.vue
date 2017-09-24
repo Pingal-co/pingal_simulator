@@ -1,9 +1,9 @@
 <template>
 	<div class="slides-section"> 
-		<slide-list 
+		<room-list 
 		  :slides="slides"
 		  :fbReinitialize="fbReinitialize">
-		</slide-list>
+		</room-list>
 
 		<input-tool-bar
 		  :mute-speaker="true"
@@ -16,13 +16,15 @@
 </template>
 
 <script>
-	import SlideList from '@/components/SlideList'
+	// import SlideList from '@/components/SlideList'
+	import RoomList from '@/components/RoomList'
   	import InputToolBar from '@/components/InputToolBar'
   	import { mapGetters, mapActions } from 'vuex'
 
 	export default {
 		components: {
-			SlideList,
+			// SlideList,
+			RoomList,
 			InputToolBar
 		},
 		data () {
