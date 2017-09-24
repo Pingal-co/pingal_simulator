@@ -26,8 +26,10 @@
 </script>
 
 <style lang="scss" scoped>
+	$primary-color-l5: rgb(255, 250, 247);
+
 	.room-list {
-		padding-top: 12px;
+		// padding-top: 12px;
 	    overflow-y: scroll;
 	    flex: 1;
 	    width: 100%;
@@ -37,24 +39,35 @@
 			display: flex;
 			align-items: center;
 			width: 100%;
-			height: 60px;
+			height: 54px;
 			cursor: pointer;
+			text-decoration: none !important;
+			color: inherit;
+			border-bottom: 1px solid rgb(225, 225, 225);
+
 
 			.avatar {
-				width: 80px;
+				min-width: 80px;
+				max-width: 80px;
 			}
 
 			.name {
-
+				min-width: 60px;
+				max-width: 60px;
 			}
 
 			.text {
-				padding-left: 24px;
+				padding-left: 20px;
+				padding-right: 15px;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
 			}
 		}
 
 		.room-slide:hover {
-			background-color: grey;
+			background-color: $primary-color-l5;
+			color: inherit;
 		}
 	}
 </style>
