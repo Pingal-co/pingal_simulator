@@ -31,21 +31,9 @@
       </div>  
       
       <!-- slides in room -->
-      <div class="slides-section">   
-        <!--<loading v-if="slides.length === 0" /> -->
-        <slide-list 
-          :slides="slides"
-          :fbReinitialize="fbReinitialize">
-        </slide-list>
+      <!--<loading v-if="slides.length === 0" /> -->
+      <router-view></router-view>
 
-        <input-tool-bar
-          :mute-speaker="true"
-          :topic="topic"
-          :user="user"
-          :mobile="mobile"
-          >
-        </input-tool-bar>
-      </div>
 
       <!-- room menu -->
       <div v-if="!mobile && showRight" class="right-side">
@@ -60,8 +48,6 @@
   import TopBar from '@/components/TopBar'
   import RoomNav from '@/components/RoomNav'
   import RoomMenu from '@/components/RoomMenu'
-  import SlideList from '@/components/SlideList'
-  import InputToolBar from '@/components/InputToolBar'
   import Loading from '@/components/Loading'
   import { mapGetters, mapActions } from 'vuex'
 
@@ -74,8 +60,6 @@
       TopBar,
       RoomNav,
       RoomMenu,
-      SlideList,
-      InputToolBar,
       Loading
     },
     data () {
@@ -236,6 +220,7 @@
     display: flex;
   }
 
+  // Do not scope this
   .slides-section {
     overflow-x: hidden;
     height: calc(100vh - 54px);

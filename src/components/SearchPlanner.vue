@@ -1,9 +1,9 @@
 <template>
     <md-chips v-model="getIndex" @change="change" :md-max="maxCount" class="chips" :md-input-placeholder="placeholder">
-    <template scope="chip">            
-        <span>{{ chip.value }}</span>
-        <small v-if="chip.value === getKeyPhrase">(favorite)</small>
-    </template>
+        <template scope="chip">            
+            <span>{{ chip.value }}</span>
+            <small v-if="chip.value === getKeyPhrase">(favorite)</small>
+        </template>
     </md-chips>
 
     <!--
