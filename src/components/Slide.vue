@@ -37,7 +37,7 @@
   </div>
 
   <!-- User Slide -->
-  <div v-else class="card-custom" @click="toggleExpanded">
+  <div v-else class="card-custom"> <!-- @click="toggleExpanded" -->
     <md-list-item>
         <md-card>
           <md-card-area md-inset>
@@ -53,14 +53,14 @@
                   </div>                  
               </div>                 
             </md-card-content> 
-            <div v-if="expanded" class="expanded">
+<!--        <div v-if="expanded" class="expanded">
               <reply-slide v-for="slide in replies" :slide="slide" :key="slide.id" />
               <reply-input :parentId="slide.id" ref="replyInput" />
             </div>  
             <div v-else class="expanded">
               <reply-slide v-for="slide in replies.slice(0, 3)" :slide="slide" :key="slide.id" />
               <div class="more">{{more}}</div>
-            </div>
+            </div> -->
           </md-card-area>                      
         </md-card>
     </md-list-item>
@@ -98,32 +98,32 @@
                     sameElse: 'h:mm a [on] MMMM Do[,] YYYY'
                 });
       },
-      replies() {
-        return this.slide.replies ? this.slide.replies : []
-      },
-      more() {
-        let count = this.replies.length - 3
-        if (count > 0) {
-          return '+ ' + count + ' replies'
-        } else {
-          return 'reply'
-        }
-      }
+      // replies() {
+      //   return this.slide.replies ? this.slide.replies : []
+      // },
+      // more() {
+      //   let count = this.replies.length - 3
+      //   if (count > 0) {
+      //     return '+ ' + count + ' replies'
+      //   } else {
+      //     return 'reply'
+      //   }
+      // }
     },
-    methods: {
-      toggleExpanded(e) {
-        // this.$refs.replyInput.focus()
-        // console.log(this.$refs.replyInput)
-        if (e.target.id != 'reply-box') {
-          this.expanded = !this.expanded
-          if (this.expanded) {
-            this.$nextTick(function() {
-              this.$refs.replyInput.focus()
-            })
-          }
-        }
-      }
-    },
+    // methods: {
+    //   toggleExpanded(e) {
+    //     // this.$refs.replyInput.focus()
+    //     // console.log(this.$refs.replyInput)
+    //     if (e.target.id != 'reply-box') {
+    //       this.expanded = !this.expanded
+    //       if (this.expanded) {
+    //         this.$nextTick(function() {
+    //           this.$refs.replyInput.focus()
+    //         })
+    //       }
+    //     }
+    //   }
+    // },
     components: {
       SignUp,
       LogIn,

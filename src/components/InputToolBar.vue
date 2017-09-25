@@ -30,7 +30,7 @@
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
-    props: ['muteSpeaker', 'topic', 'user', 'mobile'],
+    props: ['muteSpeaker', 'topic', 'user', 'mobile', 'parentSlide'],
     data() {
       return {
         inputSuggestions: [{text: 'Yep, can you share your location with me, please?', action: 'fill'},
@@ -56,7 +56,7 @@ export default {
         'bot'
       ]),
       slide() {
-        return {
+        let new_slide = {
           _id: Math.round(Math.random() * 1000000),
           text: this.text,
           bot: this.bot,
@@ -68,6 +68,10 @@ export default {
          // sponsored: false,
           inserted_at: new Date()
         }
+        if (this.parentSlide) {
+          new_slide['parent_id'] = this.parentSlide.id
+        }
+        return new_slide
       },
 
       text: {
@@ -87,13 +91,16 @@ export default {
     methods: {
       onSend() {
         console.log("sending slide")
+        let event = this.parentSlide ? 'add:reply' : 'request'
         this.$store.dispatch('pushSlide', {
-          roomChannel: this.currentRoomInputChannel, 
-          slide: this.slide, 
-          event: 'request'})
-            .then(() => {
-              this.$store.commit('UPDATE_INPUT_TEXT', '')
-            })
+            roomChannel: this.currentRoomInputChannel, 
+            slide: this.slide, 
+            event: event
+        })
+        .then(() => {
+          this.$store.commit('UPDATE_INPUT_TEXT', '')
+        })
+
         // this.$store.commit('SET_BOT', "dialog")
       },
       focusInput() {

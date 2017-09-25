@@ -1,6 +1,6 @@
 <template>
     <div class="room-list">
-    	<router-link :to="'/room/' + slide.id" class="room-slide" v-for="slide in slides">
+    	<router-link :to="'/room/' + slide.id" class="room-slide" v-for="slide in slides" :key="slide.id">
 	    		<div class="avatar">
 		        	<avatar :name="slide.author_name"></avatar>
 		        </div>
