@@ -21,7 +21,7 @@
                     <suggest-topics :topics="slide.topics"></suggest-topics>
                   </div> 
                   <div v-else-if="slide.type === 'signUp'">
-                    <sign-up :fbReinitialize="fbReinitialize"></sign-up>
+                    <sign-up></sign-up>
                   </div>
                   <div v-else-if="slide.type === 'logIn'">
                     <log-in></log-in>
@@ -81,7 +81,7 @@
   import moment from 'moment';
 
   export default {
-    props: ['slide', 'fbReinitialize'],
+    props: ['slide'],
     data() {
       return {
         expanded: false,

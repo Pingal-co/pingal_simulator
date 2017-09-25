@@ -24,8 +24,10 @@
 </template>
 
 <script>
+	import fbReinitialize from '@/mixins/fbReinitialize'
+	
 	export default {
-		props: ['fbReinitialize'],
+		mixins: [fbReinitialize],
 		data() {
 			return {
 				email: '',

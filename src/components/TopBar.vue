@@ -54,7 +54,7 @@
 
 import Login from '@/components/Login'
 import Cookies from 'js-cookie'
-
+import fbReinitialize from '@/mixins/fbReinitialize'
 
 export default {
   components: {
@@ -73,8 +73,9 @@ export default {
     mobile: Boolean,
     showLeft: Boolean,
     showRight: Boolean,
-    fbReinitialize: Function,
   },
+
+  mixins: [fbReinitialize],
 
   computed: {
     name() {
