@@ -1,4 +1,4 @@
-let fbReinitialize = {
+const fbReinitialize = {
 	methods: {
 		fbReinitialize() {
 			// Remove Facebook SDK and reinitialize

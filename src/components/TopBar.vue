@@ -8,9 +8,15 @@
       </md-button>
     </div>
 
-    <div>
+    <div class="middle-section">
     <!-- Middle -->
-      <div class="room-name">{{currentRoom.name}}</div>
+      <!-- <div class="room-name">{{currentRoom.name}}</div> -->
+      <div @click="joinPingal" class="pingal-icon">
+        <md-avatar>
+          <img src="../assets/pingal_play_icon.png" alt="Pingal" />
+        </md-avatar>
+      </div>
+      <TopInput />
     </div>
 
     <!-- Right -->
@@ -53,13 +59,17 @@
 <script>
 
 import Login from '@/components/Login'
+import TopInput from '@/components/TopInput'
 import Cookies from 'js-cookie'
 import fbReinitialize from '@/mixins/fbReinitialize'
 
 export default {
   components: {
-    Login
+    Login,
+    TopInput
   },
+
+  mixins: [fbReinitialize],
 
   props: {
     showLoginIcon: {
@@ -74,8 +84,6 @@ export default {
     showLeft: Boolean,
     showRight: Boolean,
   },
-
-  mixins: [fbReinitialize],
 
   computed: {
     name() {
@@ -108,6 +116,13 @@ export default {
     },
     closeLogin() {
       this.$refs.loginMenu.close();
+    },
+    joinPingal() {
+      let user = this.$store.state.currentUser;
+      let session = this.$store.state.session;
+      let params = user ? {user: user} : {session: session};
+      this.$store.dispatch('setCurrentPingalChannel', params);
+      this.$store.dispatch('pingalSuggest', {roomChannel: this.$store.state.currentRoomChannel});
     }
   },
 }
@@ -164,6 +179,14 @@ export default {
     color: $primary-color-l1;
   }
 
+
+  .middle-section {
+    display: flex;
+    align-items: center;
+  }
+  .pingal-icon {
+    cursor: pointer;
+  }
   .room-name {
     color: white;
     //color: #d9620c;

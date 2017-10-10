@@ -2,7 +2,7 @@
 	<div class="room-nav">
 		<md-list class="custom-list md-double-line room-nav-list">
 			<!-- Pingal -->
-			<search-slide />
+			
 
 			<div @click="joinPingal">
 				<md-list-item :class="['room-nav-slide', selected]">
@@ -16,7 +16,7 @@
 				  </div>
 				</md-list-item>
 			</div>
-			
+			<search-slide />
 			<!-- Chats and Radars -->
 <!-- 			<div v-if="introductions.length > 0" class="room-nav-header">Introductions</div>
 			<room-nav-slide 

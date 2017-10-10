@@ -6,7 +6,7 @@
           <div v-if="i === currentSuggestionIndex" class="suggestion suggestion-selected">{{suggestion.text}}</div>
           <div v-else class="suggestion">{{suggestion.text}}</div>
       </div>
-      <div v-if="currentSuggestionIndex !== -2" class="close-suggestions" @click="currentSuggestionIndex = -2">
+      <div class="close-suggestions" @click="currentSuggestionIndex = -2">
         <div class="arrow arrow-down">↓</div>
       </div>
     </div>

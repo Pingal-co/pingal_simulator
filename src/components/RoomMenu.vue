@@ -33,7 +33,9 @@
 	</div>
 	<!-- Default to public room, type = 1 -->
 	<div v-else class="room-menu">
-
+		<div class="room-name">
+			{{currentRoom.name}}
+		</div>
 				
 		<div class="room-interests">
 			<div class="room-interests-header">
@@ -220,6 +222,11 @@
 		display: flex;
 		flex-direction: column;
 		// justify-content: center;	
+	}
+	.room-name {
+		color: black;
+		font-size: 20px;
+		padding: 9px;
 	}
 	.room-interests {
 		padding: 8px 18px 0px 18px;
