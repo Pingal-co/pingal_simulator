@@ -11,11 +11,11 @@
     <div class="middle-section">
     <!-- Middle -->
       <!-- <div class="room-name">{{currentRoom.name}}</div> -->
-      <div @click="joinPingal" class="pingal-icon">
+      <router-link to="/pingal" class="pingal-icon">
         <md-avatar>
           <img src="../assets/pingal_play_icon.png" alt="Pingal" />
         </md-avatar>
-      </div>
+      </router-link>
       <TopInput />
     </div>
 

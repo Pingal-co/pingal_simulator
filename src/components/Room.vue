@@ -19,6 +19,7 @@
 	import Slide from '@/components/Slide'
 	import SlideList from '@/components/SlideList'
 	import InputToolBar from '@/components/InputToolBar'
+	import { mapGetters, mapActions } from 'vuex'
 
 	export default {
 		components: {
@@ -33,15 +34,23 @@
 			}
 		},
 		computed: {
+		  ...mapGetters([
+	      	'getSlidesByRoom',
+	      	'currentRoomChannel'
+	      ]),
 		  slide() {
-		  	return this.$store.state.slides.find(slide => slide.id == this.$route.params.room_id)
+		  	return this.$route.params.room_id ? this.$store.state.slides.find(slide => slide.id == this.$route.params.room_id) : null 
 		  },
 	      replies() {
-	      	let r = []
-	      	r.push(this.slide)
-	      	r = r.concat(this.slide.replies)
+	      	if (this.$route.params.room_id == null) {
+	      		return this.getSlidesByRoom
+	      	} else {
+	      		let r = []
+		      	r.push(this.slide)
+		      	r = r.concat(this.slide.replies)
 
-	        return this.slide ? r : []
+		        return this.slide ? r : []
+	      	}
 	      },
 	      user() {
 	        let user = this.$store.state.currentUser
@@ -54,6 +63,16 @@
 	          return false
 	        }
 	      },
+	    },
+	    created() {
+			// join Pingal
+			if (this.$route.params.room_id == null) {
+				let user = this.$store.state.currentUser;
+				let session = this.$store.state.session;
+				let params = user ? {user: user} : {session: session};
+				this.$store.dispatch('setCurrentPingalChannel', params);
+				this.$store.dispatch('pingalSuggest', {roomChannel: this.currentRoomChannel});
+			}
 	    }
 	}
 </script>

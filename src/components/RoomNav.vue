@@ -1,21 +1,7 @@
 <template>
 	<div class="room-nav">
 		<md-list class="custom-list md-double-line room-nav-list">
-			<!-- Pingal -->
-			
-
-			<div @click="joinPingal">
-				<md-list-item :class="['room-nav-slide', selected]">
-				  <md-avatar>
-				    <img src="../assets/pingal_play_icon.png" alt="Pingal" />
-				  </md-avatar>
-
-				  <div class="md-list-text-container">
-				    <span>Pingal</span>
-				    <p class="subtitle-text">What interests you?</p>
-				  </div>
-				</md-list-item>
-			</div>
+			<!-- HOME SHOULD GO HERE THAT AGGREGATES ALL CHANNELS -->
 			<search-slide />
 			<!-- Chats and Radars -->
 <!-- 			<div v-if="introductions.length > 0" class="room-nav-header">Introductions</div>
