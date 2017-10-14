@@ -16,7 +16,7 @@ export default new Router({
       children: [
       	{ path: '', component: Rooms },
       	{ path: 'room/:room_id', component: Room},
-        { path: 'pingal', component: Room} // query: {startingMessage: "Hey whats up"}
+        { path: 'pingal', component: Room}
       ]
     }
   ]

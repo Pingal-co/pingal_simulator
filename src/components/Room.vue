@@ -36,7 +36,8 @@
 		computed: {
 		  ...mapGetters([
 	      	'getSlidesByRoom',
-	      	'currentRoomChannel'
+	      	'currentRoomChannel',
+	      	'bot'
 	      ]),
 		  slide() {
 		  	return this.$route.params.room_id ? this.$store.state.slides.find(slide => slide.id == this.$route.params.room_id) : null 
@@ -76,14 +77,15 @@
 	    },
 	    mounted() {
 	        console.log("sending entered text")
+	        console.log(this.$route.query.text)
 	        this.$store.dispatch('pushSlide', {
-	            roomChannel: this.currentRoomInputChannel,
+	            roomChannel: this.$store.state.currentRoomInputChannel,
 	            slide: {_id: Math.round(Math.random() * 1000000),
-	            		text: this.$route.query.startingMessage}, 
+	            		text: this.$route.query.text,
+	            		bot: this.bot,
+	            		inserted_at: new Date(),
+	            		author_name: this.$store.state.currentUser.name,},
 	            event: 'request'
-	        })
-	        .then(() => {
-	          this.$store.commit('UPDATE_INPUT_TEXT', '')
 	        })
 	    }
 	}
