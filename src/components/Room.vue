@@ -73,6 +73,18 @@
 				this.$store.dispatch('setCurrentPingalChannel', params);
 				this.$store.dispatch('pingalSuggest', {roomChannel: this.currentRoomChannel});
 			}
+	    },
+	    mounted() {
+	        console.log("sending entered text")
+	        this.$store.dispatch('pushSlide', {
+	            roomChannel: this.currentRoomInputChannel,
+	            slide: {_id: Math.round(Math.random() * 1000000),
+	            		text: this.$route.query.startingMessage}, 
+	            event: 'request'
+	        })
+	        .then(() => {
+	          this.$store.commit('UPDATE_INPUT_TEXT', '')
+	        })
 	    }
 	}
 </script>

@@ -5,9 +5,9 @@
       <span style="display:none">{{focus}}</span>
     </form>
     <div class="arrow-container">
-      <div v-if="currentSuggestionIndex === -2" class="open-suggestions" @click="currentSuggestionIndex = -1">
+<!--       <div v-if="currentSuggestionIndex === -2" class="open-suggestions" @click="currentSuggestionIndex = -1">
         <div class="arrow arrow-up">↑</div>
-      </div>
+      </div> -->
     </div>
   </div>
   
@@ -15,7 +15,16 @@
 
 <script>
   export default {
-
+    data() {
+      return {
+        text: ''
+      }
+    },
+    methods: {
+      onSend() {
+        this.$router.push({path: 'pingal', query: { text: this.text }})
+      }
+    }
   }
 </script>
 
