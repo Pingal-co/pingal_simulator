@@ -3,8 +3,30 @@
     
     <div v-if="currentSuggestionIndex !== -2" class="input-suggestions">
       <div v-for="(suggestion, i) in inputSuggestions" @click="suggestionClick(suggestion, i)">
-          <div v-if="i === currentSuggestionIndex" class="suggestion suggestion-selected">{{suggestion.text}}</div>
-          <div v-else class="suggestion">{{suggestion.text}}</div>
+          <div v-if="i === currentSuggestionIndex" class="text-suggestion suggestion-selected">
+            <div v-if="'app'=='app'" class="app-suggestion">
+              <div class="app-suggestion-image"></div>
+              <div class="app-suggestion-text">
+                <div class="app-suggestion-text">{{suggestion.text}}</div>
+                <div class="app-suggestion-subtext">{{suggestion.subtext}}</div>
+              </div>
+            </div>
+            <div v-else class="text-suggestion">
+              {{suggestion.text}}
+            </div>
+          </div>
+          <div v-else class="text-suggestion">
+            <div v-if="'app'=='app'" class="app-suggestion">
+              <div class="app-suggestion-image"></div>
+              <div class="app-suggestion-text">
+                <div class="app-suggestion-text">{{suggestion.text}}</div>
+                <div class="app-suggestion-subtext">{{suggestion.subtext}}</div>
+              </div>
+            </div>
+            <div v-else class="text-suggestion">
+              {{suggestion.text}}
+            </div>
+          </div>
       </div>
       <div class="close-suggestions" @click="currentSuggestionIndex = -2">
         <div class="arrow arrow-down">↓</div>
@@ -33,11 +55,15 @@ export default {
     props: ['muteSpeaker', 'topic', 'user', 'mobile', 'parentSlide'],
     data() {
       return {
-        inputSuggestions: [{text: 'Yep, can you share your location with me, please?', action: 'fill'},
-        {text: 'Yep, can you please put in where you want to be picked up :rideshare', action: 'fill'},
-        {text: ':rideshare', action: 'fill'},
-        {text: ':open_lyft', action: 'fill'},
-        {text: ':pick_me_up', action: 'fill'}],
+        inputSuggestions: 
+        [{text: 'Speedtest', subtext: 'Find out how fast your internet is.', action: 'fill'},
+         {text: 'Speed Tester', subtext: 'Discover and share your download and upload rate.', action: 'fill'},
+         {text: 'Pinger', subtext: "See if your network connection is live!", action: 'fill'}],
+        // [{text: 'Yep, can you share your location with me, please?', action: 'fill'},
+        // {text: 'Yep, can you please put in where you want to be picked up :rideshare', action: 'fill'},
+        // {text: ':rideshare', action: 'fill'},
+        // {text: ':open_lyft', action: 'fill'},
+        // {text: ':pick_me_up', action: 'fill'}],
         // [{text: 'Sign up', action: 'send'},
         //   {text: 'Join room', action: 'send'}, 
         //   {text: 'Log in', action: 'send'}, 
@@ -164,7 +190,7 @@ export default {
       border-top-left-radius: 5px;
       overflow: hidden;
 
-        .suggestion {
+        .text-suggestion, .app-suggestion {
           width: 100%;
           cursor: pointer;
           color: black;
@@ -173,6 +199,16 @@ export default {
           letter-spacing: normal;
           padding: 9px 10px 9px 12px;
           user-select: none;
+        }
+
+        .app-suggestion-text {
+          font-size: 18px;
+          padding-bottom: 2px;
+        }
+
+        .app-suggestion-subtext {
+          font-size: 14px;
+          color: rgba(0,0,0, 0.6);
         }
 
         .suggestion:hover, .suggestion-selected {
