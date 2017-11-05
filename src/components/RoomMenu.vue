@@ -224,9 +224,9 @@
 		// justify-content: center;	
 	}
 	.room-name {
-		color: black;
+		color: rgba(0, 0, 0, 0.54);
 		font-size: 20px;
-		padding: 9px;
+		padding: 16px 8px 0px 16px;
 	}
 	.room-interests {
 		padding: 8px 18px 0px 18px;

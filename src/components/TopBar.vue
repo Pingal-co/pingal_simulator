@@ -186,6 +186,9 @@ export default {
   }
   .pingal-icon {
     cursor: pointer;
+    margin-right: -40px;
+    margin-top: 5px;
+    z-index: 3;
   }
   .room-name {
     color: white;

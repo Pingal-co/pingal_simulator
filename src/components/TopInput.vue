@@ -49,7 +49,7 @@
         font-size: 16px;
         border: none;
         outline: none;
-        padding: 0px 12px 0px 12px;
+        padding: 0px 12px 0px 42px;
       }
     }
   }
