@@ -5,10 +5,10 @@
       <div v-for="(suggestion, i) in inputSuggestions" @click="suggestionClick(suggestion, i)">
           <div v-if="i === currentSuggestionIndex" class="text-suggestion suggestion-selected">
             <div v-if="'app'=='app'" class="app-suggestion">
-              <div class="app-suggestion-image"></div>
+              <img :src="suggestion.image" class="app-suggestion-image" />
               <div class="app-suggestion-text">
                 <div class="app-suggestion-text">{{suggestion.text}}</div>
-                <div class="app-suggestion-subtext">{{suggestion.subtext}}</div>
+                <div class="app-suggestion-subtext">{{suggestion.subtext}} <span class="app-name">(:{{suggestion.app}})</span></div>
               </div>
             </div>
             <div v-else class="text-suggestion">
@@ -17,10 +17,10 @@
           </div>
           <div v-else class="text-suggestion">
             <div v-if="'app'=='app'" class="app-suggestion">
-              <div class="app-suggestion-image"></div>
+              <img :src="suggestion.image" class="app-suggestion-image" />
               <div class="app-suggestion-text">
                 <div class="app-suggestion-text">{{suggestion.text}}</div>
-                <div class="app-suggestion-subtext">{{suggestion.subtext}}</div>
+                <div class="app-suggestion-subtext">{{suggestion.subtext}} <span class="app-name">(:{{suggestion.app}})</span></div>
               </div>
             </div>
             <div v-else class="text-suggestion">
@@ -56,9 +56,9 @@ export default {
     data() {
       return {
         inputSuggestions: 
-        [{text: 'Speedtest', subtext: 'Find out how fast your internet is.', action: 'fill'},
-         {text: 'Speed Tester', subtext: 'Discover and share your download and upload rate.', action: 'fill'},
-         {text: 'Pinger', subtext: "See if your network connection is live!", action: 'fill'}],
+        [{text: 'Pet Sitter', subtext: "Keep track of pets' needs, schedule sittings, and handle payments.", action: 'fill', app: "petsitter", image: "https://cdn.pixabay.com/photo/2017/03/25/14/26/animals-2173635_640.jpg"},
+         {text: 'Dog Walker', subtext: 'Share where you walked the furry friend and automatically pay or charge per mile.', action: 'fill', app: "pet_walker", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Pictograms-nps-pets_on_leash-2.svg/600px-Pictograms-nps-pets_on_leash-2.svg.png"},
+         {text: 'Pet Lovers', subtext: "Save or share all your pets needs and get reminded to take care or notified of completions.", action: 'fill', app: "petlove", image: "https://cdn.pixabay.com/photo/2017/03/22/23/14/dog-2166765_640.png"}],
         // [{text: 'Yep, can you share your location with me, please?', action: 'fill'},
         // {text: 'Yep, can you please put in where you want to be picked up :rideshare', action: 'fill'},
         // {text: ':rideshare', action: 'fill'},
@@ -201,6 +201,17 @@ export default {
           user-select: none;
         }
 
+        .app-suggestion {
+          display: flex;
+          padding: 5px 5px 5px 2px;
+        }
+
+        .app-suggestion-image {
+          width: 40px;
+          height: 40px;
+          margin-right: 13px;
+        }
+
         .app-suggestion-text {
           font-size: 18px;
           padding-bottom: 2px;
@@ -209,6 +220,11 @@ export default {
         .app-suggestion-subtext {
           font-size: 14px;
           color: rgba(0,0,0, 0.6);
+        }
+
+        .app-name {
+          font-size: 14px;
+          color: rgba(0,0,0,0.6);
         }
 
         .suggestion:hover, .suggestion-selected {
