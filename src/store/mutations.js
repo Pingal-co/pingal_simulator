@@ -9,6 +9,10 @@ import _ from 'lodash'
 
 const mutations = {
 
+    WINDOW_WIDTH_RESIZE (state, size) {
+        state.windowWidth = size
+    },
+
     /* START <SLIDES MUTATION HANDLERS> */
 
     // slides are like posts but can have additional object properties, such as recommended channels, location, etc.

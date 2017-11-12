@@ -43,8 +43,9 @@ const state = {
   currentInput: {text: '', focus: 1},
   searchRoomsPhrase: '',
   connections: [],
+  windowWidth: window.innerWidth,
   showRight: false,
-  showLeft: window.innerWidth < 768 ? false : true,
+  showLeft: window.innerWidth > 768,
   slides: [],
   // session: session,
   session: null,
@@ -84,6 +85,8 @@ const getters = {
                               room.topic ? 
                                   room.topic.toLowerCase().includes(state.searchRoomsPhrase) 
                                 : state.searchRoomsPhrase.length < 1),
+   mobile: (state) => state.windowWidth > 768,
+   windowWidth: (state) => state.windowWidth,
    showLeft: (state) => state.showLeft,
    showRight: (state) => state.showRight,
    currentRoom: (state) => state.currentRoom,

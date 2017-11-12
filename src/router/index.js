@@ -5,6 +5,11 @@ import Rooms from '@/components/Rooms'
 import Room from '@/components/Room'
 import SlideList from '@/components/SlideList'
 
+import TopBar from '@/components/TopBar'
+import LeftBar from '@/components/LeftBar'
+import Main from '@/components/Main'
+import RightBar from '@/components/RightBar'
+
 Vue.use(Router)
 
 export default new Router({
@@ -15,24 +20,24 @@ export default new Router({
       components: ChatLobby,
       children: [
       	{ path: '', components: {
-            topBar:,
-            leftBar:,
-            main:,
-            rightBar:, 
+            topBar: TopBar,
+            leftBar: LeftBar,
+            main: Main,
+            rightBar: RightBar, 
           } 
         },
       	{ path: 't/:room_id', components: {
-            topBar:,
-            leftBar:,
-            main:,
-            rightBar:, 
+            topBar: TopBar,
+            leftBar: LeftBar,
+            main: Main,
+            rightBar: RightBar, 
           }
         },
         { path: 'al', components: {
-            topBar:,
-            leftBar:,
-            main:,
-            rightBar:, 
+            topBar: TopBar,
+            leftBar: LeftBar,
+            main: Main,
+            rightBar: RightBar, 
           }
         }
       ]

@@ -5,14 +5,6 @@
     <router-view v-if="mobile" name="leftBar"></router-view>
     <router-view v-if="mobile" name="rightBar"></router-view>
 
-    <md-sidenav v-if="mobile" class="md-left" ref="leftSidenav">
-      <room-nav>
-      </room-nav>
-    </md-sidenav>
-    <md-sidenav v-if="mobile" class="md-right" ref="rightSidenav">
-        <room-menu></room-menu>
-    </md-sidenav>
-
 <!--     <top-bar
       :show-login-icon="false"
       :show-menu-icon="false"
@@ -28,22 +20,14 @@
     <div class="main">
 
       <!-- room nav -->
-<!--       <div v-if="!mobile && showLeft">
-          <room-nav>
-          </room-nav>
-      </div>  -->
-      <router-view name="leftBar"></router-view>
+      <router-view v-if="!mobile" name="leftBar"></router-view>
       
       <!-- slides in room -->
       <!--<loading v-if="slides.length === 0" /> -->
       <router-view name="main"></router-view>
 
-
       <!-- room menu -->
-<!--       <div v-if="!mobile && showRight" class="right-side">
-          <room-menu></room-menu>
-      </div> -->
-      <router-view name="rightBar"></router-view>
+      <router-view v-if="!mobile" name="rightBar"></router-view>
     </div>
     
   </div>
@@ -51,7 +35,6 @@
 
 <script>
   import TopBar from '@/components/TopBar'
-  import RoomNav from '@/components/RoomNav'
   import RoomMenu from '@/components/RoomMenu'
   import Loading from '@/components/Loading'
   import { mapGetters, mapActions } from 'vuex'
@@ -63,7 +46,6 @@
     name: 'hello',
     components: {
       TopBar,
-      RoomNav,
       RoomMenu,
       Loading
     },
@@ -71,13 +53,16 @@
       return {
         roomChannel: this.$store.state.currentRoomChannel,
         topic: '1',
-        windowWidth: window.innerWidth,
       }
     },
 
     computed: {
         ...mapGetters([
-             'getSlidesByRoom'
+             'getSlidesByRoom',
+             'mobile',
+             'windowWidth',
+             'showRight',
+             'showLeft'
         ]),
       slides() {
         /*
@@ -97,19 +82,6 @@
         let user = this.$store.state.currentUser
         return user ? user : { _id: 2, name: 'Anonymous', hash: 'Anonymous', avatar: 'mood'}
       },
-      mobile() {
-        if (this.windowWidth < 768) {
-          return true
-        } else {
-          return false
-        }
-      },
-      showRight() {
-        return this.$store.getters.showRight
-      },
-      showLeft() {
-        return this.$store.getters.showLeft
-      }
     },
 
     methods: {
@@ -128,7 +100,7 @@
         }  
       },
       handleResize() {
-        this.windowWidth = window.innerWidth;
+        this.$store.commit("WINDOW_WIDTH_RESIZE", window.innerWidth)
       }
     },
 
