@@ -34,8 +34,6 @@
 </template>
 
 <script>
-  import TopBar from '@/components/TopBar'
-  import RoomMenu from '@/components/RoomMenu'
   import Loading from '@/components/Loading'
   import { mapGetters, mapActions } from 'vuex'
 
@@ -45,19 +43,17 @@
   export default {
     name: 'hello',
     components: {
-      TopBar,
-      RoomMenu,
       Loading
     },
     data () {
       return {
-        roomChannel: this.$store.state.currentRoomChannel,
         topic: '1',
       }
     },
 
     computed: {
         ...mapGetters([
+             'currentRoomChannel',
              'getSlidesByRoom',
              'mobile',
              'windowWidth',
@@ -67,10 +63,10 @@
       slides() {
         /*
         let sld = this.$store.state.slides
-        console.log("roomChannel")
-        console.log(this.roomChannel)
+        console.log("currentRoomChannel")
+        console.log(this.currentRoomChannel)
         console.log(sld)
-        sld = sld.filter(slide => (slide.to_room_id === this.roomChannel.topic) || (`rooms:${slide.room_id}` === this.roomChannel.topic))
+        sld = sld.filter(slide => (slide.to_room_id === this.currentRoomChannel.topic) || (`rooms:${slide.room_id}` === this.currentRoomChannel.topic))
         */
         //let sld = this.getSlidesByRoom
         //console.log("data slides:")

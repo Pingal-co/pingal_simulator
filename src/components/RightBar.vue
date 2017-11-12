@@ -3,7 +3,7 @@
   	<room-menu></room-menu>
   </md-sidenav>
   <div v-else-if="!mobile && showRight" class="right-side">
-      <room-menu></room-menu>
+    <room-menu></room-menu>
   </div>
 </template>
 

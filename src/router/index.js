@@ -17,7 +17,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      components: ChatLobby,
+      component: ChatLobby,
       children: [
       	{ path: '', components: {
             topBar: TopBar,
