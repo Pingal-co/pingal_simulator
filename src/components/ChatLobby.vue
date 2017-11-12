@@ -1,7 +1,10 @@
 <template>
   <div class="lobby">
 
-    <!-- Mobile Room navs and menu -->
+    <!-- Mobile Left and Right Bars -->
+    <router-view v-if="mobile" name="leftBar"></router-view>
+    <router-view v-if="mobile" name="rightBar"></router-view>
+
     <md-sidenav v-if="mobile" class="md-left" ref="leftSidenav">
       <room-nav>
       </room-nav>
@@ -10,7 +13,7 @@
         <room-menu></room-menu>
     </md-sidenav>
 
-    <top-bar
+<!--     <top-bar
       :show-login-icon="false"
       :show-menu-icon="false"
       :toggleLeftSidenav="toggleLeftSidenav"
@@ -19,25 +22,28 @@
       :showLeft="showLeft"
       :showRight="showRight"
     >
-    </top-bar>
+    </top-bar> -->
+    <router-view name="topBar"></router-view>
 
     <div class="main">
 
       <!-- room nav -->
-      <div v-if="!mobile && showLeft">
+<!--       <div v-if="!mobile && showLeft">
           <room-nav>
           </room-nav>
-      </div>  
+      </div>  -->
+      <router-view name="leftBar"></router-view>
       
       <!-- slides in room -->
       <!--<loading v-if="slides.length === 0" /> -->
-      <router-view></router-view>
+      <router-view name="main"></router-view>
 
 
       <!-- room menu -->
-      <div v-if="!mobile && showRight" class="right-side">
+<!--       <div v-if="!mobile && showRight" class="right-side">
           <room-menu></room-menu>
-      </div>
+      </div> -->
+      <router-view name="rightBar"></router-view>
     </div>
     
   </div>

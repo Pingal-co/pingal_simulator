@@ -12,11 +12,29 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: ChatLobby,
+      components: ChatLobby,
       children: [
-      	{ path: '', component: Rooms },
-      	{ path: 'room/:room_id', component: Room},
-        { path: 'pingal', component: Room}
+      	{ path: '', components: {
+            topBar:,
+            leftBar:,
+            main:,
+            rightBar:, 
+          } 
+        },
+      	{ path: 't/:room_id', components: {
+            topBar:,
+            leftBar:,
+            main:,
+            rightBar:, 
+          }
+        },
+        { path: 'al', components: {
+            topBar:,
+            leftBar:,
+            main:,
+            rightBar:, 
+          }
+        }
       ]
     }
   ]

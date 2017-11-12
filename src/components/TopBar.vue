@@ -183,6 +183,7 @@ export default {
   .middle-section {
     display: flex;
     align-items: center;
+    max-width: 60%;
   }
   .pingal-icon {
     cursor: pointer;
