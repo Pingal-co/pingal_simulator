@@ -22,7 +22,7 @@
     },
     methods: {
       onSend() {
-        this.$router.push({path: 'pingal', query: { text: this.text }})
+        this.$router.push({path: '/al', query: { text: this.text }})
       }
     }
   }

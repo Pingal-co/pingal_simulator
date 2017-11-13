@@ -83,6 +83,10 @@
 		},
 		methods: {
 			joinRoom() {
+				this.$router.push({
+					name: 'topic', 
+					params: {topic_id: this.room.id}
+				})
 				this.$store.dispatch('updateCurrentRoomChannel', {
 					room: this.room
 				}),

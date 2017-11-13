@@ -7,7 +7,6 @@ import SlideList from '@/components/SlideList'
 
 import TopBar from '@/components/TopBar'
 import LeftBar from '@/components/LeftBar'
-import Main from '@/components/Main'
 import RightBar from '@/components/RightBar'
 
 Vue.use(Router)
@@ -22,21 +21,32 @@ export default new Router({
       	{ path: '', components: {
             topBar: TopBar,
             leftBar: LeftBar,
-            main: Main,
+            main: Room,
             rightBar: RightBar, 
           } 
-        },
-      	{ path: 't/:room_id', components: {
-            topBar: TopBar,
-            leftBar: LeftBar,
-            main: Main,
-            rightBar: RightBar, 
-          }
         },
         { path: 'al', components: {
             topBar: TopBar,
             leftBar: LeftBar,
-            main: Main,
+            main: Room,
+            rightBar: RightBar, 
+          }
+        },
+        { path: 't/:topic_id',
+          name: 'topic', 
+          components: {
+            topBar: TopBar,
+            leftBar: LeftBar,
+            main: Rooms,
+            rightBar: RightBar, 
+          },
+        },
+        { path: 'c/:chat_id',
+          name: 'chat',
+          components: {
+            topBar: TopBar,
+            leftBar: LeftBar,
+            main: Room,
             rightBar: RightBar, 
           }
         }

@@ -11,7 +11,7 @@
     <div class="middle-section">
     <!-- Middle -->
       <!-- <div class="room-name">{{currentRoom.name}}</div> -->
-      <router-link to="/pingal" class="pingal-icon">
+      <router-link to="/al" class="pingal-icon">
         <md-avatar>
           <img src="../assets/pingal_play_icon.png" alt="Pingal" />
         </md-avatar>
