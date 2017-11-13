@@ -75,6 +75,21 @@
 				this.$store.dispatch('pingalSuggest', {roomChannel: this.currentRoomChannel});
 			}
 		},
+		watch: {
+			'$route.query.text': function (text) {
+				console.log("sending entered text")
+		    console.log(this.$route.query.text)
+		    this.$store.dispatch('pushSlide', {
+		        roomChannel: this.$store.state.currentRoomInputChannel,
+		        slide: {_id: Math.round(Math.random() * 1000000),
+		        		text: this.$route.query.text,
+		        		bot: this.bot,
+		        		inserted_at: new Date(),
+		        		author_name: this.$store.state.currentUser.name,},
+		        event: 'request'
+		    })
+			}
+		},
 		mounted() {
 		    console.log("sending entered text")
 		    console.log(this.$route.query.text)
