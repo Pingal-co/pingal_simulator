@@ -85,7 +85,7 @@ const getters = {
                               room.topic ? 
                                   room.topic.toLowerCase().includes(state.searchRoomsPhrase) 
                                 : state.searchRoomsPhrase.length < 1),
-   mobile: (state) => state.windowWidth > 768,
+   mobile: (state) => state.windowWidth < 768,
    windowWidth: (state) => state.windowWidth,
    showLeft: (state) => state.showLeft,
    showRight: (state) => state.showRight,

@@ -52,14 +52,14 @@
     },
 
     computed: {
-        ...mapGetters([
-             'currentRoomChannel',
-             'getSlidesByRoom',
-             'mobile',
-             'windowWidth',
-             'showRight',
-             'showLeft'
-        ]),
+      ...mapGetters([
+           'currentRoomChannel',
+           'getSlidesByRoom',
+           'mobile',
+           'windowWidth',
+           'showRight',
+           'showLeft'
+      ]),
       slides() {
         /*
         let sld = this.$store.state.slides
@@ -81,32 +81,10 @@
     },
 
     methods: {
-      toggleLeftSidenav() {
-        if (this.mobile) {
-          this.$refs.leftSidenav.toggle(); 
-        } else {
-          this.$store.commit("TOGGLE_SHOW_LEFT")
-        }   
-      },
-      toggleRightSidenav() {
-        if (this.mobile) {
-          this.$refs.rightSidenav.toggle();
-        } else {
-          this.$store.commit("TOGGLE_SHOW_RIGHT")
-        }  
-      },
       handleResize() {
         this.$store.commit("WINDOW_WIDTH_RESIZE", window.innerWidth)
       }
-    },
-
-    watch: {
-      'showLeft': function() {
-        if (this.mobile && this.showLeft) {
-          this.$refs.leftSidenav.open()
-        }
-      }
-    },
+    }, 
 
     mounted() {
       window.addEventListener('resize', this.handleResize)

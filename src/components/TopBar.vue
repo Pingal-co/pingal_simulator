@@ -3,7 +3,7 @@
 
     <div>
     <!-- Left -->
-      <md-button class="md-icon-button" @click.native="toggleLeftSidenav">
+      <md-button class="md-icon-button" @click.native="toggleLeftBar">
         <md-icon :class="['chat-icon', showLeft ? 'highlight-icon' : null]">chat</md-icon>
       </md-button>
     </div>
@@ -48,7 +48,7 @@
         </md-menu>
       </div>
 
-      <md-button class="md-icon-button menu-button" @click.native="toggleRightSidenav">
+      <md-button class="md-icon-button menu-button" @click.native="toggleRightBar">
         <md-icon :class="['menu-icon', showRight ? 'highlight-icon' : null]">menu</md-icon>
       </md-button>
     </div>
@@ -78,8 +78,6 @@ export default {
     showMenuIcon: {
       default: true
     },
-    toggleLeftSidenav: Function,
-    toggleRightSidenav: Function,
     mobile: Boolean,
     showLeft: Boolean,
     showRight: Boolean,
@@ -123,6 +121,12 @@ export default {
       let params = user ? {user: user} : {session: session};
       this.$store.dispatch('setCurrentPingalChannel', params);
       this.$store.dispatch('pingalSuggest', {roomChannel: this.$store.state.currentRoomChannel});
+    },
+    toggleLeftBar() {
+      this.$store.commit('TOGGLE_SHOW_LEFT')
+    },
+    toggleRightBar() {
+      this.$store.commit('TOGGLE_SHOW_RIGHT')
     }
   },
 }
