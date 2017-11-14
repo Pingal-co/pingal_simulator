@@ -22,17 +22,27 @@
     <!-- Right -->
     <div class="top-bar-right">
       <div v-if="user">
+        <div>
         <md-menu md-direction="bottom left">
           <md-button md-menu-trigger>
-            <div class="profile-button">{{name}}</div>
+            <div class="profile-button">{{name}}: Favor </div>
           </md-button>
 
           <md-menu-content>
+            <div @click="Wallet">
+              <md-menu-item class="logout">Wallet</md-menu-item>
+            </div>
+             <div @click="Reputation">
+              <md-menu-item class="logout">Score</md-menu-item>
+            </div>
             <div @click="logOut">
               <md-menu-item class="logout">Logout</md-menu-item>
             </div>
           </md-menu-content>
         </md-menu>
+        </md-menu>
+        </div>
+
       </div>
       <div v-else>
         <md-menu md-direction="bottom left" ref="loginMenu">
