@@ -62,6 +62,7 @@ import Login from '@/components/Login'
 import TopInput from '@/components/TopInput'
 import Cookies from 'js-cookie'
 import fbReinitialize from '@/mixins/fbReinitialize'
+import {mapGetters} from 'vuex';
 
 export default {
   components: {
@@ -71,19 +72,12 @@ export default {
 
   mixins: [fbReinitialize],
 
-  props: {
-    showLoginIcon: {
-      default: true
-    },
-    showMenuIcon: {
-      default: true
-    },
-    mobile: Boolean,
-    showLeft: Boolean,
-    showRight: Boolean,
-  },
-
   computed: {
+    ...mapGetters([
+      'mobile',
+      'showLeft',
+      'showRight'
+    ]),
     name() {
       var user = this.$store.state.currentUser
       if (user) {

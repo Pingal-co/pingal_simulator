@@ -5,16 +5,6 @@
     <router-view v-if="mobile" name="leftBar"></router-view>
     <router-view v-if="mobile" name="rightBar"></router-view>
 
-<!--     <top-bar
-      :show-login-icon="false"
-      :show-menu-icon="false"
-      :toggleLeftSidenav="toggleLeftSidenav"
-      :toggleRightSidenav="toggleRightSidenav"
-      :mobile="mobile"
-      :showLeft="showLeft"
-      :showRight="showRight"
-    >
-    </top-bar> -->
     <router-view name="topBar"></router-view>
 
     <div class="main">
