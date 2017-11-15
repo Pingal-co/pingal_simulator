@@ -273,6 +273,7 @@ export let joinWorldChannel = (session) => {
   // user text message
   roomChannel.on('add:slide', addSlide)
 
+  
   return roomChannel
 }
 
@@ -296,6 +297,7 @@ export let joinPingalChannel = (userId) => { //, jwt
   roomChannel.on('add:rooms', addRooms)
   roomChannel.on('add:slide', addSlide)
 
+  roomChannel.on('reward', addSlide)
   return roomChannel
 }
 
@@ -330,7 +332,9 @@ export let joinRoomChannel = (roomId) => {
   })
 
   roomChannel.on('add:presence', addPresence)
-  
+
+  roomChannel.on('reward', addSlide)
+
   return roomChannel
 }
 

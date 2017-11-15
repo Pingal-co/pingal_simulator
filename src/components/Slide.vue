@@ -109,6 +109,9 @@
                     sameElse: 'h:mm a [on] MMMM Do[,] YYYY'
                 });
       },
+      roomChannel() {
+				return this.$store.state.currentRoomChannel
+			}
 
       // replies() {
       //   return this.slide.replies ? this.slide.replies : []
@@ -125,6 +128,15 @@
     methods: {
         upvote() {
           console.log("upvoted")
+          console.log(this.roomChannel)
+          let payload = {
+            text: 'upvote',
+          }
+				this.$store.dispatch('pushSlide', {
+		          roomChannel: this.roomChannel,
+		          slide: payload, 
+		          event: 'vote'
+				})
         },
         downvote() {
           console.log("downvoted")
