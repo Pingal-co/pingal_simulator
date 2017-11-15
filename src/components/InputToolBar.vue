@@ -70,7 +70,7 @@ export default {
         //   {text: 'My name is ...', action: 'fill'}, 
         //   {text: 'I like ...', action: 'fill'}, 
         //   {text: 'This is a much longer phrase than anyone wanted. So long in fact that it ran right off the end of the page.', action: 'send'}],
-        currentSuggestionIndex: -1,
+        currentSuggestionIndex: -2,
       }
     },
 
