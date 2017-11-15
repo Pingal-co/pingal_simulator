@@ -25,14 +25,14 @@
         <div>
         <md-menu md-direction="bottom left">
           <md-button md-menu-trigger>
-            <div class="profile-button">{{name}}: Favor </div>
+            <div class="profile-button">{{name}}: {{totalfavor}} Favor </div>
           </md-button>
 
           <md-menu-content>
-            <div @click="Wallet">
+            <div @click="wallet">
               <md-menu-item class="logout">Wallet</md-menu-item>
             </div>
-             <div @click="Reputation">
+             <div @click="reputation">
               <md-menu-item class="logout">Score</md-menu-item>
             </div>
             <div @click="logOut">
@@ -96,6 +96,9 @@ export default {
         return ''
       }
     },
+    totalfavor() {
+      return 480
+    },
     user() {
       let user = this.$store.state.currentUser
       return user
@@ -112,6 +115,14 @@ export default {
     logOut() {
       console.log("logged out")
       this.$store.commit('LOG_OUT')
+    },
+    wallet() {
+      console.log("wallet")
+      this.$store.dispatch('getWalletInfo')
+    },
+    reputation() {
+      console.log("wallet")
+      this.$store.dispatch('getReputationScore')
     },
     logInLoad() {
       this.fbReinitialize()
