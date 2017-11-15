@@ -58,8 +58,8 @@
                                  
             </md-card-content> 
             <div>
-              <md-button class="md-icon-button"><md-icon class="thumb-icon">thumb_up</md-icon></md-button>           
-              <md-button class="md-icon-button"><md-icon class="thumb-icon">thumb_down</md-icon></md-button>           
+              <md-button class="md-icon-button" @click.native="upvote"><md-icon class="thumb-icon" >thumb_up</md-icon></md-button>           
+              <md-button class="md-icon-button" @click.native="downvote"><md-icon class="thumb-icon" >thumb_down</md-icon></md-button>           
 
             </div> 
 
@@ -109,6 +109,7 @@
                     sameElse: 'h:mm a [on] MMMM Do[,] YYYY'
                 });
       },
+
       // replies() {
       //   return this.slide.replies ? this.slide.replies : []
       // },
@@ -121,6 +122,15 @@
       //   }
       // }
     },
+    methods: {
+        upvote() {
+          console.log("upvoted")
+        },
+        downvote() {
+          console.log("downvoted")
+        }
+      
+      },
     // methods: {
     //   toggleExpanded(e) {
     //     // this.$refs.replyInput.focus()
