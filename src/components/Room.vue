@@ -90,6 +90,7 @@
 		    })
 			}
 		},
+
 		mounted() {
 		    console.log("sending entered text")
 		    console.log(this.$route.query.text)

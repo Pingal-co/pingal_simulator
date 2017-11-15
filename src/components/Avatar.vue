@@ -1,7 +1,8 @@
 <template>
-	<md-avatar class="custom-avatar">
-		<div class="icon-name">{{ iconName }}</div>
-	</md-avatar>
+		<md-avatar class="custom-avatar">
+			<div class="icon-name">{{ iconName }}</div>
+		</md-avatar>
+
 </template>
 
 <script>

@@ -45,14 +45,24 @@
               {{slide.author_name}}
               <span class="datetime">{{datetime}}</span>
             </div>
+
             <md-card-content>
               <avatar :name="slide.author_name" />
+ 
               <div class="expand-custom">
                   <div class="md-title">
                     <slide-text :text="slide.text" />
                   </div>                  
-              </div>                 
+              </div>
+
+                                 
             </md-card-content> 
+            <div>
+              <md-button class="md-icon-button"><md-icon class="thumb-icon">thumb_up</md-icon></md-button>           
+              <md-button class="md-icon-button"><md-icon class="thumb-icon">thumb_down</md-icon></md-button>           
+
+            </div> 
+
 <!--        <div v-if="expanded" class="expanded">
               <reply-slide v-for="slide in replies" :slide="slide" :key="slide.id" />
               <reply-input :parentId="slide.id" ref="replyInput" />
@@ -61,7 +71,8 @@
               <reply-slide v-for="slide in replies.slice(0, 3)" :slide="slide" :key="slide.id" />
               <div class="more">{{more}}</div>
             </div> -->
-          </md-card-area>                      
+          </md-card-area>
+                    
         </md-card>
     </md-list-item>
   </div>
@@ -186,6 +197,7 @@
   }
 
 
+
   .card-custom {
     padding-top: 15px;
     display: flex;
@@ -207,6 +219,9 @@
     .md-button {
         border-radius: 8px;
     } 
+    .md-icon-button{
+      margin-right: -15px;     
+    }
     
     .md-card-content {
         padding: 12px;
@@ -217,6 +232,12 @@
         &:last-child {
             padding-bottom: 16px;
         }
+    }
+
+    .thumb-icon {
+      color: $primary-color;
+      font-size: 20px;
+      visibility: hidden;
     }
 
     .expand-custom {
@@ -282,5 +303,8 @@
   visibility: visible;
  }
  
+ .card-custom:hover .thumb-icon {
+  visibility: visible;
+ }
 
 </style>
