@@ -100,11 +100,11 @@ const actions = {
     if (user) {
       let ch = joinPingalChannel(user.id)
       commit('SET_CURRENT_ROOM_CHANNEL', ch )
-      commit('SET_CURRENT_ROOM_INPUT_CHANNEL', null) // setting this as ch created a nasty doubling bug, having a copy of the same channel is a bad idea
+      commit('SET_CURRENT_ROOM_INPUT_CHANNEL', ch)
     } else { 
       let ch = joinWorldChannel(session) 
       commit('SET_CURRENT_ROOM_CHANNEL', ch)
-      commit('SET_CURRENT_ROOM_INPUT_CHANNEL', null)
+      commit('SET_CURRENT_ROOM_INPUT_CHANNEL', ch)
     }
 
     commit('SET_CURRENT_ROOM', {name: 'Pingal'})
