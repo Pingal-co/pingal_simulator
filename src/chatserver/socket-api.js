@@ -233,6 +233,7 @@ let response = ({slide, topicRoom, introRoom}) => {
 */
 export let sendToChannel = (room, slide, event = 'add:slide') => {
   console.log('sending to room...');
+  console.log(socket)
   //console.log(slide)
   room.push(event, slide)
         .receive('ok', (msg) => console.log('sent'))
@@ -254,7 +255,7 @@ let notify = (data) => {
 
 export let joinUserChannel = (userId) => {
   let userChannel = joinUser(userId);
-
+  console.log("USER RUN ONCE")
   userChannel.on('notify', notify)
 
   return userChannel
@@ -269,6 +270,7 @@ export let joinAllChannels = (rooms) => {
 
 export let joinWorldChannel = (session) => {
   let path = DEFAULT_LOBBY + ":" + session
+  console.log("WORLD RUN ONCE")
   let roomChannel = joinRoom(path)
 
   roomChannel.on('get:slides_in_room', getSlidesInRoom)
@@ -320,6 +322,7 @@ export let joinPingalChannel = (userId) => { //, jwt
 
 export let joinRoomChannel = (roomId) => {
   let roomChannel = joinRoom(`rooms:${roomId}`, {})
+
   let presences = {}
 
   roomChannel.on('get:slides_in_room', getSlidesInRoom)
@@ -357,6 +360,7 @@ export let joinRoomChannel = (roomId) => {
 
 export let joinRoomInputChannel = (roomId) => {
   let roomInputChannel = joinRoom(`rooms:input:${roomId}`, {})
+
   let presences = {}
 
     // presence

@@ -92,6 +92,7 @@ const getters = {
    currentRoom: (state) => state.currentRoom,
    currentRoomChannel: (state) => state.currentRoomChannel,
    currentRoomInputChannel: (state) => state.currentRoomInputChannel,
+   inputChannel: (state) => state.currentRoomInputChannel ? state.currentRoomInputChannel : state.currentRoomChannel,
    getRoomsCount: (state) => state.rooms.length,
 
    currentUser: (state) => state.currentUser,

@@ -17,7 +17,8 @@
 		computed: {
 			...mapGetters([
 		        'currentRoomChannel',
-		        'currentRoomInputChannel'
+		        'currentRoomInputChannel',
+		        'inputChannel'
 		      ]),
 			slide() {
 				return {
@@ -29,7 +30,7 @@
 		methods: {
 			onSend() {
 				this.$store.dispatch('pushSlide', {
-					roomChannel: this.currentRoomInputChannel, 
+					roomChannel: this.inputChannel, 
 					slide: this.slide, 
 					event: 'add:reply'
 				})

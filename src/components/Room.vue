@@ -37,6 +37,8 @@
 		  ...mapGetters([
 	      	'getSlidesByRoom',
 	      	'currentRoomChannel',
+	      	'currentRoomInputChannel',
+	      	'inputChannel',
 	      	'bot'
 	      ]),
 		  slide() {
@@ -70,7 +72,6 @@
 				let user = this.$store.state.currentUser;
 				let session = this.$store.state.session;
 				let params = user ? {user: user} : {session: session};
-				this.$store.dispatch('setCurrentPingalChannel', params);
 				this.$store.dispatch('pingalSuggest', {roomChannel: this.currentRoomChannel});
 			}
 		},
@@ -79,7 +80,7 @@
 				console.log("sending entered text")
 		    console.log(this.$route.query.text)
 		    this.$store.dispatch('pushSlide', {
-		        roomChannel: this.$store.state.currentRoomInputChannel,
+		        roomChannel: this.inputChannel,
 		        slide: {_id: Math.round(Math.random() * 1000000),
 		        		text: this.$route.query.text,
 		        		bot: this.bot,
@@ -94,7 +95,7 @@
 		    console.log("sending entered text")
 		    console.log(this.$route.query.text)
 		    this.$store.dispatch('pushSlide', {
-		        roomChannel: this.$store.state.currentRoomInputChannel,
+		        roomChannel: this.inputChannel,
 		        slide: {_id: Math.round(Math.random() * 1000000),
 		        		text: this.$route.query.text,
 		        		bot: this.bot,

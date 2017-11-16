@@ -79,6 +79,7 @@ export default {
         'placeholder',
         'currentRoomChannel',
         'currentRoomInputChannel',
+        'inputChannel',
         'bot'
       ]),
       slide() {
@@ -119,7 +120,7 @@ export default {
         console.log("sending slide")
         let event = this.parentSlide ? 'add:reply' : 'request'
         this.$store.dispatch('pushSlide', {
-            roomChannel: this.currentRoomInputChannel, 
+            roomChannel: this.inputChannel, 
             slide: this.slide, 
             event: event
         })
