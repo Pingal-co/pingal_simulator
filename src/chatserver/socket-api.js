@@ -90,7 +90,7 @@ let addSlide = (slide, delay = 0) => {
     }
     
     if (('text' in slide) && (slide.text)) {
-      store.commit('APPEND_SLIDE', slide)
+      store.commit('PREPEND_SLIDE', slide)
       store.commit('SET_CURRENT_SLIDE', slide)
     }
   }, delay)
@@ -341,8 +341,7 @@ export let joinRoomChannel = (roomId) => {
 export let joinRoomInputChannel = (roomId) => {
   let roomInputChannel = joinRoom(`rooms:input:${roomId}`, {})
   let presences = {}
-   roomInputChannel.on('add:slide', addSlide)
-   roomInputChannel.on('add:reply', addReply)
+  
     // presence
   roomInputChannel.on("presence_state", state => {
       //console.log(state)

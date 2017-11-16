@@ -46,10 +46,9 @@
       	if (this.$route.params.chat_id == null) {
       		return this.getSlidesByRoom
       	} else {
-      		let r = []
-	      	r.push(this.slide)
-	      	r = r.concat(this.slide.replies)
-
+	      	let r = [this.slide].concat(this.slide.replies)
+	      	console.log("replies include")
+	      	console.log(r)
 	        return this.slide ? r : []
       	}
       },

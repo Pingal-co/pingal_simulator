@@ -25,7 +25,7 @@
         <div>
         <md-menu md-direction="bottom left">
           <md-button md-menu-trigger>
-            <div class="profile-button">{{name}}: {{totalfavor}} Favor </div>
+            <div class="profile-button">{{name}} ({{totalfavor}} Favor) </div>
           </md-button>
 
           <md-menu-content>

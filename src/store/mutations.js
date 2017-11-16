@@ -33,6 +33,10 @@ const mutations = {
         state.slides = _.uniq(slds, (sld) => {return sld.id})
     },
 
+    PREPEND_SLIDE(state, slide) {
+        state.slides = [slide].concat(state.slides.filter(sld => sld.id != slide.id))
+    },
+
     APPEND_SLIDE (state, slide) {        
         state.slides = state.slides.filter(sld => sld.id != slide.id).concat(slide)
     },
