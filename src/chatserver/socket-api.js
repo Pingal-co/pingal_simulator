@@ -233,7 +233,6 @@ let response = ({slide, topicRoom, introRoom}) => {
 */
 export let sendToChannel = (room, slide, event = 'add:slide') => {
   console.log('sending to room...');
-  console.log(socket)
   //console.log(slide)
   room.push(event, slide)
         .receive('ok', (msg) => console.log('sent'))

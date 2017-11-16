@@ -83,7 +83,7 @@ const getters = {
    searchRoomsPhrase: (state) => state.searchRoomsPhrase,
    searchRooms: (state) => state.rooms.filter(room => 
                               room.topic ? 
-                                  room.topic.toLowerCase().includes(state.searchRoomsPhrase) 
+                                  room.topic.toLowerCase().includes(state.searchRoomsPhrase.toLowerCase()) 
                                 : state.searchRoomsPhrase.length < 1),
    mobile: (state) => state.windowWidth < 768,
    windowWidth: (state) => state.windowWidth,

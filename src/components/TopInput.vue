@@ -1,7 +1,7 @@
 <template>
   <div class="input-box">
     <form @submit.prevent="onSend" class="input-form">
-      <input type="text" v-model="text" class="input-text" :placeholder="'Who would you like to connect to?'" ref="inputText" v-on:keyup.up="upSuggestionKey" v-on:keyup.down="downSuggestionkey" autofocus />
+      <input type="text" v-model="text" class="input-text" :placeholder="'Who would you like to connect to?'" ref="inputText" v-on:keyup.up="upSuggestionKey" v-on:keyup.down="downSuggestionkey" />
       <!-- <span style="display:none">{{focus}}</span> -->
     </form>
     <div class="arrow-container">
