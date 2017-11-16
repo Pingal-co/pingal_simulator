@@ -11,7 +11,7 @@
 				:room="introduction"	
 			/> -->
 
-			<div v-if="channels.length > 0" class="room-nav-header">Topic Networks</div>
+			<div v-if="channels.length > 0" class="room-nav-header">Intent Channels</div>
 			<room-nav-slide 
 				v-for="channel in channels"
 				:key="channel.id"

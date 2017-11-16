@@ -9,7 +9,7 @@ import _ from 'lodash'
 
 const mutations = {
 
-    WINDOW_WIDTH_RESIZE (state, size) {
+    SET_WINDOW_WIDTH (state, size) {
         state.windowWidth = size
     },
 

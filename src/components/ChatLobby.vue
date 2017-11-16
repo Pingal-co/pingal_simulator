@@ -72,7 +72,7 @@
 
     methods: {
       handleResize() {
-        this.$store.commit("WINDOW_WIDTH_RESIZE", window.innerWidth)
+        this.$store.commit("SET_WINDOW_WIDTH", window.innerWidth)
       }
     }, 
 
