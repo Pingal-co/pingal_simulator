@@ -254,7 +254,7 @@ let notify = (data) => {
 
 export let joinUserChannel = (userId) => {
   let userChannel = joinUser(userId);
-  console.log("USER RUN ONCE")
+  
   userChannel.on('notify', notify)
 
   return userChannel
@@ -269,7 +269,7 @@ export let joinAllChannels = (rooms) => {
 
 export let joinWorldChannel = (session) => {
   let path = DEFAULT_LOBBY + ":" + session
-  console.log("WORLD RUN ONCE")
+
   let roomChannel = joinRoom(path)
 
   roomChannel.on('get:slides_in_room', getSlidesInRoom)

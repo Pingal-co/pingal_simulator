@@ -75,8 +75,8 @@
 				let user = this.$store.state.currentUser;
 				let session = this.$store.state.session;
 				let params = user ? {user: user} : {session: session};
-				this.$store.dispatch('setCurrentPingalChannel', params);
-				this.$store.dispatch('pingalSuggest', {roomChannel: this.currentRoomChannel});
+				// this.$store.dispatch('setCurrentPingalChannel', params);
+				// this.$store.dispatch('pingalSuggest', {roomChannel: this.currentRoomChannel});
 			}
 		}
 	}

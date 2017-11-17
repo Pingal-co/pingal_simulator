@@ -58,9 +58,8 @@
                                  
             </md-card-content> 
             <div>
-              <md-button class="md-icon-button" @click.native="upvote"><md-icon class="thumb-icon" >thumb_up</md-icon></md-button>           
-              <md-button class="md-icon-button" @click.native="downvote"><md-icon class="thumb-icon" >thumb_down</md-icon></md-button>           
-
+              <md-button class="md-icon-button" @click.native="upvote"><md-icon class="thumb-icon">thumb_up</md-icon></md-button>           
+              <md-button class="md-icon-button" @click.native="downvote"><md-icon class="thumb-icon">thumb_down</md-icon></md-button>
             </div> 
 
 <!--        <div v-if="expanded" class="expanded">

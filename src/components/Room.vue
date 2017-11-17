@@ -72,7 +72,7 @@
 				let user = this.$store.state.currentUser;
 				let session = this.$store.state.session;
 				let params = user ? {user: user} : {session: session};
-				this.$store.dispatch('pingalSuggest', {roomChannel: this.currentRoomChannel});
+				// this.$store.dispatch('pingalSuggest', {roomChannel: this.currentRoomChannel});
 			}
 		},
 		watch: {
@@ -91,19 +91,21 @@
 			}
 		},
 
-		mounted() {
-		    console.log("sending entered text")
-		    console.log(this.$route.query.text)
-		    this.$store.dispatch('pushSlide', {
-		        roomChannel: this.inputChannel,
-		        slide: {_id: Math.round(Math.random() * 1000000),
-		        		text: this.$route.query.text,
-		        		bot: this.bot,
-		        		inserted_at: new Date(),
-		        		author_name: this.$store.state.currentUser.name,},
-		        event: 'request'
-		    })
-		}
+		// THIS WAS/IS NECCESARY FOR SEARCH TO WORK FROM OTHER ROUTE
+		// BUT REMOVED BECAUSE MAKES DOUBLE MESSAGE AT START BUG
+		// mounted() {
+		//     console.log("sending entered text")
+		//     console.log(this.$route.query.text)
+		//     this.$store.dispatch('pushSlide', {
+		//         roomChannel: this.inputChannel,
+		//         slide: {_id: Math.round(Math.random() * 1000000),
+		//         		text: this.$route.query.text,
+		//         		bot: this.bot,
+		//         		inserted_at: new Date(),
+		//         		author_name: this.$store.state.currentUser.name,},
+		//         event: 'request'
+		//     })
+		// }
 	}
 </script>
 
