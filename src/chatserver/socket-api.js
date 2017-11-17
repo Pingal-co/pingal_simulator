@@ -90,11 +90,28 @@ let addSlide = (slide, delay = 0) => {
     }
     
     if (('text' in slide) && (slide.text)) {
-      store.commit('APPEND_SLIDE', slide)
+      store.commit('PREPEND_SLIDE', slide)
       store.commit('SET_CURRENT_SLIDE', slide)
     }
   }, delay)
 } 
+
+let appendSlide = (slide, delay = 0) => {
+  setTimeout(function() {
+    // do not commit if slide is empty
+    console.log("received pingal slide")
+    console.log(slide)
+
+    if (slide.slide) {
+      slide = slide.slide
+    }
+    
+    if (('text' in slide) && (slide.text)) {
+      store.commit('APPEND_SLIDE', slide)
+      store.commit('SET_CURRENT_SLIDE', slide)
+    }
+  }, delay)
+}
 
 let addReply = ({slide}) => {
   store.commit('APPEND_REPLY', slide)
@@ -178,7 +195,7 @@ let renderPresence = (presences) => {
 };
 
 // Response:
-const responseDelay = 300
+const responseDelay = 100
 let response = ({slide, topicRoom, introRoom}) => {
   //slide.type = 'suggestTopic'
   // slide.isPingal = true
@@ -207,7 +224,7 @@ let response = ({slide, topicRoom, introRoom}) => {
     addRooms({rooms: introRoom})
   }
 
-  addSlide(slide, responseDelay)
+  appendSlide(slide, responseDelay)
   
 }
 
@@ -237,7 +254,7 @@ let notify = (data) => {
 
 export let joinUserChannel = (userId) => {
   let userChannel = joinUser(userId);
-
+  console.log("USER RUN ONCE")
   userChannel.on('notify', notify)
 
   return userChannel
@@ -252,6 +269,7 @@ export let joinAllChannels = (rooms) => {
 
 export let joinWorldChannel = (session) => {
   let path = DEFAULT_LOBBY + ":" + session
+  console.log("WORLD RUN ONCE")
   let roomChannel = joinRoom(path)
 
   roomChannel.on('get:slides_in_room', getSlidesInRoom)
@@ -271,7 +289,7 @@ export let joinWorldChannel = (session) => {
   roomChannel.on('response:intro', response)
 
   // user text message
-  roomChannel.on('add:slide', addSlide)
+  roomChannel.on('add:slide', appendSlide)
 
   
   return roomChannel
@@ -295,14 +313,15 @@ export let joinPingalChannel = (userId) => { //, jwt
 
   roomChannel.on('set:rooms', setRooms)
   roomChannel.on('add:rooms', addRooms)
-  roomChannel.on('add:slide', addSlide)
+  roomChannel.on('add:slide', appendSlide)
 
-  roomChannel.on('reward', addSlide)
+  roomChannel.on('reward', appendSlide)
   return roomChannel
 }
 
 export let joinRoomChannel = (roomId) => {
   let roomChannel = joinRoom(`rooms:${roomId}`, {})
+
   let presences = {}
 
   roomChannel.on('get:slides_in_room', getSlidesInRoom)
@@ -340,9 +359,9 @@ export let joinRoomChannel = (roomId) => {
 
 export let joinRoomInputChannel = (roomId) => {
   let roomInputChannel = joinRoom(`rooms:input:${roomId}`, {})
+
   let presences = {}
-   roomInputChannel.on('add:slide', addSlide)
-   roomInputChannel.on('add:reply', addReply)
+
     // presence
   roomInputChannel.on("presence_state", state => {
       //console.log(state)

@@ -13,14 +13,12 @@
 		// mix the getters into computed with object spread operator
 		computed: {
 			...mapGetters([
-                'getKeyPhrase',
-                'getIndex',
+        'getKeyPhrase',
+        'getIndex',
 				'hasIndex',
-				'recallMemory'
-            ]),
-			roomChannel() {
-				return this.$store.state.currentRoomChannel
-			}
+				'recallMemory',
+        'inputChannel'
+      ]),
 		},
 		
 		methods: {
@@ -39,7 +37,7 @@
 				console.log(slide)
 				//let slide = {text: button.bot}
 				this.$store.dispatch('pushSlide', {
-		          roomChannel: this.roomChannel,
+		          roomChannel: this.inputChannel,
 		          slide: slide, 
 		          event: 'request'
 				})

@@ -11,7 +11,11 @@
 				:room="introduction"	
 			/> -->
 
+<<<<<<< HEAD
 			<div v-if="channels.length > 0" class="room-nav-header">Intent Matchers</div>
+=======
+			<div v-if="channels.length > 0" class="room-nav-header">Intent Channels</div>
+>>>>>>> 8e30efb219fe9e6bbc8d4235c7c320958e72eed4
 			<room-nav-slide 
 				v-for="channel in channels"
 				:key="channel.id"

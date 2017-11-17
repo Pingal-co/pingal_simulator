@@ -25,7 +25,7 @@
         <div>
         <md-menu md-direction="bottom left">
           <md-button md-menu-trigger>
-            <div class="profile-button">{{name}}: {{totalfavor}} Favor </div>
+            <div class="profile-button">{{name}} ({{totalfavor}} Favor) </div>
           </md-button>
 
           <md-menu-content>
@@ -129,13 +129,6 @@ export default {
     },
     closeLogin() {
       this.$refs.loginMenu.close();
-    },
-    joinPingal() {
-      let user = this.$store.state.currentUser;
-      let session = this.$store.state.session;
-      let params = user ? {user: user} : {session: session};
-      this.$store.dispatch('setCurrentPingalChannel', params);
-      this.$store.dispatch('pingalSuggest', {roomChannel: this.$store.state.currentRoomChannel});
     },
     toggleLeftBar() {
       this.$store.commit('TOGGLE_SHOW_LEFT')
