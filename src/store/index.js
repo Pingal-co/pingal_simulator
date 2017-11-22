@@ -53,7 +53,7 @@ const state = {
   // jwt: jwt,
   jwt: null,
   placeholder: "Type a Message",
-  bot: "dialog"
+  bot: "brain"
 }
 
 
