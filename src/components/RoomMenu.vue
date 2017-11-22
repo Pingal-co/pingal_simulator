@@ -49,7 +49,7 @@
 			/>
 		</div>
 		<div class="room-connections">
-		  <div class="room-connections-header">Linked to relevant people ({{users.length}})</div>
+		  <div class="room-connections-header">Linked to recommended people ({{users.length}})</div>
 		  <md-list class="connection-panel-list">
 		    <md-list-item class="connection-panel" v-for="user, index in users" :key="index" @click.native="toggleUser(index)">
 		      <div class="user-panel-content">
