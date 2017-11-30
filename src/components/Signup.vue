@@ -6,18 +6,22 @@
 		<form novalidate @submit.stop.prevent="signup" class="signup-form">
 			<span class="error-message">{{error}}</span>
 			<span class="success-message""">{{success}}</span>
+			<md-input-container>
+		    <label>Full Name</label>
+		    <md-input type="email" v-model="fullName"></md-input>
+		  </md-input-container>
 		  <md-input-container>
 		    <label>Email</label>
 		    <md-input type="email" v-model="email"></md-input>
 		  </md-input-container>
-		    <md-input-container>
+<!-- 		  <md-input-container>
 		    <label>Password</label>
 		    <md-input type="password" v-model="password"></md-input>
 		  </md-input-container>
-		    <md-input-container>
+		  <md-input-container>
 		    <label>Password Confirmation</label>
 		    <md-input type="password" v-model="passwordConfirmation"></md-input>
-		  </md-input-container>
+		  </md-input-container> -->
 		  <md-button class="md-raised md-primary" type="submit">Sign up</md-button>
 		</form>
 	</div>
@@ -30,6 +34,7 @@
 		mixins: [fbReinitialize],
 		data() {
 			return {
+				fullName: '',
 				email: '',
 				password: '',
 				passwordConfirmation: '',
@@ -74,12 +79,12 @@
 				else if (!/(?:[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-zA-Z0-9-]*[a-zA-Z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/.test(this.email)) {
 					return [false, 'Email address must be valid.']
 				}
-				else if (this.password.length === 0) {
-					return [false, 'Password required.']
-				}
-				else if (this.password.length < 8) {
-					return [false, 'Password must be at least eight characters long.']
-				}
+				// else if (this.password.length === 0) {
+				// 	return [false, 'Password required.']
+				// }
+				// else if (this.password.length < 8) {
+				// 	return [false, 'Password must be at least eight characters long.']
+				// }
 				else {
 					return [true, '']
 				}
