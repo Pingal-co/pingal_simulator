@@ -8,8 +8,15 @@
 </template>
 
 <script>
+  import { mapGetters, mapActions } from 'vuex'
+
   export default {
     name: 'app',
+    computed: {
+      ...mapGetters([
+        'jwt'
+      ])
+    },
     created() {
       // Initialize Facebook SDK
       window.fbAsyncInit = function() {
@@ -29,6 +36,14 @@
            js.src = "//connect.facebook.net/en_US/sdk.js";
            fjs.parentNode.insertBefore(js, fjs);
          }(document, 'script', 'facebook-jssdk'));
+    },
+    mounted() {
+      // Only show left bar if signed in 
+      if (this.jwt && this.jwt != "null") {
+        this.$store.commit('SHOW_LEFT')
+      } else {
+        this.$store.commit('HIDE_LEFT')
+      }
     }
   }
 </script>

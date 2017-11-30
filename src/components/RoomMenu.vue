@@ -1,6 +1,6 @@
 <template>
 	<div v-if="currentRoom.type == 'pingal' || currentRoom.type == 0" class="room-menu">
-		Number of introductions per month:  
+		<!-- Number of introductions per month:   -->
 	</div>
 	<!-- Personal/Private Group -->
 	<div v-else-if="currentRoom.type == 2" class="room-menu">

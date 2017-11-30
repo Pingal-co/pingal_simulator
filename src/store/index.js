@@ -80,6 +80,7 @@ const getters = {
       },
 
    rooms: (state) => state.rooms,
+   jwt: (state) => state.jwt,
    searchRoomsPhrase: (state) => state.searchRoomsPhrase,
    searchRooms: (state) => state.rooms.filter(room => 
                               room.topic ? 

@@ -93,6 +93,7 @@ const mutations = {
     LOG_OUT (state) {
         state.currentUser = null;
         state.rooms = [];
+        state.jwt = null;
         Cookies.remove('user');
         Cookies.remove('jwt');
     },
@@ -150,6 +151,13 @@ const mutations = {
     HIDE_LEFT (state) {
         state.showLeft = false
     },
+    TOGGLE_SHOW_RIGHT (state) {
+        state.showRight = !state.showRight
+    },
+
+    TOGGLE_SHOW_LEFT (state) {
+        state.showLeft = !state.showLeft
+    },
 
     /* INPUT TOOLBAR */
     UPDATE_INPUT_TEXT (state, text) {
@@ -158,14 +166,6 @@ const mutations = {
 
     INPUT_FOCUS (state) {
         state.currentInput.focus += 1
-    },
-
-    TOGGLE_SHOW_RIGHT (state) {
-        state.showRight = !state.showRight
-    },
-
-    TOGGLE_SHOW_LEFT (state) {
-        state.showLeft = !state.showLeft
     },
 
      SET_BOT (state, bot) {

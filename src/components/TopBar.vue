@@ -25,16 +25,16 @@
         <div>
         <md-menu md-direction="bottom left">
           <md-button md-menu-trigger>
-            <div class="profile-button">{{name}} ({{totalfavor}} Favor) </div>
+            <div class="profile-button">{{name}}</div>
           </md-button>
 
           <md-menu-content>
-            <div @click="wallet">
+<!--             <div @click="wallet">
               <md-menu-item class="logout">Wallet</md-menu-item>
             </div>
              <div @click="reputation">
               <md-menu-item class="logout">Score</md-menu-item>
-            </div>
+            </div> -->
             <div @click="logOut">
               <md-menu-item class="logout">Logout</md-menu-item>
             </div>
@@ -96,9 +96,9 @@ export default {
         return ''
       }
     },
-    totalfavor() {
-      return 480
-    },
+    // totalfavor() {
+    //   return 480
+    // },
     user() {
       let user = this.$store.state.currentUser
       return user

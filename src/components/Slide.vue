@@ -57,10 +57,10 @@
 
                                  
             </md-card-content> 
-            <div>
+<!--             <div>
               <md-button class="md-icon-button" @click.native="upvote"><md-icon class="thumb-icon">thumb_up</md-icon></md-button>           
               <md-button class="md-icon-button" @click.native="downvote"><md-icon class="thumb-icon">thumb_down</md-icon></md-button>
-            </div> 
+            </div>  -->
 
 <!--        <div v-if="expanded" class="expanded">
               <reply-slide v-for="slide in replies" :slide="slide" :key="slide.id" />
