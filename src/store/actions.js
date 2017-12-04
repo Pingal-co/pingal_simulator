@@ -79,6 +79,11 @@ const actions = {
       })
   },
 
+  logInEmail ({ commit }, {email}) {
+    console.log("logging in via email magic link")
+    return httpPost(`${apiURL}/sessions/send_login_email`, {email: email})
+  },
+
   fbConnect ({ commit }, {name, email, accessToken} ) {
     console.log("fb connect")
     return httpPost(`${apiURL}/users/fbconnect`, {name: name, email: email, accessToken: accessToken})

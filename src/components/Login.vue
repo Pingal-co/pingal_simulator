@@ -3,19 +3,20 @@
 		<div class="fb-login-button fb-custom-signup" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true" 
 		data-scope="public_profile,email" onlogin="FB.checkLoginState()"></div>
 
-		<form novalidate @submit.stop.prevent="logIn" class="login-form">
+		<form v-if="!requested" novalidate @submit.stop.prevent="logInEmail" class="login-form" v-on:keyup.enter="logInEmail">
 			<span class="error-message">{{error}}</span>
 			<span class="success-message""">{{success}}</span>
 		  <md-input-container>
 		    <label>Email</label>
 		    <md-input type="email" v-model="email"></md-input>
 		  </md-input-container>
-		  <md-input-container>
+<!-- 		  <md-input-container>
 		    <label>Password</label>
 		    <md-input @keyup.enter.native="logIn" type="password" v-model="password"></md-input>
-		  </md-input-container>
+		  </md-input-container> -->
 		  <md-button class="md-raised md-primary" type="submit">Log in</md-button>
 		</form>
+		<div v-else>Check {{email}} for a magic link to sign in!</div>
 	</div>
 </template>
 
@@ -26,7 +27,8 @@
 				email: '',
 				password: '',
 				error: '',
-				success: ''
+				success: '',
+				requested: false,
 			}
 		},
 		methods: {
@@ -42,6 +44,12 @@
 				// 	this.error = ''
 				// })
 				this.$emit('closeLogin')
+			},
+			logInEmail() {
+				this.$store.dispatch('logInEmail', {
+					email: this.email
+				})
+				this.requested = true
 			}
 		},
 	}
