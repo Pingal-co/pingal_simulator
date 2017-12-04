@@ -56,7 +56,7 @@ const actions = {
   },
 
   signUpEmail({ commit }, {fullName, email}) {
-    console.log("signing up by email")
+    console.log("signing up by name & email")
     return httpPost(`${apiURL}/users`, {user: {fullName: fullName, email: email}})
       .then(({user, jwt}) => {
         startSession({commit}, {user: user, jwt: jwt, intro: `Welcome ${user.name}! Thanks for signing up :)`})
