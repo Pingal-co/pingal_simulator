@@ -82,6 +82,9 @@ const actions = {
   logInEmail ({ commit }, {email}) {
     console.log("logging in via email magic link")
     return httpPost(`${apiURL}/sessions/send_login_email`, {email: email})
+      .then((response) => {
+        console.log("sent login")
+      })
   },
 
   fbConnect ({ commit }, {name, email, accessToken} ) {
