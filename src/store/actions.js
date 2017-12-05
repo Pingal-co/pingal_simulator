@@ -79,6 +79,20 @@ const actions = {
       })
   },
 
+  logInMagicLink ({commit}, {magic_link_key}) {
+    console.log("Logging in with magic key")
+    return httpPost(`${apiURL}/sessions/login_magic_link`, {magic_link_key: magic_link_key})
+      .then(({jwt, user}) => {
+        startSession({commit}, {user: user, jwt: jwt, intro: `Welcome back ${user.name}`})
+      })
+      .catch((error) => {
+          error.response.json()
+          .then((errorJSON) => {
+              console.log('signin error')
+          })
+      })
+  },
+
   logInEmail ({ commit }, {email}) {
     console.log("logging in via email magic link")
     return httpPost(`${apiURL}/sessions/send_login_email`, {email: email})

@@ -4,6 +4,7 @@ import ChatLobby from '@/components/ChatLobby'
 import Rooms from '@/components/Rooms'
 import Room from '@/components/Room'
 import SlideList from '@/components/SlideList'
+import MagicLogin from '@/components/MagicLogin'
 
 import TopBar from '@/components/TopBar'
 import LeftBar from '@/components/LeftBar'
@@ -51,6 +52,10 @@ export default new Router({
           }
         }
       ]
+    },
+    {
+      path: '/login_magic_link/:magic_link_key',
+      component: MagicLogin
     }
   ]
 })
