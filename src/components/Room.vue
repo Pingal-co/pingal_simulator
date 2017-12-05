@@ -85,7 +85,7 @@
 		        		text: this.$route.query.text,
 		        		bot: this.bot,
 		        		inserted_at: new Date(),
-		        		author_name: this.$store.state.currentUser.name,},
+		        		author_name: this.user.name,},
 		        event: 'request'
 		    })
 			}
