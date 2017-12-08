@@ -42,6 +42,11 @@
 		          event: 'request'
 				})
 
+        // Store this slide as lastTopicSlide if is
+        if (slide.bot == "jointopic") {
+          this.$store.commit("SET_LAST_TOPIC_SLIDE", slide)
+        }
+
 			},
 			clickAction(button) {
 				if (button.action === 'fill') {

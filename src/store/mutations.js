@@ -55,6 +55,10 @@ const mutations = {
         state.currentSlide = null
     },
 
+    SET_LAST_TOPIC_SLIDE (state, slide) {
+        state.lastTopicSlide = slide
+    },
+
     /* START <USER MUTATION HANDLERS> */
     SET_CURRENT_USER (state, user) {
         state.currentUser = { ...state.currentUser, ...user }

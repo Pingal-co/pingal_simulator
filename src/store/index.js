@@ -47,6 +47,7 @@ const state = {
   showRight: false,
   showLeft: window.innerWidth > 768,
   slides: [],
+  lastTopicSlide: null,
   // session: session,
   session: null,
   rooms: [],
@@ -65,6 +66,7 @@ const state = {
 
 const getters = {
    slides: (state) => state.slides,
+   lastTopicSlide: (state) => state.lastTopicSlide,
    currentSlide: (state) => state.currentSlide,
    getSlidesCount: (state) => state.slides.length,
    getSlidesByRoom: (state) => {

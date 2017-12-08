@@ -13,7 +13,8 @@
                 <img src="../assets/pingal_play_icon.png" alt="Pingal">
               </md-avatar>
               <div class="expand-custom">
-                  <div class="md-title">  {{ slide.text }}</div> 
+                  <div class="md-title">{{ slide.text }}</div> 
+
                   <div v-if="slide.brain && slide.brain.index_terms && slide.brain.index_terms.length > 0">
                     <!-- <search-planner></search-planner> -->
                   </div> 

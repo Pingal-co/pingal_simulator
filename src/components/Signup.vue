@@ -29,6 +29,7 @@
 
 <script>
 	import fbReinitialize from '@/mixins/fbReinitialize'
+	import { mapGetters, mapActions } from 'vuex'
 	
 	export default {
 		mixins: [fbReinitialize],
@@ -42,10 +43,43 @@
 				success: ''
 			}
 		},
+		computed: {
+			...mapGetters([
+				'lastTopicSlide',
+				'inputChannel'
+			])
+		},
 		created() {
 			this.fbReinitialize()
 		},
 		methods: {
+			signUpEmail() {
+				let [validated, errorMessage] = this.validateEmail()
+
+				if (validated) {
+					this.error = ''
+					this.$store.dispatch('signUpEmail', {
+						fullName: this.fullName,
+						email: this.email
+					})
+					.then(() => {
+						this.success = 'Success!'
+						this.error = ''
+						// Send last topic slide if exists
+						if (this.lastTopicSlide) {
+							this.$store.dispatch('pushSlide', {
+								roomChannel: this.inputChannel,
+		          	slide: this.lastTopicSlide, 
+		          	event: 'request'
+							})
+						}
+					})
+				} else {
+					this.success = ''
+					this.error = errorMessage
+				}
+			},
+
 			signUp() {
 				let [validated, errorMessage] = this.validate()
 
@@ -59,24 +93,6 @@
 						this.email = ''
 						this.password = ''
 						this.passwordConfirmation = ''
-						this.success = 'Success!'
-						this.error = ''
-					})
-				} else {
-					this.success = ''
-					this.error = errorMessage
-				}
-			},
-			signUpEmail() {
-				let [validated, errorMessage] = this.validateEmail()
-
-				if (validated) {
-					this.error = ''
-					this.$store.dispatch('signUpEmail', {
-						fullName: this.fullName,
-						email: this.email
-					})
-					.then(() => {
 						this.success = 'Success!'
 						this.error = ''
 					})
